@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/*
+
+# Build
+dist/*
+
+# NPM
+npm-debug.log
+
+# Yarn
+yarn-error.log
+
+# Editor
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# Secret Files
+.env
+
+# Logs
+logs/**/*.log
+
+# Documentation
+apidoc/*

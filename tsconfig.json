@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@root/*": ["./*"]
+    },
+    "target": "es2015",
+    "module": "commonjs",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "lib": [
+      "es6",
+      "dom"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

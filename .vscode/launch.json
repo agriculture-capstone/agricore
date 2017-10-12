@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug",
+      "program": "${workspaceRoot}/dist/app.js",
+      "smartStep": true,
+      "sourceMaps": true,
+      "preLaunchTask": "npm: build:dev",
+      "protocol": "auto",
+      "outFiles": [
+        "dist/**/*.js",
+        "dist/**/*.js.map"
+      ]
+    },
+    {
+      "name": "Attach",
+      "type": "node",
+      "request": "attach",
+      "protocol": "auto",
+      "port": 9229,
+      "sourceMaps": true,
+      "outFiles": [
+        "dist/**/*.js",
+        "dist/**/*.js.map"
+      ]
+    }
+  ]
+}
