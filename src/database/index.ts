@@ -1,6 +1,6 @@
 import * as knex from 'knex';
 
-import Table from '@/models/Database/Table';
+import Table from '@/models/database/Table';
 import logger from '@/utilities/logger';
 
 /*

@@ -50,15 +50,13 @@ And then to get started it's simply an npm script:
 
 **Important Note**: `npm start` does run a file watcher already, so no build steps are required by you :smile:
 
-To build for production simply run:
-
-`npm run build`
-
-And likewise to start a production server run:
+To build and run for production simply run:
 
 `npm run start:prod`
 
-This will also perform a build before starting the server, but be aware it **will not** watch your files for changes like the development start script will.
+And to merely build for production run:
+
+`npm run build` or `npm run build:prod`
 
 If instead you're building for development, instead run:
 
