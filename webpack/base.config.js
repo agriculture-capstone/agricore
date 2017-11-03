@@ -53,9 +53,10 @@ module.exports = function () {
           include: [resolve('src'), resolve('test')],
           options: {
             configFile: resolve('tslint.json'),
-            emitErrors: false,
+            emitErrors: true,
             fix: false,
-            tsConfigFile: resolve('tsconfig.json')
+            tsConfigFile: resolve('tsconfig.json'),
+            typeCheck: true,
           }
         },
         // All files with a '.ts' extension will be handled by 'awesome-typescript-loader'.

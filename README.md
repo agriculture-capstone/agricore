@@ -10,13 +10,37 @@ TODO: Write description
 
 Let's get you all setup and ready to go with _The Agriculture Core_!
 
+## Configuration
+The agriculture-core pulls its configuration from a `.env` file at the root of the project. These configuration variables are loaded into `process.env.<VAR_NAME>` and are accessible accross the application. To get started, you will have to create this configuration file using the following format:
+
+```
+# Application Configuration
+PORT=
+
+# Database Environment
+DB_HOST=
+DB_NAME=
+DB_USER=
+DB_PASS=
+
+# Authentication
+JWT_SECRET=
+JWT_ISSUER=
+JWT_AUDIENCE=
+JWT_EXPIRES=
+```
+
 ## Dependencies
 
 Well of course you need Node! You can get this [here](https://nodejs.org/en/)!
 
+We highly recommend using Yarn for dependencies (instead of npm), due to it's ability to track and lock down all dependencies. This can be found [here](https://yarnpkg.com/lang/en/docs/install/)
+
+You are also going to need to run a MySQL server on your machine, or point to a valid host in your `.env` file.
+
 You're also going to need to install the npm packages, this can be done with the command:
 
-`npm install`
+`yarn`
 
 And then to get started it's simply an npm script:
 
@@ -24,11 +48,17 @@ And then to get started it's simply an npm script:
 
 ## Building
 
-To build for production simply run:
+**Important Note**: `npm start` does run a file watcher already, so no build steps are required by you :smile:
 
-`npm run build`
+To build and run for production simply run:
 
-If you're building for development, instead run:
+`npm run start:prod`
+
+And to merely build for production run:
+
+`npm run build` or `npm run build:prod`
+
+If instead you're building for development, instead run:
 
 `npm run build:dev`
 
@@ -36,7 +66,7 @@ If you would prefer to just watch the changes and build them when they change (f
 
 `npm run watch`
 
-Note: `npm start` does run a file watcher already, so no build steps are required by you :)
+Although again, `npm start` does already perform this for you.
 
 ## Testing
 
@@ -58,7 +88,7 @@ If you want to skip the build step and just run all the tests, simply run:
 
 `npm run test:core`
 
-I typically keep the webpack watcher running in the background so your tests automatically build! (ie `npm run watch`) :octocat:
+**Note** It may be helpful/faster to keep the webpack watcher running in the background so your tests automatically build! (ie `npm run watch`) :octocat:
 
 ### test:unit & test:integration
 
