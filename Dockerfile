@@ -3,10 +3,3 @@ FROM node:8.9
 
 WORKDIR /agriculture-core/
 
-#ADD . /agriculture-core/
-
-RUN yarn install --frozen-lockfile
-
-RUN npm run build
-
-CMD [ "npm" , "start" ]
