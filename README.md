@@ -109,3 +109,10 @@ Likewise, if you want to skip the slow tests, you can run the following:
 `npm run test:core -- --grep @slow --invert`
 
 Go ahead, try adding your own tags to your tests so you can filter them the same way!
+
+## Using Docker
+
+The `./dockerize.sh` script can be used with the following arguments:
+- `init` - creates a Docker image based on the Dockerfile
+- `build` - installs the node modules and build the project using `npm run build`
+- `run` - installs the node modules and starts the node server which listens on the specified port
