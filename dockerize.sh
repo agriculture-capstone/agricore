@@ -5,7 +5,7 @@ IMAGE_NAME="boresha/agriculture-core"
 DOCKER_HOME="/agiculture-core/"
 
 if [ "$1" == "init" ]; then
-	docker build -t $IMAGE_NAME $DIR
+	docker build -t $IMAGE_NAME .
 elif [ "$1" == "build" ]; then
     docker run --rm --volume "$DIR:$DOCKER_HOME" -ti $IMAGE_NAME yarn install --frozen-lockfile --no-bin-links
     docker run --rm --volume "$DIR:$DOCKER_HOME" $IMAGE_NAME npm run build
