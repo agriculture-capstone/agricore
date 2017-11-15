@@ -44,7 +44,7 @@ LOG_LEVEL=
 
 * link:https://nodejs.org/en/[NodeJS] is the framework in use.
 * link:https://yarnpkg.com/lang/en/docs/install/[yarn] handles all other dependencies.
-* MySQL server or some other valid host indicated by the `.env` file.
+* MySQL server indicated by the `.env` file.
 
 To install all other dependencies with use the command `yarn`.
 
