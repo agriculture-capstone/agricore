@@ -1,5 +1,5 @@
 pipeline {
-  agent: { docker 'TODO' }
+  agent: { dockerfile true }
   stages: {
     stage('Build') {
       echo 'Building...'
