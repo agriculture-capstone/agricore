@@ -20,5 +20,5 @@ elif [ "$1" == "run" ]; then
 		--volume "$DIR":"$DOCKER_HOME" \
 		"$IMAGE_NAME" npm run "${@:2}"
 else
-	echo "usage: docker_build [init | build | run]"
+	echo "usage: $0 [init | install | start | run [args] ]"
 fi
