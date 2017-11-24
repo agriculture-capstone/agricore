@@ -19,17 +19,18 @@
     "serve:debug": "npm run serve:dev -- --inspect",
     "serve:prod": "node dist/app.js",
     "webpack": "./node_modules/.bin/webpack",
-    "test": "npm run test:unit && npm run test:inte",
-    "test:unit": "npm run test:core -- \"test/unit/**/*.test.ts\"",
-    "test:inte": "npm run test:core -- \"test/inte/**/*.test.ts\"",
+    "test": "npm run lint && npm run coverage -- npm run mocha-webpack -- \"test/**/*.test.ts\"",
+    "test:unit": "npm run mocha-webpack -- \"test/unit/**/*.test.ts\"",
+    "test:inte": "npm run mocha-webpack -- \"test/integration/**/*.test.ts\"",
     "lint": "npm run lint:src && npm run lint:test",
     "lint:fix": "npm run lint:src:fix && npm run lint:test:fix",
-    "lint:test": "npm run lint:core -- \"test/**/*.ts\"",
+    "lint:test": "npm run tslint -- \"test/**/*.ts\"",
     "lint:test:fix": "npm run lint:test -- --fix",
-    "lint:src": "npm run lint:core -- \"src/**/*.ts\"",
+    "lint:src": "npm run tslint -- \"src/**/*.ts\"",
     "lint:src:fix": "npm run lint:src -- --fix",
-    "test:core": "node_modules/.bin/mocha-webpack --require test/setup.ts --include test/bundledSetup.ts --webpack-env test --webpack-config webpack.config.js",
-    "lint:core": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json",
+    "mocha-webpack": "node_modules/.bin/mocha-webpack --require test/setup.ts --include test/bundledSetup.ts --webpack-env test --webpack-config webpack.config.js",
+    "coverage": "node_modules/.bin/cross-env NODE_ENV=coverage node_modules/.bin/nyc",
+    "tslint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json",
     "concurrently": "node_modules/.bin/concurrently -k -p \"[{name}]\" -n \"Webpack,Node\" -c \"cyan.bold,green.bold\""
   },
   "dependencies": {
@@ -69,9 +70,12 @@
     "apidoc": "^0.17.6",
     "awesome-typescript-loader": "3.2.3",
     "concurrently": "3.5.0",
+    "cross-env": "^5.1.1",
     "friendly-errors-webpack-plugin": "1.6.1",
+    "istanbul-instrumenter-loader": "^3.0.0",
     "mocha-webpack": "^1.0.1",
     "nodemon": "1.12.0",
+    "nyc": "^11.3.0",
     "rimraf": "2.6.1",
     "source-map-loader": "0.2.1",
     "testdouble": "3.2.6",
@@ -87,5 +91,22 @@
     "description": "Robust REST API Boilerplate",
     "title": "CoreAPI",
     "url": "TODO: Insert url"
-  }
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 80,
+    "statements": 80,
+    "functions": 80,
+    "branches": 80,
+    "include": [
+      "src/**/*.ts"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "report-dir": "./test/coverage",
+    "instrument": false,
+    "sourceMap": false
+   }
 }

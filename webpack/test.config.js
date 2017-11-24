@@ -2,15 +2,29 @@ const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 
 const commonConfig = require('./base.config.js')
-const { resolve } = require('./utils');
+const {
+  resolve
+} = require('./utils');
+const isCoverage = process.env.NODE_ENV === 'coverage';
+
 
 module.exports = function () {
   return webpackMerge(commonConfig(), {
 
-    module: {
-      rules: [
+    devtool: 'inline-cheap-module-source-map',
 
-        // All .ts files will be linted by 'tslint'
+    module: {
+      rules: [].concat(
+        isCoverage ?
+        // If coverage env set, intrument the source files to generate a coverage report
+        {
+          enforce: 'post',
+          test: /\.(js|ts)/,
+          include: resolve('src'),
+          loader: 'istanbul-instrumenter-loader'
+        } :
+        // If not performing coverage, add linting to the build process
+        // Seems to be an error with tslint-loader that interferes with source-maps
         {
           enforce: 'pre',
           test: /\.ts$/,
@@ -25,7 +39,7 @@ module.exports = function () {
             typeCheck: true,
           }
         }
-      ]
+      )
     },
 
     plugins: [
