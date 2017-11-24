@@ -21,7 +21,6 @@
     "webpack": "./node_modules/.bin/webpack",
     "test": "npm run build && npm run test:core",
     "test:core": "./node_modules/.bin/mocha dist/test.js --colors -u tdd",
-    "test:debug": "npm run test:core -- --inspect-brk=9229",
     "test:unit": "npm run test:core -- --grep @unit",
     "test:integration": "npm run test:core -- --grep @integration",
     "lint": "npm run lint:src && npm run lint:test",

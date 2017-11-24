@@ -4,6 +4,7 @@ import * as morgan from 'morgan';
 
 import { LoggerMethods, Loggers, LogMessage } from '@/models/logger';
 import levels from '@/utilities/logger/levels';
+import { CORE_ROOT } from '@/utilities/root';
 
 let loggers: Loggers = null;
 

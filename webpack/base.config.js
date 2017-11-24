@@ -13,8 +13,7 @@ function resolve(dirOrFile) {
 module.exports = function () {
   return {
     entry: {
-      app: path.join(root, 'src', 'index.ts'),
-      test: path.join(root, 'test', 'index.ts')
+      app: path.join(root, 'src', 'main.ts')
     },
     output: {
       path: resolve('dist'),
@@ -67,11 +66,6 @@ module.exports = function () {
           ]
         }
       ]
-    },
-    plugins: [
-      new webpack.DefinePlugin({
-        CORE_ROOT: JSON.stringify(resolve('.'))
-      })
-    ]
+    }
   }
 }
