@@ -1,5 +1,5 @@
-import { expect } from 'chai';
-import * as td from 'testdouble';
+import * as expect from 'expect';
+import { createSandbox, assert, SinonStub } from 'sinon';
 import * as path from 'path';
 
 import { authenticate } from '@/services/authentication/authenticate';
@@ -15,10 +15,13 @@ interface MockObjects {
 }
 
 interface MockFunctions {
-  findUser: typeof UserDb.findUser;
-  createToken: typeof TokenAuth.createToken;
-  checkPassword: typeof PasswordAuth.checkPassword;
+  [k: string]: SinonStub;
+  findUser: SinonStub;
+  createToken: SinonStub;
+  checkPassword: SinonStub;
 }
+
+const sandbox = createSandbox();
 
 describe('authentication service authenticate module', function () {
   const USERNAME = 'username';
@@ -31,6 +34,9 @@ describe('authentication service authenticate module', function () {
   let mockObjects: MockObjects;
   let mockFunctions: MockFunctions;
 
+  // Reset the sandbox
+  afterEach(() => sandbox.restore());
+
   beforeEach(function () {
     // Define the mocked objects
     mockObjects = {
@@ -39,46 +45,52 @@ describe('authentication service authenticate module', function () {
 
     // Define the mocked functions
     mockFunctions = {
-      findUser: td.replace(UserDb, 'findUser'),
-      createToken: td.replace(TokenAuth, 'createToken'),
-      checkPassword: td.replace(PasswordAuth, 'checkPassword'),
+      findUser: sandbox.stub(UserDb, 'findUser'),
+      createToken: sandbox.stub(TokenAuth, 'createToken'),
+      checkPassword: sandbox.stub(PasswordAuth, 'checkPassword'),
     };
 
-    td.when(mockFunctions.createToken(USERNAME, UserType.BASIC)).thenResolve(mockObjects.fakeToken);
-    td.when(mockFunctions.checkPassword(SIMPLE_PASSWORD, SIMPLE_HASH)).thenResolve(true);
-    td.when(mockFunctions.checkPassword(COMPLEX_PASSWORD, COMPLEX_HASH)).thenResolve(true);
+    mockFunctions.createToken.withArgs(USERNAME, UserType.BASIC).resolves(mockObjects.fakeToken);
+    mockFunctions.checkPassword.withArgs(SIMPLE_PASSWORD, SIMPLE_HASH).resolves(true);
+    mockFunctions.checkPassword.withArgs(COMPLEX_PASSWORD, COMPLEX_HASH).resolves(true);
   });
 
-  describe('should successfully authenticate and return token', function () {
+  describe('valid credentials', function () {
 
-    it('with simple password', async function () {
+    it('should return token with simple password', async function () {
       return test(SIMPLE_PASSWORD, SIMPLE_HASH);
     });
 
-    it('with complex password', async function () {
+    it('should return token with complex password', async function () {
       return test(COMPLEX_PASSWORD, COMPLEX_HASH);
     });
 
     async function test(password: string, hash: string) {
       setupUser(USERNAME, hash, UserType.BASIC);
       const token = await authenticate(USERNAME, password);
-      expect(token).to.be.eq(mockObjects.fakeToken);
+      expect(token).toBe(mockObjects.fakeToken);
+      assert.calledOnce(mockFunctions.findUser);
+      assert.calledOnce(mockFunctions.createToken);
+      assert.calledOnce(mockFunctions.checkPassword);
     }
   });
 
-  describe('should fail to authenticate', function () {
+  describe('invalid credentials', function () {
     const BAD_PASSWORD = 'wrong_password';
 
     beforeEach(function () {
-      td.when(mockFunctions.checkPassword(USERNAME, BAD_PASSWORD)).thenResolve(false);
+      mockFunctions.checkPassword.withArgs(USERNAME, BAD_PASSWORD).resolves(false);
     });
 
-    it('with simple password', async function () {
+    it('should fail with simple password', async function () {
       setupUser(USERNAME, SIMPLE_HASH, UserType.BASIC);
       let token: string;
       try {
         token = await authenticate(USERNAME, BAD_PASSWORD);
       } catch (err) {
+        assert.calledOnce(mockFunctions.checkPassword);
+        assert.calledOnce(mockFunctions.findUser);
+        assert.notCalled(mockFunctions.createToken);
         return;
       }
       throw new Error('Should not have authenticated user');
@@ -93,6 +105,6 @@ describe('authentication service authenticate module', function () {
       userId: USER_ID,
     };
 
-    td.when(mockFunctions.findUser(username)).thenResolve(mockObjects.fakeUser);
+    mockFunctions.findUser.withArgs(username).resolves(mockObjects.fakeUser);
   }
 });
