@@ -1,4 +1,4 @@
-import * as expect from 'expect';
+import { expect } from 'chai';
 import { verify } from 'jsonwebtoken';
 
 import { createToken } from '@/services/authentication/token';
@@ -21,8 +21,8 @@ describe('authentication service token module', function () {
 
     it('that is encrypted', async function () {
       const token = await createToken(VALID_USERNAME, VALID_USER_TYPE);
-      expect(token).toBeA('string');
-      expect(numSubstrings(token, '.')).toEqual(EXPECTED_PERIODS);
+      expect(token).to.be.a('string');
+      expect(numSubstrings(token, '.')).to.eq(EXPECTED_PERIODS);
     });
 
     it('that has user payload', async function () {
@@ -31,8 +31,8 @@ describe('authentication service token module', function () {
         verify(token, process.env.JWT_SECRET, {}, (err, payload) => {
           err && reject(err);
 
-          expect((payload as any).username).toEqual(VALID_USERNAME);
-          expect((payload as any).type).toEqual(VALID_USER_TYPE);
+          expect((payload as any).username).to.eq(VALID_USERNAME);
+          expect((payload as any).type).to.eq(VALID_USER_TYPE);
           resolve();
         });
       });
@@ -66,7 +66,7 @@ describe('authentication service token module', function () {
       } catch (err) {
         return;
       }
-      throw new Error('Should have failed to create token');
+      expect.fail('Should have failed to create token');
     }
   });
 });

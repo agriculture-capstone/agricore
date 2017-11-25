@@ -1,4 +1,4 @@
-import * as expect from 'expect';
+import { expect } from 'chai';
 import { createSandbox, assert, SinonStub } from 'sinon';
 import * as path from 'path';
 
@@ -68,7 +68,7 @@ describe('authentication service authenticate module', function () {
     async function test(password: string, hash: string) {
       setupUser(USERNAME, hash, UserType.BASIC);
       const token = await authenticate(USERNAME, password);
-      expect(token).toBe(mockObjects.fakeToken);
+      expect(token).to.eq(mockObjects.fakeToken);
       assert.calledOnce(mockFunctions.findUser);
       assert.calledOnce(mockFunctions.createToken);
       assert.calledOnce(mockFunctions.checkPassword);
@@ -93,7 +93,7 @@ describe('authentication service authenticate module', function () {
         assert.notCalled(mockFunctions.createToken);
         return;
       }
-      throw new Error('Should not have authenticated user');
+      expect.fail('Should not have authenticated user');
     });
   });
 

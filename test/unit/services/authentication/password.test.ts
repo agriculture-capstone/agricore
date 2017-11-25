@@ -22,7 +22,7 @@ describe('authentication service password module', function () {
   afterEach(() => sandbox.restore());
 
   it('should have >=10 salt rounds', function () {
-    expect(SALT_ROUNDS).toBeGreaterThanOrEqualTo(MIN_SALT_ROUNDS);
+    expect(SALT_ROUNDS).to.be.at.least(MIN_SALT_ROUNDS);
   });
 
   describe('#hashPassword', function () {
@@ -58,9 +58,9 @@ describe('authentication service password module', function () {
 
     async function test(password: string) {
       const hash = await hashPassword(password);
-      expect(hash).toBeA('string');
-      expect(hash).toNotBe(password);
-      expect(numSubstrings(hash, '$')).toEqual(EXPECTED_DOLLARS);
+      expect(hash).to.be.a('string');
+      expect(hash).to.not.eq(password);
+      expect(numSubstrings(hash, '$')).to.eq(EXPECTED_DOLLARS);
     }
   });
 
@@ -101,7 +101,7 @@ describe('authentication service password module', function () {
 
     async function test(password: string, hash: string, expected: boolean) {
       const isPassword = await checkPassword(password, hash);
-      expect(isPassword).toEqual(expected);
+      expect(isPassword).to.eq(expected);
     }
   });
 
