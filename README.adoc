@@ -41,6 +41,16 @@ LOG_LEVEL=
 
 == Development
 
+=== Using Docker
+
+The `./dockerize.sh` script can be used with the following arguments:
+
+. `init` - creates a Docker image based on the Dockerfile
+. `install` - installs the node modules using yarn
+. `start` - starts the server with the port forwarded for access
+. `run` - runs any other npm scripts.
+`./dockerize.sh run command arg` is equivalent to `npm run command arg`
+
 === Dependencies
 
 * link:https://nodejs.org/en/[NodeJS] is the framework in use.
