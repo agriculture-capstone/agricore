@@ -15,7 +15,7 @@ let db: knex = null;
  */
 export function connect() {
   db = knex({
-    client: 'mysql',
+    client: process.env.DB_CLIENT,
     connection: {
       host: process.env.DB_HOST,
       database: process.env.DB_NAME,
