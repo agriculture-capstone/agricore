@@ -26,5 +26,4 @@ apidoc/*
 
 # Code Coverage
 test/coverage/*
-
 .nyc_output/*

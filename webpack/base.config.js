@@ -8,17 +8,17 @@ const { ROOT, resolve } = require('./utils');
 module.exports = function () {
   return {
     entry: {
-      app: path.join(ROOT, 'src', 'main.ts')
+      app: path.join(ROOT, 'src/', 'main.ts')
     },
     output: {
-      path: resolve('dist'),
+      path: resolve('dist/'),
       filename: '[name].js',
       publicPath: '/'
     },
     resolve: {
       extensions: ['.ts', '.js', '.json'],
       alias: {
-        '@': resolve('src'),
+        '@': resolve('src/'),
         '@root': ROOT
       },
       symlinks: false,

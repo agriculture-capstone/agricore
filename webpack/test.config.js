@@ -18,7 +18,7 @@ module.exports = function () {
         {
           enforce: 'post',
           test: /\.(js|ts)/,
-          include: resolve('src'),
+          include: resolve('src/'),
           loader: 'istanbul-instrumenter-loader'
         } :
         // If not performing coverage, add linting to the build process
@@ -27,7 +27,7 @@ module.exports = function () {
           enforce: 'pre',
           test: /\.ts$/,
           loader: 'tslint-loader',
-          include: [resolve('src'), resolve('test')],
+          include: [resolve('src/'), resolve('test/')],
           options: {
             configFile: resolve('tslint.json'),
             emitErrors: true,

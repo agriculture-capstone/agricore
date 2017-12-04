@@ -25,7 +25,7 @@ module.exports = function () {
           enforce: 'pre',
           test: /\.ts$/,
           loader: 'tslint-loader',
-          include: [resolve('src'), resolve('test')],
+          include: [resolve('src/'), resolve('test/')],
           options: {
             configFile: resolve('tslint.json'),
             emitErrors: true,
