@@ -1,5 +1,5 @@
 import dbConnection, { tableNames, execute } from '../connection';
-import logger from '@/utilities/logger';
+import logger from '@/utilities/modules/logger';
 import { DatabaseUser } from '@/models/User';
 import { UserType } from '@/models/User/UserType';
 

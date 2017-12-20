@@ -2,7 +2,7 @@ import * as Express from 'express';
 import { config } from 'dotenv';
 import * as path from 'path';
 
-import logger from '@/utilities/logger';
+import logger from '@/utilities/modules/logger';
 import routers from '@/routers';
 import middleware from '@/middleware';
 import { connect } from '@/database/connection';

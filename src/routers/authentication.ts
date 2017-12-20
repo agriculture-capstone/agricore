@@ -1,6 +1,6 @@
 import createRouter from '@/utilities/functions/createRouter';
 import { authenticate } from '@/services/authentication/authenticate';
-import logger from '@/utilities/logger';
+import logger from '@/utilities/modules/logger';
 import { StatusCode } from '@/models/statusCodes';
 
 const router = createRouter();

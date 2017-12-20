@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcrypt';
 
-import logger from '@/utilities/logger';
+import logger from '@/utilities/modules/logger';
 
 /** Number of salt rounds to perform. **Must be at least 10** */
 export const SALT_ROUNDS = 11;
