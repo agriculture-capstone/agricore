@@ -13,7 +13,7 @@ let db: knex = null;
 /**
  * Initialize the database connections based on env variables from `.env`
  */
-export function connect() {
+export async function connect() {
   db = knex({
     client: process.env.DB_CLIENT,
     connection: {
@@ -23,6 +23,9 @@ export function connect() {
       password: process.env.DB_PASS,
     },
   });
+
+  // Perform dummy query to test connection
+  await Promise.resolve(db.raw('select 1 as dbIsUp'));
 }
 
 /** Names of tables in the database */

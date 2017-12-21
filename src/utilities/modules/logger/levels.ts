@@ -1,27 +1,35 @@
+import { Level } from '@/models/logger';
+
 /** Priority levels for logging in The Agriculture Core */
 export default [
   {
     name: 'silly',
-    error: false,
+    priority: 6,
+    handleExceptions: false,
   },
   {
     name: 'debug',
-    error: false,
+    priority: 5,
+    handleExceptions: false,
   },
   {
     name: 'verbose',
-    error: false,
+    priority: 4,
+    handleExceptions: false,
   },
   {
     name: 'info',
-    error: false,
+    priority: 3,
+    handleExceptions: false,
   },
   {
     name: 'warn',
-    error: false,
+    priority: 2,
+    handleExceptions: false,
   },
   {
     name: 'error',
-    error: false,
+    priority: 1,
+    handleExceptions: true,
   },
-];
+] as Level[];

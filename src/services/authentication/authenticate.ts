@@ -1,6 +1,5 @@
 import { checkPassword } from '@/services/authentication/password';
 import { findUser } from '@/database/User';
-import { DatabaseUser } from '@/models/User';
 import { createToken } from '@/services/authentication/token';
 import logger from '@/utilities/modules/logger';
 

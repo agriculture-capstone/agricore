@@ -4,6 +4,7 @@ import * as path from 'path';
 import { CORE_ROOT } from '@/utilities/root';
 import { InitError } from '../errors/InitError';
 
+/** Possible types of input */
 type TypeOf = 'string' | 'number';
 
 interface EnvironmentVariables {
@@ -22,7 +23,7 @@ const ENV_VARS: EnvironmentVariables = {
   JWT_AUDIENCE: 'string',
   JWT_EXPIRES: 'number',
   LOG_LEVEL: 'string',
-}
+};
 
 /**
  * Perform initialization for config
@@ -54,6 +55,8 @@ export function initConfig() {
 
   // If problems, raise error
   if (errors) {
+    errors.unshift('Problems with configuration values:');
+    errors.push('Please see README for instructions how to configure application');
     const errorMsg = errors.join('\n');
     throw new InitError(errorMsg);
   }

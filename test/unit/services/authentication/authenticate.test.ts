@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import { createSandbox, assert, SinonStub } from 'sinon';
-import * as path from 'path';
 
 import { authenticate } from '@/services/authentication/authenticate';
 import * as UserDb from '@/database/User';
