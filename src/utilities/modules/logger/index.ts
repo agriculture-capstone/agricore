@@ -68,13 +68,6 @@ function prepareMessage(...msg: LogMessage[]): string {
 function generateLoggerMethod({ name, priority }: Level) {
   let fn: (msg: string) => void = null;
 
-  /** Don't log anything if filtered by LOG_LEVEL */
-  if (priority > priorityFilter) {
-    return {
-      [name]: () => {},
-    };
-  }
-
   switch (name) {
     case 'error':
     case 'warn':
@@ -82,13 +75,17 @@ function generateLoggerMethod({ name, priority }: Level) {
         check();
         // Unshift stack message to front of message array
         const stackMsg = [...msg].unshift(new Error().stack);
-        loggers[name].log(name, prepareMessage(stackMsg));
+        if (priorityFilter > priority) {
+          loggers[name].log(name, prepareMessage(stackMsg));
+        }
       };
 
     default:
       fn = function (...msg: LogMessage[]) {
         check();
-        loggers[name].log(name, prepareMessage(msg));
+        if (priorityFilter > priority) {
+          loggers[name].log(name, prepareMessage(msg));
+        }
       };
       break;
   }
