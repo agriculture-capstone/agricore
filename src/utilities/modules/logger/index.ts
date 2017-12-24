@@ -70,7 +70,9 @@ function generateLoggerMethod({ name, priority }: Level) {
 
   /** Don't log anything if filtered by LOG_LEVEL */
   if (priority > priorityFilter) {
-    return () => {};
+    return {
+      [name]: () => {},
+    };
   }
 
   switch (name) {

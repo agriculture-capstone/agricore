@@ -11,14 +11,19 @@ import { initExpress } from '@/initialization/express';
  * @async
  */
 export async function init() {
+  let loggerReady = false;
+
   try {
     initConfig();
   } catch (err) {
+    // Init logger and report error
     initLogger();
+    loggerReady = true;
     report(err);
   }
 
-  initLogger();
+  // Initialize logger if not initialized
+  !loggerReady && initLogger();
 
   try {
     await initDatabase();

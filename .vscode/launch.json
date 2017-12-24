@@ -4,6 +4,23 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Tests",
+      "smartStep": true,
+      "sourceMaps": true,
+      "protocol": "inspector",
+      "program": "${workspaceFolder}/node_modules/.bin/mocha-webpack",
+      "args": [
+        "--require", "test/setup.ts",
+        "--include", "test/bundledSetup.ts",
+        "--webpack-env", "test",
+        "--webpack-config", "webpack.config.js",
+        "test/**/*.test.ts"
+      ],
+      "internalConsoleOptions": "openOnSessionStart"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Debug",
       "program": "${workspaceRoot}/dist/app.js",
       "smartStep": true,

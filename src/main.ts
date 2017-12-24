@@ -6,7 +6,7 @@ init().then(({ server, port }) => {
 
   // Start listening for requests
   server.listen(port, () => {
-    logger.info(`The Agriculture Core is running on http://localhost:${port}`);
+    logger.info(`AgriCore is running on http://localhost:${port}`);
   });
 
 }).catch((e) => {

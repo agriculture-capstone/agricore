@@ -1,11 +1,13 @@
 import { createSandbox, SinonStub, assert } from 'sinon';
 import { expect } from 'chai';
 
-import * as Logger from '@/initialization/logger';
-import * as Config from '@/initialization/config';
-import * as Express from '@/initialization/express';
-import * as Database from '@/initialization/database';
+import * as LoggerInit from '@/initialization/logger';
+import * as ConfigInit from '@/initialization/config';
+import * as ExpressInit from '@/initialization/express';
+import * as DatabaseInit from '@/initialization/database';
+import logger from '@/utilities/modules/logger';
 import { init } from '@/initialization';
+import { InitError } from '@/errors/InitError';
 
 const sandbox = createSandbox();
 
@@ -30,8 +32,8 @@ describe('application initialization', function () {
   // Reset the sandbox
   afterEach(() => sandbox.restore());
 
-  it('should initialize all successfully', function () {
-    test({
+  it('should initialize all successfully', async function () {
+    return test({
       config: {
         result: Result.PASS,
         called: true,
@@ -52,8 +54,8 @@ describe('application initialization', function () {
     });
   });
 
-  it('should initialize others if config fails', function () {
-    test({
+  it('should initialize others if config fails', async function () {
+    return test({
       config: {
         result: Result.FAIL,
         called: true,
@@ -74,8 +76,8 @@ describe('application initialization', function () {
     });
   });
 
-  it('should initialize others if database fails', function () {
-    test({
+  it('should initialize others if database fails', async function () {
+    return test({
       config: {
         result: Result.PASS,
         called: true,
@@ -96,8 +98,30 @@ describe('application initialization', function () {
     });
   });
 
-  it('should throw error if logger fails', function () {
-    test({
+  it('should throw error if logger fails', async function () {
+    return test({
+      config: {
+        result: Result.PASS,
+        called: true,
+      },
+      database: {
+        result: Result.RESOLVE,
+        called: false,
+      },
+      logger: {
+        result: Result.FAIL,
+        called: true,
+      },
+      express: {
+        result: Result.PASS,
+        called: false,
+      },
+      fails: true,
+    });
+  });
+
+  it('should throw error if express fails', async function () {
+    return test({
       config: {
         result: Result.PASS,
         called: true,
@@ -107,28 +131,6 @@ describe('application initialization', function () {
         called: true,
       },
       logger: {
-        result: Result.FAIL,
-        called: true,
-      },
-      express: {
-        result: Result.PASS,
-        called: true,
-      },
-      fails: false,
-    });
-  });
-
-  it('should throw error if express fails', function () {
-    test({
-      config: {
-        result: Result.PASS,
-        called: true,
-      },
-      database: {
-        result: Result.RESOLVE,
-        called: true,
-      },
-      logger: {
         result: Result.PASS,
         called: true,
       },
@@ -136,47 +138,57 @@ describe('application initialization', function () {
         result: Result.FAIL,
         called: true,
       },
-      fails: false,
+      fails: true,
     });
   });
 
-  function test(testData: TestData) {
+  async function test(testData: TestData) {
     // Arrange
+    const getKeys = () => Object.keys(testData).filter(key => key !== 'fails');
+
     const stubs = {
-      config: sandbox.stub(Config, 'initConfig'),
-      database: sandbox.stub(Database, 'initDatabase'),
-      logger: sandbox.stub(Logger, 'initLogger'),
-      express: sandbox.stub(Express, 'initExpress'),
+      config: sandbox.stub(ConfigInit, 'initConfig'),
+      database: sandbox.stub(DatabaseInit, 'initDatabase'),
+      logger: sandbox.stub(LoggerInit, 'initLogger'),
+      express: sandbox.stub(ExpressInit, 'initExpress'),
+      loggerErr: sandbox.stub(logger, 'error'),
+      loggerWarn: sandbox.stub(logger, 'warn'),
     };
 
-    Object.keys(testData).map((key) => {
+    stubs.loggerErr.throwsException(new Error('Should not be calling logger.error'));
+
+    getKeys().map((key) => {
       const val = (testData as any)[key];
       const stub = (stubs as any)[key] as SinonStub;
 
       if (val.result === Result.RESOLVE) {
         stub.resolves();
       } else if (val.result === Result.REJECT) {
-        stub.rejects();
+        stub.rejects(new InitError('Mocked InitError'));
       } else if (val.result === Result.PASS) {
         stub.returns({});
       } else if (val.result === Result.FAIL) {
-        stub.throwsException();
+        stub.throws(new InitError('Mocked InitError'));
       } else {
         expect.fail(`No such result: ${val.result}`);
       }
     });
 
     // Act
+    let failed = false;
     try {
-      init();
-      expect(testData.fails).to.be.true;
+      await init();
     } catch (e) {
-      expect(testData.fails).to.be.false;
-      expect(e).to.be.of('InitWarning');
+      failed = true;
+      expect(testData.fails).to.be.eq(true, `should not have failed\nerror: ${e}`);
+      expect(e).to.be.an.instanceof(InitError);
+    }
+    if (!failed) {
+      expect(testData.fails).to.be.eq(false, 'should have failed');
     }
 
     // Assert
-    Object.keys(testData).map((key) => {
+    getKeys().map((key) => {
       const val = (testData as any)[key];
       const stub = (stubs as any)[key] as SinonStub;
 
@@ -187,7 +199,5 @@ describe('application initialization', function () {
       }
     });
   }
-
-  /********************* Helper Functions ***********************/
 
 });
