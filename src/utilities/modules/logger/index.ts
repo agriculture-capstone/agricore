@@ -109,6 +109,11 @@ function initMorgan(infoLogger: LoggerInstance) {
   });
 }
 
+/** Creates network logger */
+export function networkLogger() {
+  return initMorgan(loggers['info']);
+}
+
 /**
  * Initialize the logger
  */
@@ -120,8 +125,6 @@ export function initLogger() {
   priorityFilter = levels.find(l => l.name === process.env.LOG_LEVEL).priority || levels.find(l => l.name === 'info').priority;
 
   loggers = Object.assign({}, ...levels.map(generateLogger));
-
-  return initMorgan(loggers['info']);
 }
 
 const loggerMethods = Object.assign(

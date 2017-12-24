@@ -1,0 +1,3 @@
+describe('configuration initialization', function () {
+
+});

@@ -15,20 +15,21 @@ export async function init() {
     initConfig();
   } catch (err) {
     initLogger();
-    report(logger, err);
+    report(err);
   }
+
+  initLogger();
 
   try {
-    initLogger();
     await initDatabase();
-
-    return initExpress();
   } catch (err) {
-    report(logger, err);
+    report(err);
   }
+
+  return initExpress();
 }
 
-function report(logger: any, err: any) {
+function report(err: any) {
   if (err instanceof InitError) {
     logger.warn(err.message);
   } else {

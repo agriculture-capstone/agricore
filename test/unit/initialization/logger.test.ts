@@ -1,0 +1,3 @@
+describe('logger initialization', function () {
+
+});
