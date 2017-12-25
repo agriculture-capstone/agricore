@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 import * as database from '@/database/connection';
 import { initDatabase } from '@/initialization/database';
-import { InitError } from '@/errors/InitError';
+import { InitWarning } from '@/errors/InitError';
 
 const sandbox = createSandbox();
 
@@ -43,7 +43,7 @@ describe('database initialization', function () {
       await initDatabase();
     } catch (e) {
       failed = true;
-      expect(e).to.be.instanceof(InitError);
+      expect(e).to.be.instanceof(InitWarning);
     }
 
     // Assert

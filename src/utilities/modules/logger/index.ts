@@ -116,7 +116,7 @@ export function networkLogger() {
 /**
  * Initialize the logger
  */
-export function initLogger() {
+export function init() {
   if (loggers) {
     throw new Error('Already initialized logger');
   }

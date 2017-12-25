@@ -3,7 +3,7 @@ import * as ExpressServer from 'express';
 import { initDatabase } from './database';
 import { initConfig } from './config';
 import { initLogger } from './logger';
-import { InitError } from '@/errors/InitError';
+import { InitWarning } from '@/errors/InitError';
 import logger from '@/utilities/modules/logger';
 import { initExpress } from '@/initialization/express';
 
@@ -37,9 +37,10 @@ export async function init() {
 }
 
 function report(err: any) {
-  if (err instanceof InitError) {
+  if (err instanceof InitWarning) {
     logger.warn(err.message);
   } else {
-    logger.error(err);
+    // rethrow
+    throw err;
   }
 }

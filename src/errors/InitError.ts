@@ -3,9 +3,9 @@ import { BaseError } from './BaseError';
 /**
  * Raised during initialization
  */
-export class InitError extends BaseError {
+export class InitWarning extends BaseError {
 
   constructor(message: string) {
-    super(InitError, message);
+    super(InitWarning, message);
   }
 }

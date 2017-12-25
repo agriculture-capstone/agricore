@@ -2,8 +2,8 @@ import { config } from 'dotenv';
 import * as path from 'path';
 
 import { CORE_ROOT } from '@/utilities/root';
-import { InitError } from '../errors/InitError';
-import { EnvironmentVariables, VariableType } from '@/models/initialization/config';
+import { InitWarning } from '../errors/InitError';
+import { EnvironmentVariables } from '@/models/initialization/config';
 
 const ENV_VARS: EnvironmentVariables = {
   PORT: {
@@ -74,26 +74,21 @@ export function initConfig() {
       return void errors.push(undefinedMsg(name));
     }
 
-    try {
-      expectedType(envVar);
-    } catch (e) {
-      return void errors.push(wrongTypeMsg(name, envVar, expectedType));
+    // Validate type correctness
+    if (Number.isNaN(expectedType(envVar) as any)) {
+      throw new Error('Invalid type');
     }
   });
 
   // If problems, raise error
-  if (errors) {
+  if (errors.length) {
     errors.unshift('Problems with configuration values:');
     errors.push('Please see README for instructions how to configure application');
     const errorMsg = errors.join('. ');
-    throw new InitError(errorMsg);
+    throw new InitWarning(errorMsg);
   }
 }
 
 function undefinedMsg(name: string) {
   return `Configuration value '${name}' not found`;
-}
-
-function wrongTypeMsg(name: string, value: string, expectedType: VariableType) {
-  return `Configuration value '${name}' with value ${value} should be a ${expectedType}`;
 }
