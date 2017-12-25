@@ -1,3 +1,5 @@
+import * as ExpressServer from 'express';
+
 import { initDatabase } from './database';
 import { initConfig } from './config';
 import { initLogger } from './logger';
@@ -31,7 +33,7 @@ export async function init() {
     report(err);
   }
 
-  return initExpress();
+  return initExpress(ExpressServer);
 }
 
 function report(err: any) {

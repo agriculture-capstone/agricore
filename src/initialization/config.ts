@@ -3,26 +3,53 @@ import * as path from 'path';
 
 import { CORE_ROOT } from '@/utilities/root';
 import { InitError } from '../errors/InitError';
-
-/** Possible types of input */
-type PossibleTypes = StringConstructor | NumberConstructor;
-
-interface EnvironmentVariables {
-  [key: string]: PossibleTypes;
-}
+import { EnvironmentVariables, VariableType } from '@/models/initialization/config';
 
 const ENV_VARS: EnvironmentVariables = {
-  PORT: Number,
-  DB_CLIENT: String,
-  DB_HOST: String,
-  DB_NAME: String,
-  DB_USER: String,
-  DB_PASS: String,
-  JWT_SECRET: String,
-  JWT_ISSUER: String,
-  JWT_AUDIENCE: String,
-  JWT_EXPIRES: Number,
-  LOG_LEVEL: String,
+  PORT: {
+    expectedType: Number,
+    required: true,
+  },
+  DB_CLIENT: {
+    expectedType: String,
+    required: true,
+  },
+  DB_HOST: {
+    expectedType: String,
+    required: true,
+  },
+  DB_NAME: {
+    expectedType: String,
+    required: true,
+  },
+  DB_USER: {
+    expectedType: String,
+    required: true,
+  },
+  DB_PASS: {
+    expectedType: String,
+    required: true,
+  },
+  JWT_SECRET: {
+    expectedType: String,
+    required: true,
+  },
+  JWT_ISSUER: {
+    expectedType: String,
+    required: true,
+  },
+  JWT_AUDIENCE: {
+    expectedType: String,
+    required: false,
+  },
+  JWT_EXPIRES: {
+    expectedType: Number,
+    required: false,
+  },
+  LOG_LEVEL: {
+    expectedType: String,
+    required: true,
+  },
 };
 
 /**
@@ -41,12 +68,11 @@ export function initConfig() {
   // Validate environment variables
   Object.keys(ENV_VARS).map((name) => {
     const envVar = process.env[name];
+    const { expectedType, required } = ENV_VARS[name];
 
-    if (typeof(envVar) === 'undefined' || envVar === '') {
+    if (required && envVar === '') {
       return void errors.push(undefinedMsg(name));
     }
-
-    const expectedType = ENV_VARS[name];
 
     try {
       expectedType(envVar);
@@ -68,6 +94,6 @@ function undefinedMsg(name: string) {
   return `Configuration value '${name}' not found`;
 }
 
-function wrongTypeMsg(name: string, value: string, expectedType: PossibleTypes) {
+function wrongTypeMsg(name: string, value: string, expectedType: VariableType) {
   return `Configuration value '${name}' with value ${value} should be a ${expectedType}`;
 }
