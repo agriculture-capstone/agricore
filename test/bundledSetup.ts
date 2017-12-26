@@ -1,3 +1,6 @@
+import { reset as loggerReset } from '@/utilities/modules/logger';
+import { reset as dbReset } from '@/database/connection';
+
 let envBackup: typeof process.env = null;
 
 before(function () {
@@ -6,4 +9,6 @@ before(function () {
 
 beforeEach(function () {
   process.env = Object.assign({}, envBackup);
+  loggerReset();
+  dbReset();
 });

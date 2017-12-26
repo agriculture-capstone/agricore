@@ -8,6 +8,15 @@ import { CORE_ROOT } from '@/utilities/root';
 
 let loggers: Loggers = null;
 let priorityFilter: number = null;
+let loggerMethods = Object.assign(
+  {},
+  ...levels.map(({ name }) => {
+    const errFn = () => { throw new Error('Logger has not been initialized'); };
+    return {
+      [name]: errFn,
+    };
+  }),
+) as LoggerMethods;
 
 /**
  * Resolve path for filename in CORE_ROOT/logs
@@ -15,15 +24,6 @@ let priorityFilter: number = null;
  */
 function resolve(filename: string) {
   return path.resolve(CORE_ROOT, 'logs', filename);
-}
-
-/**
- * Perform check to ensure that loggers are initialized before usage
- */
-function check() {
-  if (!loggers) {
-    throw new Error('Logger was not initialized');
-  }
 }
 
 /**
@@ -72,7 +72,6 @@ function generateLoggerMethod({ name, priority }: Level) {
     case 'error':
     case 'warn':
       fn = function (...msg: LogMessage[]) {
-        check();
         // Unshift stack message to front of message array
         const stackMsg = [...msg].unshift(new Error().stack);
         if (priorityFilter > priority) {
@@ -82,7 +81,6 @@ function generateLoggerMethod({ name, priority }: Level) {
 
     default:
       fn = function (...msg: LogMessage[]) {
-        check();
         if (priorityFilter > priority) {
           loggers[name].log(name, prepareMessage(msg));
         }
@@ -121,6 +119,11 @@ export function init() {
     throw new Error('Already initialized logger');
   }
 
+  loggerMethods = Object.assign(
+    loggerMethods,
+    ...levels.map(generateLoggerMethod),
+  ) as LoggerMethods;
+
   priorityFilter = levels.find(l => l.name === process.env.LOG_LEVEL).priority || levels.find(l => l.name === 'info').priority;
 
   loggers = Object.assign({}, ...levels.map(generateLogger));
@@ -133,10 +136,5 @@ export function reset() {
   }
   loggers = null;
 }
-
-const loggerMethods = Object.assign(
-  {},
-  ...levels.map(generateLoggerMethod),
-) as LoggerMethods;
 
 export default loggerMethods;

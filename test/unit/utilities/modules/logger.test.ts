@@ -1,57 +1,76 @@
 import { expect } from 'chai';
-import { createSandbox } from 'sinon';
+import { createSandbox, SinonStub } from 'sinon';
+import * as winston from 'winston';
 
-import { reset } from '@/utilities/modules/logger';
+import logger from '@/utilities/modules/logger';
+import levels from '@/utilities/modules/logger/levels';
+import { initLogger } from '@/initialization/logger';
 
 const sandbox = createSandbox();
 
 describe('logger utility', function () {
+  const FAKE_MSG = 'my_fake_msg';
 
   afterEach(() => sandbox.restore());
 
-  beforeEach(() => reset());
+  describe('loggers', function () {
 
-  describe('resolve', function () {
+    describe('before initialization', function () {
 
-    it('should create absolute path to logger files', function () {
-      // Arrange
+      levels.map(({ name }) => {
+        it(`'${name}' logger should throw error`, function () {
+          // Act
+          let fail = false;
+          try {
+            logger[name](FAKE_MSG);
+          } catch (e) {
+            fail = true;
+          }
 
-      // Act
-
-      // Assert
+          // Assert
+          expect(fail).to.eq(true, 'should have failed');
+        });
+      });
     });
-  });
 
-  describe('check', function () {
-    // Arrange
+    describe('after initialization', function () {
+      const FILE_RETURN = 'file_return';
+      const CONSOLE_RETURN = 'console_return';
 
-    // Act
+      let loggerConstructor: SinonStub = null;
+      let logMock: SinonStub = null;
+      let fileStub: SinonStub = null;
+      let consoleStub: SinonStub = null;
 
-    // Assert
-  });
+      beforeEach(function () {
+        logMock = sandbox.stub();
+        loggerConstructor = sandbox.stub(winston, 'Logger').returns({
+          log: logMock,
+        });
+        fileStub = sandbox.stub(winston.transports, 'File').returns(FILE_RETURN);
+        consoleStub = sandbox.stub(winston.transports, 'Console').returns(CONSOLE_RETURN);
 
-  describe('generateLogger', function () {
-    // Arrange
+        initLogger();
+      });
 
-    // Act
+      levels.map(({ name, handleExceptions }, i) => {
+        it(`'${name}' logger should initialize properly`, function () {
+          // Arrange
+          const fileRegex = /$(C:\/|\/).*\.log/;
+          const loggerCalled = loggerConstructor.getCall(i).args[0];
+          const fileCalled = fileStub.getCall(i).args[0];
+          const consoleCalled = consoleStub.getCall(i).args[0];
 
-    // Assert
-  });
+          // Assert
+          expect(loggerCalled.transports).to.eq([FILE_RETURN, CONSOLE_RETURN]);
+          expect(fileCalled.level).to.eq(name);
+          expect(fileCalled.handleExceptions).to.eq(handleExceptions);
+          expect(fileCalled.filename).matches(fileRegex);
+          expect(consoleCalled.handleExceptions).to.eq(handleExceptions);
+        });
+      });
+    });
 
-  describe('prepareMessage', function () {
-    // Arrange
-
-    // Act
-
-    // Assert
-  });
-
-  describe('generateLoggerMethod', function () {
-    // Arrange
-
-    // Act
-
-    // Assert
   });
 
   describe('initLogger', function () {
@@ -77,4 +96,6 @@ describe('logger utility', function () {
 
     // Assert
   });
+
+  /******************************* Helper Functions *******************************/
 });

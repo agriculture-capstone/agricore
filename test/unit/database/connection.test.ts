@@ -2,7 +2,7 @@ import { createSandbox, SinonStub, assert } from 'sinon';
 import { expect } from 'chai';
 
 import logger from '@/utilities/modules/logger';
-import database, { execute, connect, reset } from '@/database/connection';
+import database, { execute, connect } from '@/database/connection';
 
 const sandbox = createSandbox();
 
@@ -29,10 +29,6 @@ describe('database connection', function () {
       dbMock = {
         raw: sandbox.stub(),
       };
-    });
-
-    afterEach(function () {
-      reset();
     });
 
     /*********************************** Tests ************************************/
