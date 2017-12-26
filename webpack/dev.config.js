@@ -43,7 +43,7 @@ module.exports = function () {
 
       new friendlyErrorsPlugin(),
 
-      new webpack.DefinePlugin({
+      new webpack.EnvironmentPlugin({
         NODE_ENV: JSON.stringify('development'),
       }),
     ].concat(

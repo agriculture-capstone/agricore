@@ -29,7 +29,7 @@ module.exports = function () {
     },
 
     plugins: [
-      new webpack.DefinePlugin({
+      new webpack.EnvironmentPlugin({
         NODE_ENV: JSON.stringify('production'),
       })
     ]

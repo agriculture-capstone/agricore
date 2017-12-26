@@ -41,9 +41,9 @@ module.exports = function () {
     },
 
     plugins: [
-      new webpack.DefinePlugin({
-        NODE_ENV: JSON.stringify('test'),
-      })
+      new webpack.EnvironmentPlugin({
+        'NODE_ENV': JSON.stringify('test')
+      }),
     ]
   })
 }

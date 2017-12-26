@@ -126,6 +126,14 @@ export function init() {
   loggers = Object.assign({}, ...levels.map(generateLogger));
 }
 
+/** Reset the logger instance for testing purposes */
+export function reset() {
+  if (process.env.NODE_ENV !== 'test') {
+    throw new Error('reset should only be called in a test environment');
+  }
+  loggers = null;
+}
+
 const loggerMethods = Object.assign(
   {},
   ...levels.map(generateLoggerMethod),

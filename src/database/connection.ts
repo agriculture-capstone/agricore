@@ -58,6 +58,9 @@ export async function execute<T>(qb: knex.QueryBuilder): Promise<T> {
  * Reset the database connection
  */
 export function reset() {
+  if (process.env.NODE_ENV !== 'test') {
+    throw new Error('should not be called outside of test environment');
+  }
   db = null;
 }
 
