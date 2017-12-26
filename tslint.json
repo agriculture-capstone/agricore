@@ -39,6 +39,7 @@
     "await-promise": true,
     "no-empty-interface": false,
     "import-name": false,
-    "no-unused-variable": true
+    "no-unused-variable": true,
+    "prefer-array-literal": false
   }
 }
