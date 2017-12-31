@@ -34,7 +34,7 @@
     "lint:src": "npm run tslint -- \"src/**/*.ts\"",
     "lint:src:fix": "npm run lint:src -- --fix",
     "mocha-webpack": "node_modules/.bin/mocha-webpack --require test/setup.ts --include test/bundledSetup.ts --webpack-env test --webpack-config webpack.config.js",
-    "coverage": "node_modules/.bin/cross-env NODE_ENV=coverage node_modules/.bin/nyc",
+    "coverage": "node_modules/.bin/cross-env COVERAGE=true node_modules/.bin/nyc",
     "tslint": "node_modules/.bin/tslint -c tslint.json -p tsconfig.json",
     "concurrently": "node_modules/.bin/concurrently -k -p \"[{name}]\" -n \"Webpack,Node\" -c \"cyan.bold,green.bold\""
   },

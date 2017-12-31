@@ -1,12 +1,12 @@
-import { Logger, transports, LoggerInstance } from 'winston';
+import { Logger as WinstonLogger, transports, LoggerInstance } from 'winston';
 import * as path from 'path';
 import * as morgan from 'morgan';
 
-import { LoggerMethods, Loggers, LogMessage, Level } from '@/models/logger';
+import { Logger, WinstonLoggers, LogMessage, Level } from '@/models/logger';
 import levels from '@/utilities/modules/logger/levels';
 import { CORE_ROOT } from '@/utilities/root';
 
-let loggers: Loggers = null;
+let loggers: WinstonLoggers = null;
 let priorityFilter: number = null;
 let loggerMethods = Object.assign(
   {},
@@ -16,7 +16,7 @@ let loggerMethods = Object.assign(
       [name]: errFn,
     };
   }),
-) as LoggerMethods;
+) as Logger;
 
 /**
  * Resolve path for filename in CORE_ROOT/logs
@@ -33,7 +33,7 @@ function resolve(filename: string) {
  */
 function generateLogger({ name, handleExceptions }: Level) {
   return {
-    [name]: new (Logger)({
+    [name]: new (WinstonLogger)({
       transports: [
         new (transports.File)({
           handleExceptions,
@@ -49,6 +49,7 @@ function generateLogger({ name, handleExceptions }: Level) {
         new (transports.Console)({
           handleExceptions,
           colorize: true,
+          level: name,
         }),
       ],
     }),
@@ -66,7 +67,7 @@ function prepareMessage(...msg: LogMessage[]): string {
  * @param {string} name Name of logger method to create
  */
 function generateLoggerMethod({ name, priority }: Level) {
-  let fn: (msg: string) => void = null;
+  let fn: (...msg: string[]) => void = null;
 
   switch (name) {
     case 'error':
@@ -122,9 +123,10 @@ export function init() {
   loggerMethods = Object.assign(
     loggerMethods,
     ...levels.map(generateLoggerMethod),
-  ) as LoggerMethods;
+  ) as Logger;
 
-  priorityFilter = levels.find(l => l.name === process.env.LOG_LEVEL).priority || levels.find(l => l.name === 'info').priority;
+  const configLevel = levels.find(l => l.name === process.env.LOG_LEVEL);
+  priorityFilter = configLevel ? configLevel.priority : levels.find(l => l.name === 'info').priority;
 
   loggers = Object.assign({}, ...levels.map(generateLogger));
 }

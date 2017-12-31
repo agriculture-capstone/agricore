@@ -5,6 +5,7 @@ import * as winston from 'winston';
 import logger from '@/utilities/modules/logger';
 import levels from '@/utilities/modules/logger/levels';
 import { initLogger } from '@/initialization/logger';
+import { Logger } from '@/models/logger';
 
 const sandbox = createSandbox();
 
@@ -18,7 +19,7 @@ describe('logger utility', function () {
     describe('before initialization', function () {
 
       levels.map(({ name }) => {
-        it(`'${name}' logger should throw error`, function () {
+        it(`'${name}' should throw error`, function () {
           // Act
           let fail = false;
           try {
@@ -34,41 +35,66 @@ describe('logger utility', function () {
     });
 
     describe('after initialization', function () {
-      const FILE_RETURN = 'file_return';
-      const CONSOLE_RETURN = 'console_return';
 
       let loggerConstructor: SinonStub = null;
       let logMock: SinonStub = null;
-      let fileStub: SinonStub = null;
-      let consoleStub: SinonStub = null;
+      let loggers: Logger = null;
 
       beforeEach(function () {
         logMock = sandbox.stub();
         loggerConstructor = sandbox.stub(winston, 'Logger').returns({
           log: logMock,
         });
-        fileStub = sandbox.stub(winston.transports, 'File').returns(FILE_RETURN);
-        consoleStub = sandbox.stub(winston.transports, 'Console').returns(CONSOLE_RETURN);
-
         initLogger();
+        loggers = levels.map(({ name }) => {
+          return { [name]: sandbox.stub(logger, name) };
+        }).reduce((a, b) => {
+          return {
+            ...a,
+            ...b,
+          };
+        }) as any;
       });
 
       levels.map(({ name, handleExceptions }, i) => {
-        it(`'${name}' logger should initialize properly`, function () {
+        it(`'${name}' should initialize properly`, function () {
           // Arrange
-          const fileRegex = /$(C:\/|\/).*\.log/;
-          const loggerCalled = loggerConstructor.getCall(i).args[0];
-          const fileCalled = fileStub.getCall(i).args[0];
-          const consoleCalled = consoleStub.getCall(i).args[0];
+          let fileTransport: winston.FileTransportInstance = null;
+          let consoleTranport: winston.ConsoleTransportInstance = null;
+          const loggerCall = loggerConstructor.getCalls().find((call) => {
+            const transports = call.args[0].transports;
+            fileTransport = transports[0];
+            consoleTranport = transports[1];
+
+            return fileTransport.level === name;
+          });
 
           // Assert
-          expect(loggerCalled.transports).to.eq([FILE_RETURN, CONSOLE_RETURN]);
-          expect(fileCalled.level).to.eq(name);
-          expect(fileCalled.handleExceptions).to.eq(handleExceptions);
-          expect(fileCalled.filename).matches(fileRegex);
-          expect(consoleCalled.handleExceptions).to.eq(handleExceptions);
+          expect(loggerCall).to.be.ok;
+          expect(fileTransport.name).to.contain(name);
+          expect(fileTransport.level).to.be.eq(name);
+          expect(consoleTranport.level).to.be.eq(name);
         });
       });
+
+      if (name !== 'error') {
+        it(`calling '${name}' should log array of strings`, function () {
+          // Arrange
+          const arr = [
+            FAKE_MSG,
+            FAKE_MSG,
+          ];
+
+          // Act
+          (logger as any)[name](arr);
+
+          // Assert
+        });
+
+        it(`'${name}' should log string`, function () {
+
+        });
+      }
     });
 
   });

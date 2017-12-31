@@ -44,7 +44,7 @@ module.exports = function () {
       new friendlyErrorsPlugin(),
 
       new webpack.EnvironmentPlugin({
-        NODE_ENV: JSON.stringify('development'),
+        NODE_ENV: 'development',
       }),
     ].concat(
       isNotifying
