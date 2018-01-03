@@ -3,29 +3,23 @@ const path = require('path')
 const nodeExternals = require('webpack-node-externals');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
-const root = path.resolve(__dirname, '..')
-
-/** Resolve file or directory in root */
-function resolve(dirOrFile) {
-  return path.join(root, dirOrFile)
-}
+const { ROOT, resolve } = require('./utils');
 
 module.exports = function () {
   return {
     entry: {
-      app: path.join(root, 'src', 'index.ts'),
-      test: path.join(root, 'test', 'index.ts')
+      app: path.join(ROOT, 'src/', 'main.ts')
     },
     output: {
-      path: resolve('dist'),
+      path: resolve('dist/'),
       filename: '[name].js',
       publicPath: '/'
     },
     resolve: {
       extensions: ['.ts', '.js', '.json'],
       alias: {
-        '@': resolve('src'),
-        '@root': root
+        '@': resolve('src/'),
+        '@root': ROOT
       },
       symlinks: false,
       plugins: [
@@ -45,20 +39,6 @@ module.exports = function () {
           test: /\.js$/,
           loader: "source-map-loader"
         },
-        // All .ts files will be linted by 'tslint'
-        {
-          enforce: 'pre',
-          test: /\.ts$/,
-          loader: 'tslint-loader',
-          include: [resolve('src'), resolve('test')],
-          options: {
-            configFile: resolve('tslint.json'),
-            emitErrors: true,
-            fix: false,
-            tsConfigFile: resolve('tsconfig.json'),
-            typeCheck: true,
-          }
-        },
         // All files with a '.ts' extension will be handled by 'awesome-typescript-loader'.
         {
           test: /\.ts$/,
@@ -67,11 +47,6 @@ module.exports = function () {
           ]
         }
       ]
-    },
-    plugins: [
-      new webpack.DefinePlugin({
-        CORE_ROOT: JSON.stringify(resolve('.'))
-      })
-    ]
+    }
   }
 }

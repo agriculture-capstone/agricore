@@ -1,9 +1,9 @@
-import database, { tableNames, execute } from '@/database';
+import dbConnection, { tableNames, execute } from '../connection';
 import logger from '@/utilities/logger';
 import { DatabaseUser } from '@/models/User';
 import { UserType } from '@/models/User/UserType';
 
-const userTable = () => database()(tableNames.USERS);
+const userTable = () => dbConnection()(tableNames.USERS);
 
 const builders = {
   /** QueryBuilder for selecting user */

@@ -26,3 +26,7 @@ apidoc/*
 
 # Docker Postgres database
 data/
+
+# Code Coverage
+test/coverage/*
+.nyc_output/*

@@ -5,10 +5,11 @@ import * as path from 'path';
 import logger from '@/utilities/logger';
 import routers from '@/routers';
 import middleware from '@/middleware';
-import { connect } from '@/database';
+import { connect } from '@/database/connection';
 import { createUser } from '@/database/User';
 import { hashPassword } from '@/services/authentication/password';
 import { UserType } from '@/models/User/UserType';
+import { CORE_ROOT } from '@/utilities/root';
 
 // Load configuration from .env file at root
 config({
