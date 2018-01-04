@@ -1,7 +1,7 @@
 import * as compression from 'compression';
 import * as cors from 'cors';
 
-import { networkLogger } from '@/utilities/modules/logger';
+import { createNetworkLogger } from '@/utilities/modules/logger';
 import jwtMiddleware from '@/middleware/jwtMiddleware';
 import jwtUnauthorized from '@/middleware/jwtUnauthorized';
 
@@ -13,5 +13,5 @@ export default function middleware() {
   this.use(jwtUnauthorized());
   this.use(cors());
   this.use(compression());
-  this.use(networkLogger);
+  this.use(createNetworkLogger);
 }

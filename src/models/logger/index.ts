@@ -3,19 +3,19 @@ import { LoggerInstance } from 'winston';
 /**
  * The methods used in The Agriculture Core to log at various priority levels
  */
-export interface Logger {
+export interface LogFunctions {
   /** Log using 'silly' level */
-  silly: LoggerFunction;
+  silly: LogFunction;
   /** Log using 'debug' level */
-  debug: LoggerFunction;
+  debug: LogFunction;
   /** Log using 'verbose' level */
-  verbose: LoggerFunction;
+  verbose: LogFunction;
   /** Log using 'info' level */
-  info: LoggerFunction;
+  info: LogFunction;
   /** Log using 'warn' level */
-  warn: LoggerFunction;
+  warn: LogFunction;
   /** Log using 'error' level */
-  error: LoggerFunction;
+  error: LogFunction;
 }
 
 /** Definition for logger object */
@@ -24,7 +24,7 @@ export interface WinstonLoggers {
 }
 
 /** Logger function type */
-export type LoggerFunction = (...msg: LogMessage) => void;
+export type LogFunction = (...msg: LogMessage) => void;
 
 /** Input type for log messages */
 export type LogMessage = any[];
