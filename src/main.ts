@@ -1,15 +1,4 @@
-import logger from '@/utilities/modules/logger';
-import { init } from '@/initialization';
+import { Server } from '@/server';
 
-// Initialize application
-init().then(({ server, port }) => {
-
-  // Start listening for requests
-  server.listen(port, () => {
-    logger.info(`AgriCore is running on http://localhost:${port}`);
-  });
-
-}).catch((e) => {
-  logger.error('Failed to initialize application');
-  logger.error(e);
-});
+const server = new Server();
+server.start();

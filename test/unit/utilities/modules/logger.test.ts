@@ -34,7 +34,6 @@ describe('logger utility', function () {
     });
 
     describe('after initialization', function () {
-      const STACK_INDEX = 0;
 
       let loggerConstructor: SinonStub = null;
       let logStub: SinonStub = null;
@@ -71,37 +70,41 @@ describe('logger utility', function () {
 
         if (name === 'error' || name === 'warn') {
 
+          interface TestData {
+            numberOfMessages: number;
+          }
+
           it(`calling '${name}' should log stack and multiple message strings`, function () {
-            // Arrange
-            const msgOffset = 1;
-            const numMsgs = 2;
-
-            // Act
-            (logger as any)[name](FAKE_MSG, FAKE_MSG);
-
-            // Assert
-            const [calledLogger, calledMessage] = logStub.getCall(0).args;
-            expect(calledLogger).to.eq(name);
-            const messages = calledMessage.split(',');
-            [...messages].splice(msgOffset, numMsgs).map(msg => expect(msg).to.eq(`"${FAKE_MSG}"`));
-            expect(messages[STACK_INDEX]).to.contain('Error');
+            test({
+              numberOfMessages: 2,
+            });
           });
 
           it(`calling '${name}' should log stack and string message`, function () {
+            test({
+              numberOfMessages: 1,
+            });
+          });
+
+          function test({ numberOfMessages }: TestData) {
             // Arrange
-            const msgOffset = 1;
-            const numMsgs = 1;
+            const inputArgs = Array.apply(null, Array(numberOfMessages)).map(() => FAKE_MSG);
 
             // Act
-            (logger as any)[name](FAKE_MSG);
+            (logger as any)[name](...inputArgs);
 
             // Assert
             const [calledLogger, calledMessage] = logStub.getCall(0).args;
             expect(calledLogger).to.eq(name);
-            const messages = calledMessage.split(',');
-            [...messages].splice(msgOffset, numMsgs).map(msg => expect(msg).to.eq(`"${FAKE_MSG}"`));
-            expect(messages[STACK_INDEX]).to.contain('Error');
-          });
+            const messages = calledMessage.split(',') as string[];
+            messages.map((msg, index) => {
+              if (index < numberOfMessages) {
+                expect(msg).to.eq(`"${FAKE_MSG}"`);
+              } else {
+                expect(msg).to.contain('Error');
+              }
+            });
+          }
 
         } else {
 
@@ -243,6 +246,4 @@ describe('logger utility', function () {
       expect(failed).to.eq(true, 'Should have failed');
     });
   });
-
-  /******************************* Helper Functions *******************************/
 });

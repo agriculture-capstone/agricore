@@ -76,7 +76,7 @@ function generateLoggerMethod({ name, priority }: Level) {
         if (priorityFilter >= priority) {
           // Unshift stack message to front of message array
           const stackMsg = [...msg];
-          stackMsg.unshift(new Error().stack);
+          stackMsg.push(new Error().stack);
           winstonLoggers[name].log(name, prepareMessage(...stackMsg));
         }
       };
