@@ -6,7 +6,7 @@ import { StatusCode } from '@/models/statusCodes';
  *
  * @returns {ErrorRequestHandler} Express error request handler middleware
  */
-export default function jwtUnauthorized(): ErrorRequestHandler {
+export default function unauthorized(): ErrorRequestHandler {
   return (err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
       res.status(StatusCode.UNAUTHORIZED).end();
