@@ -8,6 +8,9 @@ export class ResponseStub {
   /** end method stub */
   public end: SinonStub;
 
+  /** sendStatus method stub */
+  public sendStatus: SinonStub;
+
   private sandbox: SinonSandbox;
   private stubs: SinonStub[];
 
@@ -15,6 +18,7 @@ export class ResponseStub {
     this.stubs = [];
     this.sandbox = sandbox;
     this.status = this.createChainStub();
+    this.sendStatus = this.createChainStub();
     this.end = this.createStub();
   }
 
