@@ -4,7 +4,6 @@ import createRouter from '@/utilities/functions/createRouter';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
 import arrayIncludes from '@/utilities/functions/arrayIncludes';
-import objectValues from '@/utilities/functions/objectValues';
 import { hashPassword } from '@/services/authentication/password';
 import * as UserDb from '@/database/User';
 import logger from '@/utilities/modules/logger';
@@ -113,7 +112,7 @@ function validateCreate(body: any) {
     username &&
     password &&
     userType &&
-    arrayIncludes(objectValues<string>(UserType), userType) &&
+    arrayIncludes(Object.values(UserType), userType) &&
     typeof(username) === 'string' &&
     typeof(password) === 'string'
   );
