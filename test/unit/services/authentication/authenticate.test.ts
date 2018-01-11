@@ -8,6 +8,7 @@ import * as PasswordAuth from '@/services/authentication/password';
 import { DatabaseUser } from '@/models/User';
 import { UserType } from '@/models/User/UserType';
 import logger from '@/utilities/modules/logger';
+import { AuthError } from '@/errors/AuthError';
 
 interface MockObjects {
   fakeUser?: DatabaseUser;
@@ -85,10 +86,19 @@ describe('authentication service authenticate module', function () {
     });
 
     it('should fail with simple password', async function () {
+      // Arrange
       setupUser(USERNAME, SIMPLE_HASH, UserType.BASIC);
-      const token = await authenticate(USERNAME, BAD_PASSWORD);
 
-      expect(token).to.not.be.ok;
+      // Act
+      let failed = false;
+      try {
+        await authenticate(USERNAME, BAD_PASSWORD);
+      } catch (err) {
+        failed = true;
+        expect(err).to.be.instanceof(AuthError);
+      }
+
+      expect(failed).to.be.true;
       assert.calledOnce(stubFunctions.checkPassword);
       assert.calledOnce(stubFunctions.findUser);
       assert.notCalled(stubFunctions.createToken);
