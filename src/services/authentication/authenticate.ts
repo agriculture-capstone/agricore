@@ -12,16 +12,12 @@ import logger from '@/utilities/modules/logger';
  * @return {Promise<string>} JSON Web Token
  */
 export async function authenticate(username: string, password: string) {
-  const userPromise = findUser(username).then(async (user) => {
-    return checkPassword(password, user.hash)
-      .then(async (authenticated) => {
-        if (authenticated) {
-          return createToken(user.username, user.userType);
-        }
-
-        logger.error('User not authenticated');
-      });
-  });
-
-  return Promise.resolve<string>(userPromise);
+  const user = await findUser(username);
+  const authenticated = await checkPassword(password, user.hash);
+  if (authenticated) {
+    return createToken(user.username, user.userType);
+  } else {
+    logger.error(`User '${user.username}' not authenticated`);
+    return false;
+  }
 }
