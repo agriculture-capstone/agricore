@@ -7,6 +7,8 @@ import * as TokenAuth from '@/services/authentication/token';
 import * as PasswordAuth from '@/services/authentication/password';
 import { DatabaseUser } from '@/models/User';
 import { UserType } from '@/models/User/UserType';
+import logger from '@/utilities/modules/logger';
+import { AuthError } from '@/errors/AuthError';
 
 interface MockObjects {
   fakeUser?: DatabaseUser;
@@ -18,6 +20,7 @@ interface MockFunctions {
   findUser: SinonStub;
   createToken: SinonStub;
   checkPassword: SinonStub;
+  logError: SinonStub;
 }
 
 const sandbox = createSandbox();
@@ -31,7 +34,7 @@ describe('authentication service authenticate module', function () {
   const USER_ID = 1;
 
   let mockObjects: MockObjects;
-  let mockFunctions: MockFunctions;
+  let stubFunctions: MockFunctions;
 
   // Reset the sandbox
   afterEach(() => sandbox.restore());
@@ -43,15 +46,16 @@ describe('authentication service authenticate module', function () {
     };
 
     // Define the mocked functions
-    mockFunctions = {
+    stubFunctions = {
       findUser: sandbox.stub(UserDb, 'findUser'),
       createToken: sandbox.stub(TokenAuth, 'createToken'),
       checkPassword: sandbox.stub(PasswordAuth, 'checkPassword'),
+      logError: sandbox.stub(logger, 'error'),
     };
 
-    mockFunctions.createToken.withArgs(USERNAME, UserType.BASIC).resolves(mockObjects.fakeToken);
-    mockFunctions.checkPassword.withArgs(SIMPLE_PASSWORD, SIMPLE_HASH).resolves(true);
-    mockFunctions.checkPassword.withArgs(COMPLEX_PASSWORD, COMPLEX_HASH).resolves(true);
+    stubFunctions.createToken.withArgs(USERNAME, UserType.BASIC).resolves(mockObjects.fakeToken);
+    stubFunctions.checkPassword.withArgs(SIMPLE_PASSWORD, SIMPLE_HASH).resolves(true);
+    stubFunctions.checkPassword.withArgs(COMPLEX_PASSWORD, COMPLEX_HASH).resolves(true);
   });
 
   describe('valid credentials', function () {
@@ -68,9 +72,9 @@ describe('authentication service authenticate module', function () {
       setupUser(USERNAME, hash, UserType.BASIC);
       const token = await authenticate(USERNAME, password);
       expect(token).to.eq(mockObjects.fakeToken);
-      assert.calledOnce(mockFunctions.findUser);
-      assert.calledOnce(mockFunctions.createToken);
-      assert.calledOnce(mockFunctions.checkPassword);
+      assert.calledOnce(stubFunctions.findUser);
+      assert.calledOnce(stubFunctions.createToken);
+      assert.calledOnce(stubFunctions.checkPassword);
     }
   });
 
@@ -78,21 +82,27 @@ describe('authentication service authenticate module', function () {
     const BAD_PASSWORD = 'wrong_password';
 
     beforeEach(function () {
-      mockFunctions.checkPassword.withArgs(USERNAME, BAD_PASSWORD).resolves(false);
+      stubFunctions.checkPassword.withArgs(USERNAME, BAD_PASSWORD).resolves(false);
     });
 
     it('should fail with simple password', async function () {
+      // Arrange
       setupUser(USERNAME, SIMPLE_HASH, UserType.BASIC);
-      let token: string;
+
+      // Act
+      let failed = false;
       try {
-        token = await authenticate(USERNAME, BAD_PASSWORD);
+        await authenticate(USERNAME, BAD_PASSWORD);
       } catch (err) {
-        assert.calledOnce(mockFunctions.checkPassword);
-        assert.calledOnce(mockFunctions.findUser);
-        assert.notCalled(mockFunctions.createToken);
-        return;
+        failed = true;
+        expect(err).to.be.instanceof(AuthError);
       }
-      expect.fail('Should not have authenticated user');
+
+      expect(failed).to.be.true;
+      assert.calledOnce(stubFunctions.checkPassword);
+      assert.calledOnce(stubFunctions.findUser);
+      assert.notCalled(stubFunctions.createToken);
+      assert.calledOnce(stubFunctions.logError);
     });
   });
 
@@ -104,6 +114,6 @@ describe('authentication service authenticate module', function () {
       userId: USER_ID,
     };
 
-    mockFunctions.findUser.withArgs(username).resolves(mockObjects.fakeUser);
+    stubFunctions.findUser.withArgs(username).resolves(mockObjects.fakeUser);
   }
 });

@@ -39,19 +39,9 @@ describe('configuration initialization', function () {
   const TEST_STRING = 'test_string';
   const TEST_NUMBER = '555';
   const EMPTY = '';
-
-  let envBackup: typeof process.env = null;
   let stubs: TestStubs = null;
 
   afterEach(() => sandbox.restore());
-
-  before(function () {
-    envBackup = Object.assign({}, process.env);
-  });
-
-  afterEach(function () {
-    process.env = Object.assign({}, envBackup);
-  });
 
   beforeEach(function () {
     stubs = {

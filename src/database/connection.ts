@@ -13,8 +13,8 @@ let db: knex = null;
 /**
  * Initialize the database connections based on env variables from `.env`
  */
-export async function connect() {
-  db = knex({
+export async function connect(createConnection = knex) {
+  db = createConnection({
     client: process.env.DB_CLIENT,
     connection: {
       host: process.env.DB_HOST,
@@ -52,6 +52,16 @@ export async function execute<T>(qb: knex.QueryBuilder): Promise<T> {
   });
 
   return promise;
+}
+
+/**
+ * Reset the database connection
+ */
+export function reset() {
+  if (process.env.NODE_ENV !== 'test') {
+    throw new Error('should not be called outside of test environment');
+  }
+  db = null;
 }
 
 /**

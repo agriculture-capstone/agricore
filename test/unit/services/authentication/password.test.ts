@@ -44,6 +44,13 @@ describe('authentication service password module', function () {
         bcryptMock.hash.withArgs(COMPLEX_PASSWORD, SALT_ROUNDS).resolves(fakeHash);
         return test(COMPLEX_PASSWORD);
       });
+
+      it('should throw error if bcrypt throws error', async function () {
+        // Arrange
+        bcryptMock.hash.rejects();
+
+        await test(SIMPLE_PASSWORD, true);
+      });
     });
 
     describe('with bcrypt @slow',function () {
@@ -56,15 +63,27 @@ describe('authentication service password module', function () {
       });
     });
 
-    async function test(password: string) {
-      const hash = await hashPassword(password);
-      expect(hash).to.be.a('string');
-      expect(hash).to.not.eq(password);
-      expect(numSubstrings(hash, '$')).to.eq(EXPECTED_DOLLARS);
+    async function test(password: string, shouldFail = false) {
+      // Act
+      let failed = false;
+      try {
+        const hash = await hashPassword(password);
+
+        // Assert
+        expect(hash).to.be.a('string');
+        expect(hash).to.not.eq(password);
+        expect(numSubstrings(hash, '$')).to.eq(EXPECTED_DOLLARS);
+      } catch (_) {
+        failed = true;
+      }
+
+      // Assert
+      expect(failed).to.eq(shouldFail);
     }
   });
 
   describe('#comparePassword', function () {
+
     const SIMPLE_HASH = '$2a$11$mkIzes44pQ96o/l/lEUhJewwAGhiQva3HC2lTelnx6NlcKP2LPnu2';
     const COMPLEX_HASH = '$2a$11$xNyDJJcxz5Xu.J3V6CRS6uxqbt1oTKp.sGeToI9WqwLluaAKIXnia';
     const INCORRECT_HASH = '$2a$11$yNyDJJcxz5Xu.JnV6CRS6uxqbt1oTKp.sgeToI9WqwLluaAKIXnia';
@@ -83,6 +102,13 @@ describe('authentication service password module', function () {
         bcryptMock.compare.withArgs(COMPLEX_PASSWORD, COMPLEX_HASH).resolves(true);
         return test(COMPLEX_PASSWORD, COMPLEX_HASH, true);
       });
+
+      it('should throw error if bcrypt errors', async function () {
+        // Arrange
+        bcryptMock.compare.rejects();
+
+        await test(SIMPLE_PASSWORD, SIMPLE_HASH, true, true);
+      });
     });
 
     describe('with bcrypt @slow', function () {
@@ -99,9 +125,20 @@ describe('authentication service password module', function () {
       });
     });
 
-    async function test(password: string, hash: string, expected: boolean) {
-      const isPassword = await checkPassword(password, hash);
-      expect(isPassword).to.eq(expected);
+    async function test(password: string, hash: string, expected: boolean, shouldFail = false) {
+      // Act
+      let failed = false;
+      try {
+        const isPassword = await checkPassword(password, hash);
+
+        // Assert
+        expect(isPassword).to.eq(expected);
+      } catch (_) {
+        failed = true;
+      }
+
+      // Assert
+      expect(failed).to.eq(shouldFail);
     }
   });
 

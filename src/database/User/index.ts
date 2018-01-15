@@ -31,7 +31,7 @@ const builders = {
 
   /** QueryBuilder for creating user */
   createUser(username: string, hash: string, userType: UserType) {
-    if (hash.indexOf('$') === -1) {
+    if (!~hash.indexOf('$')) {
       throw new Error('Trying to store password in database');
     }
 

@@ -4,7 +4,7 @@ const webpackMerge = require('webpack-merge')
 const commonConfig = require('./base.config.js')
 const { resolve } = require('./utils');
 
-const isCoverage = process.env.NODE_ENV === 'coverage';
+const isCoverage = !!process.env.COVERAGE;
 
 module.exports = function () {
   return webpackMerge(commonConfig(), {
@@ -41,9 +41,9 @@ module.exports = function () {
     },
 
     plugins: [
-      new webpack.DefinePlugin({
-        NODE_ENV: JSON.stringify('test'),
-      })
+      new webpack.EnvironmentPlugin({
+        'NODE_ENV': 'test'
+      }),
     ]
   })
 }

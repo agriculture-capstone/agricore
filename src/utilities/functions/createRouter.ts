@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { urlencoded, json } from 'body-parser';
+import * as bodyParser from 'body-parser';
 
 import arrayIncludes from '@/utilities/functions/arrayIncludes';
 
@@ -9,12 +9,7 @@ export enum ParserType {
   URL_ENCODED = 0x2,
 }
 
-/**
- * Creates a new instance of Express.Router configured with body-parser.
- *
- * @returns {Router} The Express router.
- */
-export default function createRouter(...parserTypes: ParserType[]) {
+function createRouterCore({ json, urlencoded }: typeof bodyParser, ...parserTypes: ParserType[]) {
   const router = Router();
 
   const contains = (el: ParserType) => arrayIncludes(parserTypes, el);
@@ -32,4 +27,21 @@ export default function createRouter(...parserTypes: ParserType[]) {
   }
 
   return router;
+}
+
+/** Inject parser into createRouter for test purposes */
+export function injectCreateRouter(parser: any, ...parserTypes: ParserType[]) {
+  if (process.env.NODE_ENV !== 'test') {
+    throw new Error('should only be called in test environment');
+  }
+  return createRouterCore(parser, ...parserTypes);
+}
+
+/**
+ * Creates a new instance of Express.Router configured with body-parser.
+ *
+ * @returns {Router} The Express router.
+ */
+export default function createRouter(...parserTypes: ParserType[]) {
+  return createRouterCore(bodyParser, ...parserTypes);
 }
