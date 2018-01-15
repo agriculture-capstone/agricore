@@ -1,6 +1,6 @@
 import { Level } from '@/models/logger';
 
-/** Priority levels for logging in The Agriculture Core */
+/** Priority levels for logging in The Agricore */
 export default [
   {
     name: 'silly',

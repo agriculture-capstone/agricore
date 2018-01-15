@@ -1,10 +1,10 @@
-= The Agriculture Core
+= The Agricore
 
-_The Agriculture Core_ is a NodeJS server exposing a robust REST API for various client applications to connect to.
+_The Agricore_ is a NodeJS server exposing a robust REST API for various client applications to connect to.
 
 == Configuration
 
-The agriculture-core pulls its configuration from a `.env` file at the root of the project.
+The agricore pulls its configuration from a `.env` file at the root of the project.
 These configuration variables are loaded into `process.env.<VAR_NAME>` and are accessible accross the application.
 To get started, this configuration file must be created with the following format:
 
@@ -91,8 +91,8 @@ To just watch the changes and build them when they change (for development), use
 
 === Naming Conventions
 
-Unit tests go in `agriculture-core/test/unit/`.
-Integration tests go in `agriculture-core/test/integration`.
+Unit tests go in `agricore/test/unit/`.
+Integration tests go in `agricore/test/integration`.
 To ensure the files are discovered, test files must have the suffix `.test.ts`.
 
 === Running Test

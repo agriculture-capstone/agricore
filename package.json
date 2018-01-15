@@ -1,7 +1,7 @@
 {
-  "name": "agriculture-core",
+  "name": "agricore",
   "version": "1.0.0",
-  "description": "The Agriculture Core",
+  "description": "The Agricore",
   "main": "src/index.ts",
   "author": "Agriculture Capstone Team",
   "license": "UNLICENSED",
@@ -94,7 +94,7 @@
     "webpack-notifier": "1.5.0"
   },
   "apidoc": {
-    "name": "The Agriculture Core",
+    "name": "The Agricore",
     "version": "0.0.1",
     "description": "Robust REST API Boilerplate",
     "title": "CoreAPI",

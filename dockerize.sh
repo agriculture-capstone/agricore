@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-IMAGE_NAME="boresha/agriculture-core"
-DOCKER_HOME="/agriculture-core/"
+IMAGE_NAME="boresha/agricore"
+DOCKER_HOME="/agricore/"
 
 if [ "$1" == "init" ]; then
     docker build -t $IMAGE_NAME $DIR
