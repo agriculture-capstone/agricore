@@ -10,9 +10,20 @@ elif [ "$1" == "install" ]; then
     docker run --rm \
         --volume "$DIR":"$DOCKER_HOME" \
         "$IMAGE_NAME" yarn install --frozen-lockfile
+elif [ "$1" == "initdb" ]; then
+    docker run --name agricore-postgres \
+        -e POSTGRES_DB=agricore-dev \
+        -e POSTGRES_USER=boresha \
+        -e POSTGRES_PASSWORD=devenv \
+        -e PGDATA="$DIR/data" \
+        --ip 172.17.0.99
+        -d postgres
+    docker kill agricore-postgres
 elif [ "$1" == "start" ]; then
+    docker start agricore-postgres
     docker run --rm \
         --volume "$DIR":"$DOCKER_HOME" \
+        --link agricore-postgres:postgres \
         -p 9090:9090 \
         $IMAGE_NAME npm start
 elif [ "$1" == "run" ]; then
