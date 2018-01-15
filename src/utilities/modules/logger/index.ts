@@ -2,11 +2,12 @@ import { Logger, transports, LoggerInstance } from 'winston';
 import * as path from 'path';
 import * as morgan from 'morgan';
 
-import { LoggerMethods, Loggers, LogMessage } from '@/models/logger';
-import levels from '@/utilities/logger/levels';
+import { LoggerMethods, Loggers, LogMessage, Level } from '@/models/logger';
+import levels from '@/utilities/modules/logger/levels';
 import { CORE_ROOT } from '@/utilities/root';
 
 let loggers: Loggers = null;
+let priorityFilter: number = null;
 
 /**
  * Resolve path for filename in CORE_ROOT/logs
@@ -30,38 +31,28 @@ function check() {
  *
  * @param {string} name Name of logger to create
  */
-function generateLogger(name: string) {
+function generateLogger({ name, handleExceptions }: Level) {
   return {
     [name]: new (Logger)({
       transports: [
         new (transports.File)({
+          handleExceptions,
           name: `${name}-file`,
           filename: resolve(`server-${name}.log`),
           level: name,
           json: true,
           maxsize: 5242880,
           maxFiles: 5,
-          handleExceptions: handleExceptions(name),
           colorize: false,
         }),
 
         new (transports.Console)({
-          handleExceptions: handleExceptions(name),
+          handleExceptions,
           colorize: true,
         }),
       ],
     }),
   };
-}
-
-function handleExceptions(name: string) {
-  switch (name) {
-    case 'error':
-      return true;
-
-    default:
-      return false;
-  }
 }
 
 /** Prepare objects for the logger */
@@ -74,26 +65,27 @@ function prepareMessage(...msg: LogMessage[]): string {
  *
  * @param {string} name Name of logger method to create
  */
-function generateLoggerMethod(name: string) {
+function generateLoggerMethod({ name, priority }: Level) {
   let fn: (msg: string) => void = null;
 
   switch (name) {
-    case 'info':
-      fn = function (...msg: LogMessage[]) {
-        loggers[name].info(prepareMessage(msg));
-      };
-      break;
     case 'error':
     case 'warn':
       fn = function (...msg: LogMessage[]) {
+        check();
         // Unshift stack message to front of message array
         const stackMsg = [...msg].unshift(new Error().stack);
-        loggers[name].log(name, prepareMessage(stackMsg));
+        if (priorityFilter > priority) {
+          loggers[name].log(name, prepareMessage(stackMsg));
+        }
       };
 
     default:
       fn = function (...msg: LogMessage[]) {
-        loggers[name].log(name, prepareMessage(msg));
+        check();
+        if (priorityFilter > priority) {
+          loggers[name].log(name, prepareMessage(msg));
+        }
       };
       break;
   }
@@ -116,22 +108,27 @@ function initMorgan(infoLogger: LoggerInstance) {
   });
 }
 
+/** Creates network logger */
+export function networkLogger() {
+  return initMorgan(loggers['info']);
+}
+
 /**
- * Initialize the logging for The Agriculture Core
- * @returns Morgan instance configured to write to info logger
+ * Initialize the logger
  */
-export function initLogger() {
+export function init() {
   if (loggers) {
     throw new Error('Already initialized logger');
   }
-  loggers = Object.assign({}, ...levels.map(level => level.name).map(generateLogger));
 
-  return initMorgan(loggers['info']);
+  priorityFilter = levels.find(l => l.name === process.env.LOG_LEVEL).priority || levels.find(l => l.name === 'info').priority;
+
+  loggers = Object.assign({}, ...levels.map(generateLogger));
 }
 
 const loggerMethods = Object.assign(
   {},
-  ...levels.map(level => level.name).map(generateLoggerMethod),
+  ...levels.map(generateLoggerMethod),
 ) as LoggerMethods;
 
 export default loggerMethods;

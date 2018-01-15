@@ -7,7 +7,7 @@ import arrayIncludes from '@/utilities/functions/arrayIncludes';
 import objectValues from '@/utilities/functions/objectValues';
 import { hashPassword } from '@/services/authentication/password';
 import * as UserDb from '@/database/User';
-import logger from '@/utilities/logger';
+import logger from '@/utilities/modules/logger';
 import { StatusCode } from '@/models/statusCodes';
 
 const router = createRouter();

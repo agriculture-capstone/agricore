@@ -25,3 +25,10 @@ export interface Loggers {
 
 /** Input type for log messages */
 export type LogMessage = any;
+
+/** A logging level */
+export interface Level {
+  name: 'silly' | 'verbose' | 'info' | 'warn' | 'error';
+  priority: number;
+  handleExceptions: boolean;
+}

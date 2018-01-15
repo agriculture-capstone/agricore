@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { assert, createSandbox, SinonStub } from 'sinon';
+import { createSandbox, SinonStub } from 'sinon';
 import * as bcrypt from 'bcrypt';
 
 import { hashPassword, checkPassword, SALT_ROUNDS } from '@/services/authentication/password';

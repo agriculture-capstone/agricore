@@ -62,7 +62,7 @@ describe('authentication service token module', function () {
 
     async function test(username: string, type: UserType) {
       try {
-        const token = await createToken(username, type);
+        await createToken(username, type);
       } catch (err) {
         return;
       }
