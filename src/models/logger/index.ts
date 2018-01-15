@@ -1,7 +1,7 @@
 import { LoggerInstance } from 'winston';
 
 /**
- * The methods used in The Agriculture Core to log at various priority levels
+ * The methods used in The Agricore to log at various priority levels
  */
 export interface LogFunctions {
   /** Log using 'silly' level */

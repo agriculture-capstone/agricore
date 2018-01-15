@@ -1,6 +1,6 @@
-= The Agriculture Core
+= The Agricore
 
-_The Agriculture Core_ is a NodeJS server exposing a robust REST API for various client applications to connect to.
+_The Agricore_ is a NodeJS server exposing a robust REST API for various client applications to connect to.
 
 == Configuration
 
