@@ -1,5 +1,5 @@
 {
-  "name": "agriculture-core",
+  "name": "agricore",
   "version": "1.0.0",
   "description": "The Agriculture Core",
   "main": "src/index.ts",
