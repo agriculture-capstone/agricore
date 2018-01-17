@@ -2,6 +2,7 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 IMAGE_NAME="boresha/agricore"
+CONTAINER_NAME="agricore"
 DOCKER_HOME="/agricore/"
 
 DB_IMAGE_NAME="postgres:10.1"
@@ -17,15 +18,13 @@ elif [ "$1" == "install" ]; then
         --volume "$DIR":"$DOCKER_HOME" \
         "$IMAGE_NAME" yarn install --frozen-lockfile
 elif [ "$1" == "start" ]; then
+    docker kill "$CONTAINER_NAME"
     docker run --rm \
-        --name agricore \
+        --name "$CONTAINER_NAME" \
         --volume "$DIR":"$DOCKER_HOME" \
-        --link "$DB_CONTAINER_NAME":postgres \
+        --link "$DB_CONTAINER_NAME" \
         -p 9090:9090 \
         $IMAGE_NAME npm start
-elif [ "$1" == "stop" ]; then
-    docker kill agricore
-    docker kill "$DB_CONTAINER_NAME"
 elif [ "$1" == "run" ]; then
     docker run --rm \
         --volume "$DIR":"$DOCKER_HOME" \
