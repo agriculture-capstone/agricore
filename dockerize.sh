@@ -4,6 +4,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 IMAGE_NAME="boresha/agricore"
 DOCKER_HOME="/agricore/"
 
+DB_IMAGE_NAME="postgres:10.1"
 DB_CONTAINER_NAME="agricore_db"
 DB_NAME="agricore_dev"
 DB_USER="boresha"
@@ -30,16 +31,18 @@ elif [ "$1" == "run" ]; then
         --volume "$DIR":"$DOCKER_HOME" \
         "$IMAGE_NAME" npm run "${@:2}"
 elif [ "$1" == "initdb" ]; then
+    docker rm -f "$DB_CONTAINER_NAME"
     docker run --name "$DB_CONTAINER_NAME" \
         -e POSTGRES_DB="$DB_NAME" \
         -e POSTGRES_USER="$DB_USER" \
         -e POSTGRES_PASSWORD="$DB_PASSWORD" \
         -e PGDATA="$DIR/data" \
-        -d postgres:10.1
-    docker cp agricore_base.sql agricore_db:/
+        -d "$DB_IMAGE_NAME"
+    docker cp db-init.sql agricore_db:/
     sleep 5
-    docker exec -it "$DB_CONTAINER_NAME" /bin/bash -c "psql -U $DB_USER $DB_NAME < /agricore_base.sql"
-    docker kill "$DB_CONTAINER_NAME"
+    docker exec -it "$DB_CONTAINER_NAME" /bin/bash -c "psql -d $DB_NAME -U $DB_USER -c 'CREATE EXTENSION \"uuid-ossp\"'"
+    docker exec -it "$DB_CONTAINER_NAME" /bin/bash -c "psql -d $DB_NAME -U $DB_USER -c '\i db-init.sql'"
+    echo "Database container started"
 elif [ "$1" == "startdb" ]; then
     docker start "$DB_CONTAINER_NAME"
 elif [ "$1" == "stopdb" ]; then
