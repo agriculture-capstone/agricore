@@ -1,42 +1,45 @@
 -- PersonTypes
+	-- all the different types a person can be
 
 CREATE TABLE PersonTypes (
 	personTypeId SERIAL PRIMARY KEY NOT NULL,
 	personTypeName VARCHAR(255) NOT NULL
 );
 
-CREATE UNIQUE INDEX personTypeName_lower ON PersonTypes(lower(personTypeName));
+	CREATE UNIQUE INDEX personTypeName_lower ON PersonTypes(lower(personTypeName));
 
-INSERT INTO PersonTypes VALUES (0, 'farmer');
-INSERT INTO PersonTypes VALUES (1, 'trader');
+	INSERT INTO PersonTypes VALUES (0, 'farmer');
+	INSERT INTO PersonTypes VALUES (1, 'trader');
 
--- Attributes
+-- PersonAttributeKinds
+	--  all the different kinds of attributes a person can have
 
-CREATE TABLE Attributes (
+CREATE TABLE PersonAttributeKinds (
 	attrId SERIAL PRIMARY KEY NOT NULL,
 	attrName VARCHAR(255) NOT NULL
 );
 
-CREATE UNIQUE INDEX attrName_lower ON Attributes(lower(attrName));
+	CREATE UNIQUE INDEX personAttrName_lower ON PersonAttributeKinds(lower(attrName));
 
-INSERT INTO Attributes VALUES (0, 'username');
-INSERT INTO Attributes VALUES (1, 'password');
-INSERT INTO Attributes VALUES (2, 'paymentFrequency');
-INSERT INTO Attributes VALUES (3, 'notes');
+	INSERT INTO PersonAttributeKinds VALUES (0, 'username');
+	INSERT INTO PersonAttributeKinds VALUES (1, 'passwordHash');
+	INSERT INTO PersonAttributeKinds VALUES (2, 'payment frequency');
+	INSERT INTO PersonAttributeKinds VALUES (3, 'notes');
 
 -- PersonTypeAttributes
+	-- what kinds of attributes a type of person has
 
 CREATE TABLE PersonTypeAttributes (
 	personTypeId SERIAL REFERENCES PersonTypes(personTypeId) NOT NULL,
-	attrId SERIAL REFERENCES Attributes(attrId) NOT NULL
+	attrId SERIAL REFERENCES PersonAttributeKinds(attrId) NOT NULL
 );
 
 	-- farmer
-INSERT INTO PersonTypeAttributes VALUES (0, 2); -- paymentFrequency
-INSERT INTO PersonTypeAttributes VALUES (0, 3); -- notes
+	INSERT INTO PersonTypeAttributes VALUES (0, 2); -- payment frequency
+	INSERT INTO PersonTypeAttributes VALUES (0, 3); -- notes
 	-- trader
-INSERT INTO PersonTypeAttributes VALUES (1, 0); -- username
-INSERT INTO PersonTypeAttributes VALUES (1, 1); -- password
+	INSERT INTO PersonTypeAttributes VALUES (1, 0); -- username
+	INSERT INTO PersonTypeAttributes VALUES (1, 1); -- password
 
 -- Person
 
@@ -52,10 +55,11 @@ CREATE TABLE Persons (
 );
 
 -- PersonAttributes
+	-- the values of the attributes that a specific person has
 
 CREATE TABLE PersonAttributes (
 	personUuid UUID REFERENCES Persons(personUuid) NOT NULL,
-	attrId SERIAL REFERENCES Attributes(attrId) NOT NULL,
+	attrId SERIAL REFERENCES PersonAttributeKinds(attrId) NOT NULL,
 	attrValue VARCHAR(255)
 );
 
@@ -70,14 +74,17 @@ CREATE TABLE MoneyTransactions (
 );
 
 -- ProductTypes
+	-- all the different kinds of products
 
 CREATE TABLE ProductTypes (
-	productTypeUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
+	productTypeId SERIAL PRIMARY KEY NOT NULL,
 	productName VARCHAR(255) NOT NULL,
 	productUnits VARCHAR(255) NOT NULL
 );
 
-CREATE UNIQUE INDEX productNames_lower ON ProductTypes(lower(productName));
+	CREATE UNIQUE INDEX productNames_lower ON ProductTypes(lower(productName));
+
+	INSERT INTO ProductTypes VALUES (0, 'milk', 'litres');
 
 -- ProductTransactions
 
@@ -86,9 +93,35 @@ CREATE TABLE ProductTransactions (
 	datetime TIMESTAMP WITH TIME ZONE NOT NULL,
 	toPersonUuid UUID REFERENCES Persons(personUuid) NOT NULL,
 	fromPersonUuid UUID REFERENCES Persons(personUuid) NOT NULL,
-	productTypeUuid UUID REFERENCES ProductTypes(productTypeUuid) NOT NULL,
+	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
 	amountOfProduct REAL NOT NULL,
 	costPerUnit MONEY NOT NULL
+);
+
+-- ProductTypeTransactionAttributes
+	-- the unique kinds of attributes a transaction for a type of product has
+	-- example: we track the milk density and milk temperature for all milk type transactions
+
+CREATE TABLE ProductTypeTransactionAttributes (
+	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
+	attrId SERIAL PRIMARY KEY NOT NULL,
+	attrName VARCHAR(255) NOT NULL,
+	UNIQUE(productTypeId, attrId) -- every product type, may not have duplications of types of attributes
+);
+
+	CREATE UNIQUE INDEX productAttrName_lower ON ProductTypeTransactionAttributes(lower(attrName));
+
+	-- milk
+	INSERT INTO ProductTypeTransactionAttributes VALUES(0, 0, 'milk density grams per millilitre');
+
+-- TransactionAttributes
+	-- the values for the unique attributes for every transaction
+
+CREATE TABLE ProductTransactionAttribute (
+	productTransactionUuid UUID REFERENCES ProductTransactions(productTransactionUuid) NOT NULL,
+	attrId SERIAL REFERENCES ProductTypeTransactionAttributes(attrId) NOT NULL,
+	attrValue VARCHAR(255) NOT NULL,
+	UNIQUE(productTransactionUuid, attrId) -- for every transaction, all of its attributes must only have one value
 );
 
 -- Loans
@@ -116,7 +149,7 @@ CREATE TABLE ProductPayments (
 -- ProductExports
 
 CREATE TABLE ProductExports (
-	productTypeUuid UUID REFERENCES ProductTypes(productTypeUuid) NOT NULL,
+	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
 	amountOfProduct REAL NOT NULL,
 	transportId VARCHAR(255),
 	datetime TIMESTAMP WITH TIME ZONE NOT NULL
