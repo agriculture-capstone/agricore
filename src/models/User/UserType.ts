@@ -2,5 +2,7 @@
 export enum UserType {
   BASIC = 'basic',
   ADMIN = 'admin',
+  MONITOR = 'monitor',
+  TRADER = 'trader',
   DEVELOPER = 'developer',
 }

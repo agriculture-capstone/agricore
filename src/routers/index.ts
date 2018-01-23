@@ -11,6 +11,7 @@ router.use('/authentication', authentication);
 
 // Setup API routes
 apiRouter.use('/account', account);
+// add our apis here
 
 // Use API Router
 router.use('/api', apiRouter);
