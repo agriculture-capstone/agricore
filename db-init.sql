@@ -128,7 +128,8 @@ CREATE TABLE ProductTransactionAttribute (
 
 CREATE TABLE Loans (
 	loanUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
-	moneyTransactionUuid UUID REFERENCES MoneyTransactions(moneyTransactionUuid) NOT NULL
+	moneyTransactionUuid UUID REFERENCES MoneyTransactions(moneyTransactionUuid) NOT NULL,
+	dueDate DATE
 );
 
 -- LoanPayments
