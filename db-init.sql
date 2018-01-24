@@ -11,7 +11,7 @@ CREATE TABLE PersonCategories (
 	INSERT INTO PersonCategories VALUES (0, 'farmers');
 	INSERT INTO PersonCategories VALUES (1, 'traders');
 	INSERT INTO PersonCategories VALUES (2, 'admins');
-	INSERT INTO PersonCategories VALUES (3, 'monitor');
+	INSERT INTO PersonCategories VALUES (3, 'monitors');
 
 -- PersonAttributeTypes
 	--  all the different types of attributes a person can have
@@ -45,13 +45,13 @@ CREATE TABLE PersonCategoryAttributes (
 	-- admin
 	INSERT INTO PersonCategoryAttributes VALUES (2, 0); -- username
 	INSERT INTO PersonCategoryAttributes VALUES (2, 1); -- password
-	-- admin
+	-- monitor
 	INSERT INTO PersonCategoryAttributes VALUES (3, 0); -- username
 	INSERT INTO PersonCategoryAttributes VALUES (3, 1); -- password
 
 -- Person
 
-CREATE TABLE Persons (
+CREATE TABLE People (
 	personUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
 	firstName VARCHAR(255),
 	middleName VARCHAR(255),
@@ -67,19 +67,23 @@ CREATE TABLE Persons (
 	-- the values of the attributes that a specific person has
 
 CREATE TABLE PersonAttributes (
-	personUuid UUID REFERENCES Persons(personUuid) NOT NULL,
+	personUuid UUID REFERENCES People(personUuid) NOT NULL,
 	attrId SERIAL REFERENCES PersonAttributeTypes(attrId) NOT NULL,
-	attrValue VARCHAR(255)
+	attrValue VARCHAR(255),
+	UNIQUE(personUuid, attrId)
 );
+
+CREATE TYPE Currency AS ENUM ('UGX');
 
 -- MoneyTransactions
 
 CREATE TABLE MoneyTransactions (
 	moneyTransactionUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
 	datetime TIMESTAMP WITH TIME ZONE NOT NULL,
-	toPersonUuid UUID REFERENCES Persons(personUuid) NOT NULL,
-	fromPersonUuid UUID REFERENCES Persons(personUuid) NOT NULL,
-	amount MONEY NOT NULL
+	toPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
+	fromPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
+	amount NUMERIC(30, 2) NOT NULL,
+	currency Currency NOT NULL
 );
 
 -- ProductTypes
@@ -100,11 +104,12 @@ CREATE TABLE ProductTypes (
 CREATE TABLE ProductTransactions (
 	productTransactionUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
 	datetime TIMESTAMP WITH TIME ZONE NOT NULL,
-	toPersonUuid UUID REFERENCES Persons(personUuid) NOT NULL,
-	fromPersonUuid UUID REFERENCES Persons(personUuid) NOT NULL,
+	toPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
+	fromPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
 	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
 	amountOfProduct REAL NOT NULL,
-	costPerUnit MONEY NOT NULL
+	costPerUnit NUMERIC(20, 2) NOT NULL,
+	currency Currency NOT NULL
 );
 
 -- ProductTypeTransactionAttributes
