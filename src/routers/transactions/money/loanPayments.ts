@@ -12,11 +12,11 @@ router.get('/', async (req, res) => {
 }, authorized(UserType.ADMIN));
 
 router.post('/', async (req, res) => {
-  res.status(StatusCode.CREATED).send('Successfully retrieved new loan payment');
+  res.status(StatusCode.CREATED).send('Successfully created new loan payment');
 }, authorized(UserType.ADMIN));
 
 router.put('/:uuid', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully retrieved updated loan payment');
+  res.status(StatusCode.OK).send('Successfully updated loan payment');
 }, authorized(UserType.ADMIN));
 
 export default router;
