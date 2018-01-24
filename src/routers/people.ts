@@ -3,38 +3,29 @@ import * as express from 'express';
 import createRouter from '@/utilities/functions/createRouter';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
-import arrayIncludes from '@/utilities/functions/arrayIncludes';
-import { hashPassword } from '@/services/authentication/password';
-import * as PersonDb from '@/database/Person';
-import logger from '@/utilities/modules/logger';
+
 import { StatusCode } from '@/models/statusCodes';
 
 const router = createRouter();
 
-/**
- * @api {get} /people/farmers
- * @description Parameters have no effect on this request
- * @apiName Get All Farmers
- * @apiGroup People
- * @apiVersion 0.0.1
- *
- * @apiError (401) Unauthorized - Must be admin or trader
- *
- * @apiSuccess (200) {String} Successfully retrieved all farmers
- * @apiSuccessExample {type} Success-Response:
- * [{
-      "personUuid": "",
-      "firstName": "",
-      "middleName": "",
-      "lastName:" "",
-      "phoneNumber": "",
-      "phoneArea:" "",
-      "phoneCountry": "",
-      "companyName": "",
-      "paymentFrequency": "",
-      "notes": "",
-    }]
- */
-router.get('/farmers', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully retrieved all farmers');
-}, authorized(UserType.ADMIN, UserType.TRADER));
+router.get('/', async (req, res) => {
+  res.status(StatusCode.OK).send('Successfully retrieved all people');
+}, authorized(UserType.ADMIN));
+
+router.get('/:category', async (req, res) => {
+  res.status(StatusCode.OK).send('Successfully retrieved all people of type <something>');
+}, authorized(UserType.ADMIN));
+
+router.post('/:category', async (req, res) => {
+  res.status(StatusCode.CREATED).send('Successfully created new <type>');
+}, authorized(UserType.ADMIN));
+
+router.get('/:category/:uuid', async (req, res) => {
+  res.status(StatusCode.OK).send('Successfully got <type>');
+}, authorized(UserType.ADMIN));
+
+router.put('/:category/:uuid', async (req, res) => {
+  res.status(StatusCode.OK).send('Successfully updated <type>');
+}, authorized(UserType.ADMIN));
+
+export default router;
