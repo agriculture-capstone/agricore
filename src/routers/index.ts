@@ -1,18 +1,15 @@
 import { Router } from 'express';
 
 import authentication from '@/routers/authentication';
-import account from '@/routers/account';
+import people from '@/routers/people';
+import transactions from '@/routers/transactions/';
+import productExports from '@/routers/productExports';
 
 const router = Router();
-const apiRouter = Router();
 
-// Setup authentication
-router.use('/authentication', authentication);
-
-// Setup API routes
-apiRouter.use('/account', account);
-
-// Use API Router
-router.use('/api', apiRouter);
+router.use('/actions/authentication', authentication);
+router.use('/people', people);
+router.use('/transactions', transactions);
+router.use('/productExports', productExports);
 
 export default router;
