@@ -1,6 +1,6 @@
 /** HTTP Status Codes */
 export enum StatusCode {
-	// 200
+  // 200
   OK = 200,
   CREATED = 201,
   // 300

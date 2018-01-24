@@ -12,11 +12,11 @@ router.get('/', async (req, res) => {
 }, authorized(UserType.ADMIN));
 
 router.post('/', async (req, res) => {
-  res.status(StatusCode.CREATED).send('Successfully retrieved new product export');
+  res.status(StatusCode.CREATED).send('Successfully created new product export');
 }, authorized(UserType.ADMIN));
 
 router.put('/:uuid', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully retrieved updated product export');
+  res.status(StatusCode.OK).send('Successfully updated product export');
 }, authorized(UserType.ADMIN));
 
 export default router;

@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import authentication from '@/routers/authentication';
 import people from '@/routers/people';
-import transactions from '@/routers/transactions/transactions';
+import transactions from '@/routers/transactions/index';
 import productExports from '@/routers/productExports';
 
 const router = Router();
