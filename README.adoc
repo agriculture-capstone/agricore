@@ -55,7 +55,7 @@ The `./dockerize.sh` script can be used with the following arguments:
 
 * link:https://nodejs.org/en/[NodeJS] is the framework in use.
 * link:https://yarnpkg.com/lang/en/docs/install/[yarn] handles all other dependencies.
-* MySQL or PostgresSQL server as determined by `.env` configuration file
+* PostgresSQL server as determined by `.env` configuration file
 
 To install javascript dependencies run the command `yarn`. Yarn should also be used to add and remove dependencies, never npm.
 
@@ -142,3 +142,21 @@ To skip the slow tests:
 	npm run test:core -- --grep @slow --invert
 
 Custom tags can be added to the tests for filtering in the future.
+
+=== Database
+
+To set up a database for the Agricore, follow the steps below.
+
+. The Agricore uses PostgreSQL 10.1, although any version >=9.1 should work as well.
+. Create database with correct user permissions, the recommended default names are `agricore-dev` for the database name, and `boresha` for the user.
+. Run the `psql` shell using psql -d <databasename> -U <username>.
+. Install the `uuid-ossp` extension, `CREATE EXTENSION "uuid-ossp"`, this is already packaged but not loaded for postgres >=9.1.
+. Run the initialization commands for creating the database tables, `\i db-init.sql`, the shell must be started in the same place as `db-init.sql` for this step.
+
+=== Database using Docker
+
+To run the database in docker, run `./dockerize.sh initdb` and the database will be initialized and started.
+
+. To enter the `psql` shell, use `./dockerize.sh shelldb`.
+. To start the database container `./dockerize.sh startdb`.
+. To stop the database container `./dockerize.sh stopdb`.
