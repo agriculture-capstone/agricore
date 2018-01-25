@@ -9,16 +9,18 @@ import { StatusCode } from '@/models/statusCodes';
 const router = createRouter();
 
 /**
- * @api {get} /people/
- * @description Returns all people and all their associated attributes.
+ * @api {get} /people/ Get All People
+ * @apiName GetPeople
+ * @apiGroup People
+ * @apiVersion  0.0.1
+ * @apiDescription Returns all people and all their associated attributes and values.
  *              The only guaranteed field is a 'personUuid' and 'category'.
  *              Parameters have no effect on this request.
- *              Associated attributes can be checked via /peopleCategories
  * @apiName GetPeople
  *
- * @apiError (401) Unauthorized
+ * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  *
- * @apiSuccess (200) {String} Successfully retrieved all people
+ * @apiSuccess (200) {String} Success Successfully retrieved all people
  * @apiSuccessExample Success-Response:
   [
     {
@@ -41,20 +43,19 @@ router.get('/', async (req, res) => {
 }, authorized(UserType.ADMIN));
 
 /**
- * @api {get} /people/<category>
- * @description Returns all people of this category and all their associated attributes.
+ * @api {get} /people/<category> Get All People in Category
+ * @apiName GetPeopleInCategory
+ * @apiGroup People
+ * @apiVersion  0.0.1
+ * @apiDescription Returns all people of this category and all their associated attributes and values.
  *              Parameters have no effect on this request, but the URL
  *              specifies what kind of people are given.
- *              Associated attributes can be checked via /peopleCategories
- *              In general this API can only be used by admins, with exception
- *              of special user types.
- *              Currently the only exception is that traders can view farmers.
  * @apiName GetPeopleCategory
  *
- * @apiError (401) Unauthorized
- * @apiError (404) Person category not found
+ * @apiError (403) Forbidden Current user type does not have sufficient privileges.
+ * @apiError (404) NotFound Person category not found
  *
- * @apiSuccess (200) {String} Successfully retrieved all people from category <category>
+ * @apiSuccess (200) {String} Success Successfully retrieved all people from category <category>
  * @apiSuccessExample /people/farmers Success-Response:
   [
     {
@@ -76,18 +77,23 @@ router.get('/:category', async (req, res) => {
 }, authorized(UserType.ADMIN));
 
 /**
- * @api {post} /people/<category>
- * @description Creates a new person in the specified category.
+ * @api {post} /people/<category> Create New Person Entry
+ * @apiName CreatePerson
+ * @apiGroup People
+ * @apiVersion  0.0.1
+ * @apiDescription Creates a new person in the specified category.
  *              Returns the UUID created for that person.
+ *              Requires all associated attributes given in /peopleCategories
  * @apiName CreatePerson
  *
- * @apiParam {String} [attribute] An attribute of a person with its value
- *                    All necessary attributes can be checked in the /peopleCategories API
+ * @apiParam {String} attributes An attribute of a person with its value.
+ *                    All necessary attributes can be checked in the /peopleCategories API.
+ *                    All attributes must be provided in separate params.
  *
- * @apiError (400) Missing or invalid fields, ...
- * @apiError (401) Unauthorized
+ * @apiError (400) BadRequest Missing or invalid fields, ...
+ * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  *
- * @apiSuccess (201) {String} Successfully created person of category <category>
+ * @apiSuccess (201) {String} Success Successfully created person of category <category>
  * @apiSuccessExample /people/farmers Success-Response:
  * { personUuid: "1e167b81-d816-497b-8c0c-36f4d6b2fd33" }
  */
@@ -96,15 +102,18 @@ router.post('/:category', async (req, res) => {
 }, authorized(UserType.ADMIN));
 
 /**
- * @api {get} /people/<category>/<uuid>
- * @description Gets a particular person
+ * @api {get} /people/<category>/<uuid> Get Person
+ * @apiName GetPerson
+ * @apiGroup People
+ * @apiVersion  0.0.1
+ * @apiDescription Gets a particular person.
  *              Parameters have no effect on this request.
  * @apiName GetPerson
  *
- * @apiError (401) Unauthorized
- * @apiError (404) Person not found in category <category>
+ * @apiError (403) Forbidden Current user type does not have sufficient privileges.
+ * @apiError (404) NotFound Person not found in category <category>
  *
- * @apiSuccess (200) {String} Successfully retrieved person
+ * @apiSuccess (200) {String} Success Successfully retrieved person
  * @apiSuccessExample /people/farmers/1e167b81-d816-497b-8c0c-36f4d6b2fd33 Success-Response:
    {
      "personUuid": "1e167b81-d816-497b-8c0c-36f4d6b2fd33",
@@ -118,20 +127,23 @@ router.get('/:category/:uuid', async (req, res) => {
 }, authorized(UserType.ADMIN));
 
 /**
- * @api {put} /people/<category>/<uuid>
- * @description Updates a specific person from a specific category
- *              and all their associated attributes.
- *              Parameters have no effect on this request.
+ * @api {put} /people/<category>/<uuid> Update Person
+ * @apiName UpdatePerson
+ * @apiGroup People
+ * @apiVersion  0.0.1
+ * @apiDescription Updates a specific person for the given attributes.
+ *              Associated attributes can be checked via /peopleCategories
  * @apiName UpdatePerson
  *
- * @apiParam {String} [attribute] An attribute of a person with its value
- *                    All available attributes can be checked in the /peopleCategories API
+ * @apiParam {String} attributes An attribute of a person with its value.
+ *                    All available attributes can be checked in the /peopleCategories API.
+ *                    Multiple attributes maybe provided.
  *
- * @apiError (400) Attribute not found for person
- * @apiError (401) Unauthorized
- * @apiError (404) Person not found in category <category>
+ * @apiError (400) BadRequest Attribute not found for person
+ * @apiError (403) Forbidden Current user type does not have sufficient privileges.
+ * @apiError (404) NotFound Person not found in category <category>
  *
- * @apiSuccess (200) {String} Successfully updated person of category <category>
+ * @apiSuccess (200) {String} Success Successfully updated person of category <category>
  */
 router.put('/:category/:uuid', async (req, res) => {
   res.status(StatusCode.OK).send('Successfully updated <category>');

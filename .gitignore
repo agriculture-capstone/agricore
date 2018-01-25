@@ -14,6 +14,7 @@ yarn-error.log
 .vscode/*
 !.vscode/launch.json
 !.vscode/tasks.json
+.DS_Store
 
 # Secret Files
 .env

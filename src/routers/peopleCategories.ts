@@ -9,14 +9,13 @@ import { StatusCode } from '@/models/statusCodes';
 const router = createRouter();
 
 /**
- * @api {get} /peopleCategories
- * @description Returns all categories of people and their associated attributes
- *
+ * @api {get} /peopleCategories Get All People Categories
  * @apiName GetPeopleCategories
+ * @apiGroup People
+ * @apiVersion  0.0.1
+ * @apiDescription Returns all categories of people and their associated attributes
  *
- * @apiError (401) Unauthorized - Must be admin
- *
- * @apiSuccess (200) {String} Successfully retrieved all people categories
+ * @apiSuccess (200) {String} Success Successfully retrieved all people categories
  * @apiSuccessExample Success-Response:
   {
     farmer: [
