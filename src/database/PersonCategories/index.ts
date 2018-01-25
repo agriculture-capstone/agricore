@@ -17,13 +17,14 @@ const builders = {
   personCategories() {
     return personCategoriesTable().select('*');
   },
+  /** QueryBuilder for getting a map of all person categories and their attributes */
   personCategoryAttributes(categoryId: number) {
-  	return personCategoryAttributesTable()
-  		.join('PersonAttributeTypes', 'PersonCategoryAttributes.attrId', 'PersonAttributeTypes.attrId')
-  		.select('attrName')
-  		.where({
-  			personCategoryId: categoryId,
-  		});
+    return personCategoryAttributesTable()
+      .join('PersonAttributeTypes', 'PersonCategoryAttributes.attrId', 'PersonAttributeTypes.attrId')
+      .select('attrName')
+      .where({
+        personCategoryId: categoryId,
+      });
   },
 };
 
@@ -36,22 +37,20 @@ const builders = {
  */
 export async function getAllPeopleCategories() {
   const personCategories = await execute<PersonCategory[]>(builders.personCategories());
-  let result: PersonCategoriesAndAttributes;
+  const result: PersonCategoriesAndAttributes = {};
   personCategories.forEach(function (category: PersonCategory) {
-  	const attributes: string[] = [
-    'personUuid',
-    'firstName',
-    'middleName',
-    'lastName',
-    'phoneNumber',
-    'phoneArea',
-    'phoneCountry',
-    'companyName',
-    'lastModified',
-  	];
-  	result[category.name] = attributes;
+    const attributes: string[] = [
+      'personUuid',
+      'firstName',
+      'middleName',
+      'lastName',
+      'phoneNumber',
+      'phoneArea',
+      'phoneCountry',
+      'companyName',
+      'lastModified',
+    ];
+    result[category.name] = attributes;
   });
-
-
   return personCategories;
 }
