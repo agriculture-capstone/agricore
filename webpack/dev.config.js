@@ -28,7 +28,7 @@ module.exports = function () {
           include: [resolve('src/'), resolve('test/')],
           options: {
             configFile: resolve('tslint.json'),
-            emitErrors: true,
+            emitErrors: false,
             failOnHint: false,
             fix: false,
             tsConfigFile: resolve('tsconfig.json'),
