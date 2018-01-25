@@ -52,6 +52,9 @@
     "morgan": "1.8.2",
     "mysql": "2.14.1",
     "pg": "7.4.0",
+    "posix-character-classes": "^1.0.0",
+    "resolv": "^1.0.0",
+    "source-map-support": "^0.5.3",
     "tslint-loader": "3.5.3",
     "typescript": "2.5.2",
     "winston": "2.3.1"
