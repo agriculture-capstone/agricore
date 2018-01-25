@@ -16,7 +16,7 @@ const router = createRouter();
  *              Associated attributes can be checked via /peopleCategories
  * @apiName GetPeople
  *
- * @apiError (401) Unauthorized - Must be admin
+ * @apiError (401) Unauthorized
  *
  * @apiSuccess (200) {String} Successfully retrieved all people
  * @apiSuccessExample Success-Response:
@@ -51,7 +51,7 @@ router.get('/', async (req, res) => {
  *              Currently the only exception is that traders can view farmers.
  * @apiName GetPeopleCategory
  *
- * @apiError (401) Unauthorized - Must be admin
+ * @apiError (401) Unauthorized
  * @apiError (404) Person category not found
  *
  * @apiSuccess (200) {String} Successfully retrieved all people from category <category>
@@ -83,7 +83,7 @@ router.get('/:category', async (req, res) => {
  * @apiName CreatePerson
  *
  * @apiError (400) Missing or invalid fields, ...
- * @apiError (401) Unauthorized - Must be admin
+ * @apiError (401) Unauthorized
  *
  * @apiSuccess (201) {String} Successfully created person of category <category>
  * @apiSuccessExample /people/farmers Success-Response:
@@ -99,7 +99,7 @@ router.post('/:category', async (req, res) => {
  *              Parameters have no effect on this request.
  * @apiName GetPerson
  *
- * @apiError (401) Unauthorized - Must be admin
+ * @apiError (401) Unauthorized
  * @apiError (404) Person not found in category <category>
  *
  * @apiSuccess (200) {String} Successfully retrieved person
@@ -126,7 +126,7 @@ router.get('/:category/:uuid', async (req, res) => {
  * @apiParam {String} [<attribute>] An attribute of a person with its value.
  *
  * @apiError (400) Attribute not found for person
- * @apiError (401) Unauthorized - Must be admin or Trader
+ * @apiError (401) Unauthorized
  * @apiError (404) Person not found in category <category>
  *
  * @apiSuccess (200) {String} Successfully updated person of category <category>
