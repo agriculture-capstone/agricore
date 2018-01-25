@@ -86,6 +86,7 @@ CREATE TABLE PersonCategoryAttributes (
 
 CREATE TABLE People (
 	personUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
+	personCategoryId SERIAL REFERENCES PersonCategories(personCategoryId)
 	firstName VARCHAR(255),
 	middleName VARCHAR(255),
 	lastName VARCHAR(255),
@@ -93,7 +94,7 @@ CREATE TABLE People (
 	phoneArea VARCHAR(20),
 	phoneCountry VARCHAR(20),
 	companyName VARCHAR(255),
-	personCategoryId SERIAL REFERENCES PersonCategories(personCategoryId)
+	lastModified TIMESTAMP WITH TIME ZONE NOT NULL,
 );
 
 -- PersonAttributes
@@ -143,6 +144,7 @@ CREATE TABLE ProductTransactions (
 	amountOfProduct REAL NOT NULL,
 	costPerUnit NUMERIC(20, 2) NOT NULL,
 	currency Currency NOT NULL
+	lastModified TIMESTAMP WITH TIME ZONE NOT NULL,
 );
 
 -- ProductTypeTransactionAttributes
