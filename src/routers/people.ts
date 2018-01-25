@@ -14,7 +14,7 @@ const router = createRouter();
  * @apiGroup People
  * @apiVersion  0.0.1
  * @apiDescription Returns all people and all their associated attributes and values.
- *              The only guaranteed field is a 'personUuid' and 'category'.
+ *              The only guaranteed field is a 'personUuid', 'category', and 'lastModified'.
  *              Parameters have no effect on this request.
  * @apiName GetPeople
  *
@@ -26,6 +26,7 @@ const router = createRouter();
     {
       "personUuid": "1e167b81-d816-497b-8c0c-36f4d6b2fd33",
       "category": "farmers",
+      "lastModified": "2018-01-23 04:05:06"
       "firstName": "Zachariah",
       "paymentFrequency": "weekly",
       "notes": "Brother of Moses",
@@ -33,6 +34,7 @@ const router = createRouter();
     {
       "personUuid": "4b3f23a3-04c4-468f-bdf5-f189a34d9f69",
       "category": "trader",
+      "lastModified": "2018-01-23 04:05:06"
       "firstName": "Mary",
       "username": "maryjoseph9",
     }
@@ -61,12 +63,14 @@ router.get('/', async (req, res) => {
     {
       "personUuid": "1e167b81-d816-497b-8c0c-36f4d6b2fd33",
       "firstName": "Zachariah",
+      "lastModified": "2018-01-23 04:05:06"
       "paymentFrequency": "weekly",
       "notes": "Brother of Moses",
     },
     {
       "personUuid": "4b3f23a3-04c4-468f-bdf5-f189a34d9f69",
       "firstName": "Zachariah",
+      "lastModified": "2018-01-23 04:05:06"
       "paymentFrequency": "monthly",
       "notes": "Has a nice car",
     }
@@ -117,6 +121,7 @@ router.post('/:category', async (req, res) => {
  * @apiSuccessExample /people/farmers/1e167b81-d816-497b-8c0c-36f4d6b2fd33 Success-Response:
    {
      "personUuid": "1e167b81-d816-497b-8c0c-36f4d6b2fd33",
+     "lastModified": "2018-01-23 04:05:06"
      "firstName": "Zachariah",
      "paymentFrequency": "weekly",
      "notes": "Brother of Moses",
