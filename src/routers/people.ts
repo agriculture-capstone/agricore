@@ -79,8 +79,10 @@ router.get('/:category', async (req, res) => {
  * @api {post} /people/<category>
  * @description Creates a new person in the specified category.
  *              Returns the UUID created for that person.
- *              Requires all associated attributes given in /peopleCategories
  * @apiName CreatePerson
+ *
+ * @apiParam {String} [attribute] An attribute of a person with its value
+ *                    All necessary attributes can be checked in the /peopleCategories API
  *
  * @apiError (400) Missing or invalid fields, ...
  * @apiError (401) Unauthorized
@@ -120,10 +122,10 @@ router.get('/:category/:uuid', async (req, res) => {
  * @description Updates a specific person from a specific category
  *              and all their associated attributes.
  *              Parameters have no effect on this request.
- *              Associated attributes can be checked via /peopleCategories
  * @apiName UpdatePerson
  *
- * @apiParam {String} [<attribute>] An attribute of a person with its value.
+ * @apiParam {String} [attribute] An attribute of a person with its value
+ *                    All available attributes can be checked in the /peopleCategories API
  *
  * @apiError (400) Attribute not found for person
  * @apiError (401) Unauthorized
