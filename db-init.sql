@@ -3,7 +3,7 @@
 
 CREATE TABLE PersonCategories (
 	personCategoryId SERIAL PRIMARY KEY NOT NULL,
-	personCategoryName VARCHAR(255) NOT NULL,
+	personCategoryName VARCHAR(255) NOT NULL
 );
 
 	CREATE UNIQUE INDEX personCategoryName_lower ON PersonCategories(lower(personCategoryName));
@@ -56,10 +56,10 @@ CREATE TABLE PersonCategoryPermissions (
 	INSERT INTO PersonCategoryPermissions VALUES (2, 3, 'read'); -- monitors
 	INSERT INTO PersonCategoryPermissions VALUES (2, 3, 'write');
 	-- monitor
-	INSERT INTO PersonCategoryPermissions VALUES (2, 0, 'read'); -- farmers
-	INSERT INTO PersonCategoryPermissions VALUES (2, 1, 'read'); -- traders
-	INSERT INTO PersonCategoryPermissions VALUES (2, 2, 'read'); -- admins
-	INSERT INTO PersonCategoryPermissions VALUES (2, 3, 'read'); -- monitors
+	INSERT INTO PersonCategoryPermissions VALUES (3, 0, 'read'); -- farmers
+	INSERT INTO PersonCategoryPermissions VALUES (3, 1, 'read'); -- traders
+	INSERT INTO PersonCategoryPermissions VALUES (3, 2, 'read'); -- admins
+	INSERT INTO PersonCategoryPermissions VALUES (3, 3, 'read'); -- monitors
 
 -- PersonCategoryAttributes
 	-- what types of attributes a category of people have
@@ -142,7 +142,8 @@ CREATE TABLE ProductTransactions (
 	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
 	amountOfProduct REAL NOT NULL,
 	costPerUnit NUMERIC(20, 2) NOT NULL,
-	currency Currency NOT NULL
+	currency Currency NOT NULL,
+	lastModified TIMESTAMP NOT NULL
 );
 
 -- ProductTypeTransactionAttributes
