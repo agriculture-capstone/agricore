@@ -42,11 +42,13 @@ router.get('/', async (req, res) => {
 
 /**
  * @api {get} /people/<category>
- * @description Returns all people and all their associated attributes.
+ * @description Returns all people of this category and all their associated attributes.
  *              Parameters have no effect on this request, but the URL
  *              specifies what kind of people are given.
- *              Parameters have no effect on this request.
  *              Associated attributes can be checked via /peopleCategories
+ *              In general this API can only be used by admins, with exception
+ *              of special user types.
+ *              Currently the only exception is that traders can view farmers.
  * @apiName GetPeopleCategory
  *
  * @apiError (401) Unauthorized - Must be admin
@@ -74,25 +76,27 @@ router.get('/:category', async (req, res) => {
 }, authorized(UserType.ADMIN));
 
 /**
- * @api {get} /people/<category>
+ * @api {post} /people/<category>
  * @description Creates a new person in the specified category.
  *              Returns the UUID created for that person.
+ *              Requires all associated attributes given in /peopleCategories
  * @apiName CreatePerson
  *
+ * @apiError (400) Missing or invalid fields, ...
  * @apiError (401) Unauthorized - Must be admin
- * @apiError (404) Person not found in category <category>
  *
- * @apiSuccess (200) {String} Successfully retrieved person of category <category>
+ * @apiSuccess (201) {String} Successfully created person of category <category>
  * @apiSuccessExample /people/farmers Success-Response:
  * { personUuid: "1e167b81-d816-497b-8c0c-36f4d6b2fd33" }
  */
 router.post('/:category', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully created new <category>');
+  res.status(StatusCode.CREATED).send('Successfully created new <category>');
 }, authorized(UserType.ADMIN));
 
 /**
  * @api {get} /people/<category>/<uuid>
  * @description Gets a particular person
+ *              Parameters have no effect on this request.
  * @apiName GetPerson
  *
  * @apiError (401) Unauthorized - Must be admin
@@ -113,7 +117,7 @@ router.get('/:category/:uuid', async (req, res) => {
 
 /**
  * @api {put} /people/<category>/<uuid>
- * @description Returns a specific person from a specific category
+ * @description Updates a specific person from a specific category
  *              and all their associated attributes.
  *              Parameters have no effect on this request.
  *              Associated attributes can be checked via /peopleCategories
@@ -122,7 +126,7 @@ router.get('/:category/:uuid', async (req, res) => {
  * @apiParam {String} [<attribute>] An attribute of a person with its value.
  *
  * @apiError (400) Attribute not found for person
- * @apiError (401) Unauthorized - Must be admin
+ * @apiError (401) Unauthorized - Must be admin or Trader
  * @apiError (404) Person not found in category <category>
  *
  * @apiSuccess (200) {String} Successfully updated person of category <category>
