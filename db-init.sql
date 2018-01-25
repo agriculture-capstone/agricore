@@ -86,7 +86,7 @@ CREATE TABLE PersonCategoryAttributes (
 
 CREATE TABLE People (
 	personUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
-	personCategoryId SERIAL REFERENCES PersonCategories(personCategoryId)
+	personCategoryId SERIAL REFERENCES PersonCategories(personCategoryId),
 	firstName VARCHAR(255),
 	middleName VARCHAR(255),
 	lastName VARCHAR(255),
@@ -94,7 +94,7 @@ CREATE TABLE People (
 	phoneArea VARCHAR(20),
 	phoneCountry VARCHAR(20),
 	companyName VARCHAR(255),
-	lastModified TIMESTAMP WITH TIME ZONE NOT NULL,
+	lastModified TIMESTAMP NOT NULL
 );
 
 -- PersonAttributes
@@ -113,7 +113,7 @@ CREATE TYPE Currency AS ENUM ('UGX');
 
 CREATE TABLE MoneyTransactions (
 	moneyTransactionUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
-	datetime TIMESTAMP WITH TIME ZONE NOT NULL,
+	datetime TIMESTAMP NOT NULL,
 	toPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
 	fromPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
 	amount NUMERIC(30, 2) NOT NULL,
@@ -137,14 +137,14 @@ CREATE TABLE ProductTypes (
 
 CREATE TABLE ProductTransactions (
 	productTransactionUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
-	datetime TIMESTAMP WITH TIME ZONE NOT NULL,
+	datetime TIMESTAMP NOT NULL,
 	toPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
 	fromPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
 	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
 	amountOfProduct REAL NOT NULL,
 	costPerUnit NUMERIC(20, 2) NOT NULL,
 	currency Currency NOT NULL
-	lastModified TIMESTAMP WITH TIME ZONE NOT NULL,
+	lastModified TIMESTAMP NOT NULL,
 );
 
 -- ProductTypeTransactionAttributes
@@ -202,5 +202,5 @@ CREATE TABLE ProductExports (
 	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
 	amountOfProduct REAL NOT NULL,
 	transportId VARCHAR(255),
-	datetime TIMESTAMP WITH TIME ZONE NOT NULL
+	datetime TIMESTAMP NOT NULL
 );
