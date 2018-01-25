@@ -28,6 +28,39 @@ CREATE TABLE PersonAttributeTypes (
 	INSERT INTO PersonAttributeTypes VALUES (2, 'paymentFrequency');
 	INSERT INTO PersonAttributeTypes VALUES (3, 'notes');
 
+-- PersonCategoryPermissions
+	-- Read or write permissions among different PersonCategories
+	-- If the row exists, the action is permissible
+
+CREATE TYPE Permission AS ENUM ('read', 'write');
+
+CREATE TABLE PersonCategoryPermissions (
+	userCategoryId SERIAL REFERENCES PersonCategories(personCategoryId) NOT NULL,
+	targetCategoryId SERIAL REFERENCES PersonCategories(personCategoryId) NOT NULL,
+	action Permission NOT NULL,
+	UNIQUE(userCategoryId, targetCategoryId, action)
+);
+
+	-- farmer
+		-- no permisssions
+	-- trader
+	INSERT INTO PersonCategoryPermissions VALUES (1, 0, 'read'); -- farmers
+	INSERT INTO PersonCategoryPermissions VALUES (1, 0, 'write');
+	-- admin
+	INSERT INTO PersonCategoryPermissions VALUES (2, 0, 'read'); -- farmers
+	INSERT INTO PersonCategoryPermissions VALUES (2, 0, 'write');
+	INSERT INTO PersonCategoryPermissions VALUES (2, 1, 'read'); -- traders
+	INSERT INTO PersonCategoryPermissions VALUES (2, 1, 'write');
+	INSERT INTO PersonCategoryPermissions VALUES (2, 2, 'read'); -- admins
+	INSERT INTO PersonCategoryPermissions VALUES (2, 2, 'write');
+	INSERT INTO PersonCategoryPermissions VALUES (2, 3, 'read'); -- monitors
+	INSERT INTO PersonCategoryPermissions VALUES (2, 3, 'write');
+	-- monitor
+	INSERT INTO PersonCategoryPermissions VALUES (2, 0, 'read'); -- farmers
+	INSERT INTO PersonCategoryPermissions VALUES (2, 1, 'read'); -- traders
+	INSERT INTO PersonCategoryPermissions VALUES (2, 2, 'read'); -- admins
+	INSERT INTO PersonCategoryPermissions VALUES (2, 3, 'read'); -- monitors
+
 -- PersonCategoryAttributes
 	-- what types of attributes a category of people have
 
