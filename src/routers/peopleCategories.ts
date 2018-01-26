@@ -29,9 +29,8 @@ const router = createRouter();
   }
  */
 router.get('/', async (req, res) => {
-  logger.info("routes ");
-  logger.info(JSON.stringify(PersonCategoriesDb.getAllPeopleCategories()));
-  res.status(StatusCode.OK).send(JSON.stringify(PersonCategoriesDb.getAllPeopleCategories()));
+  const categories = await PersonCategoriesDb.getAllPeopleCategories();
+  res.status(StatusCode.OK).send(JSON.stringify(categories));
 });
 
 export default router;
