@@ -3,7 +3,7 @@
 
 CREATE TABLE PersonCategories (
 	personCategoryId SERIAL PRIMARY KEY NOT NULL,
-	personCategoryName VARCHAR(255) NOT NULL,
+	personCategoryName VARCHAR(255) NOT NULL
 );
 
 	CREATE UNIQUE INDEX personCategoryName_lower ON PersonCategories(lower(personCategoryName));
@@ -27,6 +27,39 @@ CREATE TABLE PersonAttributeTypes (
 	INSERT INTO PersonAttributeTypes VALUES (1, 'passwordHash');
 	INSERT INTO PersonAttributeTypes VALUES (2, 'paymentFrequency');
 	INSERT INTO PersonAttributeTypes VALUES (3, 'notes');
+
+-- PersonCategoryPermissions
+	-- Read or write permissions among different PersonCategories
+	-- If the row exists, the action is permissible
+
+CREATE TYPE Permission AS ENUM ('read', 'write');
+
+CREATE TABLE PersonCategoryPermissions (
+	userCategoryId SERIAL REFERENCES PersonCategories(personCategoryId) NOT NULL,
+	targetCategoryId SERIAL REFERENCES PersonCategories(personCategoryId) NOT NULL,
+	action Permission NOT NULL,
+	UNIQUE(userCategoryId, targetCategoryId, action)
+);
+
+	-- farmer
+		-- no permisssions
+	-- trader
+	INSERT INTO PersonCategoryPermissions VALUES (1, 0, 'read'); -- farmers
+	INSERT INTO PersonCategoryPermissions VALUES (1, 0, 'write');
+	-- admin
+	INSERT INTO PersonCategoryPermissions VALUES (2, 0, 'read'); -- farmers
+	INSERT INTO PersonCategoryPermissions VALUES (2, 0, 'write');
+	INSERT INTO PersonCategoryPermissions VALUES (2, 1, 'read'); -- traders
+	INSERT INTO PersonCategoryPermissions VALUES (2, 1, 'write');
+	INSERT INTO PersonCategoryPermissions VALUES (2, 2, 'read'); -- admins
+	INSERT INTO PersonCategoryPermissions VALUES (2, 2, 'write');
+	INSERT INTO PersonCategoryPermissions VALUES (2, 3, 'read'); -- monitors
+	INSERT INTO PersonCategoryPermissions VALUES (2, 3, 'write');
+	-- monitor
+	INSERT INTO PersonCategoryPermissions VALUES (3, 0, 'read'); -- farmers
+	INSERT INTO PersonCategoryPermissions VALUES (3, 1, 'read'); -- traders
+	INSERT INTO PersonCategoryPermissions VALUES (3, 2, 'read'); -- admins
+	INSERT INTO PersonCategoryPermissions VALUES (3, 3, 'read'); -- monitors
 
 -- PersonCategoryAttributes
 	-- what types of attributes a category of people have
@@ -53,6 +86,7 @@ CREATE TABLE PersonCategoryAttributes (
 
 CREATE TABLE People (
 	personUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
+	personCategoryId SERIAL REFERENCES PersonCategories(personCategoryId),
 	firstName VARCHAR(255),
 	middleName VARCHAR(255),
 	lastName VARCHAR(255),
@@ -60,7 +94,7 @@ CREATE TABLE People (
 	phoneArea VARCHAR(20),
 	phoneCountry VARCHAR(20),
 	companyName VARCHAR(255),
-	personCategoryId SERIAL REFERENCES PersonCategories(personCategoryId)
+	lastModified TIMESTAMP NOT NULL
 );
 
 -- PersonAttributes
@@ -79,7 +113,7 @@ CREATE TYPE Currency AS ENUM ('UGX');
 
 CREATE TABLE MoneyTransactions (
 	moneyTransactionUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
-	datetime TIMESTAMP WITH TIME ZONE NOT NULL,
+	datetime TIMESTAMP NOT NULL,
 	toPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
 	fromPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
 	amount NUMERIC(30, 2) NOT NULL,
@@ -103,13 +137,14 @@ CREATE TABLE ProductTypes (
 
 CREATE TABLE ProductTransactions (
 	productTransactionUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
-	datetime TIMESTAMP WITH TIME ZONE NOT NULL,
+	datetime TIMESTAMP NOT NULL,
 	toPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
 	fromPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
 	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
 	amountOfProduct REAL NOT NULL,
 	costPerUnit NUMERIC(20, 2) NOT NULL,
-	currency Currency NOT NULL
+	currency Currency NOT NULL,
+	lastModified TIMESTAMP NOT NULL
 );
 
 -- ProductTypeTransactionAttributes
@@ -167,5 +202,5 @@ CREATE TABLE ProductExports (
 	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
 	amountOfProduct REAL NOT NULL,
 	transportId VARCHAR(255),
-	datetime TIMESTAMP WITH TIME ZONE NOT NULL
+	datetime TIMESTAMP NOT NULL
 );
