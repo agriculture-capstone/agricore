@@ -26,7 +26,7 @@ const router = createRouter();
     {
       "personUuid": "1e167b81-d816-497b-8c0c-36f4d6b2fd33",
       "category": "farmers",
-      "lastModified": "2018-01-23 04:05:06"
+      "lastModified": "2018-01-23 04:05:06Z"
       "firstName": "Zachariah",
       "paymentFrequency": "weekly",
       "notes": "Brother of Moses",
@@ -34,7 +34,7 @@ const router = createRouter();
     {
       "personUuid": "4b3f23a3-04c4-468f-bdf5-f189a34d9f69",
       "category": "trader",
-      "lastModified": "2018-01-23 04:05:06"
+      "lastModified": "2018-01-23 04:05:06Z"
       "firstName": "Mary",
       "username": "maryjoseph9",
     }
@@ -49,10 +49,10 @@ router.get('/', async (req, res) => {
  * @apiName GetPeopleInCategory
  * @apiGroup People
  * @apiVersion  0.0.1
- * @apiDescription Returns all people of this category and all their associated attributes and values.
- *              Parameters have no effect on this request, but the URL
- *              specifies what kind of people are given.
- * @apiName GetPeopleCategory
+ * @apiDescription Returns all people of this category and all their
+ * 				   associated attributes and values.
+ *                 Parameters have no effect on this request, but the URL
+ *                 specifies what kind of people are given.
  *
  * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  * @apiError (404) NotFound Person category not found
@@ -62,15 +62,15 @@ router.get('/', async (req, res) => {
   [
     {
       "personUuid": "1e167b81-d816-497b-8c0c-36f4d6b2fd33",
+      "lastModified": "2018-01-23 04:05:06Z"
       "firstName": "Zachariah",
-      "lastModified": "2018-01-23 04:05:06"
       "paymentFrequency": "weekly",
       "notes": "Brother of Moses",
     },
     {
       "personUuid": "4b3f23a3-04c4-468f-bdf5-f189a34d9f69",
       "firstName": "Zachariah",
-      "lastModified": "2018-01-23 04:05:06"
+      "lastModified": "2018-01-23 04:05:06Z"
       "paymentFrequency": "monthly",
       "notes": "Has a nice car",
     }
@@ -88,7 +88,6 @@ router.get('/:category', async (req, res) => {
  * @apiDescription Creates a new person in the specified category.
  *              Returns the UUID created for that person.
  *              Requires all associated attributes given in /peopleCategories
- * @apiName CreatePerson
  *
  * @apiParam {String} attributes An attribute of a person with its value.
  *                    All necessary attributes can be checked in the /peopleCategories API.
@@ -111,8 +110,7 @@ router.post('/:category', async (req, res) => {
  * @apiGroup People
  * @apiVersion  0.0.1
  * @apiDescription Gets a particular person.
- *              Parameters have no effect on this request.
- * @apiName GetPerson
+ *                 Parameters have no effect on this request.
  *
  * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  * @apiError (404) NotFound Person not found in category <category>
@@ -121,7 +119,7 @@ router.post('/:category', async (req, res) => {
  * @apiSuccessExample /people/farmers/1e167b81-d816-497b-8c0c-36f4d6b2fd33 Success-Response:
    {
      "personUuid": "1e167b81-d816-497b-8c0c-36f4d6b2fd33",
-     "lastModified": "2018-01-23 04:05:06"
+     "lastModified": "2018-01-23 04:05:06Z"
      "firstName": "Zachariah",
      "paymentFrequency": "weekly",
      "notes": "Brother of Moses",
@@ -137,7 +135,7 @@ router.get('/:category/:uuid', async (req, res) => {
  * @apiGroup People
  * @apiVersion  0.0.1
  * @apiDescription Updates a specific person for the given attributes.
- *              Associated attributes can be checked via /peopleCategories
+ *                 Associated attributes can be checked via /peopleCategories
  * @apiName UpdatePerson
  *
  * @apiParam {String} attributes An attribute of a person with its value.

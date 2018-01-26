@@ -10,7 +10,7 @@ const router = createRouter();
 
 /**
  * @api {get} /transactions/products/<type>
- * @description Returns all product transactions of a specified type
+ * @apiDescription Returns all product transactions of a specified type
  *              and all their associated attributes.
  *              Guaranteed fields are:
  *                - productTransactionUuid
@@ -49,7 +49,7 @@ router.get('/:type', async (req, res) => {
 
 /**
  * @api {post} /transactions/products/<type>
- * @description Returns all product transactions of a specified type.
+ * @apiDescription Returns all product transactions of a specified type.
  *              Required fields are:
  *                - datetime
  *                - toPersonUuid
@@ -78,7 +78,7 @@ router.post('/:type', async (req, res) => {
 
 /**
  * @api {put} /transactions/products/<type>/<uuid>
- * @description Updates a product transaction.
+ * @apiDescription Updates a product transaction.
  *              Available fields are:
  *                - datetime
  *                - toPersonUuid

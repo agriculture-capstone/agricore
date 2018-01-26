@@ -14,7 +14,6 @@ yarn-error.log
 .vscode/*
 !.vscode/launch.json
 !.vscode/tasks.json
-.DS_Store
 
 # Secret Files
 .env
@@ -31,3 +30,7 @@ data/
 # Code Coverage
 test/coverage/*
 .nyc_output/*
+
+# Other
+.DS_Store
+.fuse_hidden*
