@@ -25,8 +25,9 @@ CREATE TABLE PersonAttributeTypes (
 
 	INSERT INTO PersonAttributeTypes VALUES (0, 'username');
 	INSERT INTO PersonAttributeTypes VALUES (1, 'passwordHash');
-	INSERT INTO PersonAttributeTypes VALUES (2, 'paymentFrequency');
-	INSERT INTO PersonAttributeTypes VALUES (3, 'notes');
+	INSERT INTO PersonAttributeTypes VALUES (2, 'passwordSalt');
+	INSERT INTO PersonAttributeTypes VALUES (3, 'paymentFrequency');
+	INSERT INTO PersonAttributeTypes VALUES (4, 'notes');
 
 -- PersonCategoryPermissions
 	-- Read or write permissions among different PersonCategories
@@ -70,17 +71,20 @@ CREATE TABLE PersonCategoryAttributes (
 );
 
 	-- farmer
-	INSERT INTO PersonCategoryAttributes VALUES (0, 2); -- paymentFrequency
-	INSERT INTO PersonCategoryAttributes VALUES (0, 3); -- notes
+	INSERT INTO PersonCategoryAttributes VALUES (0, 3); -- paymentFrequency
+	INSERT INTO PersonCategoryAttributes VALUES (0, 4); -- notes
 	-- trader
 	INSERT INTO PersonCategoryAttributes VALUES (1, 0); -- username
-	INSERT INTO PersonCategoryAttributes VALUES (1, 1); -- password
+	INSERT INTO PersonCategoryAttributes VALUES (1, 1); -- passwordHash
+	INSERT INTO PersonCategoryAttributes VALUES (1, 2); -- passwordSalt
 	-- admin
 	INSERT INTO PersonCategoryAttributes VALUES (2, 0); -- username
-	INSERT INTO PersonCategoryAttributes VALUES (2, 1); -- password
+	INSERT INTO PersonCategoryAttributes VALUES (2, 1); -- passwordHash
+	INSERT INTO PersonCategoryAttributes VALUES (2, 2); -- passwordsalt
 	-- monitor
 	INSERT INTO PersonCategoryAttributes VALUES (3, 0); -- username
-	INSERT INTO PersonCategoryAttributes VALUES (3, 1); -- password
+	INSERT INTO PersonCategoryAttributes VALUES (3, 1); -- passwordHash
+	INSERT INTO PersonCategoryAttributes VALUES (3, 2); -- passwordsalt
 
 -- Person
 
