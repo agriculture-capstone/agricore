@@ -138,7 +138,7 @@ router.get('/:category/:uuid', async (req, res) => {
  *                 Associated attributes can be checked via /peopleCategories
  * @apiName UpdatePerson
  *
- * @apiParam {String} attributes An attribute of a person with its value.
+ * @apiParam {String} [attributes] An attribute of a person with its value.
  *                    All available attributes can be checked in the /peopleCategories API.
  *                    Multiple attributes maybe provided.
  *
