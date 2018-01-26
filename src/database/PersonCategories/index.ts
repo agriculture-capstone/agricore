@@ -1,11 +1,12 @@
 import dbConnection, { tableNames, execute } from '../connection';
+import logger from '@/utilities/modules/logger';
 
 const personCategoriesTable = () => dbConnection()(tableNames.PERSON_CATEGORIES);
 const personCategoryAttributesTable = () => dbConnection()(tableNames.PERSON_CATEGORY_ATTRIBUTES);
 
 interface PersonCategory {
-  id: number;
-  name: string;
+  personcategoryid: number;
+  personcategoryname: string;
 }
 
 interface PersonCategoriesAndAttributes {
@@ -20,8 +21,8 @@ const builders = {
   /** QueryBuilder for getting a map of all person categories and their attributes */
   personCategoryAttributes(categoryId: number) {
     return personCategoryAttributesTable()
-      .join('PersonAttributeTypes', 'PersonCategoryAttributes.attrId', 'PersonAttributeTypes.attrId')
-      .select('attrName')
+      .join('personattributetypes', 'personcategoryattributes.attrid', 'personattributetypes.attrid')
+      .select('attrname')
       .where({
         personCategoryId: categoryId,
       });
@@ -50,7 +51,8 @@ export async function getAllPeopleCategories() {
       'companyName',
       'lastModified',
     ];
-    result[category.name] = attributes;
+    result[category.personcategoryname] = attributes;
   });
-  return personCategories;
+  logger.info(result);
+  return result;
 }

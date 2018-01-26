@@ -32,9 +32,9 @@ export async function connect(createConnection = knex) {
 export const tableNames: Readonly<Table> = {
   USERS: 'users',
   FARMERS: 'farmer',
-  PERSON_CATEGORIES: 'PersonCategories',
-  PERSON_ATTRIBUTE_TYPES: 'PersonAttributeTypes',
-  PERSON_CATEGORY_ATTRIBUTES: 'PersonCategoryAttributes',
+  PERSON_CATEGORIES: 'personcategories',
+  PERSON_ATTRIBUTE_TYPES: 'personattributetypes',
+  PERSON_CATEGORY_ATTRIBUTES: 'personcategoryattributes',
 };
 
 /**

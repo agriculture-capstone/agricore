@@ -1,6 +1,7 @@
 
 import createRouter from '@/utilities/functions/createRouter';
 import * as PersonCategoriesDb from '@/database/PersonCategories';
+import logger from '@/utilities/modules/logger';
 
 import { StatusCode } from '@/models/statusCodes';
 
@@ -28,7 +29,9 @@ const router = createRouter();
   }
  */
 router.get('/', async (req, res) => {
-  res.status(StatusCode.OK).send(PersonCategoriesDb.getAllPeopleCategories());
+  logger.info("routes ");
+  logger.info(JSON.stringify(PersonCategoriesDb.getAllPeopleCategories()));
+  res.status(StatusCode.OK).send(JSON.stringify(PersonCategoriesDb.getAllPeopleCategories()));
 });
 
 export default router;

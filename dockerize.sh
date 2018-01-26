@@ -22,7 +22,6 @@ elif [ "$1" == "start" ]; then
     docker run --rm \
         --name "$CONTAINER_NAME" \
         --volume "$DIR":"$DOCKER_HOME" \
-        --link "$DB_CONTAINER_NAME" \
         -p 9090:9090 \
         $IMAGE_NAME npm start
 elif [ "$1" == "run" ]; then
@@ -36,6 +35,7 @@ elif [ "$1" == "initdb" ]; then
         -e POSTGRES_USER="$DB_USER" \
         -e POSTGRES_PASSWORD="$DB_PASSWORD" \
         -e PGDATA="$DIR/data" \
+        -p 5432:5432 \
         -d "$DB_IMAGE_NAME"
     docker cp db-init.sql agricore_db:/
     sleep 5
