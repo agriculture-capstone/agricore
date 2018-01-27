@@ -24,8 +24,7 @@ CREATE TABLE PersonAttributeTypes (
 	CREATE UNIQUE INDEX personAttrName_lower ON PersonAttributeTypes(lower(attrName));
 
 	INSERT INTO PersonAttributeTypes VALUES (0, 'username');
-	INSERT INTO PersonAttributeTypes VALUES (1, 'passwordHash');
-	INSERT INTO PersonAttributeTypes VALUES (2, 'passwordSalt');
+	INSERT INTO PersonAttributeTypes VALUES (1, 'hash');
 	INSERT INTO PersonAttributeTypes VALUES (3, 'paymentFrequency');
 	INSERT INTO PersonAttributeTypes VALUES (4, 'notes');
 
@@ -75,16 +74,13 @@ CREATE TABLE PersonCategoryAttributes (
 	INSERT INTO PersonCategoryAttributes VALUES (0, 4); -- notes
 	-- trader
 	INSERT INTO PersonCategoryAttributes VALUES (1, 0); -- username
-	INSERT INTO PersonCategoryAttributes VALUES (1, 1); -- passwordHash
-	INSERT INTO PersonCategoryAttributes VALUES (1, 2); -- passwordSalt
+	INSERT INTO PersonCategoryAttributes VALUES (1, 1); -- hash
 	-- admin
 	INSERT INTO PersonCategoryAttributes VALUES (2, 0); -- username
-	INSERT INTO PersonCategoryAttributes VALUES (2, 1); -- passwordHash
-	INSERT INTO PersonCategoryAttributes VALUES (2, 2); -- passwordsalt
+	INSERT INTO PersonCategoryAttributes VALUES (2, 1); -- hash
 	-- monitor
 	INSERT INTO PersonCategoryAttributes VALUES (3, 0); -- username
-	INSERT INTO PersonCategoryAttributes VALUES (3, 1); -- passwordHash
-	INSERT INTO PersonCategoryAttributes VALUES (3, 2); -- passwordsalt
+	INSERT INTO PersonCategoryAttributes VALUES (3, 1); -- hash
 
 -- Person
 
@@ -101,6 +97,9 @@ CREATE TABLE People (
 	lastModified TIMESTAMP NOT NULL
 );
 
+	INSERT INTO People (personUuid, personCategoryId, lastModified)
+		VALUES ('98f0f127-6c7f-4641-b464-447e417318d8', 2, '1970-01-01 00:00:00.000Z');
+
 -- PersonAttributes
 	-- the values of the attributes that a specific person has
 
@@ -110,6 +109,12 @@ CREATE TABLE PersonAttributes (
 	attrValue VARCHAR(255),
 	UNIQUE(personUuid, attrId)
 );
+
+	-- default admin
+	INSERT INTO PersonAttributes
+		VALUES ('98f0f127-6c7f-4641-b464-447e417318d8', 0, 'admin');
+	INSERT INTO PersonAttributes
+		VALUES ('98f0f127-6c7f-4641-b464-447e417318d8', 1, '$2a$11$M3ua2jCZtRNvLKn3zD7CIeDM4EsKqbB7o5ntt.oI6q2AEMXDociP.');
 
 CREATE TYPE Currency AS ENUM ('UGX');
 
