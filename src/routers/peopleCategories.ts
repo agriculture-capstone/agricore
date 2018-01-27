@@ -1,7 +1,6 @@
 
 import createRouter from '@/utilities/functions/createRouter';
 import * as PersonCategoriesDb from '@/database/PersonCategories';
-import logger from '@/utilities/modules/logger';
 
 import { StatusCode } from '@/models/statusCodes';
 

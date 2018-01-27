@@ -22,14 +22,26 @@ interface ProductType {
   attributes: ProductAttribute[];
 }
 
+/**
+ * Type for a product attribute
+ */
 type ProductAttribute = string;
 
 
+/**
+ * Query builder
+ */
 const builders = {
+  /**
+   * Gets all product types
+   */
   getProductTypes() {
     return productTypesTable()
       .select('*');
   },
+  /**
+   * Gets all attributes for all product types
+   */
   getProductAttributes() {
     return productTypesAttributesTable().select('*');
   },
@@ -53,9 +65,13 @@ function formatProductTypes(types: ProductTypeDb[], attributes: ProductAttribute
   });
 }
 
+/**
+ * Gets the product types and each of it's attributes from the database and formats it.
+ */
 export async function getProductTypes() {
   const types = await execute<ProductTypeDb[]>(builders.getProductTypes());
   const attributes = await execute<ProductAttributeDb[]>(builders.getProductAttributes());
   const response = formatProductTypes(types, attributes);
+  logger.info(response);
   return response;
 }
