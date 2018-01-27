@@ -36,8 +36,7 @@ const builders = {
    * Gets all product types
    */
   getProductTypes() {
-    return productTypesTable()
-      .select('*');
+    return productTypesTable().select('*');
   },
   /**
    * Gets all attributes for all product types

@@ -1,7 +1,4 @@
 import createRouter from '@/utilities/functions/createRouter';
-// import authorized from '@/middleware/authorized';
-// import { UserType } from '@/models/User/UserType';
-
 import { StatusCode } from '@/models/statusCodes';
 import * as ProductTypesDb from '@/database/ProductTypes';
 
