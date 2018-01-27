@@ -8,6 +8,12 @@ import categories from './categories';
 
 const router = createRouter();
 
+/** 
+ * This should be done before the route allowing a path parameter is defined.
+ * (ie. /:category)
+ */
+router.use('/categories', categories);
+
 /**
  * @api {get} /people/ Get All People
  * @apiName GetPeople
@@ -153,7 +159,5 @@ router.get('/:category/:uuid', async (req, res) => {
 router.put('/:category/:uuid', async (req, res) => {
   res.status(StatusCode.OK).send('Successfully updated <category>');
 }, authorized(UserType.ADMIN));
-
-router.use('/categories', categories);
 
 export default router;
