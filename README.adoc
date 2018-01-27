@@ -149,29 +149,31 @@ To set up a database for the Agricore, follow the steps below. Please start from
 
 . The Agricore uses PostgreSQL 10.1, although any version >=9.1 should work as well.
 . Create a user with correct permissions to create a database. The recommended default username is `boresha`.
-
+----
 	CREATE ROLE boresha WITH LOGIN PASSWORD '<pw>';
 	ALTER ROLE boresha CREATEDB;
-
-. Using the user you just created, create a database and grant the proper permissions to the user. The recommended default name for the database is `agricoredev`.
-
+----
+. Using the user you just created, create a database and grant the proper permissions to the user. The recommended default name for the database is `agricore_dev`.
+----
 	psql -U boresha
-	CREATE DATABASE agricoredev;
-	GRANT ALL PRIVILEGES ON DATABASE agricoredev TO boresha;
-
+	CREATE DATABASE agricore_dev;
+	GRANT ALL PRIVILEGES ON DATABASE agricore_dev TO boresha;
+----
 . Connect to the database.
-
-	 \connect agricoredev
-
+----
+	 \connect agricore_dev
+----
 . Install the `uuid-ossp` extension. This is already packaged, but not loaded for postgres >=9.1.
-
+----
 	CREATE EXTENSION "uuid-ossp"
-
+----
 . Outside of the postgres shell, run the initialization commands for initializing the database.
-
-	psql -f db-init.sql agricoredev boresha
-
+----
+	psql -f db-init.sql agricore_dev boresha
+----
 . See all tables using `\dt`
+
+. Make sure that your user and database information matches to values in the `.env. file!
 
 === Database using Docker
 
