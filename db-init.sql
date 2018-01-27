@@ -1,42 +1,42 @@
--- PersonCategories
-	-- all the different types a person can be
+-- PeopleCategories
+	-- all the different types a People can be
 
-CREATE TABLE PersonCategories (
-	personCategoryId SERIAL PRIMARY KEY NOT NULL,
-	personCategoryName VARCHAR(255) NOT NULL
+CREATE TABLE PeopleCategories (
+	peopleCategoryId SERIAL PRIMARY KEY NOT NULL,
+	peopleCategoryName VARCHAR(255) NOT NULL
 );
 
-	CREATE UNIQUE INDEX personCategoryName_lower ON PersonCategories(lower(personCategoryName));
+	CREATE UNIQUE INDEX peopleCategoryName_lower ON PeopleCategories(lower(peopleCategoryName));
 
-	INSERT INTO PersonCategories VALUES (0, 'farmers');
-	INSERT INTO PersonCategories VALUES (1, 'traders');
-	INSERT INTO PersonCategories VALUES (2, 'admins');
-	INSERT INTO PersonCategories VALUES (3, 'monitors');
+	INSERT INTO PeopleCategories VALUES (0, 'farmers');
+	INSERT INTO PeopleCategories VALUES (1, 'traders');
+	INSERT INTO PeopleCategories VALUES (2, 'admins');
+	INSERT INTO PeopleCategories VALUES (3, 'monitors');
 
--- PersonAttributeTypes
+-- PeopleAttributeTypes
 	--  all the different types of attributes a person can have
 
-CREATE TABLE PersonAttributeTypes (
+CREATE TABLE PeopleAttributeTypes (
 	attrId SERIAL PRIMARY KEY NOT NULL,
 	attrName VARCHAR(255) NOT NULL
 );
 
-	CREATE UNIQUE INDEX personAttrName_lower ON PersonAttributeTypes(lower(attrName));
+	CREATE UNIQUE INDEX peopleAttrName_lower ON PeopleAttributeTypes(lower(attrName));
 
-	INSERT INTO PersonAttributeTypes VALUES (0, 'username');
-	INSERT INTO PersonAttributeTypes VALUES (1, 'hash');
-	INSERT INTO PersonAttributeTypes VALUES (3, 'paymentFrequency');
-	INSERT INTO PersonAttributeTypes VALUES (4, 'notes');
+	INSERT INTO PeopleAttributeTypes VALUES (0, 'username');
+	INSERT INTO PeopleAttributeTypes VALUES (1, 'hash');
+	INSERT INTO PeopleAttributeTypes VALUES (3, 'paymentFrequency');
+	INSERT INTO PeopleAttributeTypes VALUES (4, 'notes');
 
--- PersonCategoryPermissions
-	-- Read or write permissions among different PersonCategories
+-- PeopleCategoryPermissions
+	-- Read or write permissions among different PeopleCategories
 	-- If the row exists, the action is permissible
 
 CREATE TYPE Permission AS ENUM ('read', 'write');
 
-CREATE TABLE PersonCategoryPermissions (
-	userCategoryId SERIAL REFERENCES PersonCategories(personCategoryId) NOT NULL,
-	targetCategoryId SERIAL REFERENCES PersonCategories(personCategoryId) NOT NULL,
+CREATE TABLE PeopleCategoryPermissions (
+	userCategoryId SERIAL REFERENCES PeopleCategories(peopleCategoryId) NOT NULL,
+	targetCategoryId SERIAL REFERENCES PeopleCategories(peopleCategoryId) NOT NULL,
 	action Permission NOT NULL,
 	UNIQUE(userCategoryId, targetCategoryId, action)
 );
@@ -44,49 +44,49 @@ CREATE TABLE PersonCategoryPermissions (
 	-- farmer
 		-- no permisssions
 	-- trader
-	INSERT INTO PersonCategoryPermissions VALUES (1, 0, 'read'); -- farmers
-	INSERT INTO PersonCategoryPermissions VALUES (1, 0, 'write');
+	INSERT INTO PeopleCategoryPermissions VALUES (1, 0, 'read'); -- farmers
+	INSERT INTO PeopleCategoryPermissions VALUES (1, 0, 'write');
 	-- admin
-	INSERT INTO PersonCategoryPermissions VALUES (2, 0, 'read'); -- farmers
-	INSERT INTO PersonCategoryPermissions VALUES (2, 0, 'write');
-	INSERT INTO PersonCategoryPermissions VALUES (2, 1, 'read'); -- traders
-	INSERT INTO PersonCategoryPermissions VALUES (2, 1, 'write');
-	INSERT INTO PersonCategoryPermissions VALUES (2, 2, 'read'); -- admins
-	INSERT INTO PersonCategoryPermissions VALUES (2, 2, 'write');
-	INSERT INTO PersonCategoryPermissions VALUES (2, 3, 'read'); -- monitors
-	INSERT INTO PersonCategoryPermissions VALUES (2, 3, 'write');
+	INSERT INTO PeopleCategoryPermissions VALUES (2, 0, 'read'); -- farmers
+	INSERT INTO PeopleCategoryPermissions VALUES (2, 0, 'write');
+	INSERT INTO PeopleCategoryPermissions VALUES (2, 1, 'read'); -- traders
+	INSERT INTO PeopleCategoryPermissions VALUES (2, 1, 'write');
+	INSERT INTO PeopleCategoryPermissions VALUES (2, 2, 'read'); -- admins
+	INSERT INTO PeopleCategoryPermissions VALUES (2, 2, 'write');
+	INSERT INTO PeopleCategoryPermissions VALUES (2, 3, 'read'); -- monitors
+	INSERT INTO PeopleCategoryPermissions VALUES (2, 3, 'write');
 	-- monitor
-	INSERT INTO PersonCategoryPermissions VALUES (3, 0, 'read'); -- farmers
-	INSERT INTO PersonCategoryPermissions VALUES (3, 1, 'read'); -- traders
-	INSERT INTO PersonCategoryPermissions VALUES (3, 2, 'read'); -- admins
-	INSERT INTO PersonCategoryPermissions VALUES (3, 3, 'read'); -- monitors
+	INSERT INTO PeopleCategoryPermissions VALUES (3, 0, 'read'); -- farmers
+	INSERT INTO PeopleCategoryPermissions VALUES (3, 1, 'read'); -- traders
+	INSERT INTO PeopleCategoryPermissions VALUES (3, 2, 'read'); -- admins
+	INSERT INTO PeopleCategoryPermissions VALUES (3, 3, 'read'); -- monitors
 
--- PersonCategoryAttributes
+-- PeopleCategoryAttributes
 	-- what types of attributes a category of people have
 
-CREATE TABLE PersonCategoryAttributes (
-	personCategoryId SERIAL REFERENCES PersonCategories(personCategoryId) NOT NULL,
-	attrId SERIAL REFERENCES PersonAttributeTypes(attrId) NOT NULL
+CREATE TABLE PeopleCategoryAttributes (
+	peopleCategoryId SERIAL REFERENCES PeopleCategories(peopleCategoryId) NOT NULL,
+	attrId SERIAL REFERENCES PeopleAttributeTypes(attrId) NOT NULL
 );
 
 	-- farmer
-	INSERT INTO PersonCategoryAttributes VALUES (0, 3); -- paymentFrequency
-	INSERT INTO PersonCategoryAttributes VALUES (0, 4); -- notes
+	INSERT INTO PeopleCategoryAttributes VALUES (0, 3); -- paymentFrequency
+	INSERT INTO PeopleCategoryAttributes VALUES (0, 4); -- notes
 	-- trader
-	INSERT INTO PersonCategoryAttributes VALUES (1, 0); -- username
-	INSERT INTO PersonCategoryAttributes VALUES (1, 1); -- hash
+	INSERT INTO PeopleCategoryAttributes VALUES (1, 0); -- username
+	INSERT INTO PeopleCategoryAttributes VALUES (1, 1); -- hash
 	-- admin
-	INSERT INTO PersonCategoryAttributes VALUES (2, 0); -- username
-	INSERT INTO PersonCategoryAttributes VALUES (2, 1); -- hash
+	INSERT INTO PeopleCategoryAttributes VALUES (2, 0); -- username
+	INSERT INTO PeopleCategoryAttributes VALUES (2, 1); -- hash
 	-- monitor
-	INSERT INTO PersonCategoryAttributes VALUES (3, 0); -- username
-	INSERT INTO PersonCategoryAttributes VALUES (3, 1); -- hash
+	INSERT INTO PeopleCategoryAttributes VALUES (3, 0); -- username
+	INSERT INTO PeopleCategoryAttributes VALUES (3, 1); -- hash
 
--- Person
+-- People
 
 CREATE TABLE People (
 	personUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
-	personCategoryId SERIAL REFERENCES PersonCategories(personCategoryId),
+	peopleCategoryId SERIAL REFERENCES PeopleCategories(peopleCategoryId),
 	firstName VARCHAR(255),
 	middleName VARCHAR(255),
 	lastName VARCHAR(255),
@@ -97,23 +97,23 @@ CREATE TABLE People (
 	lastModified TIMESTAMP NOT NULL
 );
 
-	INSERT INTO People (personUuid, personCategoryId, lastModified)
+	INSERT INTO People (personUuid, peopleCategoryId, lastModified)
 		VALUES ('98f0f127-6c7f-4641-b464-447e417318d8', 2, '1970-01-01 00:00:00.000Z');
 
--- PersonAttributes
+-- PeopleAttributes
 	-- the values of the attributes that a specific person has
 
-CREATE TABLE PersonAttributes (
+CREATE TABLE PeopleAttributes (
 	personUuid UUID REFERENCES People(personUuid) NOT NULL,
-	attrId SERIAL REFERENCES PersonAttributeTypes(attrId) NOT NULL,
+	attrId SERIAL REFERENCES PeopleAttributeTypes(attrId) NOT NULL,
 	attrValue VARCHAR(255),
 	UNIQUE(personUuid, attrId)
 );
 
 	-- default admin
-	INSERT INTO PersonAttributes
+	INSERT INTO PeopleAttributes
 		VALUES ('98f0f127-6c7f-4641-b464-447e417318d8', 0, 'admin');
-	INSERT INTO PersonAttributes
+	INSERT INTO PeopleAttributes
 		VALUES ('98f0f127-6c7f-4641-b464-447e417318d8', 1, '$2a$11$M3ua2jCZtRNvLKn3zD7CIeDM4EsKqbB7o5ntt.oI6q2AEMXDociP.');
 
 CREATE TYPE Currency AS ENUM ('UGX');
