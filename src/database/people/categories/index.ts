@@ -1,29 +1,9 @@
 import dbConnection, { tableNames, execute } from '../../connection';
 import logger from '@/utilities/modules/logger';
+import { PeopleCategoryDb, PeopleCategoriesAttributesDb, PeopleCategory } from '../';
 
 const peopleCategoriesTable = () => dbConnection()(tableNames.PEOPLE_CATEGORIES);
 const peopleCategoryAttributesTable = () => dbConnection()(tableNames.PEOPLE_CATEGORY_ATTRIBUTES);
-
-interface PeopleCategoryDb {
-  peoplecategoryid: number;
-  peoplecategoryname: string;
-}
-
-interface PeopleCategoriesAttributesDb {
-  peoplecategoryid: number;
-  attrid: string;
-  attrname: string;
-}
-
-interface PeopleCategory {
-  name: string;
-  attributes: PeopleAttributes[];
-}
-
-/**
- * Type for people attributes
- */
-type PeopleAttributes = string;
 
 const builders = {
   /** QueryBuilder for getting all people categories */

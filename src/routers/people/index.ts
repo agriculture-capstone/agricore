@@ -4,6 +4,7 @@ import { UserType } from '@/models/User/UserType';
 
 import { StatusCode } from '@/models/statusCodes';
 import categories from './categories';
+import * as PeopleDb from '@/database/people';
 
 const router = createRouter();
 
@@ -83,7 +84,8 @@ router.get('/', async (req, res) => {
   ]
  */
 router.get('/:category', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully retrieved all people of category <something>');
+  const response = await PeopleDb.getPeopleOfCategory(req.params.category);
+  res.status(StatusCode.OK).send(JSON.stringify(response));
 }, authorized(UserType.ADMIN));
 
 /**

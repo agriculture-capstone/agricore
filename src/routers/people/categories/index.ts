@@ -1,6 +1,6 @@
 
 import createRouter from '@/utilities/functions/createRouter';
-import * as PersonCategoriesDb from '@/database/people/categories';
+import * as PeopleCategoriesDb from '@/database/people/categories';
 
 import { StatusCode } from '@/models/statusCodes';
 
@@ -35,7 +35,7 @@ const router = createRouter();
   ]
  */
 router.get('/', async (req, res) => {
-  const categories = await PersonCategoriesDb.getAllPeopleCategories();
+  const categories = await PeopleCategoriesDb.getAllPeopleCategories();
   res.status(StatusCode.OK).send(JSON.stringify(categories));
 });
 
