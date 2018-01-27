@@ -13,5 +13,5 @@ export default function middleware() {
   // this.use(unauthorizedMiddleware());
   this.use(cors());
   this.use(compression());
-  this.use(createNetworkLogger);
+  this.use(createNetworkLogger());
 }

@@ -18,6 +18,7 @@ export async function connect(createConnection = knex) {
     client: process.env.DB_CLIENT,
     connection: {
       host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
       database: process.env.DB_NAME,
       user: process.env.DB_USER,
       password: process.env.DB_PASS,
@@ -29,11 +30,16 @@ export async function connect(createConnection = knex) {
 }
 
 /** Names of tables in the database */
-export const tableNames: Readonly<Table> = {
+export const tableNames = {
   USERS: 'users',
   FARMERS: 'farmer',
   PRODUCT_TYPES: 'producttypes',
+  PRODUCT_ATTRIBUTE_TYPES: 'producttypetransactionattributes',
+  PERSON_CATEGORIES: 'personcategories',
+  PERSON_ATTRIBUTE_TYPES: 'personattributetypes',
+  PERSON_CATEGORY_ATTRIBUTES: 'personcategoryattributes',
 };
+
 
 /**
  * Execute a QueryBuilder and normalize result to an ES6 promise

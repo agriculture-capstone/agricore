@@ -18,6 +18,10 @@ const ENV_VARS: EnvironmentVariables = {
     expectedType: String,
     required: true,
   },
+  DB_PORT: {
+    expectedType: Number,
+    required: false,
+  },
   DB_NAME: {
     expectedType: String,
     required: true,
