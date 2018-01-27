@@ -52,6 +52,7 @@ function formatProductTypes(types: ProductTypeDb[], attributes: ProductAttribute
     };
   });
 }
+
 export async function getProductTypes() {
   const types = await execute<ProductTypeDb[]>(builders.getProductTypes());
   const attributes = await execute<ProductAttributeDb[]>(builders.getProductAttributes());
