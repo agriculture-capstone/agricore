@@ -1,6 +1,5 @@
 import * as knex from 'knex';
 
-import Table from '@/models/database/Table';
 import logger from '@/utilities/modules/logger';
 
 /*
@@ -30,14 +29,18 @@ export async function connect(createConnection = knex) {
 }
 
 /** Names of tables in the database */
-export const tableNames: Readonly<Table> = {
+export const tableNames = {
   USERS: 'users',
   PEOPLE: 'people',
+  FARMERS: 'farmer',
+  PRODUCT_TYPES: 'producttypes',
+  PRODUCT_ATTRIBUTE_TYPES: 'producttypetransactionattributes',
   PERSON_CATEGORIES: 'personcategories',
   PERSON_ATTRIBUTES: 'personattributes',
   PERSON_ATTRIBUTE_TYPES: 'personattributetypes',
   PERSON_CATEGORY_ATTRIBUTES: 'personcategoryattributes',
 };
+
 
 /**
  * Execute a QueryBuilder and normalize result to an ES6 promise
