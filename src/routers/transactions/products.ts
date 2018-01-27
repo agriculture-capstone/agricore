@@ -65,7 +65,7 @@ router.get('/:type', async (req, res) => {
  *
  * @apiParam {String} type The type of product.
  * @apiParam {String} datetime The time this transaction was conducted.
- *                    It value must be in UTC or the request will be rejected.
+ *                    It's value must be in UTC or the request will be rejected.
  * @apiParam {String} toPersonUuid The UUID of the person receiving the product.
  * @apiParam {String} fromPersonUuid The UUID of the person giving the product.
  * @apiParam {Number} amountOfProduct The amount of a product in it's given units.
@@ -97,14 +97,6 @@ router.post('/:type', async (req, res) => {
  * @apiGroup Product Transactions
  * @apiVersion  0.0.1
  * @description Updates a product transaction.
- *              Available fields are:
- *                - datetime
- *                - toPersonUuid
- *                - fromPersonUuid
- *                - productTypeId
- *                - amountOfProduct
- *                - costPerUnit
- *                - currency
  *                Along with any associated attributes such as density.
  *                Associated attributes can be checked via /products
  *                Returns the transaction's actual data on error.
