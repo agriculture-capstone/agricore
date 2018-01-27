@@ -1,27 +1,27 @@
 import dbConnection, { tableNames, execute } from '../../connection';
 import logger from '@/utilities/modules/logger';
 
-const personCategoriesTable = () => dbConnection()(tableNames.PERSON_CATEGORIES);
-const personCategoryAttributesTable = () => dbConnection()(tableNames.PERSON_CATEGORY_ATTRIBUTES);
+const peopleCategoriesTable = () => dbConnection()(tableNames.PEOPLE_CATEGORIES);
+const peopleCategoryAttributesTable = () => dbConnection()(tableNames.PEOPLE_CATEGORY_ATTRIBUTES);
 
-interface PersonCategory {
-  personcategoryid: number;
-  personcategoryname: string;
+interface PeopleCategory {
+  peoplecategoryid: number;
+  peoplecategoryname: string;
 }
 
-interface PersonCategoriesAndAttributes {
+interface PeopleCategoriesAndAttributes {
   [key: string]: string[];
 }
 
 const builders = {
-  /** QueryBuilder for getting all person categories */
-  personCategories() {
-    return personCategoriesTable().select('*');
+  /** QueryBuilder for getting all people categories */
+  getPeopleCategories() {
+    return peopleCategoriesTable().select('*');
   },
-  /** QueryBuilder for getting a map of all person categories and their attributes */
-  personCategoryAttributes(categoryId: number) {
-    return personCategoryAttributesTable()
-      .join('personattributetypes', 'personcategoryattributes.attrid', 'personattributetypes.attrid')
+  /** QueryBuilder for getting a map of all people categories and their attributes */
+  getPeopleCategoryAttributes(categoryId: number) {
+    return peopleCategoryAttributesTable()
+      .join('peopleattributetypes', 'peoplecategoryattributes.attrid', 'peopleattributetypes.attrid')
       .select('attrname')
       .where({
         personCategoryId: categoryId,
@@ -37,9 +37,9 @@ const builders = {
  * @returns {Promise<DatabaseUser>}
  */
 export async function getAllPeopleCategories() {
-  const personCategories = await execute<PersonCategory[]>(builders.personCategories());
-  const result: PersonCategoriesAndAttributes = {};
-  personCategories.forEach(function (category: PersonCategory) {
+  const peopleCategories = await execute<PeopleCategory[]>(builders.getPeopleCategories());
+  const result: PeopleCategoriesAndAttributes = {};
+  peopleCategories.forEach(function (category: PeopleCategory) {
     const attributes: string[] = [
       'personUuid',
       'firstName',
@@ -51,7 +51,7 @@ export async function getAllPeopleCategories() {
       'companyName',
       'lastModified',
     ];
-    result[category.personcategoryname] = attributes;
+    result[category.peoplecategoryname] = attributes;
   });
   logger.info(result);
   return result;
