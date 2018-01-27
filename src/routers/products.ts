@@ -1,6 +1,6 @@
 import createRouter from '@/utilities/functions/createRouter';
 import { StatusCode } from '@/models/statusCodes';
-import * as ProductTypesDb from '@/database/ProductTypes';
+import * as ProductTypesDb from '@/database/products';
 
 const router = createRouter();
 
