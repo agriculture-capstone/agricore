@@ -111,6 +111,12 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/sinon/-/sinon-4.0.0.tgz#9a93ffa4ee1329e85166278a5ed99f81dc4c8362"
 
+"@types/source-map-support@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@types/source-map-support/-/source-map-support-0.4.0.tgz#a62a1866614af68c888173c001481f242aaf148b"
+  dependencies:
+    "@types/node" "*"
+
 "@types/webpack-env@1.13.1":
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.1.tgz#b45c222e24301bd006e3edfc762cc6b51bda236a"
@@ -3682,6 +3688,10 @@ posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
 
+posix-character-classes@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-1.0.0.tgz#86917ab2d252f7ea78e157bf009b9b6ea35c6cad"
+
 postgres-array@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/postgres-array/-/postgres-array-1.0.2.tgz#8e0b32eb03bf77a5c0a7851e0441c169a256a238"
@@ -3995,6 +4005,10 @@ require-main-filename@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-1.0.1.tgz#97f717b69d48784f5f526a6c5aa8ffdda055a4d1"
 
+resolv@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/resolv/-/resolv-1.0.0.tgz#5c568392e33986b5895383e5c5b1fff0187c4961"
+
 resolve-dir@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/resolve-dir/-/resolve-dir-0.1.1.tgz#b219259a5602fac5c5c496ad894a6e8cc430261e"
@@ -4250,6 +4264,12 @@ source-map-support@^0.4.15, source-map-support@^0.4.6:
   dependencies:
     source-map "^0.5.6"
 
+source-map-support@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.3.tgz#2b3d5fff298cfa4d1afd7d4352d569e9a0158e76"
+  dependencies:
+    source-map "^0.6.0"
+
 source-map-url@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/source-map-url/-/source-map-url-0.4.0.tgz#3e935d7ddd73631b97659956d55128e87b5084a3"
@@ -4263,6 +4283,10 @@ source-map@^0.4.4:
 source-map@^0.5.3, source-map@^0.5.6, source-map@~0.5.1, source-map@~0.5.3:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.5.7.tgz#8a039d2d1021d22d1ea14c80d8ea468ba2ef3fcc"
+
+source-map@^0.6.0:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 
 source-map@~0.1.33:
   version "0.1.43"

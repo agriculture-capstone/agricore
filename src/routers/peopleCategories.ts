@@ -1,8 +1,7 @@
-import * as express from 'express';
 
 import createRouter from '@/utilities/functions/createRouter';
-import authorized from '@/middleware/authorized';
-import { UserType } from '@/models/User/UserType';
+import * as PersonCategoriesDb from '@/database/PersonCategories';
+import logger from '@/utilities/modules/logger';
 
 import { StatusCode } from '@/models/statusCodes';
 
@@ -30,7 +29,8 @@ const router = createRouter();
   }
  */
 router.get('/', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully retrieved all people categories');
-}, authorized(UserType.ADMIN));
+  const categories = await PersonCategoriesDb.getAllPeopleCategories();
+  res.status(StatusCode.OK).send(JSON.stringify(categories));
+});
 
 export default router;

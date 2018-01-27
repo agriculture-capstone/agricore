@@ -21,8 +21,8 @@ export class Server {
         logger.info(`AgriCore is running on http://localhost:${port}`);
       });
     } catch (e) {
-      logger.error('Failed to initialize application');
-      logger.error(e);
+      logger.warn('Failed to initialize application');
+      logger.error(e.message && e.stack ? `${e.message}\n${e.stack}` : e);
     }
   }
 }

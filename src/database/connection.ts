@@ -18,6 +18,7 @@ export async function connect(createConnection = knex) {
     client: process.env.DB_CLIENT,
     connection: {
       host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
       database: process.env.DB_NAME,
       user: process.env.DB_USER,
       password: process.env.DB_PASS,
@@ -32,6 +33,9 @@ export async function connect(createConnection = knex) {
 export const tableNames: Readonly<Table> = {
   USERS: 'users',
   FARMERS: 'farmer',
+  PERSON_CATEGORIES: 'personcategories',
+  PERSON_ATTRIBUTE_TYPES: 'personattributetypes',
+  PERSON_CATEGORY_ATTRIBUTES: 'personcategoryattributes',
 };
 
 /**
