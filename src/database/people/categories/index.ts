@@ -4,16 +4,23 @@ import logger from '@/utilities/modules/logger';
 const peopleCategoriesTable = () => dbConnection()(tableNames.PEOPLE_CATEGORIES);
 const peopleCategoryAttributesTable = () => dbConnection()(tableNames.PEOPLE_CATEGORY_ATTRIBUTES);
 
-interface PeopleCategory {
+interface PeopleCategoryDb {
   peoplecategoryid: number;
   peoplecategoryname: string;
 }
 
-interface PeopleCategoriesAttributes {
+interface PeopleCategoriesAttributesDb {
   peoplecategoryid: number;
   attrid: string;
   attrname: string;
 }
+
+interface PeopleCategory {
+  name: string;
+  attributes: PeopleAttributes[];
+}
+
+type PeopleAttributes = string;
 
 const builders = {
   /** QueryBuilder for getting all people categories */
@@ -42,7 +49,7 @@ const PEOPLE_ATTRIBUTES: string[] = [
   'lastModified',
 ];
 
-function formatPeopleCategories(categories: PeopleCategory[], attributes: PeopleCategoriesAttributes[]) {
+function formatPeopleCategories(categories: PeopleCategoryDb[], attributes: PeopleCategoriesAttributesDb[]): PeopleCategory[] {
   return categories.map((category) => {
     const relatedAttributes = attributes
       .filter((attribute) => {
@@ -65,8 +72,8 @@ function formatPeopleCategories(categories: PeopleCategory[], attributes: People
  * @returns {Promise<DatabaseUser>}
  */
 export async function getAllPeopleCategories() {
-  const peopleCategories = await execute<PeopleCategory[]>(builders.getPeopleCategories());
-  const categoryAttributes = await execute<PeopleCategoriesAttributes[]>(builders.getPeopleCategoryAttributes());
+  const peopleCategories = await execute<PeopleCategoryDb[]>(builders.getPeopleCategories());
+  const categoryAttributes = await execute<PeopleCategoriesAttributesDb[]>(builders.getPeopleCategoryAttributes());
   const result = formatPeopleCategories(peopleCategories, categoryAttributes); 
   logger.info(result);
   return result;
