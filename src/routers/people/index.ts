@@ -4,6 +4,7 @@ import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
 
 import { StatusCode } from '@/models/statusCodes';
+import categories from './categories';
 
 const router = createRouter();
 
@@ -152,5 +153,7 @@ router.get('/:category/:uuid', async (req, res) => {
 router.put('/:category/:uuid', async (req, res) => {
   res.status(StatusCode.OK).send('Successfully updated <category>');
 }, authorized(UserType.ADMIN));
+
+router.use('/categories', categories);
 
 export default router;
