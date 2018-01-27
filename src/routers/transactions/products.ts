@@ -12,7 +12,7 @@ const router = createRouter();
  * @apiName GetProductTransactions
  * @apiGroup Product Transactions
  * @apiVersion  0.0.1
- * @description Returns all product transactions of a specified type
+ * @apiDescription Returns all product transactions of a specified type
  *              and all their associated attributes.
  *              Guaranteed fields are:
  *                - productTransactionUuid
@@ -59,7 +59,7 @@ router.get('/:type', async (req, res) => {
  * @apiName CreateProductTransactions
  * @apiGroup Product Transactions
  * @apiVersion  0.0.1
- * @description Creates a new product transactions of a specified type.
+ * @apiDescription Creates a new product transactions of a specified type.
  *              The product transaction UUID is returned on success.
  *
  * @apiParam {String} type The type of product.
@@ -95,7 +95,7 @@ router.post('/:type', async (req, res) => {
  * @apiName UpdateProductTransaction
  * @apiGroup Product Transactions
  * @apiVersion  0.0.1
- * @description Updates a product transaction.
+ * @apiDescription Updates a product transaction.
  *                Along with any associated attributes such as density.
  *                Associated attributes can be checked via /products
  *                Returns the transaction's actual data on error.
