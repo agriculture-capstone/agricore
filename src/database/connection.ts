@@ -32,6 +32,7 @@ export async function connect(createConnection = knex) {
 export const tableNames: Readonly<Table> = {
   USERS: 'users',
   FARMERS: 'farmer',
+  PRODUCT_TYPES: 'producttypes',
 };
 
 /**
