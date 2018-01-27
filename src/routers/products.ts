@@ -9,7 +9,7 @@ import { StatusCode } from '@/models/statusCodes';
 const router = createRouter();
 
 /**
- * @api {get} /peopleCategories Get All Product Types
+ * @api {get} /products Get All Product Types
  * @apiName GetProductTypes
  * @apiGroup ProductTypes
  * @apiVersion  0.0.1
