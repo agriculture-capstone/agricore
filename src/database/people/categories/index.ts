@@ -9,8 +9,10 @@ interface PeopleCategory {
   peoplecategoryname: string;
 }
 
-interface PeopleCategoriesAndAttributes {
-  [key: string]: string[];
+interface PeopleCategoriesAttributes {
+  peoplecategoryid: number;
+  attrid: string;
+  attrname: string;
 }
 
 const builders = {
@@ -19,17 +21,43 @@ const builders = {
     return peopleCategoriesTable().select('*');
   },
   /** QueryBuilder for getting a map of all people categories and their attributes */
-  getPeopleCategoryAttributes(categoryId: number) {
+  getPeopleCategoryAttributes() {
     return peopleCategoryAttributesTable()
-      .join('peopleattributetypes', 'peoplecategoryattributes.attrid', 'peopleattributetypes.attrid')
-      .select('attrname')
-      .where({
-        personCategoryId: categoryId,
-      });
+    .select('*')
+    .join('peopleattributetypes', 'peoplecategoryattributes.attrid', 'peopleattributetypes.attrid');
   },
 };
 
 /* ***************** Exports **********************/
+
+const PEOPLE_ATTRIBUTES: string[] = [
+  'personUuid',
+  'firstName',
+  'middleName',
+  'lastName',
+  'phoneNumber',
+  'phoneArea',
+  'phoneCountry',
+  'companyName',
+  'lastModified',
+];
+
+function formatPeopleCategories(categories: PeopleCategory[], attributes: PeopleCategoriesAttributes[]) {
+  return categories.map((category) => {
+    const relatedAttributes = attributes
+      .filter((attribute) => {
+        return category.peoplecategoryid === attribute.peoplecategoryid && attribute.attrname !== 'hash';
+      })
+      .map((attribute) => {
+        return attribute.attrname;
+      });
+
+    return {
+      name: category.peoplecategoryname,
+      attributes: PEOPLE_ATTRIBUTES.concat(relatedAttributes),
+    };
+  });
+}
 
 /**
  * Get all people categories and their attributes
@@ -38,21 +66,8 @@ const builders = {
  */
 export async function getAllPeopleCategories() {
   const peopleCategories = await execute<PeopleCategory[]>(builders.getPeopleCategories());
-  const result: PeopleCategoriesAndAttributes = {};
-  peopleCategories.forEach(function (category: PeopleCategory) {
-    const attributes: string[] = [
-      'personUuid',
-      'firstName',
-      'middleName',
-      'lastName',
-      'phoneNumber',
-      'phoneArea',
-      'phoneCountry',
-      'companyName',
-      'lastModified',
-    ];
-    result[category.peoplecategoryname] = attributes;
-  });
+  const categoryAttributes = await execute<PeopleCategoriesAttributes[]>(builders.getPeopleCategoryAttributes());
+  const result = formatPeopleCategories(peopleCategories, categoryAttributes); 
   logger.info(result);
   return result;
 }

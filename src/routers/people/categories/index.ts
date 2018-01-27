@@ -15,17 +15,24 @@ const router = createRouter();
  *
  * @apiSuccess (200) {String} Success Successfully retrieved all people categories
  * @apiSuccessExample Success-Response:
-  {
-    farmer: [
-      "firstName",
-      "paymentFrequency"
-      "notes"
-    ],
-    trader: [
-      "firstName",
-      "username"
-    ]
-  }
+ * 
+  [
+    { 
+      name: "farmer",
+      attributes: [
+        "firstName",
+        "paymentFrequency",
+        "notes"
+      ]
+    },
+    {
+      name: "trader",
+      attributes: [
+        "firstName",
+        "username"
+      ]
+    }
+  ]
  */
 router.get('/', async (req, res) => {
   const categories = await PersonCategoriesDb.getAllPeopleCategories();
