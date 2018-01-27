@@ -1,5 +1,5 @@
 import { checkPassword } from '@/services/authentication/password';
-import { findUser } from '@/database/User';
+import { findUser } from '@/database/Person';
 import { createToken } from '@/services/authentication/token';
 import logger from '@/utilities/modules/logger';
 import { AuthError } from '@/errors/AuthError';

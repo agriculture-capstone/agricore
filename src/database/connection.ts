@@ -32,8 +32,9 @@ export async function connect(createConnection = knex) {
 /** Names of tables in the database */
 export const tableNames: Readonly<Table> = {
   USERS: 'users',
-  FARMERS: 'farmer',
+  PEOPLE: 'people',
   PERSON_CATEGORIES: 'personcategories',
+  PERSON_ATTRIBUTES: 'personattributes',
   PERSON_ATTRIBUTE_TYPES: 'personattributetypes',
   PERSON_CATEGORY_ATTRIBUTES: 'personcategoryattributes',
 };

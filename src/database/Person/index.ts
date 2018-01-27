@@ -1,26 +1,32 @@
 import dbConnection, { tableNames, execute } from '../connection';
 
-const farmersTable = () => dbConnection()(tableNames.FARMERS);
-const personTable = () => dbConnection()(tableNames.FARMERS);
+const personTable = () => dbConnection()(tableNames.PEOPLE);
+const personAttributesTable = () => dbConnection()(tableNames.PERSON_ATTRIBUTES);
+const personAttributeTypesTable = () => dbConnection()(tableNames.PERSON_ATTRIBUTE_TYPES);
 
+export interface User {
+  uuid: string;
+  username: string;
+  userType: string;
+  hash: string;
+}
 
-type PersonAttribute
-  = 'personUuid' 
-  | 'firstName' 
-  | 'middleName'
-  | 'lastName' 
-  | 'phoneNumber'
-  | 'phoneCountry'
-  | 'phoneArea' 
-  | 'companyName';
+const builders = {
+  getAttrId(attribute: string) {
+    return personAttributeTypesTable().select('attrid').where({
+      attribute
+    });
+  },
+  findUser(username: string) {
+    const attrvalue = username;
+    const attrid = await execute<number>(builders.getAttrId('username'));
+    return personAttributesTable().select('personUuid').where({
+      attrvalue, attrid
+    });
+  },
+}
 
-export type FarmerAttribute = PersonAttribute 
-  & 'paymentFrequency' 
-  | 'notes';
-
-export async function getFarmers(...attributes: FarmerAttribute[]) {
-  if (attributes.length === 0) {
-    const request = farmersTable().select('*'); 
-    return execute<void>(request);
-  } 
+export async function findUser(username: string) {
+  const uuid = await execute<string>(builders.findUser(username));
+  return execute<void>(request);
 }
