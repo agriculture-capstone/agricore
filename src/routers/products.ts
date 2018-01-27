@@ -29,6 +29,6 @@ const router = createRouter();
  */
 router.get('/', async (req, res) => {
   res.status(StatusCode.OK).send('Successfully retrieved all product types');
-}, authorized(UserType.ADMIN));
+});
 
 export default router;
