@@ -39,7 +39,7 @@ const router = createRouter();
   [
     {
       "productTransactionUuid": "3cad5e7c-5444-4de1-aa81-a7d15acb35f1",
-      "lastModified": "2018-01-23 04:05:06"
+      "lastModified": "2018-01-23 04:05:06.123Z"
       "datetime": "2018-01-23 04:05:06Z",
       "toPersonUuid": "1a37d70e-ea33-41fc-bff7-273fb673697b",
       "fromPersonUuid": "5bf317ab-9c19-407c-b029-cb8c83998bd0",
@@ -118,7 +118,7 @@ router.post('/:type', async (req, res) => {
  *                    All attributes must be provided in separate params.
  *
  * @apiError (400) BadRequest The following fields are invalid, ...
- *                 The product's actual data is returned in JSON format.
+ *                 The product transaction's actual data is returned in JSON format.
  * @apiError (404) NotFound The product transaction has not been found.
  *
  * @apiSuccess (200) {String} Success Successfully updated <type> transaction
