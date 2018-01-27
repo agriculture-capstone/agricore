@@ -1,4 +1,3 @@
-import * as express from 'express';
 
 import createRouter from '@/utilities/functions/createRouter';
 import authorized from '@/middleware/authorized';
