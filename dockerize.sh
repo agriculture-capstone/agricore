@@ -38,7 +38,7 @@ elif [ "$1" == "initdb" ]; then
         -p 5432:5432 \
         -d "$DB_IMAGE_NAME"
     docker cp db-init.sql agricore_db:/
-    sleep 5
+    sleep 20
     docker exec -it "$DB_CONTAINER_NAME" /bin/bash -c "psql -d $DB_NAME -U $DB_USER -c 'CREATE EXTENSION \"uuid-ossp\"'"
     docker exec -it "$DB_CONTAINER_NAME" /bin/bash -c "psql -d $DB_NAME -U $DB_USER -c '\i db-init.sql'"
     echo "Database container started"

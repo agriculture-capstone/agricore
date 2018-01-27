@@ -57,7 +57,7 @@ export async function execute<T>(qb: knex.QueryBuilder): Promise<T> {
   );
   // Generic logging message to hide sensitive information from logs
   promise.catch((err) => {
-    logger.error('Database error has occurred');
+    logger.error('Database error has occurred: ' + err.message);
   });
 
   return promise;
