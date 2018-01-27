@@ -20,6 +20,9 @@ interface PeopleCategory {
   attributes: PeopleAttributes[];
 }
 
+/**
+ * Type for people attributes
+ */
 type PeopleAttributes = string;
 
 const builders = {
