@@ -1,7 +1,6 @@
 
 import createRouter from '@/utilities/functions/createRouter';
-import * as PeopleCategoriesDb from '@/database/people/categories';
-import logger from '@/utilities/modules/logger';
+import * as PersonCategoriesDb from '@/database/people/categories';
 
 import { StatusCode } from '@/models/statusCodes';
 
@@ -9,7 +8,7 @@ const router = createRouter();
 
 /**
  * @api {get} /categories Get All People Categories
- * @apiName GetCategories
+ * @apiName GetPeopleCategories
  * @apiGroup People
  * @apiVersion  0.0.1
  * @apiDescription Returns all categories of people and their associated attributes
@@ -29,7 +28,7 @@ const router = createRouter();
   }
  */
 router.get('/', async (req, res) => {
-  const categories = await PeopleCategoriesDb.getAllPeopleCategories();
+  const categories = await PersonCategoriesDb.getAllPeopleCategories();
   res.status(StatusCode.OK).send(JSON.stringify(categories));
 });
 

@@ -1,6 +1,5 @@
 import * as knex from 'knex';
 
-import Table from '@/models/database/Table';
 import logger from '@/utilities/modules/logger';
 
 /*
@@ -36,7 +35,10 @@ export const tableNames = {
   PEOPLE_CATEGORIES: 'peoplecategories',
   PEOPLE_ATTRIBUTE_TYPES: 'peopleattributetypes',
   PEOPLE_CATEGORY_ATTRIBUTES: 'peoplecategoryattributes',
+  PRODUCT_TYPES: 'producttypes',
+  PRODUCT_ATTRIBUTE_TYPES: 'producttypetransactionattributes',
 };
+
 
 /**
  * Execute a QueryBuilder and normalize result to an ES6 promise
