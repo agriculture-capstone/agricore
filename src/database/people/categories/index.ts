@@ -38,8 +38,6 @@ const builders = {
   },
 };
 
-/* ***************** Exports **********************/
-
 const PEOPLE_ATTRIBUTES: string[] = [
   'personUuid',
   'firstName',
@@ -69,6 +67,9 @@ function formatPeopleCategories(categories: PeopleCategoryDb[], attributes: Peop
   });
 }
 
+
+/* ***************** Exports **********************/
+
 /**
  * Get all people categories and their attributes
  *
@@ -78,6 +79,6 @@ export async function getAllPeopleCategories() {
   const peopleCategories = await execute<PeopleCategoryDb[]>(builders.getPeopleCategories());
   const categoryAttributes = await execute<PeopleCategoriesAttributesDb[]>(builders.getPeopleCategoryAttributes());
   const result = formatPeopleCategories(peopleCategories, categoryAttributes); 
-  logger.info(result);
+  
   return result;
 }
