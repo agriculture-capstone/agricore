@@ -32,9 +32,11 @@ export async function connect(createConnection = knex) {
 export const tableNames = {
   USERS: 'users',
   FARMERS: 'farmer',
+  PEOPLE: 'people',
   PRODUCT_TYPES: 'producttypes',
   PRODUCT_ATTRIBUTE_TYPES: 'producttypetransactionattributes',
   PERSON_CATEGORIES: 'personcategories',
+  PERSON_ATTRIBUTES: 'personattributes',
   PERSON_ATTRIBUTE_TYPES: 'personattributetypes',
   PERSON_CATEGORY_ATTRIBUTES: 'personcategoryattributes',
 };
@@ -55,7 +57,7 @@ export async function execute<T>(qb: knex.QueryBuilder): Promise<T> {
   );
   // Generic logging message to hide sensitive information from logs
   promise.catch((err) => {
-    logger.error('Database error has occurred');
+    logger.error('Database error has occurred', err.message);
   });
 
   return promise;

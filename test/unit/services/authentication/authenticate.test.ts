@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { createSandbox, assert, SinonStub } from 'sinon';
 
 import { authenticate } from '@/services/authentication/authenticate';
-import * as UserDb from '@/database/User';
+import * as UserDb from '@/database/Person';
 import * as TokenAuth from '@/services/authentication/token';
 import * as PasswordAuth from '@/services/authentication/password';
 import { DatabaseUser } from '@/models/User';
