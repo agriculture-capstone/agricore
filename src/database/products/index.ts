@@ -71,6 +71,6 @@ export async function getProductTypes() {
   const types = await execute<ProductTypeDb[]>(builders.getProductTypes());
   const attributes = await execute<ProductAttributeDb[]>(builders.getProductAttributes());
   const response = formatProductTypes(types, attributes);
-  logger.info(response);
+  
   return response;
 }
