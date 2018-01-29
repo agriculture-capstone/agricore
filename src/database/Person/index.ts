@@ -1,8 +1,8 @@
 import dbConnection, { tableNames, execute } from '../connection';
 import { UserType } from '@/models/User/UserType';
 
-const personAttributesTable = () => dbConnection()(tableNames.PERSON_ATTRIBUTES);
-const personCategoriesTable = () => dbConnection()(tableNames.PERSON_CATEGORIES);
+const personAttributesTable = () => dbConnection()(tableNames.PEOPLE_ATTRIBUTES);
+const personCategoriesTable = () => dbConnection()(tableNames.PEOPLE_CATEGORIES);
 
 /**
  *

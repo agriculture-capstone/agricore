@@ -37,10 +37,12 @@ elif [ "$1" == "initdb" ]; then
         -e PGDATA="$DIR/data" \
         -p 5432:5432 \
         -d "$DB_IMAGE_NAME"
-    docker cp db-init.sql agricore_db:/
+    docker cp dbscripts/db-init.sql agricore_db:/
+    docker cp dbscripts/mock-data.sql agricore_db:/
     sleep 20
     docker exec -it "$DB_CONTAINER_NAME" /bin/bash -c "psql -d $DB_NAME -U $DB_USER -c 'CREATE EXTENSION \"uuid-ossp\"'"
     docker exec -it "$DB_CONTAINER_NAME" /bin/bash -c "psql -d $DB_NAME -U $DB_USER -c '\i db-init.sql'"
+    docker exec -it "$DB_CONTAINER_NAME" /bin/bash -c "psql -d $DB_NAME -U $DB_USER -c '\i mock-data.sql'"
     echo "Database container started"
 elif [ "$1" == "startdb" ]; then
     docker start "$DB_CONTAINER_NAME"
@@ -50,4 +52,5 @@ elif [ "$1" == "shelldb" ]; then
     docker exec -it "$DB_CONTAINER_NAME" psql -d "$DB_NAME" -U "$DB_USER"
 else
     echo "usage: $0 [ init | install | initdb | startdb | shelldb | stopdb | start | stop | run [args] ]"
+    exit 1
 fi
