@@ -239,7 +239,7 @@ INSERT INTO People VALUES (
 INSERT INTO People VALUES (
 	'782a5c00-3e28-4c96-b3f2-185fa90443e0',
 	0, -- farmer
-	'Brian O\'',
+	"Brian O'",
 	'',
 	'Brien',
 	'1234567',
