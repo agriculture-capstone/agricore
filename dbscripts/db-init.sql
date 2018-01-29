@@ -170,7 +170,7 @@ CREATE TABLE ProductTypeTransactionAttributes (
 	CREATE UNIQUE INDEX productAttrName_lower ON ProductTypeTransactionAttributes(lower(attrName));
 
 	-- milk
-	INSERT INTO ProductTypeTransactionAttributes VALUES(0, 0, 'milkDensityGramsPerMillilitre');
+	INSERT INTO ProductTypeTransactionAttributes VALUES(0, 0, 'milkQuality');
 
 -- TransactionAttributes
 	-- the values for the unique attributes for every transaction
