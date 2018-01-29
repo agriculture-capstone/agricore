@@ -52,4 +52,5 @@ elif [ "$1" == "shelldb" ]; then
     docker exec -it "$DB_CONTAINER_NAME" psql -d "$DB_NAME" -U "$DB_USER"
 else
     echo "usage: $0 [ init | install | initdb | startdb | shelldb | stopdb | start | stop | run [args] ]"
+    exit 1
 fi
