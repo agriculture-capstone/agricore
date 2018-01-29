@@ -3,8 +3,15 @@ import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
 
 import { StatusCode } from '@/models/statusCodes';
+import categories from './categories';
 
 const router = createRouter();
+
+/** 
+ * This should be done before the route allowing a path parameter is defined.
+ * (ie. /:category)
+ */
+router.use('/categories', categories);
 
 /**
  * @api {get} /people/ Get All People

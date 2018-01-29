@@ -32,11 +32,11 @@ export async function connect(createConnection = knex) {
 export const tableNames = {
   USERS: 'users',
   FARMERS: 'farmer',
+  PEOPLE_CATEGORIES: 'peoplecategories',
+  PEOPLE_ATTRIBUTE_TYPES: 'peopleattributetypes',
+  PEOPLE_CATEGORY_ATTRIBUTES: 'peoplecategoryattributes',
   PRODUCT_TYPES: 'producttypes',
   PRODUCT_ATTRIBUTE_TYPES: 'producttypetransactionattributes',
-  PERSON_CATEGORIES: 'personcategories',
-  PERSON_ATTRIBUTE_TYPES: 'personattributetypes',
-  PERSON_CATEGORY_ATTRIBUTES: 'personcategoryattributes',
 };
 
 

@@ -1,13 +1,13 @@
 
 import createRouter from '@/utilities/functions/createRouter';
-import * as PersonCategoriesDb from '@/database/PersonCategories';
+import * as PersonCategoriesDb from '@/database/people/categories';
 
 import { StatusCode } from '@/models/statusCodes';
 
 const router = createRouter();
 
 /**
- * @api {get} /peopleCategories Get All People Categories
+ * @api {get} /categories Get All People Categories
  * @apiName GetPeopleCategories
  * @apiGroup People
  * @apiVersion  0.0.1
@@ -15,17 +15,24 @@ const router = createRouter();
  *
  * @apiSuccess (200) {String} Success Successfully retrieved all people categories
  * @apiSuccessExample Success-Response:
-  {
-    farmer: [
-      "firstName",
-      "paymentFrequency"
-      "notes"
-    ],
-    trader: [
-      "firstName",
-      "username"
-    ]
-  }
+ * 
+  [
+    { 
+      name: "farmer",
+      attributes: [
+        "firstName",
+        "paymentFrequency",
+        "notes"
+      ]
+    },
+    {
+      name: "trader",
+      attributes: [
+        "firstName",
+        "username"
+      ]
+    }
+  ]
  */
 router.get('/', async (req, res) => {
   const categories = await PersonCategoriesDb.getAllPeopleCategories();
