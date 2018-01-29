@@ -174,7 +174,7 @@ To set up a database for the Agricore, follow the steps below. Please start from
 . Outside of the postgres shell, run the initialization commands for initializing the database.
 +
 ----
-	psql -f db-init.sql agricore_dev boresha
+	psql -f dbscripts/db-init.sql agricore_dev boresha
 ----
 . See all tables using `\dt`
 
