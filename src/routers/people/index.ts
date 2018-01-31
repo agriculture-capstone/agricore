@@ -1,52 +1,19 @@
 import createRouter from '@/utilities/functions/createRouter';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
+import * as PeopleDb from '@/database/people';
+import logger from '@/utilities/modules/logger';
 
 import { StatusCode } from '@/models/statusCodes';
 import categories from './categories';
 
 const router = createRouter();
 
-/** 
+/**
  * This should be done before the route allowing a path parameter is defined.
  * (ie. /:category)
  */
 router.use('/categories', categories);
-
-/**
- * @api {get} /people/ Get All People
- * @apiName GetPeople
- * @apiGroup People
- * @apiVersion  0.0.1
- * @apiDescription Returns all people and all their associated attributes and values.
- *              The only guaranteed field is a 'personUuid', 'category', and 'lastModified'.
- *              Parameters have no effect on this request.
- *
- * @apiError (403) Forbidden Current user type does not have sufficient privileges.
- *
- * @apiSuccess (200) {String} Success Successfully retrieved all people
- * @apiSuccessExample Success-Response:
-  [
-    {
-      "personUuid": "1e167b81-d816-497b-8c0c-36f4d6b2fd33",
-      "category": "farmers",
-      "lastModified": "2018-01-23 04:05:06.123Z"
-      "firstName": "Zachariah",
-      "paymentFrequency": "weekly",
-      "notes": "Brother of Moses",
-    },
-    {
-      "personUuid": "4b3f23a3-04c4-468f-bdf5-f189a34d9f69",
-      "category": "trader",
-      "lastModified": "2018-01-23 04:05:06.123Z"
-      "firstName": "Mary",
-      "username": "maryjoseph9",
-    }
-  ]
- */
-router.get('/', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully retrieved all people');
-}, authorized(UserType.ADMIN));
 
 /**
  * @api {get} /people/:category Get All People in Category
@@ -83,7 +50,8 @@ router.get('/', async (req, res) => {
   ]
  */
 router.get('/:category', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully retrieved all people of category <something>');
+  const result = await PeopleDb.getPeople(req.params.category);
+  res.status(StatusCode.OK).send(result);
 }, authorized(UserType.ADMIN));
 
 /**
