@@ -39,6 +39,7 @@
     "concurrently": "node_modules/.bin/concurrently -k -p \"[{name}]\" -n \"Webpack,Node\" -c \"cyan.bold,green.bold\""
   },
   "dependencies": {
+    "@types/ramda": "^0.25.16",
     "bcrypt": "1.0.3",
     "body-parser": "1.18.0",
     "compression": "1.7.0",
