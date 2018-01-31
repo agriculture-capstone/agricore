@@ -1,7 +1,7 @@
-
 import createRouter from '@/utilities/functions/createRouter';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
+import * as ProductTransactionsDb from '@/database/ProductTransactions';
 
 import { StatusCode } from '@/models/statusCodes';
 
@@ -38,6 +38,7 @@ const router = createRouter();
   [
     {
       "productTransactionUuid": "3cad5e7c-5444-4de1-aa81-a7d15acb35f1",
+      "productUnits": "liters",
       "lastModified": "2018-01-23 04:05:06.123Z"
       "datetime": "2018-01-23 04:05:06Z",
       "toPersonUuid": "1a37d70e-ea33-41fc-bff7-273fb673697b",
@@ -51,6 +52,7 @@ const router = createRouter();
   ]
  */
 router.get('/:type', async (req, res) => {
+  await ProductTransactionsDb.getProductTransactions('milk');
   res.status(StatusCode.OK).send('Successfully retrieved all product <type> transactions');
 }, authorized(UserType.ADMIN));
 
