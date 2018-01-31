@@ -1,6 +1,6 @@
 import dbConnection, { tableNames, execute } from '../connection';
-import logger from '@/utilities/modules/logger';
-import * as ProductTypesDb from '@/database/products';
+
+const R = require('ramda');
 
 const productTransactionsTable = () => dbConnection()(tableNames.PRODUCT_TRANSACTIONS);
 const productTransactionsAttributesTable = () => dbConnection()(tableNames.PRODUCT_TRANSACTION_ATTRIBUTES);
@@ -9,21 +9,37 @@ const productTransactionsAttributesTable = () => dbConnection()(tableNames.PRODU
  * Represents a product transaction, except for it's typeid
  */
 interface ProductTransactionDb {
-  producttransactionuuid: string
-  productunits: string
-  datetime: string
-  topersonuuid: string
-  frompersonuuid: string
-  amountofproduct: number
-  costperunit: number
-  currency: string
-  lastmodified: string
+  producttransactionuuid: string;
+  productunits: string;
+  datetime: string;
+  topersonuuid: string;
+  frompersonuuid: string;
+  amountofproduct: number;
+  costperunit: number;
+  currency: string;
+  lastmodified: string;
 }
 
 interface ProductTransactionAttribute {
-  producttransactionuuid: string
-  attrName: string
-  attrValue: string
+  producttransactionuuid: string;
+  attrname: string;
+  attrvalue: string;
+}
+
+interface ProductTransaction {
+  uuid: string;
+  productUnits: string;
+  datetime: string;
+  toPersonUuid: string;
+  fromPersonUuid: string;
+  amountOfProduct: number;
+  costPerUnit: number;
+  currency: string;
+  lastModified: string;
+}
+
+interface MilkTransaction extends ProductTransaction {
+  milkQuality: string;
 }
 
 const builders = {
@@ -36,7 +52,7 @@ const builders = {
     .where({ productname });
   },
 
- /* get all attributes and vlues for a certain type */
+  /** get all attributes and their values for a products certain type */
   getProductTransactionsAttributeValues(productname: string) {
     return productTransactionsAttributesTable().select('producttransactionuuid', 'attrname', 'attrvalue')
     .join(tableNames.PRODUCT_TYPE_TRANSACTION_ATTRIBUTES,
@@ -46,41 +62,36 @@ const builders = {
         tableNames.PRODUCT_TYPE_TRANSACTION_ATTRIBUTES + '.producttypeid',
         tableNames.PRODUCT_TYPES + '.producttypeid')
     .where({ productname });
-  }
+  },
 };
 
 /** Get all product transactions of a certain type */
-export async function getProductTransactions(productType: string): Promise<Map<string, string|number>[]> {
+export async function getProductTransactions(productType: string): Promise<ProductTransaction[]> {
   const transactions = await execute<ProductTransactionDb[]>(builders.getProductTransactions(productType));
-  logger.info('resultNoAttr', transactions);
-  const resultsNoAttr: Map<string, string|number>[] = [];
-  transactions.forEach(function(transaction) {
-    const jsonTransaction = new Map<string, string|number> ();
-    jsonTransaction.set('productTransactionUuid', transaction.producttransactionuuid);
-    jsonTransaction.get('productTransactionUuid');
-    logger.info('jsonTransaction.keys()', jsonTransaction.keys());
-    jsonTransaction.set('productUnits', transaction.productunits);
-    jsonTransaction.set('datetime', transaction.datetime);
-    jsonTransaction.set('toPersonUuid', transaction.topersonuuid);
-    jsonTransaction.set('fromPersonUuid', transaction.frompersonuuid);
-    jsonTransaction.set('amountOfProduct', transaction.amountofproduct);
-    jsonTransaction.set('costPerUnit', transaction.costperunit);
-    jsonTransaction.set('currency', transaction.currency);
-    jsonTransaction.set('lastModified', transaction.lastmodified);
-    resultsNoAttr.push(jsonTransaction)
-  });
-  logger.info('resultsNoAttr', resultsNoAttr);
-
   const attrValues = await execute<ProductTransactionAttribute[]>(builders.getProductTransactionsAttributeValues(productType));
-  const result = resultsNoAttr.map(function(item){
-      let newItem : Map<string, string|number> = item;
-      attrValues.forEach(function(value) {
-        if(item.get('producttransactionuuid') === value.producttransactionuuid) {
-          newItem.set(value.attrName, value.attrValue);
-        }
-      })
-      return newItem
-  });
-  logger.info("result is ", result);
-  return
+  const results : ProductTransaction[] = [];
+  if (productType === 'milk') {
+    transactions.forEach(function (item) {
+      const isMatchingUuid = R.propEq('producttransactionuuid', item.producttransactionuuid);
+      const isMilkQualityAttr = R.propEq('attrname', 'milkQuality');
+      const milkQualityAttr = R.find(R.allPass([isMatchingUuid, isMilkQualityAttr]))(attrValues);
+
+      const milkTransaction : MilkTransaction = {
+        uuid: item.producttransactionuuid,
+        productUnits: item.productunits,
+        datetime: item.datetime,
+        toPersonUuid: item.topersonuuid,
+        fromPersonUuid: item.frompersonuuid,
+        amountOfProduct: item.amountofproduct,
+        costPerUnit: item.costperunit,
+        currency: item.currency,
+        lastModified: item.lastmodified,
+        milkQuality: milkQualityAttr.attrvalue,
+      };
+      results.push(milkTransaction);
+    });
+  } else {
+    throw new Error('Unsupported product type ' + productType);
+  }
+  return results;
 }

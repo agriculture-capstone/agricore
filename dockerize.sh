@@ -16,7 +16,7 @@ if [ "$1" == "init" ]; then
 elif [ "$1" == "install" ]; then
     docker run --rm \
         --volume "$DIR":"$DOCKER_HOME" \
-        "$IMAGE_NAME" yarn add ramda
+        "$IMAGE_NAME" yarn install --frozen-lockfile
 elif [ "$1" == "start" ]; then
     docker kill "$CONTAINER_NAME"
     docker run --rm \

@@ -52,9 +52,9 @@ const router = createRouter();
   ]
  */
 router.get('/:type', async (req, res) => {
-  await ProductTransactionsDb.getProductTransactions('milk');
-  res.status(StatusCode.OK).send('Successfully retrieved all product <type> transactions');
-}, authorized(UserType.ADMIN));
+  const result = await ProductTransactionsDb.getProductTransactions('milk');
+  res.status(StatusCode.OK).send(result);
+});
 
 /**
  * @api {post} /transactions/products/:type Create Product Transactions

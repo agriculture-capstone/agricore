@@ -1,5 +1,4 @@
 import dbConnection, { tableNames, execute } from '../connection';
-import logger from '@/utilities/modules/logger';
 
 const productTypesTable = () => dbConnection()(tableNames.PRODUCT_TYPES);
 const productTypesAttributesTable = () => dbConnection()(tableNames.PRODUCT_ATTRIBUTE_TYPES);

@@ -1,5 +1,4 @@
 import dbConnection, { tableNames, execute } from '../../connection';
-import logger from '@/utilities/modules/logger';
 
 const peopleCategoriesTable = () => dbConnection()(tableNames.PEOPLE_CATEGORIES);
 const peopleCategoryAttributesTable = () => dbConnection()(tableNames.PEOPLE_CATEGORY_ATTRIBUTES);
