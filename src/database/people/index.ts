@@ -1,16 +1,17 @@
 import dbConnection, { tableNames, execute } from '../connection';
 
-const R = require('ramda');
+import * as R from 'ramda';
 
 const peopleTable = () => dbConnection()(tableNames.PEOPLE);
 const peopleAttributesTable = () => dbConnection()(tableNames.PEOPLE_ATTRIBUTES);
 
 /**
- * Represents a product transaction, except for it's typeid
+ * Represents a person in the database
  */
 interface PersonDb {
   personuuid: string;
   peoplecategoryid: number;
+  peoplecategoryname: string;
   firstname: string;
   middlename: string;
   lastname: string;
@@ -21,8 +22,21 @@ interface PersonDb {
   lastmodified: string;
 }
 
+/**
+ * Represents a person attribute in the database
+ */
+interface PeopleAttributeDb {
+  personuuid: string;
+  attrname: string;
+  attrvalue: string;
+}
+
+/**
+ * Represents a person returned in the API
+ */
 interface Person {
   uuid: string;
+  peopleCategory: string;
   firstName: string;
   middleName: string;
   lastName: string;
@@ -37,14 +51,8 @@ interface Person {
   notes?: string;
 }
 
-interface PeopleAttribute {
-  personuuid: string;
-  attrname: string;
-  attrvalue: string;
-}
-
 const builders = {
-  /** Get all product transactions of a certain type */
+  /** Get all people of a certain type */
   getPeople(peoplecategoryname: string) {
     return peopleTable().select('*')
     .join(tableNames.PEOPLE_CATEGORIES,
@@ -53,7 +61,7 @@ const builders = {
     .where({ peoplecategoryname });
   },
 
-  /** get all attributes and their values for a products certain type */
+  /** get all attributes and their values for people of a certain type */
   getPeopleAttributeValues(peoplecategoryname: string) {
     return peopleAttributesTable().select('personuuid', 'attrname', 'attrvalue')
     .join(tableNames.PEOPLE_ATTRIBUTE_TYPES,
@@ -72,7 +80,7 @@ const builders = {
 /** Get all people of a certain category */
 export async function getPeople(personCategory: string): Promise<Person[]> {
   const people = await execute<PersonDb[]>(builders.getPeople(personCategory));
-  const attrValues = await execute<PeopleAttribute[]>(builders.getPeopleAttributeValues(personCategory));
+  const attrValues = await execute<PeopleAttributeDb[]>(builders.getPeopleAttributeValues(personCategory));
   const results : Person[] = [];
 
   people.forEach(function (item) {
@@ -89,6 +97,7 @@ export async function getPeople(personCategory: string): Promise<Person[]> {
 
     const person : Person = {
       uuid: item.personuuid,
+      peopleCategory: item.peoplecategoryname,
       firstName: item.firstname,
       middleName: item.middlename,
       lastName: item.lastname,
