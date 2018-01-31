@@ -9,7 +9,7 @@ const peopleAttributesTable = () => dbConnection()(tableNames.PEOPLE_ATTRIBUTES)
  * Represents a product transaction, except for it's typeid
  */
 interface PersonDb {
-  personuuid: string
+  personuuid: string;
   peoplecategoryid: number;
   firstname: string;
   middlename: string;
@@ -99,13 +99,13 @@ export async function getPeople(personCategory: string): Promise<Person[]> {
       lastModified: item.lastmodified,
     };
 
-    if(notesAttr) {
+    if (notesAttr) {
       person.notes = notesAttr.attrvalue;
     }
-    if(paymentFrequencyAttr) {
+    if (paymentFrequencyAttr) {
       person.paymentFrequency = paymentFrequencyAttr.attrvalue;
     }
-    if(usernameAttr) {
+    if (usernameAttr) {
       person.username = usernameAttr.attrvalue;
     }
 

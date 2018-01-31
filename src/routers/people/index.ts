@@ -2,7 +2,6 @@ import createRouter from '@/utilities/functions/createRouter';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
 import * as PeopleDb from '@/database/people';
-import logger from '@/utilities/modules/logger';
 
 import { StatusCode } from '@/models/statusCodes';
 import categories from './categories';
