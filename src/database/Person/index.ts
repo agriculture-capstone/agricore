@@ -1,8 +1,8 @@
 import dbConnection, { tableNames, execute } from '../connection';
 import { UserType } from '@/models/User/UserType';
 
-const personAttributesTable = () => dbConnection()(tableNames.PEOPLE_ATTRIBUTES);
-const personCategoriesTable = () => dbConnection()(tableNames.PEOPLE_CATEGORIES);
+const peopleAttributesTable = () => dbConnection()(tableNames.PEOPLE_ATTRIBUTES);
+const peopleCategoriesTable = () => dbConnection()(tableNames.PEOPLE_CATEGORIES);
 
 /**
  *
@@ -26,14 +26,14 @@ interface PersonUuid {
 
 interface PersonCategoryName {
   [key:string]: any;
-  personcategoryname: string;
+  peoplecategoryname: string;
 }
 
 const builders = {
-  /** Get a person's atribute from their UUID */
+  /** Get a people's atribute from their UUID */
   getAttr(personuuid: string, attrname: string) {
-    return personAttributesTable().select('attrvalue')
-    .join('personattributetypes', 'personattributetypes.attrid', 'personattributes.attrid')
+    return peopleAttributesTable().select('attrvalue')
+    .join('peopleattributetypes', 'peopleattributetypes.attrid', 'peopleattributes.attrid')
     .where({ attrname, personuuid });
   },
 
@@ -41,15 +41,15 @@ const builders = {
   findUserUuid(username: string) {
     const attrname = 'username';
     const attrvalue = username;
-    return personAttributesTable().select('personuuid')
-    .join('personattributetypes', 'personattributetypes.attrid', 'personattributes.attrid')
+    return peopleAttributesTable().select('personuuid')
+    .join('peopleattributetypes', 'peopleattributetypes.attrid', 'peopleattributes.attrid')
     .where({ attrname, attrvalue });
   },
 
-  /** Get a person's PeoplCategory from their Uuid */
+  /** Get a people's PeoplCategory from their Uuid */
   getPersonCategory(personuuid: string) {
-    return personCategoriesTable().select('personcategoryname')
-    .join('people', 'people.personcategoryid', 'personcategories.personcategoryid')
+    return peopleCategoriesTable().select('peoplecategoryname')
+    .join('people', 'people.peoplecategoryid', 'peoplecategories.peoplecategoryid')
     .where({ personuuid });
   },
 };
@@ -93,7 +93,7 @@ export async function findUser(username: string): Promise<User> {
   return {
     uuid,
     username,
-    userType: buildUserType(userTypeResults[0].personcategoryname),
+    userType: buildUserType(userTypeResults[0].peoplecategoryname),
     hash: hashResults[0].attrvalue,
   };
 }

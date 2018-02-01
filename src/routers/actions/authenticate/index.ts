@@ -40,8 +40,8 @@ router.post('/', (req, res) => {
       res.sendStatus(StatusCode.UNAUTHORIZED);
     })
     // Authorized
-    .then((token) => {
-      res.status(StatusCode.OK).json({ token });
+    .then((tokenAndUuid) => {
+      res.status(StatusCode.OK).json(tokenAndUuid);
     })
     // Server error
     .catch((err) => {
