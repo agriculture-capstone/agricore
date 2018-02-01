@@ -10,6 +10,7 @@ const productTransactionsAttributesTable = () => dbConnection()(tableNames.PRODU
  */
 interface ProductTransactionDb {
   producttransactionuuid: string;
+  productname: string;
   productunits: string;
   datetime: string;
   topersonuuid: string;
@@ -20,7 +21,7 @@ interface ProductTransactionDb {
   lastmodified: string;
 }
 
-interface ProductTransactionAttribute {
+interface ProductTransactionAttributeDb {
   producttransactionuuid: string;
   attrname: string;
   attrvalue: string;
@@ -28,6 +29,7 @@ interface ProductTransactionAttribute {
 
 interface ProductTransaction {
   uuid: string;
+  productType: string;
   productUnits: string;
   datetime: string;
   toPersonUuid: string;
@@ -37,7 +39,7 @@ interface ProductTransaction {
   currency: string;
   lastModified: string;
 
-  milkQuality?: string
+  milkQuality?: string;
 }
 
 const builders = {
@@ -66,7 +68,7 @@ const builders = {
 /** Get all product transactions of a certain type */
 export async function getProductTransactions(productType: string): Promise<ProductTransaction[]> {
   const transactions = await execute<ProductTransactionDb[]>(builders.getProductTransactions(productType));
-  const attrValues = await execute<ProductTransactionAttribute[]>(builders.getProductTransactionsAttributeValues(productType));
+  const attrValues = await execute<ProductTransactionAttributeDb[]>(builders.getProductTransactionsAttributeValues(productType));
   const results : ProductTransaction[] = [];
 
   transactions.forEach(function (item) {
@@ -77,6 +79,7 @@ export async function getProductTransactions(productType: string): Promise<Produ
 
     const transaction : ProductTransaction = {
       uuid: item.producttransactionuuid,
+      productType: item.productname,
       productUnits: item.productunits,
       datetime: item.datetime,
       toPersonUuid: item.topersonuuid,
@@ -87,7 +90,7 @@ export async function getProductTransactions(productType: string): Promise<Produ
       lastModified: item.lastmodified,
     };
 
-    if(milkQualityAttr) {
+    if (milkQualityAttr) {
       transaction.milkQuality = milkQualityAttr.attrvalue;
     }
 
