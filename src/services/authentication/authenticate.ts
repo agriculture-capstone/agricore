@@ -17,7 +17,9 @@ export async function authenticate(username: string, password: string) {
   const user = await findUser(username);
   const authenticated = await checkPassword(password, user.hash);
   if (authenticated) {
-    return createToken(user.username, user.userType);
+    const token = await createToken(user.username, user.userType);
+    const uuid = user.uuid;
+    return { token, uuid };
   } else {
     logger.error(`User '${user.username}' not authenticated`);
     throw new AuthError();
