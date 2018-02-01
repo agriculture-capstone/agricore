@@ -268,7 +268,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-09-29 20:00:04.596Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'0464e508-31fa-4c47-ab2d-56496c6518e4',
 		0, -- milkQuality
 		'242.4'
@@ -285,7 +285,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-10-29 19:26:12.731Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'174c5003-49c0-4a32-b5f8-1057ce3d8419',
 		0, -- milkQuality
 		'492.6'
@@ -302,7 +302,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-11-02 13:57:50.886Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'af7afeae-e0fb-42f7-9d12-f814fcb9371f',
 		0, -- milkQuality
 		'346.2'
@@ -318,7 +318,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-12-23 15:00:23.903Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'caf5068f-ee0e-43d8-8956-fcb3a3a58c8c',
 		0, -- milkQuality
 		'112.6'
@@ -334,7 +334,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-08-02 21:24:47.363Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'45faa895-928d-48de-a0b3-728e3d7a80ea',
 		0, -- milkQuality
 		'430.2'
@@ -350,7 +350,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-12-07 08:28:52.812Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'0d72dd94-c037-46e5-bcbf-1106539fa8ac',
 		0, -- milkQuality
 		'154'
@@ -366,7 +366,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-08-31 03:50:59.608Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'b68f3fc2-2ef2-4fef-8c89-24cbb1d2334c',
 		0, -- milkQuality
 		'327.4'
@@ -382,7 +382,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-09-11 13:33:42.792Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'64b1c40a-8e61-48c5-87a4-2beb575a22b9',
 		0, -- milkQuality
 		'148.1'
@@ -398,7 +398,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-12-14 05:51:15.705Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'dd85aed6-719a-48e3-a6f9-40658172ed49',
 		0, -- milkQuality
 		'121.4'
@@ -414,7 +414,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-10-15 10:19:51.643Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'8277c06f-d259-4313-ab3b-8d682a05c8c9',
 		0, -- milkQuality
 		'247.2'
@@ -430,7 +430,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-10-27 22:35:09.735Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'69543194-5aea-426b-9610-2f4e39c7be42',
 		0, -- milkQuality
 		'218.1'
@@ -446,7 +446,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-11-30 15:04:59.777Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'3254d698-b2f8-4ca8-b377-1cf7f50eac30',
 		0, -- milkQuality
 		'133.6'
@@ -462,7 +462,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-08-09 11:41:14.452Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'303c853b-ebe9-4658-894e-c239b06612d3',
 		0, -- milkQuality
 		'406.1'
@@ -478,7 +478,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-11-20 03:15:36.867Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'4c4ee1d9-c24e-4ebf-a6dc-f7664eeb2013',
 		0, -- milkQuality
 		'457.8'
@@ -494,7 +494,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-12-10 08:06:57.118Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'62652a80-4eff-4c70-966d-8eda744d1610',
 		0, -- milkQuality
 		'303.5'
@@ -510,7 +510,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-08-18 20:42:14.644Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'c2316352-4e39-4490-9f34-310ada16b3e0',
 		0, -- milkQuality
 		'371.2'
@@ -526,7 +526,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-10-09 19:56:46.241Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'1ce7215e-89ba-4e2f-89b7-9f758628a914',
 		0, -- milkQuality
 		'323.6'
@@ -542,7 +542,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-08-27 13:54:41.499Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'9be2752c-ddbf-436b-b65c-6d8f3227a132',
 		0, -- milkQuality
 		'169.6'
@@ -558,7 +558,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-07-14 03:50:08.938Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'46685f37-9007-4053-8b87-04ab78f0ddf4',
 		0, -- milkQuality
 		'109.6'
@@ -574,7 +574,7 @@ INSERT INTO ProductTransactions VALUES (
 	'UGX',
 	'2017-07-13 06:20:25.933Z'
 );
-	INSERT INTO ProductTransactionAttribute VALUES (
+	INSERT INTO ProductTransactionAttributes VALUES (
 		'791e1a56-6269-4595-97a2-268151bee075',
 		0, -- milkQuality
 		'176.6'
