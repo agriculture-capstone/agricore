@@ -59,6 +59,7 @@
     "source-map-support": "^0.5.3",
     "tslint-loader": "3.5.3",
     "typescript": "2.5.2",
+    "uuid": "^3.2.1",
     "winston": "2.3.1"
   },
   "devDependencies": {

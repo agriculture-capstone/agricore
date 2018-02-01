@@ -15,15 +15,16 @@ const router = createRouter();
  * @apiDescription Returns all product transactions of a specified type
  *              and all their associated attributes.
  *              Guaranteed fields are:
- *                - productTransactionUuid
- *                - lastModified
- *                - datetime
- *                - toPersonUuid
- *                - fromPersonUuid
- *                - amountOfProduct
- *                - productUnits
- *                - costPerUnit
- *                - currency
+ *                = uuid
+ *                = productType
+ *                = productUnits
+ *                = datetime
+ *                = toPersonUuid
+ *                = fromPersonUuid
+ *                = amountOfProduct
+ *                = costPerUnit
+ *                = currency
+ *                = lastModified
  *              Parameters have no effect on this request.
  *              Associated attributes can be checked via the /products API.
  *              An example of an associated attribute would be density, as
@@ -37,17 +38,17 @@ const router = createRouter();
  * @apiSuccessExample Success-Response:
   [
     {
-      "productTransactionUuid": "3cad5e7c-5444-4de1-aa81-a7d15acb35f1",
-      "productUnits": "liters",
-      "lastModified": "2018-01-23 04:05:06.123Z"
-      "datetime": "2018-01-23 04:05:06Z",
-      "toPersonUuid": "1a37d70e-ea33-41fc-bff7-273fb673697b",
-      "fromPersonUuid": "5bf317ab-9c19-407c-b029-cb8c83998bd0",
-      "amountOfProduct": 32.2123,
-      "productUnits": "litres",
-      "costPerUnit": "22.23",
-      "currency": "UGX",
-      "density": "55",
+       "uuid":"0464e508-31fa-4c47-ab2d-56496c6518e4",
+       "productType":"milk",
+       "productUnits":"litres",
+       "datetime":"2017-01-15T00:57:43.959Z",
+       "toPersonUuid":"a293e3a5-a88d-473b-9d4a-74a2153992f6",
+       "fromPersonUuid":"ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9",
+       "amountOfProduct":995.341,
+       "costPerUnit":"14.46",
+       "currency":"UGX",
+       "lastModified":"2017-09-29T20:00:04.596Z",
+       "milkQuality":"242.4"
     }
   ]
  */
@@ -89,8 +90,31 @@ router.get('/:type', async (req, res) => {
   }
  */
 router.post('/:type', async (req, res) => {
-  res.status(StatusCode.CREATED).send('Successfully created new product <type> transaction');
-}, authorized(UserType.ADMIN));
+  const newTransaction: ProductTransactionsDb.ProductTransactionDb = {
+    producttransactionuuid: '',
+    productname: req.params.type,
+    productunits: req.body.productUnits,
+    datetime: req.body.datetime,
+    topersonuuid: req.body.toPersonUuid,
+    frompersonuuid: req.body.fromPersonUuid,
+    amountofproduct: req.body.amountOfProduct,
+    costperunit: req.body.costPerUnit,
+    currency: req.body.currency,
+    lastmodified: new Date().toISOString(),
+  };
+
+  const attributes: ProductTransactionsDb.ProductTransactionAttributeDb[] = [];
+
+  if (req.body.milkQuality) {
+    attributes.push({
+      producttransactionuuid: '',
+      attrname: 'milkQuality',
+      attrvalue: req.body.milkQuality,
+    });
+  }
+  const result = await ProductTransactionsDb.insertProductTransaction(newTransaction, attributes);
+  res.status(StatusCode.CREATED).send('Successfully created new ' + req.params.type + ' transaction');
+});
 
 /**
  * @api {put} /transactions/products/:type/:uuid Update Product Transaction
