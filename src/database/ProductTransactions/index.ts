@@ -1,18 +1,17 @@
 import dbConnection, { tableNames, execute } from '../connection';
-import logger from '@/utilities/modules/logger';
 
 import * as R from 'ramda';
 
-const productTypesTable = () => dbConnection()(tableNames.PRODUCT_TYPES);
-const productTransactionsTable = () => dbConnection()(tableNames.PRODUCT_TRANSACTIONS);
-const productTransactionsAttributesTable = () => dbConnection()(tableNames.PRODUCT_TRANSACTION_ATTRIBUTES);
-const productTypeTransactionAttributesTable = () => dbConnection()(tableNames.PRODUCT_TYPE_TRANSACTION_ATTRIBUTES);
+const prodTypesTable = () => dbConnection()(tableNames.PRODUCT_TYPES);
+const prodTransactionTable = () => dbConnection()(tableNames.PRODUCT_TRANSACTIONS);
+const prodTransactionAttrsTable = () => dbConnection()(tableNames.PRODUCT_TRANSACTION_ATTRIBUTES);
+const prodTypeTransactionAttrsTable = () => dbConnection()(tableNames.PRODUCT_TYPE_TRANSACTION_ATTRIBUTES);
 
 /**
- * Represents a product transaction, except for it's typeid
+ * Represent a product transaction after retrieval from the database
  */
-export interface ProductTransactionDb {
-  producttransactionuuid?: string;
+export interface ProdTransactionDb {
+  producttransactionuuid: string;
   productname: string;
   productunits: string;
   datetime: string;
@@ -22,9 +21,13 @@ export interface ProductTransactionDb {
   costperunit: number;
   currency: string;
   lastmodified: string;
+  attributes: ProdTransactionAttrDb[];
 }
 
-interface insertProductTransactionDb {
+/**
+ * Represent a product transaction used in an INSERT call on the database
+ */
+interface insertProdTransactionDb {
   producttypeid: string;
   datetime: string;
   topersonuuid: string;
@@ -35,31 +38,19 @@ interface insertProductTransactionDb {
   lastmodified: string;
 }
 
-export interface ProductTransactionAttributeDb {
+/**
+ * Represents a product transaction attribute in the database
+ */
+export interface ProdTransactionAttrDb {
   producttransactionuuid: string;
   attrname: string;
   attrvalue: string;
 }
 
-interface ProductTransaction {
-  uuid: string;
-  productType: string;
-  productUnits: string;
-  datetime: string;
-  toPersonUuid: string;
-  fromPersonUuid: string;
-  amountOfProduct: number;
-  costPerUnit: number;
-  currency: string;
-  lastModified: string;
-
-  milkQuality?: string;
-}
-
 const builders = {
   /** Get all product transactions of a certain type */
-  getProductTransactions(productname: string) {
-    return productTransactionsTable().select('*')
+  getProdTransaction(productname: string) {
+    return prodTransactionTable().select('*')
     .join(tableNames.PRODUCT_TYPES,
       tableNames.PRODUCT_TYPES + '.producttypeid',
       tableNames.PRODUCT_TRANSACTIONS + '.producttypeid')
@@ -67,8 +58,8 @@ const builders = {
   },
 
   /** get all attributes and their values for a products certain type */
-  getProductTransactionsAttributeValues(productname: string) {
-    return productTransactionsAttributesTable().select('producttransactionuuid', 'attrname', 'attrvalue')
+  getProdTransactionAttrValues(productname: string) {
+    return prodTransactionAttrsTable().select('producttransactionuuid', 'attrname', 'attrvalue')
     .join(tableNames.PRODUCT_TYPE_TRANSACTION_ATTRIBUTES,
         tableNames.PRODUCT_TYPE_TRANSACTION_ATTRIBUTES + '.attrid',
         tableNames.PRODUCT_TRANSACTION_ATTRIBUTES + '.attrid')
@@ -78,72 +69,58 @@ const builders = {
     .where({ productname });
   },
 
-  insertProductTransaction(transaction: insertProductTransactionDb) {
-    return productTransactionsTable()
+  insertProdTransaction(transaction: insertProdTransactionDb) {
+    return prodTransactionTable()
     .returning('producttransactionuuid')
     .insert(transaction);
   },
 
-  getAttributeId(attrname: string) {
-    return productTypeTransactionAttributesTable()
+  getAttrId(attrname: string) {
+    return prodTypeTransactionAttrsTable()
     .select('attrid')
     .where({ attrname });
   },
 
   insertAttibuteValue(producttransactionuuid: string, attrvalue: string, attrid: number) {
-    return productTransactionsAttributesTable()
+    return prodTransactionAttrsTable()
     .insert({ producttransactionuuid, attrid, attrvalue });
   },
 
-  getProductTypeId(productname: string) {
-    return productTypesTable()
+  getProdTypeId(productname: string) {
+    return prodTypesTable()
     .select('producttypeid')
     .where({ productname });
-  }
+  },
 };
 
 /** Get all product transactions of a certain type */
-export async function getProductTransactions(productType: string): Promise<ProductTransaction[]> {
-  const transactions = await execute<ProductTransactionDb[]>(builders.getProductTransactions(productType));
-  const attrValues = await execute<ProductTransactionAttributeDb[]>(builders.getProductTransactionsAttributeValues(productType));
-  const results : ProductTransaction[] = [];
+export async function getProdTransactions(productType: string): Promise<ProdTransactionDb[]> {
+  const transactions = await execute<ProdTransactionDb[]>(builders.getProdTransaction(productType));
+  const attrValues = await execute<ProdTransactionAttrDb[]>(builders.getProdTransactionAttrValues(productType));
 
   transactions.forEach(function (item) {
-    const isMatchingUuid = R.propEq('producttransactionuuid', item.producttransactionuuid);
+    item.attributes = [];
 
+    const isMatchingUuid = R.propEq('producttransactionuuid', item.producttransactionuuid);
     const isMilkQualityAttr = R.propEq('attrname', 'milkQuality');
+
     const milkQualityAttr = R.find(R.allPass([isMatchingUuid, isMilkQualityAttr]))(attrValues);
 
-    const transaction : ProductTransaction = {
-      uuid: item.producttransactionuuid,
-      productType: item.productname,
-      productUnits: item.productunits,
-      datetime: item.datetime,
-      toPersonUuid: item.topersonuuid,
-      fromPersonUuid: item.frompersonuuid,
-      amountOfProduct: item.amountofproduct,
-      costPerUnit: item.costperunit,
-      currency: item.currency,
-      lastModified: item.lastmodified,
-    };
-
     if (milkQualityAttr) {
-      transaction.milkQuality = milkQualityAttr.attrvalue;
+      item.attributes.push(milkQualityAttr);
     }
-
-    results.push(transaction);
   });
 
-  return results;
+  return transactions;
 }
 
-export async function insertProductTransaction(
-  transaction: ProductTransactionDb,
-  attributes: ProductTransactionAttributeDb[]): Promise<string> {
+export async function insertProdTransaction(
+  transaction: ProdTransactionDb,
+  attributes: ProdTransactionAttrDb[]): Promise<string> {
 
-  const productId = await builders.getProductTypeId(transaction.productname);
+  const productId = await builders.getProdTypeId(transaction.productname);
 
-  const insertTransaction: insertProductTransactionDb = {
+  const insertTransaction: insertProdTransactionDb = {
     producttypeid: productId[0].producttypeid,
     datetime: transaction.datetime,
     topersonuuid: transaction.topersonuuid,
@@ -152,12 +129,12 @@ export async function insertProductTransaction(
     costperunit: transaction.costperunit,
     currency: transaction.currency,
     lastmodified: transaction.lastmodified,
-  }
+  };
 
-  const newUuid = await builders.insertProductTransaction(insertTransaction);
+  const newUuid = await builders.insertProdTransaction(insertTransaction);
 
   attributes.forEach(async function (attr) {
-    const attrId = await builders.getAttributeId(attr.attrname);
+    const attrId = await builders.getAttrId(attr.attrname);
     await execute<any>(builders.insertAttibuteValue(newUuid[0], attr.attrvalue, attrId[0].attrid));
   });
 

@@ -1,9 +1,28 @@
 import createRouter from '@/utilities/functions/createRouter';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
-import * as ProductTransactionsDb from '@/database/ProductTransactions';
+import * as ProdTransactionsService from '@/services/ProductTransactions';
+
 
 import { StatusCode } from '@/models/statusCodes';
+
+/**
+ * Represents a product transaction in the API
+ */
+export interface ProdTransaction {
+  uuid: string;
+  productType: string;
+  productUnits: string;
+  datetime: string;
+  toPersonUuid: string;
+  fromPersonUuid: string;
+  amountOfProduct: number;
+  costPerUnit: number;
+  currency: string;
+  lastModified: string;
+
+  milkQuality?: string;
+}
 
 const router = createRouter();
 
@@ -15,16 +34,16 @@ const router = createRouter();
  * @apiDescription Returns all product transactions of a specified type
  *              and all their associated attributes.
  *              Guaranteed fields are:
- *                = uuid
- *                = productType
- *                = productUnits
- *                = datetime
- *                = toPersonUuid
- *                = fromPersonUuid
- *                = amountOfProduct
- *                = costPerUnit
- *                = currency
- *                = lastModified
+ *                - uuid
+ *                - productType
+ *                - productUnits
+ *                - datetime
+ *                - toPersonUuid
+ *                - fromPersonUuid
+ *                - amountOfProduct
+ *                - costPerUnit
+ *                - currency
+ *                - lastModified
  *              Parameters have no effect on this request.
  *              Associated attributes can be checked via the /products API.
  *              An example of an associated attribute would be density, as
@@ -53,7 +72,7 @@ const router = createRouter();
   ]
  */
 router.get('/:type', async (req, res) => {
-  const result = await ProductTransactionsDb.getProductTransactions(req.params.type);
+  const result = await ProdTransactionsService.getProdTransactionsFromDb(req.params.type);
   res.status(StatusCode.OK).send(result);
 });
 
@@ -90,29 +109,29 @@ router.get('/:type', async (req, res) => {
   }
  */
 router.post('/:type', async (req, res) => {
-  const newTransaction: ProductTransactionsDb.ProductTransactionDb = {
-    producttransactionuuid: '',
-    productname: req.params.type,
-    productunits: req.body.productUnits,
-    datetime: req.body.datetime,
-    topersonuuid: req.body.toPersonUuid,
-    frompersonuuid: req.body.fromPersonUuid,
-    amountofproduct: req.body.amountOfProduct,
-    costperunit: req.body.costPerUnit,
-    currency: req.body.currency,
-    lastmodified: new Date().toISOString(),
-  };
+  // const newTransaction: ProdTransactionsDb.ProdTransactionDb = {
+  //   producttransactionuuid: '',
+  //   productname: req.params.type,
+  //   productunits: req.body.productUnits,
+  //   datetime: req.body.datetime,
+  //   topersonuuid: req.body.toPersonUuid,
+  //   frompersonuuid: req.body.fromPersonUuid,
+  //   amountofproduct: req.body.amountOfProduct,
+  //   costperunit: req.body.costPerUnit,
+  //   currency: req.body.currency,
+  //   lastmodified: new Date().toISOString(),
+  // };
 
-  const attributes: ProductTransactionsDb.ProductTransactionAttributeDb[] = [];
+  // const attributes: ProdTransactionsDb.ProdTransactionAttrDb[] = [];
 
-  if (req.body.milkQuality) {
-    attributes.push({
-      producttransactionuuid: '',
-      attrname: 'milkQuality',
-      attrvalue: req.body.milkQuality,
-    });
-  }
-  const result = await ProductTransactionsDb.insertProductTransaction(newTransaction, attributes);
+  // if (req.body.milkQuality) {
+  //   attributes.push({
+  //     producttransactionuuid: '',
+  //     attrname: 'milkQuality',
+  //     attrvalue: req.body.milkQuality,
+  //   });
+  // }
+  // const result = await ProdTransactionsDb.insertProdTransaction(newTransaction, attributes);
   res.status(StatusCode.CREATED).send('Successfully created new ' + req.params.type + ' transaction');
 });
 
