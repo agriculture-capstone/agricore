@@ -24,6 +24,18 @@ export interface ProdTransaction {
   milkQuality?: string;
 }
 
+export interface ProdTransactionReq {
+  productType: string;
+  datetime: string;
+  toPersonUuid: string;
+  fromPersonUuid: string;
+  amountOfProduct: number;
+  costPerUnit: number;
+  currency: string;
+
+  milkQuality?: string;
+}
+
 const router = createRouter();
 
 /**
@@ -109,30 +121,22 @@ router.get('/:type', async (req, res) => {
   }
  */
 router.post('/:type', async (req, res) => {
-  // const newTransaction: ProdTransactionsDb.ProdTransactionDb = {
-  //   producttransactionuuid: '',
-  //   productname: req.params.type,
-  //   productunits: req.body.productUnits,
-  //   datetime: req.body.datetime,
-  //   topersonuuid: req.body.toPersonUuid,
-  //   frompersonuuid: req.body.fromPersonUuid,
-  //   amountofproduct: req.body.amountOfProduct,
-  //   costperunit: req.body.costPerUnit,
-  //   currency: req.body.currency,
-  //   lastmodified: new Date().toISOString(),
-  // };
+  const createReq: ProdTransactionReq = {
+    productType: req.params.type,
+    datetime: req.body.datetime,
+    toPersonUuid: req.body.toPersonUuid,
+    fromPersonUuid: req.body.fromPersonUuid,
+    amountOfProduct: req.body.amountOfProduct,
+    costPerUnit: req.body.costPerUnit,
+    currency: req.body.currency,
+  };
 
-  // const attributes: ProdTransactionsDb.ProdTransactionAttrDb[] = [];
+  if (req.body.milkQuality) {
+    createReq.milkQuality = req.body.milkQuality;
+  }
 
-  // if (req.body.milkQuality) {
-  //   attributes.push({
-  //     producttransactionuuid: '',
-  //     attrname: 'milkQuality',
-  //     attrvalue: req.body.milkQuality,
-  //   });
-  // }
-  // const result = await ProdTransactionsDb.insertProdTransaction(newTransaction, attributes);
-  res.status(StatusCode.CREATED).send('Successfully created new ' + req.params.type + ' transaction');
+  const uuid = await ProdTransactionsService.createProdTransactionsInDb(createReq);
+  res.status(StatusCode.CREATED).send({ uuid });
 });
 
 /**

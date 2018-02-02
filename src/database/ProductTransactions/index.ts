@@ -27,8 +27,8 @@ export interface ProdTransactionDb {
 /**
  * Represent a product transaction used in an INSERT call on the database
  */
-interface insertProdTransactionDb {
-  producttypeid: string;
+export interface prodTransactionDbInsertReq {
+  producttypeid: number;
   datetime: string;
   topersonuuid: string;
   frompersonuuid: string;
@@ -42,7 +42,7 @@ interface insertProdTransactionDb {
  * Represents a product transaction attribute in the database
  */
 export interface ProdTransactionAttrDb {
-  producttransactionuuid: string;
+  producttransactionuuid?: string;
   attrname: string;
   attrvalue: string;
 }
@@ -69,7 +69,7 @@ const builders = {
     .where({ productname });
   },
 
-  insertProdTransaction(transaction: insertProdTransactionDb) {
+  insertProdTransaction(transaction: prodTransactionDbInsertReq) {
     return prodTransactionTable()
     .returning('producttransactionuuid')
     .insert(transaction);
@@ -114,29 +114,21 @@ export async function getProdTransactions(productType: string): Promise<ProdTran
   return transactions;
 }
 
+/** creates a new product transaction in the database, returns the new UUID */
 export async function insertProdTransaction(
-  transaction: ProdTransactionDb,
+  req: prodTransactionDbInsertReq,
   attributes: ProdTransactionAttrDb[]): Promise<string> {
 
-  const productId = await builders.getProdTypeId(transaction.productname);
-
-  const insertTransaction: insertProdTransactionDb = {
-    producttypeid: productId[0].producttypeid,
-    datetime: transaction.datetime,
-    topersonuuid: transaction.topersonuuid,
-    frompersonuuid: transaction.frompersonuuid,
-    amountofproduct: transaction.amountofproduct,
-    costperunit: transaction.costperunit,
-    currency: transaction.currency,
-    lastmodified: transaction.lastmodified,
-  };
-
-  const newUuid = await builders.insertProdTransaction(insertTransaction);
+  const newUuid = await builders.insertProdTransaction(req);
 
   attributes.forEach(async function (attr) {
     const attrId = await builders.getAttrId(attr.attrname);
     await execute<any>(builders.insertAttibuteValue(newUuid[0], attr.attrvalue, attrId[0].attrid));
   });
 
-  return newUuid;
+  return newUuid[0];
+}
+
+export async function getProductId(productType: string): Promise<any> {
+  return await execute<number>(builders.getProdTypeId(productType));
 }

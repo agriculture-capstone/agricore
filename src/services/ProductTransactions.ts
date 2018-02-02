@@ -6,31 +6,57 @@ export async function getProdTransactionsFromDb(productType: string): Promise<ap
   const dbProdTransactions: db.ProdTransactionDb[] = await db.getProdTransactions(productType);
   const results: api.ProdTransaction[] = [];
 
-  logger.info('results', results)
+  logger.info('results', results);
 
   dbProdTransactions.forEach(function (item: db.ProdTransactionDb) {
-  	const newTransaction: api.ProdTransaction = {
-    uuid: item.producttransactionuuid,
-    productType: item.productname,
-    productUnits: item.productunits,
-    datetime: item.datetime,
-    toPersonUuid: item.topersonuuid,
-    fromPersonUuid: item.frompersonuuid,
-    amountOfProduct: item.amountofproduct,
-    costPerUnit: item.costperunit,
-    currency: item.currency,
-    lastModified: item.lastmodified,
-  	};
+    const newTransaction: api.ProdTransaction = {
+      uuid: item.producttransactionuuid,
+      productType: item.productname,
+      productUnits: item.productunits,
+      datetime: item.datetime,
+      toPersonUuid: item.topersonuuid,
+      fromPersonUuid: item.frompersonuuid,
+      amountOfProduct: item.amountofproduct,
+      costPerUnit: item.costperunit,
+      currency: item.currency,
+      lastModified: item.lastmodified,
+    };
 
-  	item.attributes.forEach(function (attr: db.ProdTransactionAttrDb) {
-  		if (attr.attrname === 'milkQuality') {
-  			newTransaction.milkQuality = attr.attrvalue;
-  		}
-  		// more if statements for other types of attributes
-  	});
+    item.attributes.forEach(function (attr: db.ProdTransactionAttrDb) {
+      if (attr.attrname === 'milkQuality') {
+        newTransaction.milkQuality = attr.attrvalue;
+      }
+      // more if statements for other types of attributes
+    });
 
-  	results.push(newTransaction);
+    results.push(newTransaction);
   });
 
   return results;
+}
+
+export async function createProdTransactionsInDb(apiReq: api.ProdTransactionReq): Promise<string> {
+  const productTypeIdResult = await db.getProductId(apiReq.productType);
+
+  const dbInsertReq: db.prodTransactionDbInsertReq = {
+    producttypeid: productTypeIdResult[0].producttypeid,
+    datetime: apiReq.datetime,
+    topersonuuid: apiReq.toPersonUuid,
+    frompersonuuid: apiReq.fromPersonUuid,
+    amountofproduct:apiReq.amountOfProduct,
+    costperunit: apiReq.costPerUnit,
+    currency: apiReq.currency,
+    lastmodified: new Date().toISOString(),
+  };
+
+  const attributes: db.ProdTransactionAttrDb[] = [];
+
+  if (apiReq.milkQuality) {
+    attributes.push({
+      attrname: 'milkQuality',
+      attrvalue: apiReq.milkQuality,
+    });
+  }
+
+  return await db.insertProdTransaction(dbInsertReq, attributes);
 }
