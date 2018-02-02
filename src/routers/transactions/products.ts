@@ -57,17 +57,17 @@ const router = createRouter();
  * @apiSuccessExample Success-Response:
   [
     {
-       "uuid":"0464e508-31fa-4c47-ab2d-56496c6518e4",
-       "productType":"milk",
-       "productUnits":"litres",
-       "datetime":"2017-01-15T00:57:43.959Z",
-       "toPersonUuid":"a293e3a5-a88d-473b-9d4a-74a2153992f6",
-       "fromPersonUuid":"ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9",
-       "amountOfProduct":995.341,
-       "costPerUnit":"14.46",
-       "currency":"UGX",
-       "lastModified":"2017-09-29T20:00:04.596Z",
-       "milkQuality":"242.4"
+      "uuid":"0464e508-31fa-4c47-ab2d-56496c6518e4",
+      "productType":"milk",
+      "productUnits":"litres",
+      "datetime":"2017-01-15T00:57:43.959Z",
+      "toPersonUuid":"a293e3a5-a88d-473b-9d4a-74a2153992f6",
+      "fromPersonUuid":"ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9",
+      "amountOfProduct":995.341,
+      "costPerUnit":"14.46",
+      "currency":"UGX",
+      "lastModified":"2017-09-29T20:00:04.596Z",
+      "milkQuality":"242.4"
     }
   ]
  */
