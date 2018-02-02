@@ -5,6 +5,7 @@ import * as PeopleDb from '@/database/people';
 
 import { StatusCode } from '@/models/statusCodes';
 import categories from './categories';
+import logger from '@/utilities/modules/logger';
 
 const router = createRouter();
 
@@ -60,11 +61,11 @@ router.get('/:category', async (req, res) => {
  * @apiVersion  0.0.1
  * @apiDescription Creates a new person in the specified category.
  *                 Returns the UUID created for that person.
- *                 Requires all associated attributes given in /peopleCategories
+ *                 Requires all associated attributes given in /people/categories
  *
  * @apiParam {String} category Specify the category of people to retrieve.
  * @apiParam {String} attributes An attribute of a person with its value.
- *                    All necessary attributes can be checked in the /peopleCategories API.
+ *                    All necessary attributes can be checked in the /people/categories API.
  *                    All attributes must be provided in separate params.
  *
  * @apiError (400) BadRequest Missing or invalid fields, ...
@@ -75,7 +76,16 @@ router.get('/:category', async (req, res) => {
  * { personUuid: "1e167b81-d816-497b-8c0c-36f4d6b2fd33" }
  */
 router.post('/:category', async (req, res) => {
-  res.status(StatusCode.CREATED).send('Successfully created new <category>');
+  const requestParams = req.body; 
+  // convert to lower case keys
+  let response: any;
+  try {
+    response = await PeopleDb.insertPerson(req.params.category, req.body);
+  } catch (e) {
+    logger.error(e.message && e.stack ? `${e.message}\n${e.stack}` : e);
+  }
+  res.status(StatusCode.CREATED).send(response);
+  
 }, authorized(UserType.ADMIN));
 
 /**

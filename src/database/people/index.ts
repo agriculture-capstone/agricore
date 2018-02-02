@@ -4,6 +4,8 @@ import * as R from 'ramda';
 
 const peopleTable = () => dbConnection()(tableNames.PEOPLE);
 const peopleAttributesTable = () => dbConnection()(tableNames.PEOPLE_ATTRIBUTES);
+const peopleCategories = () => dbConnection()(tableNames.PEOPLE_CATEGORIES);
+const peopleCategoryAttributes = () => dbConnection()(tableNames.PEOPLE_CATEGORY_ATTRIBUTES);
 
 /**
  * Represents a person in the database
@@ -75,6 +77,23 @@ const builders = {
         tableNames.PEOPLE_CATEGORY_ATTRIBUTES + '.peoplecategoryid')
     .where({ peoplecategoryname });
   },
+  getCategoryId(name: string) {
+    return peopleCategories().select('peoplecategoryid')
+      .where('peoplecategoryname',name);
+  },
+  getPeopleCategoryAttributes(categoryName: string) {
+    return peopleCategoryAttributes().select('*')
+      .join(tableNames.PEOPLE_ATTRIBUTE_TYPES, 
+        tableNames.PEOPLE_ATTRIBUTE_TYPES + '.attrid', tableNames.PEOPLE_CATEGORY_ATTRIBUTES + '.attrid')
+      .join(tableNames.PEOPLE_CATEGORIES,
+        tableNames.PEOPLE_CATEGORIES + '.peoplecategoryid', tableNames.PEOPLE_CATEGORY_ATTRIBUTES + '.peoplecategoryid')
+      .where('peoplecategoryname', categoryName);
+  },
+  insertPerson(params: PersonDb) {
+    return peopleTable()
+    .insert(params)
+    .returning('personuuid');
+  },
 };
 
 /** Get all people of a certain category */
@@ -108,17 +127,84 @@ export async function getPeople(personCategory: string): Promise<Person[]> {
       lastModified: item.lastmodified,
     };
 
-    if (notesAttr) {
+    if (notesAttr !== undefined) {
       person.notes = notesAttr.attrvalue;
     }
-    if (paymentFrequencyAttr) {
+    if (paymentFrequencyAttr !== undefined) {
       person.paymentFrequency = paymentFrequencyAttr.attrvalue;
     }
-    if (usernameAttr) {
+    if (usernameAttr !== undefined) {
       person.username = usernameAttr.attrvalue;
     }
 
     results.push(person);
   });
   return results;
+}
+
+const PERSON_PROPERTIES = [
+  'firstname', 
+  'middlename', 'lastname', 'phonenumber', 
+  'phonearea', 'phonecountry', 'companyname'];
+
+interface test {
+  attrname: string;
+}
+
+function generateParamsLower(originalObject: any, list1: string[], list2: string[]) {
+  const obj1 = {} as any;
+  const obj2 = {} as any;
+  
+  let key: string = '';
+  const keys = Object.keys(originalObject); 
+  let n = keys.length; 
+
+  while (n--) {
+    key = keys[n]; 
+    if (list1.indexOf(key) >= 0) {
+      obj1[key.toLowerCase()] = originalObject[key];
+    } else if (list2.indexOf(key) >= 0) {
+      obj2[key.toLowerCase()] = originalObject[key];
+    }
+  }
+  return {
+    obj1,
+    obj2,
+  };
+}
+
+export async function insertPerson(peopleCategoryName: string, params: any): Promise<any>  {
+  const response = await execute<test[]>(builders.getPeopleCategoryAttributes(peopleCategoryName)); 
+  const attributes = response.map((attribute) => { return attribute.attrname.toLowerCase(); });
+  
+  // Convert keys to lower case keys 
+  const { obj1: personParamsLower, obj2: dynamicParametersLower } = generateParamsLower(params, PERSON_PROPERTIES, attributes) as any;
+  
+  // Validate that person properties are present  
+  const validPersonProperties = R.all(propName => R.has(propName, personParamsLower), PERSON_PROPERTIES);
+  
+  // Validate that all attribute names for the type are present 
+  const validPersonCategoryProperties = R.all(propName => R.has(propName, dynamicParametersLower), attributes);
+  if (!validPersonCategoryProperties || !validPersonProperties) {
+    // TODO throw error
+    return false;
+  }
+
+  // Prep the insert params 
+  /**
+   * For each key, 
+   *  if key is in people properties,
+   *    put in one object
+   *  else if key is in dynamic properties,
+   *    put in another object with the id?
+   */
+  
+  personParamsLower.lastmodified = new Date().toISOString();
+  // Insert into person table
+  const insertPerson = await execute<PersonDb>(builders.insertPerson(personParamsLower));
+
+  // // Insert into people attributes
+
+  return insertPerson;  
+
 }
