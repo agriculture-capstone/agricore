@@ -205,7 +205,8 @@ export async function insertPerson(peopleCategoryName: string, params: any): Pro
    */
 
   personParamsLower.lastmodified = new Date().toISOString();
-  personParamsLower.peoplecategoryid = 0;
+  const categoryId = (await execute<any>(builders.getCategoryId(peopleCategoryName)))[0].peoplecategoryid;
+  personParamsLower.peoplecategoryid = categoryId;
   // TODO insert the category type dynamically
 
   // Insert into person table
