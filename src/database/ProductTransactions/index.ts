@@ -136,5 +136,6 @@ export async function insertProdTransaction(
 
   /** Get the id of a product type, used for bulding prodTransactionDbInsertReq */
 export async function getProductId(productType: string): Promise<any> {
-  return await execute<number>(builders.getProdTypeId(productType));
+  const productId = await execute<any>(builders.getProdTypeId(productType));
+  return productId[0].producttypeid;
 }

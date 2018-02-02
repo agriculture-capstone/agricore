@@ -116,9 +116,10 @@ router.get('/:type', async (req, res) => {
  *                    All attributes must be provided in separate params.
  *
  * @apiError (400) BadRequest The required fields are invalid or missing, ...
+ * @apiError (400) BadRequest Product type :type is not supported
  * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  *
- * @apiSuccess (201) {String} Success Successfully created new <type> transaction
+ * @apiSuccess (201) {String} Success
  * @apiSuccessExample Success-Response:
   {
     "productTransactionUuid": "3cad5e7c-5444-4de1-aa81-a7d15acb35f1",
@@ -139,8 +140,16 @@ router.post('/:type', async (req, res) => {
     createReq.milkQuality = req.body.milkQuality;
   }
 
-  const uuid = await ProdTransactionsService.createProdTransactionsInDb(createReq);
-  res.status(StatusCode.CREATED).send({ uuid });
+  try {
+    const uuid = await ProdTransactionsService.createProdTransactionsInDb(createReq);
+    res.status(StatusCode.CREATED).send({ uuid });
+  } catch (e) {
+    if (e.message === ProdTransactionsService.unhandledErrorMsg) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send();
+    } else {
+      res.status(StatusCode.BAD_REQUEST).send('BadRequest ' + e.message);
+    }
+  }
 });
 
 /**
