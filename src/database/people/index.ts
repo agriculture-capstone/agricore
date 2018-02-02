@@ -8,6 +8,19 @@ const peopleCategories = () => dbConnection()(tableNames.PEOPLE_CATEGORIES);
 const peopleCategoryAttributes = () => dbConnection()(tableNames.PEOPLE_CATEGORY_ATTRIBUTES);
 
 /**
+ * Properties for a person
+ */
+const PERSON_PROPERTIES = [
+  'firstname',
+  'middlename', 
+  'lastname', 
+  'phonenumber',
+  'phonearea', 
+  'phonecountry',
+  'companyname',
+];
+
+/**
  * Represents a person in the database
  */
 interface PersonDb {
@@ -29,8 +42,16 @@ interface PersonDb {
  */
 interface PeopleAttributeDb {
   personuuid: string;
-  attrname: string;
+  attrname: string;   // TODO isn't this supposed to be attrid??
   attrvalue: string;
+}
+
+/**
+ * Represents a people attribute type returned by the database
+ */
+interface PeopleAttributeTypesDb {
+  attrname: string;
+  attrid: string;
 }
 
 /**
@@ -63,37 +84,62 @@ const builders = {
       .where({ peoplecategoryname });
   },
 
-  /** get all attributes and their values for people of a certain type */
+  /** Get all attributes and their values for people of a certain type */
   getPeopleAttributeValues(peoplecategoryname: string) {
     return peopleAttributesTable().select('personuuid', 'attrname', 'attrvalue')
       .join(tableNames.PEOPLE_ATTRIBUTE_TYPES,
-      tableNames.PEOPLE_ATTRIBUTES + '.attrid',
-      tableNames.PEOPLE_ATTRIBUTE_TYPES + '.attrid')
+        tableNames.PEOPLE_ATTRIBUTES + '.attrid',
+        tableNames.PEOPLE_ATTRIBUTE_TYPES + '.attrid')
       .join(tableNames.PEOPLE_CATEGORY_ATTRIBUTES,
-      tableNames.PEOPLE_ATTRIBUTE_TYPES + '.attrid',
-      tableNames.PEOPLE_CATEGORY_ATTRIBUTES + '.attrid')
+        tableNames.PEOPLE_ATTRIBUTE_TYPES + '.attrid',
+        tableNames.PEOPLE_CATEGORY_ATTRIBUTES + '.attrid')
       .join(tableNames.PEOPLE_CATEGORIES,
-      tableNames.PEOPLE_CATEGORIES + '.peoplecategoryid',
-      tableNames.PEOPLE_CATEGORY_ATTRIBUTES + '.peoplecategoryid')
+        tableNames.PEOPLE_CATEGORIES + '.peoplecategoryid',
+        tableNames.PEOPLE_CATEGORY_ATTRIBUTES + '.peoplecategoryid')
       .where({ peoplecategoryname });
   },
-  getCategoryId(name: string) {
+
+  /**
+   * Gets the people category ID given the people category name
+   * @param name of the people category
+   */
+  getCategoryId(categoryName: string) {
     return peopleCategories().select('peoplecategoryid')
-      .where('peoplecategoryname', name);
+      .where('peoplecategoryname', categoryName);
   },
+
+  /**
+   * Gets the people category attributes given the people category name
+   * @param categoryName of the people category
+   */
   getPeopleCategoryAttributes(categoryName: string) {
     return peopleCategoryAttributes().select('*')
       .join(tableNames.PEOPLE_ATTRIBUTE_TYPES,
-      tableNames.PEOPLE_ATTRIBUTE_TYPES + '.attrid', tableNames.PEOPLE_CATEGORY_ATTRIBUTES + '.attrid')
+        tableNames.PEOPLE_ATTRIBUTE_TYPES + '.attrid', 
+        tableNames.PEOPLE_CATEGORY_ATTRIBUTES + '.attrid')
       .join(tableNames.PEOPLE_CATEGORIES,
-      tableNames.PEOPLE_CATEGORIES + '.peoplecategoryid', tableNames.PEOPLE_CATEGORY_ATTRIBUTES + '.peoplecategoryid')
+        tableNames.PEOPLE_CATEGORIES + '.peoplecategoryid', 
+        tableNames.PEOPLE_CATEGORY_ATTRIBUTES + '.peoplecategoryid')
       .where('peoplecategoryname', categoryName);
   },
+
+  /**
+   * Inserts a person into the people table and returns the generated uuid
+   * @param params the attributes for the person to insert
+   * @returns the uuid of the new person created
+   */
   insertPerson(params: PersonDb) {
     return peopleTable()
       .insert(params)
       .returning('personuuid');
   },
+
+  /**
+   * Inserts a people attribute
+   * @param personuuid id of the person
+   * @param attrvalue value for the attribute for the person
+   * @param attrid id for the attribute to add a value for
+   */
   insertAttibuteValue(personuuid: string, attrvalue: string, attrid: number) {
     return peopleAttributesTable()
       .insert({ personuuid, attrid, attrvalue });
@@ -146,16 +192,6 @@ export async function getPeople(personCategory: string): Promise<Person[]> {
   return results;
 }
 
-const PERSON_PROPERTIES = [
-  'firstname',
-  'middlename', 'lastname', 'phonenumber',
-  'phonearea', 'phonecountry', 'companyname'];
-
-interface test {
-  attrname: string;
-  attrid: string;
-}
-
 function generateParamsLower(originalObject: any, list1: string[], list2: string[]) {
   const obj1 = {} as any;
   const obj2 = {} as any;
@@ -179,7 +215,9 @@ function generateParamsLower(originalObject: any, list1: string[], list2: string
 }
 
 export async function insertPerson(peopleCategoryName: string, params: any): Promise<any> {
-  const dynamicAttributesDb: test[] = await execute<test[]>(builders.getPeopleCategoryAttributes(peopleCategoryName));
+  // TODO i think this function already exists?
+  const dynamicAttributesDb: PeopleAttributeTypesDb[] = 
+    await execute<PeopleAttributeTypesDb[]>(builders.getPeopleCategoryAttributes(peopleCategoryName));
   const attributes = dynamicAttributesDb.map((attribute) => { return attribute.attrname.toLowerCase(); });
 
   // Convert keys to lower case keys 
@@ -196,14 +234,6 @@ export async function insertPerson(peopleCategoryName: string, params: any): Pro
   }
 
   // Prep the insert params 
-  /**
-   * For each key, 
-   *  if key is in people properties,
-   *    put in one object
-   *  else if key is in dynamic properties,
-   *    put in another object with the id?
-   */
-
   personParamsLower.lastmodified = new Date().toISOString();
   const categoryId = (await execute<any>(builders.getCategoryId(peopleCategoryName)))[0].peoplecategoryid;
   personParamsLower.peoplecategoryid = categoryId;
