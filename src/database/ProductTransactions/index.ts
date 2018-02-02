@@ -69,27 +69,31 @@ const builders = {
     .where({ productname });
   },
 
-  insertProdTransaction(transaction: prodTransactionDbInsertReq) {
-    return prodTransactionTable()
-    .returning('producttransactionuuid')
-    .insert(transaction);
+  /** Get the id of a product type */
+  getProdTypeId(productname: string) {
+    return prodTypesTable()
+    .select('producttypeid')
+    .where({ productname });
   },
 
+  /** Get the id of a product attribute type */
   getAttrId(attrname: string) {
     return prodTypeTransactionAttrsTable()
     .select('attrid')
     .where({ attrname });
   },
 
+  /** inserts a ProductTransaction row in the database */
+  insertProdTransaction(transaction: prodTransactionDbInsertReq) {
+    return prodTransactionTable()
+    .returning('producttransactionuuid')
+    .insert(transaction);
+  },
+
+  /** inserts a single product attribute row in the database */
   insertAttibuteValue(producttransactionuuid: string, attrvalue: string, attrid: number) {
     return prodTransactionAttrsTable()
     .insert({ producttransactionuuid, attrid, attrvalue });
-  },
-
-  getProdTypeId(productname: string) {
-    return prodTypesTable()
-    .select('producttypeid')
-    .where({ productname });
   },
 };
 
@@ -119,16 +123,18 @@ export async function insertProdTransaction(
   req: prodTransactionDbInsertReq,
   attributes: ProdTransactionAttrDb[]): Promise<string> {
 
-  const newUuid = await builders.insertProdTransaction(req);
+  const newUuid = await execute<any>(builders.insertProdTransaction(req));
 
   attributes.forEach(async function (attr) {
-    const attrId = await builders.getAttrId(attr.attrname);
+    const attrId = await execute<any>(builders.getAttrId(attr.attrname));
     await execute<any>(builders.insertAttibuteValue(newUuid[0], attr.attrvalue, attrId[0].attrid));
   });
 
   return newUuid[0];
 }
 
+
+  /** Get the id of a product type, used for bulding prodTransactionDbInsertReq */
 export async function getProductId(productType: string): Promise<any> {
   return await execute<number>(builders.getProdTypeId(productType));
 }

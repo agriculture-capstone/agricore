@@ -24,6 +24,10 @@ export interface ProdTransaction {
   milkQuality?: string;
 }
 
+
+/**
+ * Represents a product transaction creation request in the API
+ */
 export interface ProdTransactionReq {
   productType: string;
   datetime: string;

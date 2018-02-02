@@ -2,6 +2,9 @@ import * as api from '@/routers/transactions/products';
 import * as db from '@/database/ProductTransactions';
 import logger from '@/utilities/modules/logger';
 
+/**
+ * Connector for the API and database to get all product transactions
+ */
 export async function getProdTransactionsFromDb(productType: string): Promise<api.ProdTransaction[]> {
   const dbProdTransactions: db.ProdTransactionDb[] = await db.getProdTransactions(productType);
   const results: api.ProdTransaction[] = [];
@@ -35,6 +38,9 @@ export async function getProdTransactionsFromDb(productType: string): Promise<ap
   return results;
 }
 
+/**
+ * Connector for the API and database to create a new product transaction
+ */
 export async function createProdTransactionsInDb(apiReq: api.ProdTransactionReq): Promise<string> {
   const productTypeIdResult = await db.getProductId(apiReq.productType);
 
@@ -58,5 +64,5 @@ export async function createProdTransactionsInDb(apiReq: api.ProdTransactionReq)
     });
   }
 
-  return await db.insertProdTransaction(dbInsertReq, attributes);
+  return db.insertProdTransaction(dbInsertReq, attributes);
 }
