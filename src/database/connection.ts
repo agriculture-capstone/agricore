@@ -42,6 +42,7 @@ export const tableNames = {
   PEOPLE_CATEGORY_ATTRIBUTES: 'peoplecategoryattributes',
   PRODUCT_TRANSACTION_ATTRIBUTES: 'producttransactionattributes',
   PRODUCT_TYPE_TRANSACTION_ATTRIBUTES: 'producttypetransactionattributes',
+  PEOPLE_CATEGORY_PERMISSIONS: 'peoplecategorypermissions',
 };
 
 

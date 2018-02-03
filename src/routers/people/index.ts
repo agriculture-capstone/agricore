@@ -51,8 +51,10 @@ router.use('/categories', categories);
  */
 router.get('/:category', async (req, res) => {
   const result = await PeopleDb.getPeople(req.params.category);
+  const webToken = req.user;
+  logger.info('#############' + webToken);
   res.status(StatusCode.OK).send(result);
-}, authorized(UserType.ADMIN));
+});
 
 /**
  * @api {post} /people/:category Create New Person Entry
@@ -140,7 +142,6 @@ router.get('/:category/:uuid', async (req, res) => {
  */
 router.put('/:category/:uuid', async (req, res) => {
   const response = await PeopleDb.updatePerson(req.params.category, req.params.uuid, req.body);
-
   res.status(StatusCode.OK).send(response);
 }, authorized(UserType.ADMIN));
 

@@ -1,8 +1,9 @@
 import createRouter from '@/utilities/functions/createRouter';
 import * as ProdTransactionsService from '@/services/ProductTransactions';
 
-
 import { StatusCode } from '@/models/statusCodes';
+import authorized from '@/middleware/authorized';
+import { UserType } from '@/models/User/UserType';
 
 /**
  * Represents a product transaction in the API
@@ -108,7 +109,7 @@ const router = createRouter();
 router.get('/:type', async (req, res) => {
   const result = await ProdTransactionsService.getProdTransactionsFromDb(req.params.type);
   res.status(StatusCode.OK).send(result);
-});
+}, authorized(UserType.ADMIN, UserType.MONITOR, UserType.TRADER));
 
 /**
  * @api {post} /transactions/products/:type Create Product Transactions
@@ -170,7 +171,7 @@ router.post('/:type', async (req, res) => {
       res.status(StatusCode.BAD_REQUEST).send('BadRequest ' + e.message);
     }
   }
-});
+}, authorized(UserType.ADMIN, UserType.TRADER));
 
 /**
  * @api {put} /transactions/products/:type/:uuid Update Product Transaction
@@ -223,7 +224,7 @@ router.put('/:type/:uuid', async (req, res) => {
     const result = await ProdTransactionsService.getProdTransactionFromDb(req.params.uuid);
     res.status(StatusCode.OK).send(result);
   }
-});
+}, authorized(UserType.ADMIN, UserType.TRADER));
 
 
 export default router;
