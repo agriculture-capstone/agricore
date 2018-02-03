@@ -76,8 +76,6 @@ router.get('/:category', async (req, res) => {
  * { personUuid: "1e167b81-d816-497b-8c0c-36f4d6b2fd33" }
  */
 router.post('/:category', async (req, res) => {
-  const requestParams = req.body; 
-  // convert to lower case keys
   let response: any;
   try {
     response = await PeopleDb.insertPerson(req.params.category, req.body);

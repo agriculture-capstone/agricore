@@ -144,12 +144,31 @@ const builders = {
     return peopleAttributesTable()
       .insert({ personuuid, attrid, attrvalue });
   },
+
+  /**
+   * Gets a single person from the person table
+   * @param personuuid id of the person
+   * @param peoplecategoryid id of the category
+   */
   getPerson(personuuid:string, peoplecategoryid: number) {
     return peopleTable().select('*').where('personuuid', personuuid).andWhere('peoplecategoryid', peoplecategoryid);
   },
+
+  /**
+   * Update a person's people attributes 
+   * @param personuuid person to update
+   * @param params attributes to update
+   */
   updatePerson(personuuid:string, params: any) {
     return peopleTable().update(params).where(tableNames.PEOPLE + '.personuuid', personuuid);
   },
+
+  /**
+   * Update a person's dynamic attribute
+   * @param personuuid person to update
+   * @param attrvalue attribute value to update
+   * @param attrid attribute id to update
+   */
   updateAttributeValue(personuuid: string, attrvalue: string, attrid: number) {
     return peopleAttributesTable()
       .update('attrvalue', attrvalue)
@@ -234,6 +253,11 @@ function generateParamGroups(originalObject: any, list1: string[], list2: string
   };
 }
 
+/**
+ * Create a person and fill in their associated attributes
+ * @param peopleCategoryName category to create the person in
+ * @param params attributes for the person
+ */
 export async function insertPerson(peopleCategoryName: string, params: any): Promise<any> {
   let categoryId; 
   try {
@@ -284,6 +308,12 @@ export async function insertPerson(peopleCategoryName: string, params: any): Pro
   return JSON.stringify({ uuid: personUuid });
 }
 
+/**
+ * Updates a person and their related attributes
+ * @param peopleCategoryName category that the person is in
+ * @param personUuid the id of the person
+ * @param params the attributes to update
+ */
 export async function updatePerson(peopleCategoryName: string, personUuid: string, params: any): Promise<any> {
   let categoryId; 
   try {
@@ -321,7 +351,7 @@ export async function updatePerson(peopleCategoryName: string, personUuid: strin
   personParams.lastmodified = new Date().toISOString();
   
   // Insert into person table
-  const updatePerson = await execute<PersonDb>(builders.updatePerson(personUuid, personParams)) as any;
+  await execute<PersonDb>(builders.updatePerson(personUuid, personParams)) as any;
 
   // Insert into people attributes
   for (const k of Object.keys(dynamicParams)) {
@@ -339,7 +369,7 @@ export async function updatePerson(peopleCategoryName: string, personUuid: strin
   return JSON.stringify(updatedPerson);
 }
 
-/** Get all people of a certain category */
+/** Gets a person from a certain category */
 export async function getPerson(personCategory: string, personuuid: string): Promise<Person> {
   const people = await execute<PersonDb[]>(builders.getPeople(personCategory).where({ personuuid }));
   const attrValues = await execute<PeopleAttributeDb[]>(builders.getPeopleAttributeValues(personCategory).where({ personuuid }));
