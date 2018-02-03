@@ -209,9 +209,9 @@ function generateParamGroups(originalObject: any, list1: string[], list2: string
 
   while (n--) {
     key = keys[n];
-    if (list1.indexOf(key) >= 0) {
+    if (list1.indexOf(key.toLowerCase()) >= 0) {
       obj1[key.toLowerCase()] = originalObject[key];
-    } else if (list2.indexOf(key) >= 0) {
+    } else if (list2.indexOf(key.toLowerCase()) >= 0) {
       obj2[key.toLowerCase()] = originalObject[key];
     }
   }
