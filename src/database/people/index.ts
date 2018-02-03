@@ -224,6 +224,8 @@ function generateParamGroups(originalObject: any, list1: string[], list2: string
       obj1[key.toLowerCase()] = originalObject[key];
     } else if (list2.indexOf(key.toLowerCase()) >= 0) {
       obj2[key.toLowerCase()] = originalObject[key];
+    } else if (key === 'uuid') {
+      obj1['personuuid'] = originalObject[key];
     }
   }
   return {
@@ -279,7 +281,7 @@ export async function insertPerson(peopleCategoryName: string, params: any): Pro
     }
     await execute<PersonDb>(builders.insertAttibuteValue(personUuid, dynamicParams[k], attrid));
   }
-  return personUuid;
+  return JSON.stringify({ uuid: personUuid });
 }
 
 export async function updatePerson(peopleCategoryName: string, personUuid: string, params: any): Promise<any> {
