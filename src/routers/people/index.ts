@@ -81,11 +81,15 @@ router.post('/:category', async (req, res) => {
   let response: any;
   try {
     response = await PeopleDb.insertPerson(req.params.category, req.body);
+    res.status(StatusCode.CREATED).send(response);
   } catch (e) {
     logger.error(e.message && e.stack ? `${e.message}\n${e.stack}` : e);
+    if (e.message === 'Bad request') {
+      res.status(StatusCode.BAD_REQUEST).send('Invalid or missing field');
+    } else {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send('Internal server error');
+    }
   }
-  res.status(StatusCode.CREATED).send(response);
-  
 }, authorized(UserType.ADMIN));
 
 /**

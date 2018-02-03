@@ -215,9 +215,15 @@ function generateParamsLower(originalObject: any, list1: string[], list2: string
 }
 
 export async function insertPerson(peopleCategoryName: string, params: any): Promise<any> {
-  const categoryId = (await execute<any>(builders.getCategoryId(peopleCategoryName)))[0].peoplecategoryid;
+  let categoryId; 
+  try {
+    categoryId = (await execute<any>(builders.getCategoryId(peopleCategoryName)))[0].peoplecategoryid;
+  } catch (e) {
+    throw new Error('Bad request');
+  }
+  
   if (categoryId < 0) {
-    throw new Error('Invalid category');
+    throw new Error('Bad request');
   }
 
   const dynamicAttributesDb: PeopleAttributeTypesDb[] = 
@@ -233,7 +239,7 @@ export async function insertPerson(peopleCategoryName: string, params: any): Pro
   // Validate that all attribute names for the type are present 
   const validPersonCategoryProperties = R.all(propName => R.has(propName, dynamicParametersLower), attributes);
   if (!validPersonCategoryProperties || !validPersonProperties) {
-    throw new Error('Missing propertites'); 
+    throw new Error('Bad request');
   }
 
   // Prep the insert params 
