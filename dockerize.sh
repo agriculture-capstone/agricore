@@ -37,8 +37,8 @@ elif [ "$1" == "initdb" ]; then
         -e PGDATA="$DIR/data" \
         -p 5432:5432 \
         -d "$DB_IMAGE_NAME"
-    docker cp dbscripts/db-init.sql agricore_db:/
-    docker cp dbscripts/mock-data.sql agricore_db:/
+    docker cp dbscripts/db-init.sql "$DB_CONTAINER_NAME":/
+    docker cp dbscripts/mock-data.sql "$DB_CONTAINER_NAME":/
     sleep 20
     docker exec -it "$DB_CONTAINER_NAME" /bin/bash -c "psql -d $DB_NAME -U $DB_USER -c 'CREATE EXTENSION \"uuid-ossp\"'"
     docker exec -it "$DB_CONTAINER_NAME" /bin/bash -c "psql -d $DB_NAME -U $DB_USER -c '\i db-init.sql'"
@@ -50,7 +50,13 @@ elif [ "$1" == "stopdb" ]; then
     docker kill "$DB_CONTAINER_NAME"
 elif [ "$1" == "shelldb" ]; then
     docker exec -it "$DB_CONTAINER_NAME" psql -d "$DB_NAME" -U "$DB_USER"
+elif [ "$1" == "backupdb" ]; then
+    BACKUP_FILE="$DB_NAME".sql.`date --utc "+%y-%m-%d_%H-%M-%SZ"`
+    docker exec -it "$DB_CONTAINER_NAME" pg_dump "$DB_NAME" -U "$DB_USER" > "$BACKUP_FILE"
+    echo "Database dump saved to $BACKUP_FILE"
 else
-    echo "usage: $0 [ init | install | initdb | startdb | shelldb | stopdb | start | stop | run [args] ]"
+    echo "usage: $0"
+    echo " [ init | install | start | stop | run [args] | "
+    echo "   initdb | startdb | shelldb | stopdb | backupdb ]"
     exit 1
 fi

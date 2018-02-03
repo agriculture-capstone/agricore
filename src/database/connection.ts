@@ -40,6 +40,8 @@ export const tableNames = {
   PEOPLE_CATEGORIES: 'peoplecategories',
   PEOPLE_ATTRIBUTE_TYPES: 'peopleattributetypes',
   PEOPLE_CATEGORY_ATTRIBUTES: 'peoplecategoryattributes',
+  PRODUCT_TRANSACTION_ATTRIBUTES: 'producttransactionattributes',
+  PRODUCT_TYPE_TRANSACTION_ATTRIBUTES: 'producttypetransactionattributes',
 };
 
 

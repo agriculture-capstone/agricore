@@ -1,9 +1,62 @@
-
 import createRouter from '@/utilities/functions/createRouter';
-import authorized from '@/middleware/authorized';
-import { UserType } from '@/models/User/UserType';
+import * as ProdTransactionsService from '@/services/ProductTransactions';
+
 
 import { StatusCode } from '@/models/statusCodes';
+
+/**
+ * Represents a product transaction in the API
+ */
+export interface ProdTransaction {
+  uuid: string;
+  productType: string;
+  productUnits: string;
+  datetime: string;
+  toPersonUuid: string;
+  fromPersonUuid: string;
+  amountOfProduct: number;
+  costPerUnit: number;
+  currency: string;
+  lastModified: string;
+
+  milkQuality?: string;
+}
+
+
+/**
+ * Represents a product transaction creation request in the API
+ */
+export interface ProdTransactionReq {
+  productType: string;
+  uuid: string;
+  datetime: string;
+  toPersonUuid: string;
+  fromPersonUuid: string;
+  amountOfProduct: number;
+  costPerUnit: number;
+  currency: string;
+
+  milkQuality?: string;
+}
+
+
+/**
+ * Represents a product transaction udpate request in the API
+ */
+export interface ProdTransactionUpdateReq {
+  uuid: string;
+  productType: string;
+
+  datetime?: string;
+  toPersonUuid?: string;
+  fromPersonUuid?: string;
+  amountOfProduct?: number;
+  costPerUnit?: number;
+  currency?: string;
+
+  milkQuality?: string;
+}
+
 
 const router = createRouter();
 
@@ -15,15 +68,16 @@ const router = createRouter();
  * @apiDescription Returns all product transactions of a specified type
  *              and all their associated attributes.
  *              Guaranteed fields are:
- *                - productTransactionUuid
- *                - lastModified
+ *                - uuid
+ *                - productType
+ *                - productUnits
  *                - datetime
  *                - toPersonUuid
  *                - fromPersonUuid
  *                - amountOfProduct
- *                - productUnits
  *                - costPerUnit
  *                - currency
+ *                - lastModified
  *              Parameters have no effect on this request.
  *              Associated attributes can be checked via the /products API.
  *              An example of an associated attribute would be density, as
@@ -37,22 +91,24 @@ const router = createRouter();
  * @apiSuccessExample Success-Response:
   [
     {
-      "productTransactionUuid": "3cad5e7c-5444-4de1-aa81-a7d15acb35f1",
-      "lastModified": "2018-01-23 04:05:06.123Z"
-      "datetime": "2018-01-23 04:05:06Z",
-      "toPersonUuid": "1a37d70e-ea33-41fc-bff7-273fb673697b",
-      "fromPersonUuid": "5bf317ab-9c19-407c-b029-cb8c83998bd0",
-      "amountOfProduct": 32.2123,
-      "productUnits": "litres",
-      "costPerUnit": "22.23",
-      "currency": "UGX",
-      "density": "55",
+      "uuid":"0464e508-31fa-4c47-ab2d-56496c6518e4",
+      "productType":"milk",
+      "productUnits":"litres",
+      "datetime":"2017-01-15T00:57:43.959Z",
+      "toPersonUuid":"a293e3a5-a88d-473b-9d4a-74a2153992f6",
+      "fromPersonUuid":"ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9",
+      "amountOfProduct":995.341,
+      "costPerUnit":"14.46",
+      "currency":"UGX",
+      "lastModified":"2017-09-29T20:00:04.596Z",
+      "milkQuality":"242.4"
     }
   ]
  */
 router.get('/:type', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully retrieved all product <type> transactions');
-}, authorized(UserType.ADMIN));
+  const result = await ProdTransactionsService.getProdTransactionsFromDb(req.params.type);
+  res.status(StatusCode.OK).send(result);
+});
 
 /**
  * @api {post} /transactions/products/:type Create Product Transactions
@@ -63,6 +119,7 @@ router.get('/:type', async (req, res) => {
  *              The product transaction UUID is returned on success.
  *
  * @apiParam {String} type The type of product.
+ * @apiParam {String} uuid A newly generated UUID for the product transaction.
  * @apiParam {String} datetime The time this transaction was conducted.
  *                    It's value must be in UTC or the request will be rejected.
  * @apiParam {String} toPersonUuid The UUID of the person receiving the product.
@@ -78,17 +135,42 @@ router.get('/:type', async (req, res) => {
  *                    All attributes must be provided in separate params.
  *
  * @apiError (400) BadRequest The required fields are invalid or missing, ...
+ * @apiError (400) BadRequest Product type :type is not supported
  * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  *
- * @apiSuccess (201) {String} Success Successfully created new <type> transaction
+ * @apiSuccess (201) {String} Success
  * @apiSuccessExample Success-Response:
   {
-    "productTransactionUuid": "3cad5e7c-5444-4de1-aa81-a7d15acb35f1",
+    "uuid": "3cad5e7c-5444-4de1-aa81-a7d15acb35f1",
   }
  */
 router.post('/:type', async (req, res) => {
-  res.status(StatusCode.CREATED).send('Successfully created new product <type> transaction');
-}, authorized(UserType.ADMIN));
+  const createReq: ProdTransactionReq = {
+    productType: req.params.type,
+    uuid: req.body.uuid,
+    datetime: req.body.datetime,
+    toPersonUuid: req.body.toPersonUuid,
+    fromPersonUuid: req.body.fromPersonUuid,
+    amountOfProduct: req.body.amountOfProduct,
+    costPerUnit: req.body.costPerUnit,
+    currency: req.body.currency,
+  };
+
+  if (req.body.milkQuality) {
+    createReq.milkQuality = req.body.milkQuality;
+  }
+
+  try {
+    const uuid = await ProdTransactionsService.createProdTransactionsInDb(createReq);
+    res.status(StatusCode.CREATED).send({ uuid });
+  } catch (e) {
+    if (e.message === ProdTransactionsService.unhandledErrorMsg) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send();
+    } else {
+      res.status(StatusCode.BAD_REQUEST).send('BadRequest ' + e.message);
+    }
+  }
+});
 
 /**
  * @api {put} /transactions/products/:type/:uuid Update Product Transaction
@@ -115,8 +197,33 @@ router.post('/:type', async (req, res) => {
  * @apiSuccess (200) {String} Success Successfully updated <type> transaction
  */
 router.put('/:type/:uuid', async (req, res) => {
-  res.status(StatusCode.OK).send('Product <type> transaction updated');
-}, authorized(UserType.ADMIN));
+  const updateReq: ProdTransactionUpdateReq = {
+    uuid: req.params.uuid,
+    productType: req.params.type,
+
+    datetime: req.body.datetime,
+    toPersonUuid: req.body.toPersonUuid,
+    fromPersonUuid: req.body.fromPersonUuid,
+    amountOfProduct: req.body.amountOfProduct,
+    costPerUnit: req.body.costPerUnit,
+    currency: req.body.currency,
+
+    milkQuality: req.body.milkQuality,
+  };
+
+  try {
+    await ProdTransactionsService.updateProdTransactionInDb(updateReq);
+  } catch (e) {
+    if (e.message === ProdTransactionsService.unhandledErrorMsg) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send();
+    } else {
+      res.status(StatusCode.BAD_REQUEST).send('BadRequest ' + e.message);
+    }
+  } finally {
+    const result = await ProdTransactionsService.getProdTransactionFromDb(req.params.uuid);
+    res.status(StatusCode.OK).send(result);
+  }
+});
 
 
 export default router;

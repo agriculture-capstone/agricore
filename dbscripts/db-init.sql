@@ -172,10 +172,10 @@ CREATE TABLE ProductTypeTransactionAttributes (
 	-- milk
 	INSERT INTO ProductTypeTransactionAttributes VALUES(0, 0, 'milkQuality');
 
--- TransactionAttributes
+-- ProductTransactionAttributes
 	-- the values for the unique attributes for every transaction
 
-CREATE TABLE ProductTransactionAttribute (
+CREATE TABLE ProductTransactionAttributes (
 	productTransactionUuid UUID REFERENCES ProductTransactions(productTransactionUuid) NOT NULL,
 	attrId SERIAL REFERENCES ProductTypeTransactionAttributes(attrId) NOT NULL,
 	attrValue VARCHAR(255) NOT NULL,
