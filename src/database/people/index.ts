@@ -333,5 +333,52 @@ export async function updatePerson(peopleCategoryName: string, personUuid: strin
     }
     await execute<PersonDb>(builders.updateAttributeValue(personUuid, dynamicParams[k], attrid));
   }
-  return 'done';
+  const updatedPerson = await getPerson(peopleCategoryName, personUuid); 
+  return JSON.stringify(updatedPerson);
+}
+
+/** Get all people of a certain category */
+export async function getPerson(personCategory: string, personuuid: string): Promise<Person> {
+  const people = await execute<PersonDb[]>(builders.getPeople(personCategory).where({ personuuid }));
+  const attrValues = await execute<PeopleAttributeDb[]>(builders.getPeopleAttributeValues(personCategory).where({ personuuid }));
+  const results: Person[] = [];
+
+  people.forEach(function (item) {
+    const isMatchingUuid = R.propEq('personuuid', item.personuuid);
+
+    const isNotesAttr = R.propEq('attrname', 'notes');
+    const notesAttr = R.find(R.allPass([isMatchingUuid, isNotesAttr]))(attrValues);
+
+    const isPaymentFrequencyAttr = R.propEq('attrname', 'paymentFrequency');
+    const paymentFrequencyAttr = R.find(R.allPass([isMatchingUuid, isPaymentFrequencyAttr]))(attrValues);
+
+    const isUsernameAttr = R.propEq('attrname', 'username');
+    const usernameAttr = R.find(R.allPass([isMatchingUuid, isUsernameAttr]))(attrValues);
+
+    const person: Person = {
+      uuid: item.personuuid,
+      peopleCategory: item.peoplecategoryname,
+      firstName: item.firstname,
+      middleName: item.middlename,
+      lastName: item.lastname,
+      phoneNumber: item.phonenumber,
+      phoneArea: item.phonearea,
+      phoneCountry: item.phonecountry,
+      companyName: item.companyname,
+      lastModified: item.lastmodified,
+    };
+
+    if (notesAttr !== undefined) {
+      person.notes = notesAttr.attrvalue;
+    }
+    if (paymentFrequencyAttr !== undefined) {
+      person.paymentFrequency = paymentFrequencyAttr.attrvalue;
+    }
+    if (usernameAttr !== undefined) {
+      person.username = usernameAttr.attrvalue;
+    }
+
+    results.push(person);
+  });
+  return results[0];
 }
