@@ -144,6 +144,16 @@ const builders = {
     return peopleAttributesTable()
       .insert({ personuuid, attrid, attrvalue });
   },
+  getPerson(personuuid:string) {
+    return peopleTable().select('*').where('peopleuuid', personuuid);
+  },
+  updatePerson(personuuid:string, params: any) {
+    return peopleTable().update(params).where(tableNames.PEOPLE + '.personuuid', personuuid);
+  },
+  updateAttributeValue(personuuid: string, attrvalue: string, attrid: number) {
+    return peopleAttributesTable()
+      .update(attrvalue).where({ attrid, attrvalue });
+  }
 };
 
 /** Get all people of a certain category */
@@ -209,9 +219,9 @@ function generateParamGroups(originalObject: any, list1: string[], list2: string
 
   while (n--) {
     key = keys[n];
-    if (list1.indexOf(key) >= 0) {
+    if (list1.indexOf(key.toLowerCase()) >= 0) {
       obj1[key.toLowerCase()] = originalObject[key];
-    } else if (list2.indexOf(key) >= 0) {
+    } else if (list2.indexOf(key.toLowerCase()) >= 0) {
       obj2[key.toLowerCase()] = originalObject[key];
     }
   }
@@ -269,4 +279,58 @@ export async function insertPerson(peopleCategoryName: string, params: any): Pro
     await execute<PersonDb>(builders.insertAttibuteValue(personUuid, dynamicParams[k], attrid));
   }
   return personUuid;
+}
+
+export async function updatePerson(peopleCategoryName: string, personUuid: string, params: any): Promise<any> {
+  let categoryId; 
+  try {
+    categoryId = (await execute<any>(builders.getCategoryId(peopleCategoryName)))[0].peoplecategoryid;
+  } catch (e) {
+    throw new Error('Bad request');
+  }
+  
+  if (categoryId < 0) {
+    throw new Error('Bad request');
+  }
+
+  let person;
+  try {
+    person = await execute<any>(builders.getPerson(personUuid));
+  } catch (e) {
+    throw new Error('Bad request');
+  }
+  if (person.length <= 0) {
+    throw new Error('Bad request');
+  }
+
+  const dynamicAttributesDb: PeopleAttributeTypesDb[] = 
+    await execute<PeopleAttributeTypesDb[]>(builders.getPeopleCategoryAttributes(peopleCategoryName));
+  const attributes = dynamicAttributesDb.map((attribute) => { return attribute.attrname.toLowerCase(); });
+
+  // Convert keys to lower case keys 
+  const { obj1: personParams, obj2: dynamicParams } = generateParamGroups(params, PERSON_PROPERTIES, attributes) as any;
+
+  if (personParams.keys().length === 0 && dynamicParams.keys().length) {
+    throw new Error('Bad request');
+  }
+
+  // update the last modified  
+  personParams.lastmodified = new Date().toISOString();
+  
+  // Insert into person table
+  const updatePerson = await execute<PersonDb>(builders.updatePerson(personUuid, personParams)) as any;
+
+  // Insert into people attributes
+  for (const k of Object.keys(dynamicParams)) {
+    // Get the attrid from dynamicAttributesDb
+    let attrid: any;
+    for (const attr of dynamicAttributesDb) {
+      if (k === attr.attrname.toLowerCase()) {
+        attrid = attr.attrid;
+        break;
+      }
+    }
+    await execute<PersonDb>(builders.updateAttributeValue(personUuid, dynamicParams[k], attrid));
+  }
+  return 'done';
 }

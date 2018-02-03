@@ -141,7 +141,9 @@ router.get('/:category/:uuid', async (req, res) => {
  * @apiSuccess (200) {String} Success Successfully updated person of category <category>
  */
 router.put('/:category/:uuid', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully updated <category>');
+  const response = await PeopleDb.updatePerson(req.params.category, req.params.uuid, req.body);
+
+  res.status(StatusCode.OK).send(req.params.category + req.params.uuid);
 }, authorized(UserType.ADMIN));
 
 export default router;
