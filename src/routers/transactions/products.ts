@@ -1,6 +1,4 @@
 import createRouter from '@/utilities/functions/createRouter';
-import authorized from '@/middleware/authorized';
-import { UserType } from '@/models/User/UserType';
 import * as ProdTransactionsService from '@/services/ProductTransactions';
 
 
@@ -143,7 +141,7 @@ router.get('/:type', async (req, res) => {
  * @apiSuccess (201) {String} Success
  * @apiSuccessExample Success-Response:
   {
-    "productTransactionUuid": "3cad5e7c-5444-4de1-aa81-a7d15acb35f1",
+    "uuid": "3cad5e7c-5444-4de1-aa81-a7d15acb35f1",
   }
  */
 router.post('/:type', async (req, res) => {

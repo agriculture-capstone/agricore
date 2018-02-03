@@ -54,6 +54,7 @@ const builders = {
     return prodTransactionTable().select('*')
     .where({ producttransactionuuid });
   },
+
   /** Get all product transactions of a certain type */
   getProdTransactions(productname: string) {
     return prodTransactionTable().select('*')
@@ -75,6 +76,7 @@ const builders = {
     .where({ productname });
   },
 
+  /** get all attributes and their values for one product transaction */
   getSingleProdTransactionAttrValues(producttransactionuuid: string) {
     return prodTransactionAttrsTable().select('producttransactionuuid', 'attrname', 'attrvalue')
     .join(tableNames.PRODUCT_TYPE_TRANSACTION_ATTRIBUTES,
@@ -113,15 +115,15 @@ const builders = {
   updateProdTransactionField(producttransactionuuid: string, field: string, value: any) {
     return prodTransactionTable()
       .update(field, value)
-      .where({ producttransactionuuid })
+      .where({ producttransactionuuid });
   },
 
   /** updates a single product field in the database */
   updateProdTransactionAttr(producttransactionuuid: string, attrname: string, attrvalue: any) {
     return prodTransactionAttrsTable()
       .update('attrvalue', attrvalue)
-      .where({ producttransactionuuid, attrname })
-  }
+      .where({ producttransactionuuid, attrname });
+  },
 };
 
 /** Get all product transactions of a certain type */
@@ -181,16 +183,18 @@ export async function insertProdTransaction(
 }
 
 
-  /** Get the id of a product type, used for bulding prodTransactionDbInsertReq */
+/** Get the id of a product type, used for bulding prodTransactionDbInsertReq */
 export async function getProductId(productType: string): Promise<any> {
   const productId = await execute<any>(builders.getProdTypeId(productType));
   return productId[0].producttypeid;
 }
 
+/** Update a single column for a single product transaction */
 export async function updateProdTransactionField(uuid: string, field: string, value: string|number) {
   return await execute<any>(builders.updateProdTransactionField(uuid, field, value));
 }
 
+/** Update a single attribute value for a single product transaction */
 export async function updateProdTransactionAttr(uuid: string, attr: string, value: string) {
   return await execute<any>(builders.updateProdTransactionAttr(uuid, attr, value));
 }

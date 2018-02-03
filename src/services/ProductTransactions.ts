@@ -9,9 +9,9 @@ export const unhandledErrorMsg = 'unhandled error';
  * Connector for the API and database to get all product transactions
  */
 export async function getProdTransactionFromDb(uuid: string): Promise<api.ProdTransaction> {
-  logger.info("getting single transaction", uuid);
+  logger.info('getting single transaction', uuid);
   const dbProdTransaction: db.ProdTransactionDb = await db.getProdTransaction(uuid);
-  let result: api.ProdTransaction = {
+  const result: api.ProdTransaction = {
     uuid: dbProdTransaction.producttransactionuuid,
     productType: dbProdTransaction.productname,
     productUnits: dbProdTransaction.productunits,
@@ -73,7 +73,7 @@ export async function getProdTransactionsFromDb(productType: string): Promise<ap
 /**
  * Connector for the API and database to create a new product transaction
  * Throws error on invalid request
- * Throws eror with message "unhandled error" for unhandled errors
+ * Throws error with message "unhandled error" for unhandled errors
  */
 export async function createProdTransactionsInDb(apiReq: api.ProdTransactionReq): Promise<string> {
   let productTypeId: number = -1;
@@ -153,9 +153,13 @@ export async function createProdTransactionsInDb(apiReq: api.ProdTransactionReq)
   return newUuid;
 }
 
+/**
+ * Connector for the API and database to create a new product transaction
+ * Throws error on invalid request
+ * Throws error with message "unhandled error" for unhandled errors
+ */
 export async function updateProdTransactionInDb(apiReq: api.ProdTransactionUpdateReq) {
   let productTypeId: number = -1;
-  const invalidFields: string[] = [];
 
   // validate request
   try {
@@ -165,31 +169,34 @@ export async function updateProdTransactionInDb(apiReq: api.ProdTransactionUpdat
   }
 
 
-  logger.info("ProdTransactionUpdateReq", apiReq);
+  logger.info('ProdTransactionUpdateReq', apiReq);
 
-  if(apiReq.datetime) {
-    await db.updateProdTransactionField(apiReq.uuid, 'datetime', apiReq.datetime);
-  }
-  if(apiReq.toPersonUuid) {
-    await db.updateProdTransactionField(apiReq.uuid, 'topersonuuid', apiReq.toPersonUuid);
-  }
-  if(apiReq.fromPersonUuid) {
-    await db.updateProdTransactionField(apiReq.uuid, 'frompersonuuid', apiReq.fromPersonUuid);
-  }
-  if(apiReq.amountOfProduct) {
-    await db.updateProdTransactionField(apiReq.uuid, 'amountofproduct', apiReq.amountOfProduct);
-  }
-  if(apiReq.costPerUnit) {
-    await db.updateProdTransactionField(apiReq.uuid, 'costperunit', apiReq.costPerUnit);
-  }
-  if(apiReq.currency) {
-    await db.updateProdTransactionField(apiReq.uuid, 'currency', apiReq.currency);
-  }
+  try {
+    if (apiReq.datetime) {
+      await db.updateProdTransactionField(apiReq.uuid, 'datetime', apiReq.datetime);
+    }
+    if (apiReq.toPersonUuid) {
+      await db.updateProdTransactionField(apiReq.uuid, 'topersonuuid', apiReq.toPersonUuid);
+    }
+    if (apiReq.fromPersonUuid) {
+      await db.updateProdTransactionField(apiReq.uuid, 'frompersonuuid', apiReq.fromPersonUuid);
+    }
+    if (apiReq.amountOfProduct) {
+      await db.updateProdTransactionField(apiReq.uuid, 'amountofproduct', apiReq.amountOfProduct);
+    }
+    if (apiReq.costPerUnit) {
+      await db.updateProdTransactionField(apiReq.uuid, 'costperunit', apiReq.costPerUnit);
+    }
+    if (apiReq.currency) {
+      await db.updateProdTransactionField(apiReq.uuid, 'currency', apiReq.currency);
+    }
 
-  if(apiReq.milkQuality) {
-    await db.updateProdTransactionAttr(apiReq.uuid, 'milkQuaity', apiReq.milkQuality);
+    if (apiReq.milkQuality) {
+      await db.updateProdTransactionAttr(apiReq.uuid, 'milkQuaity', apiReq.milkQuality);
+    }
+  } catch (e) {
+    throw new Error(unhandledErrorMsg);
   }
-
   await db.updateProdTransactionField(apiReq.uuid, 'lastmodified', new Date().toISOString());
   return;
 }
