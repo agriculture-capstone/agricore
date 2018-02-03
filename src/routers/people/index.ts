@@ -143,7 +143,7 @@ router.get('/:category/:uuid', async (req, res) => {
 router.put('/:category/:uuid', async (req, res) => {
   const response = await PeopleDb.updatePerson(req.params.category, req.params.uuid, req.body);
 
-  res.status(StatusCode.OK).send(req.params.category + req.params.uuid);
+  res.status(StatusCode.OK).send(response);
 }, authorized(UserType.ADMIN));
 
 export default router;

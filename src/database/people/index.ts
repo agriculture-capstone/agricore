@@ -144,16 +144,17 @@ const builders = {
     return peopleAttributesTable()
       .insert({ personuuid, attrid, attrvalue });
   },
-  getPerson(personuuid:string) {
-    return peopleTable().select('*').where('peopleuuid', personuuid);
+  getPerson(personuuid:string, peoplecategoryid: number) {
+    return peopleTable().select('*').where('personuuid', personuuid).andWhere('peoplecategoryid', peoplecategoryid);
   },
   updatePerson(personuuid:string, params: any) {
     return peopleTable().update(params).where(tableNames.PEOPLE + '.personuuid', personuuid);
   },
   updateAttributeValue(personuuid: string, attrvalue: string, attrid: number) {
     return peopleAttributesTable()
-      .update(attrvalue).where({ attrid, attrvalue });
-  }
+      .update('attrvalue', attrvalue)
+      .where('attrid', attrid).andWhere('personuuid', personuuid);
+  },
 };
 
 /** Get all people of a certain category */
@@ -295,7 +296,7 @@ export async function updatePerson(peopleCategoryName: string, personUuid: strin
 
   let person;
   try {
-    person = await execute<any>(builders.getPerson(personUuid));
+    person = await execute<any>(builders.getPerson(personUuid, categoryId));
   } catch (e) {
     throw new Error('Bad request');
   }
@@ -310,7 +311,7 @@ export async function updatePerson(peopleCategoryName: string, personUuid: strin
   // Convert keys to lower case keys 
   const { obj1: personParams, obj2: dynamicParams } = generateParamGroups(params, PERSON_PROPERTIES, attributes) as any;
 
-  if (personParams.keys().length === 0 && dynamicParams.keys().length) {
+  if (Object.keys(personParams).length === 0 && Object.keys(dynamicParams).length === 0) {
     throw new Error('Bad request');
   }
 
