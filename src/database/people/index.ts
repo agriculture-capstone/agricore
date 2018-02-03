@@ -192,7 +192,14 @@ export async function getPeople(personCategory: string): Promise<Person[]> {
   return results;
 }
 
-function generateParamsLower(originalObject: any, list1: string[], list2: string[]) {
+/**
+ * Given an originalObject, the key/value pairs are separated into 2 new objects, depending on the keys 
+ * specified in list1 and list2.
+ * @param originalObject 
+ * @param list1 
+ * @param list2 
+ */
+function generateParamGroups(originalObject: any, list1: string[], list2: string[]) {
   const obj1 = {} as any;
   const obj2 = {} as any;
 
@@ -231,27 +238,27 @@ export async function insertPerson(peopleCategoryName: string, params: any): Pro
   const attributes = dynamicAttributesDb.map((attribute) => { return attribute.attrname.toLowerCase(); });
 
   // Convert keys to lower case keys 
-  const { obj1: personParamsLower, obj2: dynamicParametersLower } = generateParamsLower(params, PERSON_PROPERTIES, attributes) as any;
+  const { obj1: personParams, obj2: dynamicParams } = generateParamGroups(params, PERSON_PROPERTIES, attributes) as any;
 
   // Validate that person properties are present  
-  const validPersonProperties = R.all(propName => R.has(propName, personParamsLower), PERSON_PROPERTIES);
+  const validPersonProperties = R.all(propName => R.has(propName, personParams), PERSON_PROPERTIES);
 
   // Validate that all attribute names for the type are present 
-  const validPersonCategoryProperties = R.all(propName => R.has(propName, dynamicParametersLower), attributes);
+  const validPersonCategoryProperties = R.all(propName => R.has(propName, dynamicParams), attributes);
   if (!validPersonCategoryProperties || !validPersonProperties) {
     throw new Error('Bad request');
   }
 
   // Prep the insert params 
-  personParamsLower.lastmodified = new Date().toISOString();
-  personParamsLower.peoplecategoryid = categoryId;
+  personParams.lastmodified = new Date().toISOString();
+  personParams.peoplecategoryid = categoryId;
 
   // Insert into person table
-  const insertPerson = await execute<PersonDb>(builders.insertPerson(personParamsLower)) as any;
+  const insertPerson = await execute<PersonDb>(builders.insertPerson(personParams)) as any;
   const personUuid = insertPerson[0];
   // // Insert into people attributes
-  for (const k of Object.keys(dynamicParametersLower)) {
-    //  get the attrid from dynamicAttributesDb
+  for (const k of Object.keys(dynamicParams)) {
+    //  Get the attrid from dynamicAttributesDb
     let attrid: any;
     for (const attr of dynamicAttributesDb) {
       if (k === attr.attrname.toLowerCase()) {
@@ -259,7 +266,7 @@ export async function insertPerson(peopleCategoryName: string, params: any): Pro
         break;
       }
     }
-    await execute<PersonDb>(builders.insertAttibuteValue(personUuid, dynamicParametersLower[k], attrid));
+    await execute<PersonDb>(builders.insertAttibuteValue(personUuid, dynamicParams[k], attrid));
   }
   return personUuid;
 }
