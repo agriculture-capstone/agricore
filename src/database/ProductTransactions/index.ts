@@ -50,7 +50,12 @@ export interface ProdTransactionAttrDb {
 
 const builders = {
   /** Get all product transactions of a certain type */
-  getProdTransaction(productname: string) {
+  getSingleProdTransaction(producttransactionuuid: string) {
+    return prodTransactionTable().select('*')
+    .where({ producttransactionuuid });
+  },
+  /** Get all product transactions of a certain type */
+  getProdTransactions(productname: string) {
     return prodTransactionTable().select('*')
     .join(tableNames.PRODUCT_TYPES,
       tableNames.PRODUCT_TYPES + '.producttypeid',
@@ -70,6 +75,13 @@ const builders = {
     .where({ productname });
   },
 
+  getSingleProdTransactionAttrValues(producttransactionuuid: string) {
+    return prodTransactionAttrsTable().select('producttransactionuuid', 'attrname', 'attrvalue')
+    .join(tableNames.PRODUCT_TYPE_TRANSACTION_ATTRIBUTES,
+        tableNames.PRODUCT_TYPE_TRANSACTION_ATTRIBUTES + '.attrid',
+        tableNames.PRODUCT_TRANSACTION_ATTRIBUTES + '.attrid')
+    .where({ producttransactionuuid });
+  },
   /** Get the id of a product type */
   getProdTypeId(productname: string) {
     return prodTypesTable()
@@ -96,11 +108,45 @@ const builders = {
     return prodTransactionAttrsTable()
     .insert({ producttransactionuuid, attrid, attrvalue });
   },
+
+  /** updates a single product field in the database */
+  updateProdTransactionField(producttransactionuuid: string, field: string, value: any) {
+    return prodTransactionTable()
+      .update(field, value)
+      .where({ producttransactionuuid })
+  },
+
+  /** updates a single product field in the database */
+  updateProdTransactionAttr(producttransactionuuid: string, attrname: string, attrvalue: any) {
+    return prodTransactionAttrsTable()
+      .update('attrvalue', attrvalue)
+      .where({ producttransactionuuid, attrname })
+  }
 };
 
 /** Get all product transactions of a certain type */
+export async function getProdTransaction(uuid: string): Promise<ProdTransactionDb> {
+  const transactions = await execute<ProdTransactionDb[]>(builders.getSingleProdTransaction(uuid));
+  const attrValues = await execute<ProdTransactionAttrDb[]>(builders.getSingleProdTransactionAttrValues(uuid));
+  const transaction = transactions[0];
+
+  const isMatchingUuid = R.propEq('producttransactionuuid', transaction.producttransactionuuid);
+  const isMilkQualityAttr = R.propEq('attrname', 'milkQuality');
+
+  const milkQualityAttr = R.find(R.allPass([isMatchingUuid, isMilkQualityAttr]))(attrValues);
+
+  transaction.attributes = [];
+
+  if (milkQualityAttr) {
+    transaction.attributes.push(milkQualityAttr);
+  }
+
+  return transaction;
+}
+
+/** Get all product transactions of a certain type */
 export async function getProdTransactions(productType: string): Promise<ProdTransactionDb[]> {
-  const transactions = await execute<ProdTransactionDb[]>(builders.getProdTransaction(productType));
+  const transactions = await execute<ProdTransactionDb[]>(builders.getProdTransactions(productType));
   const attrValues = await execute<ProdTransactionAttrDb[]>(builders.getProdTransactionAttrValues(productType));
 
   transactions.forEach(function (item) {
@@ -142,5 +188,9 @@ export async function getProductId(productType: string): Promise<any> {
 }
 
 export async function updateProdTransactionField(uuid: string, field: string, value: string|number) {
+  return await execute<any>(builders.updateProdTransactionField(uuid, field, value));
+}
 
+export async function updateProdTransactionAttr(uuid: string, attr: string, value: string) {
+  return await execute<any>(builders.updateProdTransactionAttr(uuid, attr, value));
 }

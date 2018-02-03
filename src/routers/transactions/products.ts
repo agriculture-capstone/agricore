@@ -200,8 +200,8 @@ router.post('/:type', async (req, res) => {
  */
 router.put('/:type/:uuid', async (req, res) => {
   const updateReq: ProdTransactionUpdateReq = {
-    uuid: req.body.uuid,
-    productType: req.params.productType,
+    uuid: req.params.uuid,
+    productType: req.params.type,
 
     datetime: req.body.datetime,
     toPersonUuid: req.body.toPersonUuid,
@@ -214,7 +214,7 @@ router.put('/:type/:uuid', async (req, res) => {
   };
 
   try {
-    const uuid = await ProdTransactionsService.updateProdTransactionsInDb(updateReq);
+    await ProdTransactionsService.updateProdTransactionInDb(updateReq);
   } catch (e) {
     if (e.message === ProdTransactionsService.unhandledErrorMsg) {
       res.status(StatusCode.INTERNAL_SERVER_ERROR).send();
@@ -222,7 +222,7 @@ router.put('/:type/:uuid', async (req, res) => {
       res.status(StatusCode.BAD_REQUEST).send('BadRequest ' + e.message);
     }
   } finally {
-    const result = await ProdTransactionsService.getProdTransactionsFromDb(req.params.type);
+    const result = await ProdTransactionsService.getProdTransactionFromDb(req.params.uuid);
     res.status(StatusCode.OK).send(result);
   }
 });
