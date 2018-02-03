@@ -42,7 +42,7 @@ interface PersonDb {
  */
 interface PeopleAttributeDb {
   personuuid: string;
-  attrname: string;   // TODO isn't this supposed to be attrid??
+  attrname: string; 
   attrvalue: string;
 }
 
@@ -215,7 +215,11 @@ function generateParamsLower(originalObject: any, list1: string[], list2: string
 }
 
 export async function insertPerson(peopleCategoryName: string, params: any): Promise<any> {
-  // TODO i think this function already exists?
+  const categoryId = (await execute<any>(builders.getCategoryId(peopleCategoryName)))[0].peoplecategoryid;
+  if (categoryId < 0) {
+    throw new Error('Invalid category');
+  }
+
   const dynamicAttributesDb: PeopleAttributeTypesDb[] = 
     await execute<PeopleAttributeTypesDb[]>(builders.getPeopleCategoryAttributes(peopleCategoryName));
   const attributes = dynamicAttributesDb.map((attribute) => { return attribute.attrname.toLowerCase(); });
@@ -229,15 +233,12 @@ export async function insertPerson(peopleCategoryName: string, params: any): Pro
   // Validate that all attribute names for the type are present 
   const validPersonCategoryProperties = R.all(propName => R.has(propName, dynamicParametersLower), attributes);
   if (!validPersonCategoryProperties || !validPersonProperties) {
-    // TODO throw error
-    return false;
+    throw new Error('Missing propertites'); 
   }
 
   // Prep the insert params 
   personParamsLower.lastmodified = new Date().toISOString();
-  const categoryId = (await execute<any>(builders.getCategoryId(peopleCategoryName)))[0].peoplecategoryid;
   personParamsLower.peoplecategoryid = categoryId;
-  // TODO insert the category type dynamically
 
   // Insert into person table
   const insertPerson = await execute<PersonDb>(builders.insertPerson(personParamsLower)) as any;
@@ -255,5 +256,4 @@ export async function insertPerson(peopleCategoryName: string, params: any): Pro
     await execute<PersonDb>(builders.insertAttibuteValue(personUuid, dynamicParametersLower[k], attrid));
   }
   return personUuid;
-
 }
