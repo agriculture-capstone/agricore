@@ -140,3 +140,7 @@ export async function getProductId(productType: string): Promise<any> {
   const productId = await execute<any>(builders.getProdTypeId(productType));
   return productId[0].producttypeid;
 }
+
+export async function updateProdTransactionField(uuid: string, field: string, value: string|number) {
+
+}

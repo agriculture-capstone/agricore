@@ -41,6 +41,25 @@ export interface ProdTransactionReq {
   milkQuality?: string;
 }
 
+
+/**
+ * Represents a product transaction udpate request in the API
+ */
+export interface ProdTransactionUpdateReq {
+  uuid: string;
+  productType: string;
+
+  datetime?: string;
+  toPersonUuid?: string;
+  fromPersonUuid?: string;
+  amountOfProduct?: number;
+  costPerUnit?: number;
+  currency?: string;
+
+  milkQuality?: string;
+}
+
+
 const router = createRouter();
 
 /**
@@ -102,6 +121,7 @@ router.get('/:type', async (req, res) => {
  *              The product transaction UUID is returned on success.
  *
  * @apiParam {String} type The type of product.
+ * @apiParam {String} uuid A newly generated UUID for the product transaction.
  * @apiParam {String} datetime The time this transaction was conducted.
  *                    It's value must be in UTC or the request will be rejected.
  * @apiParam {String} toPersonUuid The UUID of the person receiving the product.
@@ -179,8 +199,33 @@ router.post('/:type', async (req, res) => {
  * @apiSuccess (200) {String} Success Successfully updated <type> transaction
  */
 router.put('/:type/:uuid', async (req, res) => {
-  res.status(StatusCode.OK).send('Product <type> transaction updated');
-}, authorized(UserType.ADMIN));
+  const updateReq: ProdTransactionUpdateReq = {
+    uuid: req.body.uuid,
+    productType: req.params.productType,
+
+    datetime: req.body.datetime,
+    toPersonUuid: req.body.toPersonUuid,
+    fromPersonUuid: req.body.fromPersonUuid,
+    amountOfProduct: req.body.amountOfProduct,
+    costPerUnit: req.body.costPerUnit,
+    currency: req.body.currency,
+
+    milkQuality: req.body.milkQuality,
+  };
+
+  try {
+    const uuid = await ProdTransactionsService.updateProdTransactionsInDb(updateReq);
+  } catch (e) {
+    if (e.message === ProdTransactionsService.unhandledErrorMsg) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send();
+    } else {
+      res.status(StatusCode.BAD_REQUEST).send('BadRequest ' + e.message);
+    }
+  } finally {
+    const result = await ProdTransactionsService.getProdTransactionsFromDb(req.params.type);
+    res.status(StatusCode.OK).send(result);
+  }
+});
 
 
 export default router;

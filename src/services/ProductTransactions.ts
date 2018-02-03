@@ -123,3 +123,34 @@ export async function createProdTransactionsInDb(apiReq: api.ProdTransactionReq)
   }
   return newUuid;
 }
+
+export async function updateProdTransactionsInDb(apiReq: api.ProdTransactionUpdateReq) {
+  let productTypeId: number = -1;
+  const invalidFields: string[] = [];
+
+  // validate request
+  try {
+    productTypeId = await db.getProductId(apiReq.productType);
+  } catch (e) {
+    throw new Error('Product type ' + apiReq.productType + ' not supported');
+  }
+
+  if(apiReq.datetime) {
+    await db.updateProdTransactionField(apiReq.uuid, 'datetime', apiReq.datetime);
+  }
+  if(apiReq.toPersonUuid) {
+    await db.updateProdTransactionField(apiReq.uuid, 'toPersonUuid', apiReq.toPersonUuid);
+  }
+  if(apiReq.fromPersonUuid) {
+    await db.updateProdTransactionField(apiReq.uuid, 'fromPersonUuid', apiReq.fromPersonUuid);
+  }
+  if(apiReq.amountOfProduct) {
+    await db.updateProdTransactionField(apiReq.uuid, 'amountOfProduct', apiReq.amountOfProduct);
+  }
+  if(apiReq.costPerUnit) {
+    await db.updateProdTransactionField(apiReq.uuid, 'costPerUnit', apiReq.costPerUnit);
+  }
+  if(apiReq.currency) {
+    await db.updateProdTransactionField(apiReq.uuid, 'currency', apiReq.currency);
+  }
+}
