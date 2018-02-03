@@ -57,6 +57,9 @@ export async function createProdTransactionsInDb(apiReq: api.ProdTransactionReq)
     throw new Error('Product type ' + apiReq.productType + ' not supported');
   }
 
+  if (!apiReq.uuid) {
+    invalidFields.push('uuid');
+  }
   if (!apiReq.datetime) {
     invalidFields.push('datetime');
   }
@@ -79,6 +82,7 @@ export async function createProdTransactionsInDb(apiReq: api.ProdTransactionReq)
   // create database request
   const dbInsertReq: db.prodTransactionDbInsertReq = {
     producttypeid: productTypeId,
+    producttransactionuuid: apiReq.uuid,
     datetime: apiReq.datetime,
     topersonuuid: apiReq.toPersonUuid,
     frompersonuuid: apiReq.fromPersonUuid,

@@ -30,6 +30,7 @@ export interface ProdTransaction {
  */
 export interface ProdTransactionReq {
   productType: string;
+  uuid: string;
   datetime: string;
   toPersonUuid: string;
   fromPersonUuid: string;
@@ -128,6 +129,7 @@ router.get('/:type', async (req, res) => {
 router.post('/:type', async (req, res) => {
   const createReq: ProdTransactionReq = {
     productType: req.params.type,
+    uuid: req.body.uuid,
     datetime: req.body.datetime,
     toPersonUuid: req.body.toPersonUuid,
     fromPersonUuid: req.body.fromPersonUuid,

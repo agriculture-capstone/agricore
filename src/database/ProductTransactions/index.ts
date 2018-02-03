@@ -29,6 +29,7 @@ export interface ProdTransactionDb {
  */
 export interface prodTransactionDbInsertReq {
   producttypeid: number;
+  producttransactionuuid: string;
   datetime: string;
   topersonuuid: string;
   frompersonuuid: string;
