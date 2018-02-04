@@ -14,8 +14,8 @@ import { StatusCode } from '@/models/statusCodes';
 export default function authorized(...types: UserType[]): RequestHandler {
   return (req, res, next) => {
     if (!arrayIncludes(types, req.user.type)) {
-      // Send unauthorized status
-      res.sendStatus(StatusCode.UNAUTHORIZED);
+      // Send forbidden status
+      res.sendStatus(StatusCode.FORBIDDEN);
       res.end();
     } else {
       // Continue

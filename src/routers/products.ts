@@ -2,6 +2,8 @@ import createRouter from '@/utilities/functions/createRouter';
 import { StatusCode } from '@/models/statusCodes';
 import * as ProductTypesDb from '@/database/products';
 
+import authorized from '@/middleware/authorized';
+
 const router = createRouter();
 
 /**
@@ -33,6 +35,6 @@ const router = createRouter();
 router.get('/', async (req, res) => {
   const response = await ProductTypesDb.getProductTypes();
   res.status(StatusCode.OK).send(JSON.stringify(response));
-});
+}, authorized());
 
 export default router;

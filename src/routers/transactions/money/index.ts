@@ -11,10 +11,12 @@ import productPayments from '@/routers/transactions/money/productPayments';
 const router = createRouter();
 
 router.get('/', async (req, res) => {
+  // TODO
   res.status(StatusCode.OK).send('Successfully retrieved all money transactions');
 }, authorized(UserType.ADMIN));
 
 router.get('/:uuid', async (req, res) => {
+  // TODO
   res.status(StatusCode.OK).send('Successfully retrieved money transaction');
 }, authorized(UserType.ADMIN));
 
