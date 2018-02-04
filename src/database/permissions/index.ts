@@ -23,8 +23,8 @@ export async function hasPermission(
   userCategoryName: string, 
   targetCategoryName: string,
   actionType: string): Promise<boolean> {
-  const userCategoryId = await execute<any>(builders.getCategoryId(userCategoryName));
-  const targetCategoryId = await execute<any>(builders.getCategoryId(targetCategoryName));
+  const userCategoryId = (await execute<any>(builders.getCategoryId(userCategoryName)))[0].peoplecategoryid;
+  const targetCategoryId = (await execute<any>(builders.getCategoryId(targetCategoryName)))[0].peoplecategoryid;
   
   const permissions = await execute<any>(
     builders.getPermissions(userCategoryId, targetCategoryId, actionType));

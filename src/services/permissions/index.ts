@@ -1,6 +1,6 @@
 import { hasPermission } from '@/database/permissions';
 
-export async function checkCategoryPermissions(categoryName: string) {
+export async function checkCategoryPermissions(userCategoryName: string, targetCategoryName: string, actionType: string) {
   // Check database table 
-  // const permitted = hasPermission();
+  return hasPermission(userCategoryName, targetCategoryName, actionType);
 }
