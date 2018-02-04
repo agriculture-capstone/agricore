@@ -12,6 +12,12 @@ const builders = {
     return peopleCategories().select('peoplecategoryid')
       .where('peoplecategoryname', categoryName);
   },
+  /**
+   * Gets the permissions for an action for a target category from a user's category
+   * @param usercategoryid category id of the user
+   * @param targetcategoryid category id of the target
+   * @param action type of action 
+   */
   getPermissions(usercategoryid: number, targetcategoryid: number, action: string) {
     return peopleCategoryPermissionsTable()
       .select('*')
@@ -19,6 +25,12 @@ const builders = {
   },
 };  
 
+/**
+ * Checks to see if a user category has actionType permissions for a target category
+ * @param userCategoryName name for the user category
+ * @param targetCategoryName name for the target category
+ * @param actionType type of action
+ */
 export async function hasPermission(
   userCategoryName: string, 
   targetCategoryName: string,

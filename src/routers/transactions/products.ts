@@ -1,7 +1,6 @@
 import createRouter from '@/utilities/functions/createRouter';
 import * as ProdTransactionsService from '@/services/ProductTransactions';
 
-import logger from '@/utilities/modules/logger';
 import { StatusCode } from '@/models/statusCodes';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';

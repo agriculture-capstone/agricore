@@ -56,7 +56,6 @@ router.get('/:category', async (req, res) => {
     return; 
   }
   const result = await PeopleDb.getPeople(req.params.category);
-  const webToken = req.user;
   res.status(StatusCode.OK).send(result);
 });
 
