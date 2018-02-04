@@ -23,9 +23,16 @@ export async function hasPermission(
   userCategoryName: string, 
   targetCategoryName: string,
   actionType: string): Promise<boolean> {
-  const userCategoryId = (await execute<any>(builders.getCategoryId(userCategoryName)))[0].peoplecategoryid;
-  const targetCategoryId = (await execute<any>(builders.getCategoryId(targetCategoryName)))[0].peoplecategoryid;
   
+  const userCategoryIdResults = await execute<any>(builders.getCategoryId(userCategoryName));
+  const targetCategoryIdResults = await execute<any>(builders.getCategoryId(targetCategoryName));
+  
+  if (userCategoryIdResults.length === 0 || targetCategoryIdResults.length === 0) {
+    throw new Error('Invalid request');
+  }
+  const userCategoryId = userCategoryIdResults[0].peoplecategoryid; 
+  const targetCategoryId = targetCategoryIdResults[0].peoplecategoryid; 
+
   const permissions = await execute<any>(
     builders.getPermissions(userCategoryId, targetCategoryId, actionType));
 
