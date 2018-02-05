@@ -3,6 +3,7 @@ import createRouter from '@/utilities/functions/createRouter';
 import * as PersonCategoriesDb from '@/database/people/categories';
 
 import { StatusCode } from '@/models/statusCodes';
+import authorized from '@/middleware/authorized';
 
 const router = createRouter();
 
@@ -37,6 +38,6 @@ const router = createRouter();
 router.get('/', async (req, res) => {
   const categories = await PersonCategoriesDb.getAllPeopleCategories();
   res.status(StatusCode.OK).send(JSON.stringify(categories));
-});
+}, authorized());
 
 export default router;

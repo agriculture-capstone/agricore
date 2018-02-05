@@ -9,7 +9,7 @@ export default function jwt() {
   }).unless({
     path: [
       // Allow access to the login path only
-      '/authentication/login',
+      '/actions/authenticate',
     ],
   });
 }

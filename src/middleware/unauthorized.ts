@@ -9,7 +9,7 @@ import { StatusCode } from '@/models/statusCodes';
 export default function unauthorized(): ErrorRequestHandler {
   return (err, req, res, next) => {
     if (err.name === 'UnauthorizedError') {
-      res.status(StatusCode.UNAUTHORIZED).end();
+      res.status(StatusCode.UNAUTHORIZED).send('Unauthorized user').end();
       return;
     }
 

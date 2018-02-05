@@ -2,7 +2,7 @@ import createRouter from '@/utilities/functions/createRouter';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
 import * as PeopleDb from '@/database/people';
-
+import { checkCategoryPermissions } from '@/services/permissions';
 import { StatusCode } from '@/models/statusCodes';
 import categories from './categories';
 import logger from '@/utilities/modules/logger';
@@ -50,9 +50,14 @@ router.use('/categories', categories);
   ]
  */
 router.get('/:category', async (req, res) => {
+  const hasPermission = await checkCategoryPermissions(req.user.type, req.params.category, 'read');
+  if (hasPermission === false) {
+    res.status(StatusCode.FORBIDDEN).send('Forbidden access');   
+    return; 
+  }
   const result = await PeopleDb.getPeople(req.params.category);
   res.status(StatusCode.OK).send(result);
-}, authorized(UserType.ADMIN));
+});
 
 /**
  * @api {post} /people/:category Create New Person Entry
@@ -76,6 +81,11 @@ router.get('/:category', async (req, res) => {
  * { personUuid: "1e167b81-d816-497b-8c0c-36f4d6b2fd33" }
  */
 router.post('/:category', async (req, res) => {
+  const hasPermission = await checkCategoryPermissions(req.user.type, req.params.category, 'write');
+  if (hasPermission === false) {
+    res.status(StatusCode.FORBIDDEN).send('Forbidden access');   
+    return; 
+  }
   let response: any;
   try {
     response = await PeopleDb.insertPerson(req.params.category, req.body);
@@ -88,7 +98,7 @@ router.post('/:category', async (req, res) => {
       res.status(StatusCode.INTERNAL_SERVER_ERROR).send('Internal server error');
     }
   }
-}, authorized(UserType.ADMIN));
+});
 
 /**
  * @api {get} /people/:category/:uuid Get Person
@@ -115,6 +125,7 @@ router.post('/:category', async (req, res) => {
    }
  */
 router.get('/:category/:uuid', async (req, res) => {
+  // TODO
   res.status(StatusCode.OK).send('Successfully got <category>');
 }, authorized(UserType.ADMIN));
 
@@ -139,9 +150,13 @@ router.get('/:category/:uuid', async (req, res) => {
  * @apiSuccess (200) {String} Success Successfully updated person of category <category>
  */
 router.put('/:category/:uuid', async (req, res) => {
+  const hasPermission = await checkCategoryPermissions(req.user.type, req.params.category, 'write');
+  if (hasPermission === false) {
+    res.status(StatusCode.FORBIDDEN).send('Forbidden access');   
+    return; 
+  }
   const response = await PeopleDb.updatePerson(req.params.category, req.params.uuid, req.body);
-
   res.status(StatusCode.OK).send(response);
-}, authorized(UserType.ADMIN));
+});
 
 export default router;
