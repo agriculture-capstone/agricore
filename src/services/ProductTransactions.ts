@@ -75,7 +75,28 @@ export async function getProductTransactionsCsv(productType: string) {
   const results = await getProdTransactionsFromDb(productType);
   const csv = json2csv({
     data: results,
-    // fields: ['datetime'],
+    fields: [
+      'datetime',
+      'toPersonUuid', 
+      'fromPersonUuid', 
+      'amountOfProduct', 
+      'productUnits', 
+      'costPerUnit', 
+      'currency', 
+      'milkQuality', 
+      'lastModified',
+    ],
+    fieldNames: [
+      'Date', 
+      'Trader',
+      'Farmer',
+      'Amount',
+      'Units',
+      'Rate',
+      'Currency',
+      'Quality',
+      'Last Modified',
+    ],
   });
   return csv;
 } 
