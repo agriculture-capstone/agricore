@@ -60,7 +60,7 @@ export interface ProdTransactionUpdateReq {
 }
 
 
-const router = createRouter(ParserType.JSON, ParserType.URL_ENCODED);
+const router = createRouter();
 
 /**
  * @api {get} /transactions/products/:type Get Product Transactions
