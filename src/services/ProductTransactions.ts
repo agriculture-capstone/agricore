@@ -1,3 +1,4 @@
+import * as json2csv from 'json2csv'; 
 import * as api from '@/routers/transactions/products';
 import * as db from '@/database/ProductTransactions';
 import logger from '@/utilities/modules/logger';
@@ -70,6 +71,14 @@ export async function getProdTransactionsFromDb(productType: string): Promise<ap
   return results;
 }
 
+export async function getProductTransactionsCsv(productType: string) {
+  const results = await getProdTransactionsFromDb(productType);
+  const csv = json2csv({
+    data: results,
+    // fields: ['datetime'],
+  });
+  return csv;
+} 
 /**
  * Connector for the API and database to create a new product transaction
  * Throws error on invalid request

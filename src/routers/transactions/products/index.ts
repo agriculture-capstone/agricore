@@ -1,9 +1,10 @@
-import createRouter from '@/utilities/functions/createRouter';
+import createRouter, { ParserType } from '@/utilities/functions/createRouter';
 import * as ProdTransactionsService from '@/services/ProductTransactions';
 
 import { StatusCode } from '@/models/statusCodes';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
+import logger from '@/utilities/modules/logger';
 
 /**
  * Represents a product transaction in the API
@@ -59,7 +60,7 @@ export interface ProdTransactionUpdateReq {
 }
 
 
-const router = createRouter();
+const router = createRouter(ParserType.JSON, ParserType.URL_ENCODED);
 
 /**
  * @api {get} /transactions/products/:type Get Product Transactions
@@ -108,6 +109,11 @@ const router = createRouter();
  */
 router.get('/:type', async (req, res) => {
   const result = await ProdTransactionsService.getProdTransactionsFromDb(req.params.type);
+  res.status(StatusCode.OK).send(result);
+}, authorized(UserType.ADMIN, UserType.MONITOR, UserType.TRADER));
+
+router.get('/:type/download', async (req, res) => {
+  const result = await ProdTransactionsService.getProductTransactionsCsv(req.params.type);
   res.status(StatusCode.OK).send(result);
 }, authorized(UserType.ADMIN, UserType.MONITOR, UserType.TRADER));
 
