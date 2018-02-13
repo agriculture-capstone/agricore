@@ -69,11 +69,21 @@ export async function getProdTransactionsFromDb(productType: string): Promise<ap
   return results;
 }
 
+/**
+ * Formats a name for a person
+ * @param firstName first name of a person
+ * @param middleName middle name of a person
+ * @param lastName last name of a person
+ */
 function formatName(firstName: string, middleName: string, lastName: string) {
   const names = middleName ? [firstName, middleName, lastName] : [firstName, lastName];
   return names.join(' ');
 }
 
+/**
+ * Gets a csv form of product transaction details
+ * @param productType type of product to get transaction information for
+ */
 export async function getProductTransactionsCsv(productType: string) {
   const dbProdTransactions: db.ProdTransactionDb[] = await db.getProdTransactions(productType);
   const results: api.ProdTransaction[] = [];
@@ -94,11 +104,6 @@ export async function getProductTransactionsCsv(productType: string) {
       rate: item.costperunit,
       lastModified: item.lastmodified,
     };
-
-    /**
-     *  productUnits: item.productunits,
-      currency: item.currency,
-     */
 
     item.attributes.forEach(function (attr: db.ProdTransactionAttrDb) {
       if (attr.attrname === 'milkQuality') {
@@ -133,6 +138,7 @@ export async function getProductTransactionsCsv(productType: string) {
   });
   return csv;
 } 
+
 /**
  * Connector for the API and database to create a new product transaction
  * Throws error on invalid request

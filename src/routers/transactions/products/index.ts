@@ -1,10 +1,9 @@
-import createRouter, { ParserType } from '@/utilities/functions/createRouter';
+import createRouter from '@/utilities/functions/createRouter';
 import * as ProdTransactionsService from '@/services/ProductTransactions';
 
 import { StatusCode } from '@/models/statusCodes';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
-import logger from '@/utilities/modules/logger';
 
 /**
  * Represents a product transaction in the API
@@ -112,6 +111,26 @@ router.get('/:type', async (req, res) => {
   res.status(StatusCode.OK).send(result);
 }, authorized(UserType.ADMIN, UserType.MONITOR, UserType.TRADER));
 
+/**
+ * 
+ * @api {method} /:type/download Download CSV for Product Transactions for a Product Type
+ * @apiName Product Transactions CSV Download 
+ * @apiDescription Returns a CSV that is sorted by the from person's last name, then the date.
+ * @apiGroup Download
+ * @apiVersion  0.0.1
+ * 
+ * 
+ * @apiParam  {String} type type of product to get transactions information
+ * 
+ * @apiSuccess (200) {type} name description
+ * 
+ * @apiSuccessExample {type} Success-Response:
+   "Date","From","To","Amount (litres)","Rate (UGX/litres)","Quality","Last Modified"
+   "2017-01-15T07:57:43.959Z","Hadassah Stamatia Hadassah Afroditi","Enoch Tsang",995.341,"14.46","242.4","2017-09-30T02:00:04.596Z"
+   "2017-01-24T16:35:47.485Z","Hadassah Stamatia Hadassah Afroditi","Brad Pfannmuller",46.936,"14.95","346.2","2017-11-02T19:57:50.886Z"
+ * 
+ * 
+ */
 router.get('/:type/download', async (req, res) => {
   const result = await ProdTransactionsService.getProductTransactionsCsv(req.params.type);
   res.status(StatusCode.OK).send(result);
