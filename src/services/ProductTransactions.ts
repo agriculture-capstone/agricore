@@ -42,8 +42,6 @@ export async function getProdTransactionsFromDb(productType: string): Promise<ap
   const dbProdTransactions: db.ProdTransactionDb[] = await db.getProdTransactions(productType);
   const results: api.ProdTransaction[] = [];
 
-  logger.info('results', results);
-
   dbProdTransactions.forEach(function (item: db.ProdTransactionDb) {
     const newTransaction: api.ProdTransaction = {
       uuid: item.producttransactionuuid,
@@ -71,29 +69,64 @@ export async function getProdTransactionsFromDb(productType: string): Promise<ap
   return results;
 }
 
+function formatName(firstName: string, middleName: string, lastName: string) {
+  const names = middleName ? [firstName, middleName, lastName] : [firstName, lastName];
+  return names.join(' ');
+}
+
 export async function getProductTransactionsCsv(productType: string) {
-  const results = await getProdTransactionsFromDb(productType);
+  const dbProdTransactions: db.ProdTransactionDb[] = await db.getProdTransactions(productType);
+  const results: api.ProdTransaction[] = [];
+
+  // This assumes that the same units and currency is used for all transactions
+  const productUnits = dbProdTransactions[0].productunits;
+  const currency = dbProdTransactions[0].currency;
+
+  dbProdTransactions.forEach(function (item: db.ProdTransactionDb) {
+    const fromName = formatName(item.fromfirstname, item.frommiddlename, item.fromlastname);
+    const toName = formatName(item.tofirstname, item.tomiddlename, item.tolastname);
+
+    const newTransaction: any = {
+      datetime: item.datetime,
+      from: fromName,
+      to: toName,
+      amountOfProduct: item.amountofproduct,
+      rate: item.costperunit,
+      lastModified: item.lastmodified,
+    };
+
+    /**
+     *  productUnits: item.productunits,
+      currency: item.currency,
+     */
+
+    item.attributes.forEach(function (attr: db.ProdTransactionAttrDb) {
+      if (attr.attrname === 'milkQuality') {
+        newTransaction.milkQuality = attr.attrvalue;
+      }
+      // more if statements for other types of attributes
+    });
+
+    results.push(newTransaction);
+  });
+
   const csv = json2csv({
     data: results,
     fields: [
       'datetime',
-      'toPersonUuid', 
-      'fromPersonUuid', 
-      'amountOfProduct', 
-      'productUnits', 
-      'costPerUnit', 
-      'currency', 
+      'from', 
+      'to', 
+      'amountOfProduct',
+      'rate', 
       'milkQuality', 
       'lastModified',
     ],
     fieldNames: [
       'Date', 
-      'Trader',
-      'Farmer',
-      'Amount',
-      'Units',
-      'Rate',
-      'Currency',
+      'From',
+      'To',
+      `Amount (${productUnits})`,
+      `Rate (${currency}/${productUnits})`,
       'Quality',
       'Last Modified',
     ],
