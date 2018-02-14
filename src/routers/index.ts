@@ -5,7 +5,6 @@ import people from '@/routers/people';
 import products from '@/routers/products';
 import transactions from '@/routers/transactions/';
 import productExports from '@/routers/productExports';
-import productExports from '@/routers/products';
 
 const router = Router();
 
