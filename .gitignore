@@ -30,3 +30,7 @@ data/
 # Code Coverage
 test/coverage/*
 .nyc_output/*
+
+# Other
+.DS_Store
+.fuse_hidden*

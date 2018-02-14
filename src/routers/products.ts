@@ -1,31 +1,40 @@
-import * as express from 'express';
-
 import createRouter from '@/utilities/functions/createRouter';
-import authorized from '@/middleware/authorized';
-import { UserType } from '@/models/User/UserType';
 import { StatusCode } from '@/models/statusCodes';
+import * as ProductTypesDb from '@/database/products';
+
+import authorized from '@/middleware/authorized';
 
 const router = createRouter();
 
 /**
- * @api {get} /products
- * @description Returns all product types, their unique associated attributes, and their units.
- *              Parameters have no effect on this request.
- * @apiName GetPeople
+ * @api {get} /products Get All Product Types
+ * @apiName GetProductTypes
+ * @apiGroup ProductTypes
+ * @apiVersion  0.0.1
+ * @apiDescription Returns all types of products and their associated attributes
  *
- * @apiError (401) Unauthorized - Must be admin
- *
- * @apiSuccess (200) {String} Successfully retrieved all product types
+ * @apiSuccess (200) {String} Success Successfully retrieved all product types
  * @apiSuccessExample Success-Response:
-  milk: {
-      "units": "litres",
-      "attributes": [
-        "density"
-      ]
+[
+  {
+    "name": milk,
+    "units": "liters",
+    "attributes": [
+      "density",
+      "viscosity"
+    ]
+  },{
+    "name": corn,
+    "units": kilograms,
+    "attributes": [
+      "colour",
+    ]
   }
- */
+]
+*/
 router.get('/', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully retrieved all product exports') ;
-}, authorized(UserType.ADMIN));
+  const response = await ProductTypesDb.getProductTypes();
+  res.status(StatusCode.OK).send(JSON.stringify(response));
+}, authorized());
 
 export default router;

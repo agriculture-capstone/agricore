@@ -39,6 +39,7 @@
     "concurrently": "node_modules/.bin/concurrently -k -p \"[{name}]\" -n \"Webpack,Node\" -c \"cyan.bold,green.bold\""
   },
   "dependencies": {
+    "@types/ramda": "^0.25.16",
     "bcrypt": "1.0.3",
     "body-parser": "1.18.0",
     "compression": "1.7.0",
@@ -52,6 +53,10 @@
     "morgan": "1.8.2",
     "mysql": "2.14.1",
     "pg": "7.4.0",
+    "posix-character-classes": "^1.0.0",
+    "ramda": "^0.25.0",
+    "resolv": "^1.0.0",
+    "source-map-support": "^0.5.3",
     "tslint-loader": "3.5.3",
     "typescript": "2.5.2",
     "winston": "2.3.1"
@@ -71,6 +76,7 @@
     "@types/morgan": "1.7.32",
     "@types/node": "8.0.28",
     "@types/sinon": "4.0.0",
+    "@types/source-map-support": "^0.4.0",
     "@types/webpack-env": "1.13.1",
     "@types/winston": "2.3.5",
     "apidoc": "0.17.6",
@@ -98,7 +104,7 @@
     "version": "0.0.1",
     "description": "Robust REST API Boilerplate",
     "title": "CoreAPI",
-    "url": "TODO: Insert url"
+    "url": ""
   },
   "nyc": {
     "check-coverage": true,

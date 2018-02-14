@@ -1,6 +1,5 @@
 import * as knex from 'knex';
 
-import Table from '@/models/database/Table';
 import logger from '@/utilities/modules/logger';
 
 /*
@@ -18,6 +17,7 @@ export async function connect(createConnection = knex) {
     client: process.env.DB_CLIENT,
     connection: {
       host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
       database: process.env.DB_NAME,
       user: process.env.DB_USER,
       password: process.env.DB_PASS,
@@ -29,10 +29,22 @@ export async function connect(createConnection = knex) {
 }
 
 /** Names of tables in the database */
-export const tableNames: Readonly<Table> = {
+export const tableNames = {
   USERS: 'users',
   FARMERS: 'farmer',
+  PEOPLE: 'people',
+  PRODUCT_TYPES: 'producttypes',
+  PRODUCT_ATTRIBUTE_TYPES: 'producttypetransactionattributes',
+  PRODUCT_TRANSACTIONS: 'producttransactions',
+  PEOPLE_ATTRIBUTES: 'peopleattributes',
+  PEOPLE_CATEGORIES: 'peoplecategories',
+  PEOPLE_ATTRIBUTE_TYPES: 'peopleattributetypes',
+  PEOPLE_CATEGORY_ATTRIBUTES: 'peoplecategoryattributes',
+  PRODUCT_TRANSACTION_ATTRIBUTES: 'producttransactionattributes',
+  PRODUCT_TYPE_TRANSACTION_ATTRIBUTES: 'producttypetransactionattributes',
+  PEOPLE_CATEGORY_PERMISSIONS: 'peoplecategorypermissions',
 };
+
 
 /**
  * Execute a QueryBuilder and normalize result to an ES6 promise
@@ -49,7 +61,7 @@ export async function execute<T>(qb: knex.QueryBuilder): Promise<T> {
   );
   // Generic logging message to hide sensitive information from logs
   promise.catch((err) => {
-    logger.error('Database error has occurred');
+    logger.error('Database error has occurred', err.message);
   });
 
   return promise;

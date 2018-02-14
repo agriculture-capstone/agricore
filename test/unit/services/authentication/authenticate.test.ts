@@ -2,16 +2,15 @@ import { expect } from 'chai';
 import { createSandbox, assert, SinonStub } from 'sinon';
 
 import { authenticate } from '@/services/authentication/authenticate';
-import * as UserDb from '@/database/User';
+import * as PersonDb from '@/database/Person';
 import * as TokenAuth from '@/services/authentication/token';
 import * as PasswordAuth from '@/services/authentication/password';
-import { DatabaseUser } from '@/models/User';
 import { UserType } from '@/models/User/UserType';
 import logger from '@/utilities/modules/logger';
 import { AuthError } from '@/errors/AuthError';
 
 interface MockObjects {
-  fakeUser?: DatabaseUser;
+  fakeUser?: PersonDb.User;
   fakeToken: string;
 }
 
@@ -31,7 +30,7 @@ describe('authentication service authenticate module', function () {
   const COMPLEX_PASSWORD = '_C0MP|3><?';
   const SIMPLE_HASH = '$2a$11$mkIzes44pQ96o/l/lEUhJewwAGhiQva3HC2lTelnx6NlcKP2LPnu2';
   const COMPLEX_HASH = '$2a$11$xNyDJJcxz5Xu.J3V6CRS6uxqbt1oTKp.sGeToI9WqwLluaAKIXnia';
-  const USER_ID = 1;
+  const USER_ID = '1db75db4-3699-4b7e-97a1-cddfa74c2a88';
 
   let mockObjects: MockObjects;
   let stubFunctions: MockFunctions;
@@ -47,7 +46,7 @@ describe('authentication service authenticate module', function () {
 
     // Define the mocked functions
     stubFunctions = {
-      findUser: sandbox.stub(UserDb, 'findUser'),
+      findUser: sandbox.stub(PersonDb, 'findUser'),
       createToken: sandbox.stub(TokenAuth, 'createToken'),
       checkPassword: sandbox.stub(PasswordAuth, 'checkPassword'),
       logError: sandbox.stub(logger, 'error'),
@@ -111,7 +110,7 @@ describe('authentication service authenticate module', function () {
       username,
       hash,
       userType,
-      userId: USER_ID,
+      uuid: USER_ID,
     };
 
     stubFunctions.findUser.withArgs(username).resolves(mockObjects.fakeUser);

@@ -6,8 +6,8 @@ import { StatusCode } from '@/models/statusCodes';
 const router = createRouter();
 
 /**
- * @api {post} /authentication/login Login
- * @apiName Login
+ * @api {post} /actions/authenticate Authenticate
+ * @apiName Authenticate
  * @apiGroup Authentication
  * @apiVersion  0.0.1
  *
@@ -28,7 +28,7 @@ const router = createRouter();
        token : eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmM2YxYTNiZjk3OGU0MNDVkY2Y2YSJ9.TLkEYpBlKrDxNO73edz-bXJ6XH1rqx8LimtkY
    }
  */
-router.post('/login', (req, res) => {
+router.post('/', (req, res) => {
   if (!req.body.password || !req.body.username) {
     res.sendStatus(StatusCode.BAD_REQUEST);
     return;
@@ -40,8 +40,8 @@ router.post('/login', (req, res) => {
       res.sendStatus(StatusCode.UNAUTHORIZED);
     })
     // Authorized
-    .then((token) => {
-      res.status(StatusCode.OK).json({ token });
+    .then((tokenAndUuid) => {
+      res.status(StatusCode.OK).json(tokenAndUuid);
     })
     // Server error
     .catch((err) => {

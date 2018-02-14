@@ -9,9 +9,9 @@ import unauthorizedMiddleware from '@/middleware/unauthorized';
  * Applies middleware to express app using old `configure` pattern
  */
 export default function middleware() {
+  this.use(createNetworkLogger());
   this.use(jwtMiddleware());
   this.use(unauthorizedMiddleware());
   this.use(cors());
   this.use(compression());
-  this.use(createNetworkLogger);
 }

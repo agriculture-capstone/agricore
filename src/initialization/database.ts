@@ -12,6 +12,6 @@ export async function initDatabase() {
   try {
     await connect();
   } catch (e) {
-    throw new InitWarning('Failed to connect to database');
+    throw new InitWarning('Failed to connect to database, ' + e.message);
   }
 }
