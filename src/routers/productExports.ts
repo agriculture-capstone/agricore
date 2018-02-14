@@ -11,35 +11,26 @@ const router = createRouter();
  * @apiName GetProductExports
  * @apiGroup ProductExports
  * @apiVersion  0.0.1
- * @apiDescription Returns all product exports of all types with all their attributes.
+ * @apiDescription Returns all product exports of all types.
  *
  * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  *
  * @apiSuccess (200) {String} Success Successfully retrieved all people from category <category>
- * @apiSuccessExample /people/farmers Success-Response:
+ * @apiSuccessExample /productexports Success-Response:
   [
     {
-      "productTransactionUuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
+      "productExportUuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
+      "transportId": "A3C-X23"
       "datetime": "2018-01-23 04:05:06",
-      "toPersonUuid": "34e0574e-beea-498d-8bec-7f26d84ba761",
-      "fromPersonUuid": "95bb2019-d135-49a8-83a7-4bf8f54684a0",
       "productType": "milk",
       "amountOfProduct": 10.23,
-      "productUnits": "litres",
-      "costPerUnit": 22.56,
-      "currency": "UGX",
-      "density": "5"
     },
     {
-      "productTransactionUuid": "3321269e-9b8b-432f-a668-b65c206235b0",
+      "productExportUuid": "3321269e-9b8b-432f-a668-b65c206235b0",
+      "transportId": "A3C-X23"
       "datetime": "2018-01-23 04:05:20",
-      "toPersonUuid": "34e0574e-beea-498d-8bec-7f26d84ba761",
-      "fromPersonUuid": "95bb2019-d135-49a8-83a7-4bf8f54684a0",
       "productType": "corn",
       "amountOfProduct": 5.2,
-      "productUnits": "kilograms",
-      "costPerUnit": 2.2,
-      "currency": "USD"
     }
   ]
  */
@@ -53,18 +44,14 @@ router.get('/', async (req, res) => {
  * @apiGroup ProductExports
  * @apiVersion 0.0.1
  * @apiDescription Creates a new product export entry.
- *              Required fields are:
- *                - datetime (UTC)
- *                - productType
- *                - toPersonUuid
- *                - fromPersonUuid
- *                - productType
- *                - amountOfProduct
- *                - costPerUnit
- *                - currency
- *              Along with any associated attributes.
- *              Associated attributes can be checked via /products.
- *              The new product export UUID is returned.
+ *              The new product export UUID is returned on success.
+ *
+ * @apiParam {String} productExportUuid The UUID of the new product export.
+ * @apiParam {String} transportId Identifier for mode of transport, max 255 characters.
+ * @apiParam {String} datetime The time the export occured.
+ * @apiParam {String} productType The type of product.
+ * @apiParam {Number} amountOfProduct The amount of the product in it's given units.
+ *                    The product's units can be checked via /product
  *
  * @apiError (400) BadRequest Missing or invalid fields, ...
  * @apiError (403) Forbidden Current user type does not have sufficient privileges.
@@ -72,7 +59,7 @@ router.get('/', async (req, res) => {
  * @apiSuccess (201) {String} Success Successfully created new product export entry
  * @apiSuccessExample Success-Response:
    {
-     "productTransactionUuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
+     "productExportUuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
    }
  */
 router.post('/', async (req, res) => {
@@ -85,21 +72,15 @@ router.post('/', async (req, res) => {
  * @apiGroup ProductExports
  * @apiVersion 0.0.1
  * @apiDescription Updates a product export entry.
- *              Possible fields are:
- *                - productTransactionUuid
- *                - productType
- *                - datetime (UTC)
- *                - toPersonUuid
- *                - fromPersonUuid
- *                - amountOfProduct
- *                - costPerUnit
- *                - currency
- *              Along with any associated attributes.
- *              Associated attributes can be checked via /products.
  *              Any fields not given will not be updated.
  *              Extra non existent fields will not be ignored.
  *
  * @apiParam {String} uuid Specify the UUID of the product export to update.
+ * @apiParam [String] transportId Identifier for mode of transport, max 255 characters.
+ * @apiParam [String] datetime The time the export occured.
+ * @apiParam [String] productType The type of product.
+ * @apiParam [Number] amountOfProduct The amount of the product in it's given units.
+ *                    The product's units can be checked via /product
  *
  * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  * @apiError (404) NotFound Product export not found
