@@ -7,26 +7,16 @@ import { StatusCode } from '@/models/statusCodes';
 const router = createRouter();
 
 /**
- * @api {get} /productexports
- * @description Returns all product exports and all their associated attributes.
- *              Guaranteed fields are:
- *                - productTransactionUuid
- *                - productType
- *                - datetime (UTC)
- *                - toPersonUuid
- *                - fromPersonUuid
- *                - amountOfProduct
- *                - productUnits
- *                - costPerUnit
- *                - currency
- *              Parameters have no effect on this request.
- *              Associated attributes can be checked via /products/
+ * @api {get} /productexports Get all product exports
  * @apiName GetProductExports
+ * @apiGroup ProductExports
+ * @apiVersion  0.0.1
+ * @apiDescription Returns all product exports of all types with all their attributes.
  *
- * @apiError (401) Unauthorized - Must be admin
+ * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  *
- * @apiSuccess (200) {String} Successfully retrieved all product exports
- * @apiSuccessExample Success-Response:
+ * @apiSuccess (200) {String} Success Successfully retrieved all people from category <category>
+ * @apiSuccessExample /people/farmers Success-Response:
   [
     {
       "productTransactionUuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
@@ -54,13 +44,15 @@ const router = createRouter();
   ]
  */
 router.get('/', async (req, res) => {
-  // TODO
   res.status(StatusCode.OK).send('Successfully retrieved all product exports') ;
 }, authorized(UserType.ADMIN));
 
 /**
- * @api {get} /productexports
- * @description Creates a new product export entry.
+ * @api {post} /productexports
+ * @apiName CreateProductExport
+ * @apiGroup ProductExports
+ * @apiVersion 0.0.1
+ * @apiDescription Creates a new product export entry.
  *              Required fields are:
  *                - datetime (UTC)
  *                - productType
@@ -72,28 +64,28 @@ router.get('/', async (req, res) => {
  *                - currency
  *              Along with any associated attributes.
  *              Associated attributes can be checked via /products.
- *              The product UUID is returned.
- * @apiName CreateProductExport
+ *              The new product export UUID is returned.
  *
- * @apiError (400) The following fields are missing, ...
- * @apiError (400) The product type does not exist
- * @apiError (401) Unauthorized - Must be admin
+ * @apiError (400) BadRequest Missing or invalid fields, ...
+ * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  *
- * @apiSuccess (200) {String} Successfully created new product export entry
+ * @apiSuccess (201) {String} Success Successfully created new product export entry
  * @apiSuccessExample Success-Response:
    {
      "productTransactionUuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
    }
  */
 router.post('/', async (req, res) => {
-  // TODO
   res.status(StatusCode.CREATED).send('Successfully created new product export');
 }, authorized(UserType.ADMIN));
 
 /**
- * @api {put} /productexports
- * @description Updates a product export entry.
- *              Required fields are:
+ * @api {put} /productexports/:uuid
+ * @apiName UpdateProductExport
+ * @apiGroup ProductExports
+ * @apiVersion 0.0.1
+ * @apiDescription Updates a product export entry.
+ *              Possible fields are:
  *                - productTransactionUuid
  *                - productType
  *                - datetime (UTC)
@@ -104,16 +96,17 @@ router.post('/', async (req, res) => {
  *                - currency
  *              Along with any associated attributes.
  *              Associated attributes can be checked via /products.
- * @apiName UpdateProductExport
+ *              Any fields not given will not be updated.
+ *              Extra non existent fields will not be ignored.
  *
- * @apiError (400) The folllowing attributes do not exist
- * @apiError (401) Unauthorized - Must be admin
- * @apiError (404) Transaction not found
+ * @apiParam {String} uuid Specify the UUID of the product export to update.
+ *
+ * @apiError (403) Forbidden Current user type does not have sufficient privileges.
+ * @apiError (404) NotFound Product export not found
  *
  * @apiSuccess (200) {String} Successfully updated product export entry
  */
 router.put('/:uuid', async (req, res) => {
-  // TODO
   res.status(StatusCode.OK).send('Successfully updated product export');
 }, authorized(UserType.ADMIN));
 
