@@ -1,3 +1,4 @@
+import * as json2csv from 'json2csv'; 
 import * as api from '@/routers/transactions/products';
 import * as db from '@/database/ProductTransactions';
 import logger from '@/utilities/modules/logger';
@@ -41,8 +42,6 @@ export async function getProdTransactionsFromDb(productType: string): Promise<ap
   const dbProdTransactions: db.ProdTransactionDb[] = await db.getProdTransactions(productType);
   const results: api.ProdTransaction[] = [];
 
-  logger.info('results', results);
-
   dbProdTransactions.forEach(function (item: db.ProdTransactionDb) {
     const newTransaction: api.ProdTransaction = {
       uuid: item.producttransactionuuid,
@@ -69,6 +68,76 @@ export async function getProdTransactionsFromDb(productType: string): Promise<ap
 
   return results;
 }
+
+/**
+ * Formats a name for a person
+ * @param firstName first name of a person
+ * @param middleName middle name of a person
+ * @param lastName last name of a person
+ */
+function formatName(firstName: string, middleName: string, lastName: string) {
+  const names = middleName ? [firstName, middleName, lastName] : [firstName, lastName];
+  return names.join(' ');
+}
+
+/**
+ * Gets a csv form of product transaction details
+ * @param productType type of product to get transaction information for
+ */
+export async function getProductTransactionsCsv(productType: string) {
+  const dbProdTransactions: db.ProdTransactionDb[] = await db.getProdTransactions(productType);
+  const results: api.ProdTransaction[] = [];
+
+  // This assumes that the same units and currency is used for all transactions
+  const productUnits = dbProdTransactions[0].productunits;
+  const currency = dbProdTransactions[0].currency;
+
+  dbProdTransactions.forEach(function (item: db.ProdTransactionDb) {
+    const fromName = formatName(item.fromfirstname, item.frommiddlename, item.fromlastname);
+    const toName = formatName(item.tofirstname, item.tomiddlename, item.tolastname);
+
+    const newTransaction: any = {
+      datetime: item.datetime,
+      from: fromName,
+      to: toName,
+      amountOfProduct: item.amountofproduct,
+      rate: item.costperunit,
+      lastModified: item.lastmodified,
+    };
+
+    item.attributes.forEach(function (attr: db.ProdTransactionAttrDb) {
+      if (attr.attrname === 'milkQuality') {
+        newTransaction.milkQuality = attr.attrvalue;
+      }
+      // more if statements for other types of attributes
+    });
+
+    results.push(newTransaction);
+  });
+
+  const csv = json2csv({
+    data: results,
+    fields: [
+      'datetime',
+      'from', 
+      'to', 
+      'amountOfProduct',
+      'rate', 
+      'milkQuality', 
+      'lastModified',
+    ],
+    fieldNames: [
+      'Date', 
+      'From',
+      'To',
+      `Amount (${productUnits})`,
+      `Rate (${currency}/${productUnits})`,
+      'Quality',
+      'Last Modified',
+    ],
+  });
+  return csv;
+} 
 
 /**
  * Connector for the API and database to create a new product transaction

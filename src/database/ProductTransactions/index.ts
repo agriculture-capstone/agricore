@@ -22,6 +22,15 @@ export interface ProdTransactionDb {
   currency: string;
   lastmodified: string;
   attributes: ProdTransactionAttrDb[];
+
+  fromfirstname: string;
+  frommiddlename: string;
+  fromlastname: string;
+
+  tofirstname: string;
+  tomiddlename: string;
+  tolastname: string;
+  
 }
 
 /**
@@ -49,7 +58,7 @@ export interface ProdTransactionAttrDb {
 }
 
 const builders = {
-  /** Get all product transactions of a certain type */
+  /** Get a product transaction */
   getSingleProdTransaction(producttransactionuuid: string) {
     return prodTransactionTable().select('*')
     .where({ producttransactionuuid });
@@ -57,11 +66,29 @@ const builders = {
 
   /** Get all product transactions of a certain type */
   getProdTransactions(productname: string) {
-    return prodTransactionTable().select('*')
+    return prodTransactionTable()
+    .select(tableNames.PRODUCT_TRANSACTIONS + '.*',
+      'fromperson.firstname as fromfirstname',
+      'fromperson.middlename as frommiddlename',
+      'fromperson.lastname as fromlastname',
+      'toperson.firstname as tofirstname',
+      'toperson.middlename as tomiddlename',
+      'toperson.lastname as tolastname',
+      tableNames.PRODUCT_TYPES + '.*',
+  )
     .join(tableNames.PRODUCT_TYPES,
       tableNames.PRODUCT_TYPES + '.producttypeid',
       tableNames.PRODUCT_TRANSACTIONS + '.producttypeid')
-    .where({ productname });
+    .join(tableNames.PEOPLE + ' as fromperson',
+      tableNames.PRODUCT_TRANSACTIONS + '.frompersonuuid',
+      'fromperson.personuuid')
+      .join(tableNames.PEOPLE + ' as toperson',
+      tableNames.PRODUCT_TRANSACTIONS + '.topersonuuid',
+      'toperson.personuuid')
+    .where({ productname })
+    .orderBy('fromlastname', 'asc')
+    .orderBy('datetime', 'asc')
+    ;
   },
 
   /** get all attributes and their values for a products certain type */
@@ -126,7 +153,7 @@ const builders = {
   },
 };
 
-/** Get all product transactions of a certain type */
+/** Get a product transaction */
 export async function getProdTransaction(uuid: string): Promise<ProdTransactionDb> {
   const transactions = await execute<ProdTransactionDb[]>(builders.getSingleProdTransaction(uuid));
   const attrValues = await execute<ProdTransactionAttrDb[]>(builders.getSingleProdTransactionAttrValues(uuid));
@@ -149,6 +176,7 @@ export async function getProdTransaction(uuid: string): Promise<ProdTransactionD
 /** Get all product transactions of a certain type */
 export async function getProdTransactions(productType: string): Promise<ProdTransactionDb[]> {
   const transactions = await execute<ProdTransactionDb[]>(builders.getProdTransactions(productType));
+  
   const attrValues = await execute<ProdTransactionAttrDb[]>(builders.getProdTransactionAttrValues(productType));
 
   transactions.forEach(function (item) {
