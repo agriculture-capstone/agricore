@@ -29,6 +29,17 @@ export interface ProdExportReq {
 }
 
 /**
+ * Represents a product exoprt udpate request in the API
+ */
+export interface ProdExportUpdateReq {
+  uuid: string;
+
+  transportId?: string;
+  datetime?: string;
+  amountOfProduct?: number;
+}
+
+/**
  * @api {get} /productexports Get all product exports
  * @apiName GetProductExports
  * @apiGroup ProductExports
@@ -116,6 +127,7 @@ router.post('/', async (req, res) => {
  * @apiDescription Updates a product export entry.
  *              Any fields not given will not be updated.
  *              Extra non existent fields will not be ignored.
+ *              Returns the product export's actual data on error or success.
  *
  * @apiParam {String} uuid Specify the UUID of the product export to update.
  * @apiParam [String] transportId Identifier for mode of transport, max 255 characters.
@@ -128,9 +140,32 @@ router.post('/', async (req, res) => {
  * @apiError (404) NotFound Product export not found
  *
  * @apiSuccess (200) {String} Successfully updated product export entry
- */
+  {
+    "uuid": "3321269e-9b8b-432f-a668-b65c206235b0",
+    "transportId": "A3C-X23",
+    "datetime": "2018-01-23 04:05:20",
+    "lastModified": "2018-01-23 04:06:21",
+    "productType": "corn",
+    "amountOfProduct": 5.2
+  }
+*/
 router.put('/:uuid', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully updated product export');
-}, authorized(UserType.ADMIN));
+  const updateReq: ProdExportUpdateReq = {
+    uuid: req.params.uuid,
+
+    transportId: req.body.transportId,
+    datetime: req.body.datetime,
+    amountOfProduct: req.body.amountOfProduct,
+  };
+
+  try {
+    await ProdExportsService.updateProdExportInDb(updateReq);
+  } catch (e) {
+    res.status(StatusCode.INTERNAL_SERVER_ERROR).send();
+  } finally {
+    const result = await ProdExportsService.getProdExportFromDb(req.params.uuid);
+    res.status(StatusCode.OK).send(result);
+  }
+}, authorized(UserType.ADMIN, UserType.TRADER));
 
 export default router;

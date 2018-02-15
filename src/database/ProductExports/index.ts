@@ -30,6 +30,11 @@ export interface ProdExportDbInsertReq {
 }
 
 const builders = {
+  /** Get all product transactions of a certain type */
+  getSingleProdExport(productexportuuid: string) {
+    return prodExportTable().select('*')
+    .where({ productexportuuid });
+  },
 
   /** Get all product exports */
   getProdExports() {
@@ -44,7 +49,22 @@ const builders = {
     .returning('productexportuuid')
     .insert(prodExport);
   },
+
+  /** updates a single product export field in the database */
+  updateProdExportField(productexportuuid: string, field: string, value: any) {
+    return prodExportTable()
+      .update(field, value)
+      .where({ productexportuuid });
+  },
 };
+
+/** Get a single product export */
+export async function getProdExport(uuid: string): Promise<ProdExportDb> {
+  const transactions = await execute<ProdExportDb[]>(builders.getSingleProdExport(uuid));
+  const transaction = transactions[0];
+  return transaction;
+}
+
 
 /** Get all product exports of a certain type */
 export async function getProdExports(): Promise<ProdExportDb[]> {
@@ -56,4 +76,9 @@ export async function getProdExports(): Promise<ProdExportDb[]> {
 export async function insertProdExport(req: ProdExportDbInsertReq): Promise<string> {
   const newUuid = await execute<any>(builders.insertProdExport(req));
   return newUuid[0];
+}
+
+/** Update a single column for a single product export */
+export async function updateProdExportField(uuid: string, field: string, value: string|number) {
+  return await execute<any>(builders.updateProdExportField(uuid, field, value));
 }

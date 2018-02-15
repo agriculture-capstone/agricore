@@ -7,6 +7,25 @@ import logger from '@/utilities/modules/logger';
 export const unhandledErrorMsg = 'unhandled error';
 
 /**
+ * Connector for the API and database to get a single product export
+ */
+export async function getProdExportFromDb(uuid: string): Promise<api.ProdExport> {
+  logger.info('getting single transaction', uuid);
+  const dbProdExport: db.ProdExportDb = await db.getProdExport(uuid);
+  const result: api.ProdExport = {
+    uuid: dbProdExport.productexportuuid,
+    transportId: dbProdExport.transportid,
+    datetime: dbProdExport.datetime,
+    productType: dbProdExport.productname,
+    amountOfProduct: dbProdExport.amountofproduct,
+    lastModified: dbProdExport.lastmodified,
+  };
+
+  return result;
+}
+
+
+/**
  * Connector for the API and database to get all product exports
  */
 export async function getProdExportsFromDb(): Promise<api.ProdExport[]> {
@@ -22,7 +41,7 @@ export async function getProdExportsFromDb(): Promise<api.ProdExport[]> {
       datetime: item.datetime,
       productType: item.productname,
       amountOfProduct: item.amountofproduct,
-      lastModified: item.lastmodified
+      lastModified: item.lastmodified,
     };
 
     results.push(newExport);
@@ -89,4 +108,27 @@ export async function createProdExportInDb(apiReq: api.ProdExportReq): Promise<s
     throw new Error(unhandledErrorMsg);
   }
   return newUuid;
+}
+
+/**
+ * Connector for the API and database to update a product export
+ * Throws error with message "unhandled error" for unhandled errors
+ */
+export async function updateProdExportInDb(apiReq: api.ProdExportUpdateReq) {
+  try {
+    if (apiReq.transportId) {
+      await db.updateProdExportField(apiReq.uuid, 'transportid', apiReq.transportId)
+    }
+    if (apiReq.datetime) {
+      await db.updateProdExportField(apiReq.uuid, 'datetime', apiReq.datetime)
+    }
+    if (apiReq.amountOfProduct) {
+      await db.updateProdExportField(apiReq.uuid, 'amountofproduct', apiReq.amountOfProduct)
+    }
+  } catch (e) {
+    throw new Error(unhandledErrorMsg);
+  }
+
+  await db.updateProdExportField(apiReq.uuid, 'lastmodified', new Date().toISOString());
+  return;
 }
