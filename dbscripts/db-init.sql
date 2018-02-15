@@ -212,5 +212,6 @@ CREATE TABLE ProductExports (
 	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
 	amountOfProduct REAL NOT NULL,
 	transportId VARCHAR(255),
-	datetime TIMESTAMP NOT NULL
+	datetime TIMESTAMP NOT NULL,
+	lastmodified TIMESTAMP NOT NULL
 );

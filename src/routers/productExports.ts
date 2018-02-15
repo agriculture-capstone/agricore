@@ -14,6 +14,18 @@ export interface ProdExport {
   datetime: string;
   productType: string;
   amountOfProduct: number;
+  lastModified: string;
+}
+
+/**
+ * Represents a product export creation request in the API
+ */
+export interface ProdExportReq {
+  uuid: string;
+  transportId: string;
+  datetime: string;
+  productType: string;
+  amountOfProduct: number;
 }
 
 /**
@@ -32,6 +44,7 @@ export interface ProdExport {
       "uuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
       "transportId": "A3C-X23"
       "datetime": "2018-01-23 04:05:06.000Z",
+      "lastModified": "2018-01-23 04:06:06.000Z",
       "productType": "milk",
       "amountOfProduct": 10.23,
     },
@@ -39,6 +52,7 @@ export interface ProdExport {
       "uuid": "3321269e-9b8b-432f-a668-b65c206235b0",
       "transportId": "A3C-X23",
       "datetime": "2018-01-23 04:05:20",
+      "lastModified": "2018-01-23 04:06:21",
       "productType": "corn",
       "amountOfProduct": 5.2
     }
@@ -74,8 +88,25 @@ router.get('/', async (req, res) => {
    }
  */
 router.post('/', async (req, res) => {
-  res.status(StatusCode.CREATED).send('Successfully created new product export');
-}, authorized(UserType.ADMIN));
+  const createReq: ProdExportReq = {
+    uuid: req.body.uuid,
+    transportId: req.body.transportId,
+    datetime: req.body.datetime,
+    productType: req.body.productType,
+    amountOfProduct: req.body.amountOfProduct,
+  };
+
+  try {
+    const uuid = await ProdExportsService.createProdExportInDb(createReq);
+    res.status(StatusCode.CREATED).send({ uuid });
+  } catch (e) {
+    if (e.message === ProdExportsService.unhandledErrorMsg) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send();
+    } else {
+      res.status(StatusCode.BAD_REQUEST).send('BadRequest ' + e.message);
+    }
+  }
+}, authorized(UserType.ADMIN, UserType.TRADER));
 
 /**
  * @api {put} /productexports/:uuid

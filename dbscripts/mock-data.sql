@@ -587,6 +587,7 @@ INSERT INTO ProductExports VALUES (
 	0,
 	37,
 	'Y58TV14',
+	'2017-10-14 20:17:40',
 	'2017-10-14 20:17:40'
 );
 
@@ -595,6 +596,7 @@ INSERT INTO ProductExports VALUES (
 	0,
 	600,
 	'YRDSAP0',
+	'2017-12-18 19:58:53',
 	'2017-12-18 19:58:53'
 );
 
@@ -603,6 +605,7 @@ INSERT INTO ProductExports VALUES (
 	0,
 	655,
 	'22TFKOG',
+	'2017-12-19 09:46:03',
 	'2017-12-19 09:46:03'
 );
 
@@ -611,6 +614,7 @@ INSERT INTO ProductExports VALUES (
 	0,
 	54,
 	'Z4F3XZC',
+	'2017-11-08 07:38:47',
 	'2017-11-08 07:38:47'
 );
 
@@ -619,6 +623,7 @@ INSERT INTO ProductExports VALUES (
 	0,
 	282,
 	'UA3YZGD',
+	'2017-10-19 10:27:29',
 	'2017-10-19 10:27:29'
 );
 
@@ -627,5 +632,6 @@ INSERT INTO ProductExports VALUES (
 	0,
 	170,
 	'ENOIW7E',
+	'2018-01-08 10:43:41',
 	'2018-01-08 10:43:41'
 );
