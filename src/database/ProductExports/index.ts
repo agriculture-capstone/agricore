@@ -1,7 +1,5 @@
 import dbConnection, { tableNames, execute } from '../connection';
 
-import * as R from 'ramda';
-
 const prodExportTable = () => dbConnection()(tableNames.PRODUCT_EXPORTS);
 
 /**
@@ -44,6 +42,7 @@ const builders = {
       tableNames.PRODUCT_EXPORTS + '.producttypeid');
   },
 
+  /** Inserts a new produt export row in the database */
   insertProdExport(prodExport: ProdExportDbInsertReq) {
     return prodExportTable()
     .returning('productexportuuid')

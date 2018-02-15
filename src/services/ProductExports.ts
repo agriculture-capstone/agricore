@@ -117,13 +117,13 @@ export async function createProdExportInDb(apiReq: api.ProdExportReq): Promise<s
 export async function updateProdExportInDb(apiReq: api.ProdExportUpdateReq) {
   try {
     if (apiReq.transportId) {
-      await db.updateProdExportField(apiReq.uuid, 'transportid', apiReq.transportId)
+      await db.updateProdExportField(apiReq.uuid, 'transportid', apiReq.transportId);
     }
     if (apiReq.datetime) {
-      await db.updateProdExportField(apiReq.uuid, 'datetime', apiReq.datetime)
+      await db.updateProdExportField(apiReq.uuid, 'datetime', apiReq.datetime);
     }
     if (apiReq.amountOfProduct) {
-      await db.updateProdExportField(apiReq.uuid, 'amountofproduct', apiReq.amountOfProduct)
+      await db.updateProdExportField(apiReq.uuid, 'amountofproduct', apiReq.amountOfProduct);
     }
   } catch (e) {
     throw new Error(unhandledErrorMsg);
