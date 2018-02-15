@@ -1,10 +1,20 @@
-
 import createRouter from '@/utilities/functions/createRouter';
+import * as ProdExportsService from '@/services/ProductExports';
+
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
 import { StatusCode } from '@/models/statusCodes';
 
 const router = createRouter();
+
+/** Represents a product export in the API */
+export interface ProdExport {
+  uuid: string;
+  transportId: string;
+  datetime: string;
+  productType: string;
+  amountOfProduct: number;
+}
 
 /**
  * @api {get} /productexports Get all product exports
@@ -19,24 +29,25 @@ const router = createRouter();
  * @apiSuccessExample /productexports Success-Response:
   [
     {
-      "productExportUuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
+      "uuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
       "transportId": "A3C-X23"
-      "datetime": "2018-01-23 04:05:06",
+      "datetime": "2018-01-23 04:05:06.000Z",
       "productType": "milk",
       "amountOfProduct": 10.23,
     },
     {
-      "productExportUuid": "3321269e-9b8b-432f-a668-b65c206235b0",
-      "transportId": "A3C-X23"
+      "uuid": "3321269e-9b8b-432f-a668-b65c206235b0",
+      "transportId": "A3C-X23",
       "datetime": "2018-01-23 04:05:20",
       "productType": "corn",
-      "amountOfProduct": 5.2,
+      "amountOfProduct": 5.2
     }
   ]
  */
 router.get('/', async (req, res) => {
-  res.status(StatusCode.OK).send('Successfully retrieved all product exports') ;
-}, authorized(UserType.ADMIN));
+  const result = await ProdExportsService.getProdExportsFromDb();
+  res.status(StatusCode.OK).send(result);
+}, authorized(UserType.ADMIN, UserType.MONITOR, UserType.TRADER));
 
 /**
  * @api {post} /productexports
@@ -46,7 +57,7 @@ router.get('/', async (req, res) => {
  * @apiDescription Creates a new product export entry.
  *              The new product export UUID is returned on success.
  *
- * @apiParam {String} productExportUuid The UUID of the new product export.
+ * @apiParam {String} uuid The UUID of the new product export.
  * @apiParam {String} transportId Identifier for mode of transport, max 255 characters.
  * @apiParam {String} datetime The time the export occured.
  * @apiParam {String} productType The type of product.
@@ -59,7 +70,7 @@ router.get('/', async (req, res) => {
  * @apiSuccess (201) {String} Success Successfully created new product export entry
  * @apiSuccessExample Success-Response:
    {
-     "productExportUuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
+     "uuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
    }
  */
 router.post('/', async (req, res) => {
