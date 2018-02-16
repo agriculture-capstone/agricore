@@ -134,8 +134,6 @@ router.get('/:type', async (req, res) => {
  */
 router.get('/:type/download', async (req, res) => {
   const result = await ProdTransactionsService.getProductTransactionsCsv(req.params.type);
-  const date = moment().format('YYYY-MM-DD'); 
-  const filename = `${date}-collections.csv`;
   res.set('Content-Type', 'text/csv');
   res.status(StatusCode.OK).send(result);
 }, authorized(UserType.ADMIN, UserType.MONITOR, UserType.TRADER));
