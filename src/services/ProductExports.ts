@@ -86,6 +86,15 @@ export async function createProdExportInDb(apiReq: api.ProdExportCreationReq): P
     invalidFields.push('amountOfProduct');
   }
 
+  // throw error for any invalid fields
+  if (invalidFields.length !== 0) {
+    let errorMsg = 'The following fields are invalid or missing';
+    invalidFields.forEach(function (invalidField) {
+      errorMsg += ', ' + invalidField;
+    });
+    throw new Error(errorMsg);
+  }
+
   // create database request
   const dbInsertReq: db.ProdExportDbInsertReq = {
     productexportuuid: apiReq.uuid,
@@ -97,14 +106,6 @@ export async function createProdExportInDb(apiReq: api.ProdExportCreationReq): P
     lastmodified: new Date().toISOString(),
   };
 
-  // throw error for any invalid fields
-  if (invalidFields.length !== 0) {
-    let errorMsg = 'The following fields are invalid or missing';
-    invalidFields.forEach(function (invalidField) {
-      errorMsg += ', ' + invalidField;
-    });
-    throw new Error(errorMsg);
-  }
 
   let newUuid: string;
   try {
