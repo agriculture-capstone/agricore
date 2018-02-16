@@ -1,6 +1,7 @@
+import * as moment from 'moment';
+
 import createRouter from '@/utilities/functions/createRouter';
 import * as ProdTransactionsService from '@/services/transactions/products';
-
 import { StatusCode } from '@/models/statusCodes';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
@@ -133,15 +134,10 @@ router.get('/:type', async (req, res) => {
  */
 router.get('/:type/download', async (req, res) => {
   const result = await ProdTransactionsService.getProductTransactionsCsv(req.params.type);
-  
-  const date = new Date();
-  const dateString = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`; 
-  const filename = `collections-${dateString}.csv`;
-  
-  res.setHeader('Content-disposition', `attachment; filename=${filename}`);
+  const date = moment().format('YYYY-MM-DD'); 
+  const filename = `${date}-collections.csv`;
   res.set('Content-Type', 'text/csv');
   res.status(StatusCode.OK).send(result);
-
 }, authorized(UserType.ADMIN, UserType.MONITOR, UserType.TRADER));
 
 /**
