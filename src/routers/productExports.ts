@@ -10,18 +10,21 @@ const router = createRouter();
 /** Represents a product export in the API */
 export interface ProdExport {
   uuid: string;
+  recorderUuid: string;
   transportId: string;
   datetime: string;
   productType: string;
   amountOfProduct: number;
+  productUnits: string;
   lastModified: string;
 }
 
 /**
  * Represents a product export creation request in the API
  */
-export interface ProdExportReq {
+export interface ProdExportCreationReq {
   uuid: string;
+  recorderUuid: string;
   transportId: string;
   datetime: string;
   productType: string;
@@ -33,9 +36,7 @@ export interface ProdExportReq {
  */
 export interface ProdExportUpdateReq {
   uuid: string;
-
   transportId?: string;
-  datetime?: string;
   amountOfProduct?: number;
 }
 
@@ -53,19 +54,23 @@ export interface ProdExportUpdateReq {
   [
     {
       "uuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
+      "recorderUuid": "a293e3a5-a88d-473b-9d4a-74a2153992f6",
       "transportId": "A3C-X23"
       "datetime": "2018-01-23 04:05:06.000Z",
       "lastModified": "2018-01-23 04:06:06.000Z",
       "productType": "milk",
       "amountOfProduct": 10.23,
+      "productUnits": litres
     },
     {
       "uuid": "3321269e-9b8b-432f-a668-b65c206235b0",
+      "recorderUuid": "a293e3a5-a88d-473b-9d4a-74a2153992f6",
       "transportId": "A3C-X23",
       "datetime": "2018-01-23 04:05:20",
       "lastModified": "2018-01-23 04:06:21",
       "productType": "corn",
-      "amountOfProduct": 5.2
+      "amountOfProduct": 5.2,
+      "productUnits": litres
     }
   ]
  */
@@ -83,6 +88,7 @@ router.get('/', async (req, res) => {
  *              The new product export UUID is returned on success.
  *
  * @apiParam {String} uuid The UUID of the new product export.
+ * @apiParam {String} recorderUuid The UUID of the person who recorded the export.
  * @apiParam {String} transportId Identifier for mode of transport, max 255 characters.
  * @apiParam {String} datetime The time the export occured.
  * @apiParam {String} productType The type of product.
@@ -99,8 +105,9 @@ router.get('/', async (req, res) => {
    }
  */
 router.post('/', async (req, res) => {
-  const createReq: ProdExportReq = {
+  const createReq: ProdExportCreationReq = {
     uuid: req.body.uuid,
+    recorderUuid: req.body.recorderUuid,
     transportId: req.body.transportId,
     datetime: req.body.datetime,
     productType: req.body.productType,
@@ -131,8 +138,6 @@ router.post('/', async (req, res) => {
  *
  * @apiParam {String} uuid Specify the UUID of the product export to update.
  * @apiParam [String] transportId Identifier for mode of transport, max 255 characters.
- * @apiParam [String] datetime The time the export occured.
- * @apiParam [String] productType The type of product.
  * @apiParam [Number] amountOfProduct The amount of the product in it's given units.
  *                    The product's units can be checked via /product
  *
@@ -142,11 +147,13 @@ router.post('/', async (req, res) => {
  * @apiSuccess (200) {String} Successfully updated product export entry
   {
     "uuid": "3321269e-9b8b-432f-a668-b65c206235b0",
+    "recorderUuid": "a293e3a5-a88d-473b-9d4a-74a2153992f6",
     "transportId": "A3C-X23",
     "datetime": "2018-01-23 04:05:20",
     "lastModified": "2018-01-23 04:06:21",
     "productType": "corn",
-    "amountOfProduct": 5.2
+    "amountOfProduct": 5.2,
+    "productUnits": litres
   }
 */
 router.put('/:uuid', async (req, res) => {
@@ -154,17 +161,16 @@ router.put('/:uuid', async (req, res) => {
     uuid: req.params.uuid,
 
     transportId: req.body.transportId,
-    datetime: req.body.datetime,
     amountOfProduct: req.body.amountOfProduct,
   };
 
   try {
     await ProdExportsService.updateProdExportInDb(updateReq);
-  } catch (e) {
-    res.status(StatusCode.INTERNAL_SERVER_ERROR).send();
-  } finally {
     const result = await ProdExportsService.getProdExportFromDb(req.params.uuid);
     res.status(StatusCode.OK).send(result);
+  } catch (e) {
+    const result = await ProdExportsService.getProdExportFromDb(req.params.uuid);
+    res.status(StatusCode.INTERNAL_SERVER_ERROR).send(result);
   }
 }, authorized(UserType.ADMIN, UserType.TRADER));
 

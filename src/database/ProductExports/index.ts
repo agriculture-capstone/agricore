@@ -7,11 +7,13 @@ const prodExportTable = () => dbConnection()(tableNames.PRODUCT_EXPORTS);
  */
 export interface ProdExportDb {
   productexportuuid: string;
+  recorderuuid: string,
   transportid: string;
   datetime: string;
   productname: string;
   producttypeid: number;
   amountofproduct: number;
+  productunits: string;
   lastmodified: string;
 }
 
@@ -20,6 +22,7 @@ export interface ProdExportDb {
  */
 export interface ProdExportDbInsertReq {
   productexportuuid: string;
+  recorderuuid: string,
   transportid: string;
   datetime: string;
   producttypeid: number;
@@ -28,9 +31,12 @@ export interface ProdExportDbInsertReq {
 }
 
 const builders = {
-  /** Get all product transactions of a certain type */
+  /** Get a single product export */
   getSingleProdExport(productexportuuid: string) {
     return prodExportTable().select('*')
+    .join(tableNames.PRODUCT_TYPES,
+      tableNames.PRODUCT_TYPES + '.producttypeid',
+      tableNames.PRODUCT_EXPORTS + '.producttypeid')
     .where({ productexportuuid });
   },
 
@@ -42,7 +48,7 @@ const builders = {
       tableNames.PRODUCT_EXPORTS + '.producttypeid');
   },
 
-  /** Inserts a new produt export row in the database */
+  /** Inserts a new product export row in the database */
   insertProdExport(prodExport: ProdExportDbInsertReq) {
     return prodExportTable()
     .returning('productexportuuid')

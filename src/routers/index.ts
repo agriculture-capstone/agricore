@@ -13,6 +13,5 @@ router.use('/people', people);
 router.use('/products', products);
 router.use('/transactions', transactions);
 router.use('/productExports', productExports);
-router.use('/products', products);
 
 export default router;

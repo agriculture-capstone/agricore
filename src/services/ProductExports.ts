@@ -10,14 +10,15 @@ export const unhandledErrorMsg = 'unhandled error';
  * Connector for the API and database to get a single product export
  */
 export async function getProdExportFromDb(uuid: string): Promise<api.ProdExport> {
-  logger.info('getting single transaction', uuid);
   const dbProdExport: db.ProdExportDb = await db.getProdExport(uuid);
   const result: api.ProdExport = {
     uuid: dbProdExport.productexportuuid,
+    recorderUuid: dbProdExport.recorderuuid,
     transportId: dbProdExport.transportid,
     datetime: dbProdExport.datetime,
     productType: dbProdExport.productname,
     amountOfProduct: dbProdExport.amountofproduct,
+    productUnits: dbProdExport.productunits,
     lastModified: dbProdExport.lastmodified,
   };
 
@@ -32,15 +33,15 @@ export async function getProdExportsFromDb(): Promise<api.ProdExport[]> {
   const dbProdExports: db.ProdExportDb[] = await db.getProdExports();
   const results: api.ProdExport[] = [];
 
-  logger.info('results', results);
-
   dbProdExports.forEach(function (item: db.ProdExportDb) {
     const newExport: api.ProdExport = {
       uuid: item.productexportuuid,
+      recorderUuid: item.recorderuuid,
       transportId: item.transportid,
       datetime: item.datetime,
       productType: item.productname,
       amountOfProduct: item.amountofproduct,
+      productUnits: item.productunits,
       lastModified: item.lastmodified,
     };
 
@@ -55,7 +56,7 @@ export async function getProdExportsFromDb(): Promise<api.ProdExport[]> {
  * Throws error on invalid request
  * Throws error with message "unhandled error" for unhandled errors
  */
-export async function createProdExportInDb(apiReq: api.ProdExportReq): Promise<string> {
+export async function createProdExportInDb(apiReq: api.ProdExportCreationReq): Promise<string> {
   let productTypeId: number = -1;
   const invalidFields: string[] = [];
 
@@ -68,6 +69,9 @@ export async function createProdExportInDb(apiReq: api.ProdExportReq): Promise<s
 
   if (!apiReq.uuid) {
     invalidFields.push('uuid');
+  }
+  if (!apiReq.recorderUuid) {
+    invalidFields.push('recorderUuid');
   }
   if (!apiReq.transportId) {
     invalidFields.push('transportId');
@@ -85,6 +89,7 @@ export async function createProdExportInDb(apiReq: api.ProdExportReq): Promise<s
   // create database request
   const dbInsertReq: db.ProdExportDbInsertReq = {
     productexportuuid: apiReq.uuid,
+    recorderuuid: apiReq.recorderUuid,
     producttypeid: productTypeId,
     amountofproduct: apiReq.amountOfProduct,
     transportid: apiReq.transportId,
@@ -118,9 +123,6 @@ export async function updateProdExportInDb(apiReq: api.ProdExportUpdateReq) {
   try {
     if (apiReq.transportId) {
       await db.updateProdExportField(apiReq.uuid, 'transportid', apiReq.transportId);
-    }
-    if (apiReq.datetime) {
-      await db.updateProdExportField(apiReq.uuid, 'datetime', apiReq.datetime);
     }
     if (apiReq.amountOfProduct) {
       await db.updateProdExportField(apiReq.uuid, 'amountofproduct', apiReq.amountOfProduct);

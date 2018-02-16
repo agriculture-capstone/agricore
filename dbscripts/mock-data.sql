@@ -584,6 +584,7 @@ INSERT INTO ProductTransactions VALUES (
 
 INSERT INTO ProductExports VALUES (
 	'1761bc00-17a3-496b-a66b-28887b10ad39',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
 	0,
 	37,
 	'Y58TV14',
@@ -593,6 +594,7 @@ INSERT INTO ProductExports VALUES (
 
 INSERT INTO ProductExports VALUES (
 	'5eff79b5-814c-41b2-986b-fb084ad38dc4',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
 	0,
 	600,
 	'YRDSAP0',
@@ -602,6 +604,7 @@ INSERT INTO ProductExports VALUES (
 
 INSERT INTO ProductExports VALUES (
 	'7b645ca4-c3c1-4d3e-bbd8-146b37ac0e7a',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
 	0,
 	655,
 	'22TFKOG',
@@ -611,6 +614,7 @@ INSERT INTO ProductExports VALUES (
 
 INSERT INTO ProductExports VALUES (
 	'b38c17c3-4559-48e1-a420-dc57f0174028',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
 	0,
 	54,
 	'Z4F3XZC',
@@ -620,6 +624,7 @@ INSERT INTO ProductExports VALUES (
 
 INSERT INTO ProductExports VALUES (
 	'9c3ddf88-601a-4abe-9c11-387c8a6df48c',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
 	0,
 	282,
 	'UA3YZGD',
@@ -629,6 +634,7 @@ INSERT INTO ProductExports VALUES (
 
 INSERT INTO ProductExports VALUES (
 	'7f97d1e5-35b3-4526-afbd-4c1bbb6a7b1a',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
 	0,
 	170,
 	'ENOIW7E',

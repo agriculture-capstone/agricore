@@ -10,8 +10,8 @@ import unauthorizedMiddleware from '@/middleware/unauthorized';
  */
 export default function middleware() {
   this.use(createNetworkLogger());
-  this.use(jwtMiddleware());
-  this.use(unauthorizedMiddleware());
+  // this.use(jwtMiddleware());
+  // this.use(unauthorizedMiddleware());
   this.use(cors());
   this.use(compression());
 }
