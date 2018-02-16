@@ -1,5 +1,3 @@
-import * as moment from 'moment';
-
 import createRouter from '@/utilities/functions/createRouter';
 import * as ProdTransactionsService from '@/services/transactions/products';
 import { StatusCode } from '@/models/statusCodes';
