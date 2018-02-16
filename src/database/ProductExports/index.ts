@@ -7,7 +7,7 @@ const prodExportTable = () => dbConnection()(tableNames.PRODUCT_EXPORTS);
  */
 export interface ProdExportDb {
   productexportuuid: string;
-  recorderuuid: string,
+  recorderuuid: string;
   transportid: string;
   datetime: string;
   productname: string;
@@ -22,7 +22,7 @@ export interface ProdExportDb {
  */
 export interface ProdExportDbInsertReq {
   productexportuuid: string;
-  recorderuuid: string,
+  recorderuuid: string;
   transportid: string;
   datetime: string;
   producttypeid: number;

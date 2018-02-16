@@ -1,7 +1,6 @@
 import * as api from '@/routers/productExports';
 import * as db from '@/database/ProductExports';
 import * as productTransactionsDb from '@/database/ProductTransactions';
-import logger from '@/utilities/modules/logger';
 
 /** message when an unhandled error is thrown */
 export const unhandledErrorMsg = 'unhandled error';
