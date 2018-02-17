@@ -36,7 +36,9 @@ export interface ProdExportCreationReq {
  */
 export interface ProdExportUpdateReq {
   uuid: string;
+  recorderUuid?: string;
   transportId?: string;
+  datetime?: string;
   amountOfProduct?: number;
 }
 
@@ -137,7 +139,9 @@ router.post('/', async (req, res) => {
  *              Returns the product export's actual data on error or success.
  *
  * @apiParam {String} uuid Specify the UUID of the product export to update.
+ * @apiParam [String] recorderUuid The UUID of the person who recorded the export.
  * @apiParam [String] transportId Identifier for mode of transport, max 255 characters.
+ * @apiParam [String] datetime The time the export occured.
  * @apiParam [Number] amountOfProduct The amount of the product in it's given units.
  *                    The product's units can be checked via /product
  *
@@ -160,6 +164,7 @@ router.put('/:uuid', async (req, res) => {
   const updateReq: ProdExportUpdateReq = {
     uuid: req.params.uuid,
 
+    // optional parameters
     transportId: req.body.transportId,
     amountOfProduct: req.body.amountOfProduct,
   };

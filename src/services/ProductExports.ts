@@ -121,8 +121,14 @@ export async function createProdExportInDb(apiReq: api.ProdExportCreationReq): P
  */
 export async function updateProdExportInDb(apiReq: api.ProdExportUpdateReq) {
   try {
+    if (apiReq.recorderUuid) {
+      await db.updateProdExportField(apiReq.uuid, 'recorderuuid', apiReq.recorderUuid);
+    }
     if (apiReq.transportId) {
       await db.updateProdExportField(apiReq.uuid, 'transportid', apiReq.transportId);
+    }
+    if (apiReq.datetime) {
+      await db.updateProdExportField(apiReq.uuid, 'datetime', apiReq.datetime);
     }
     if (apiReq.amountOfProduct) {
       await db.updateProdExportField(apiReq.uuid, 'amountofproduct', apiReq.amountOfProduct);
