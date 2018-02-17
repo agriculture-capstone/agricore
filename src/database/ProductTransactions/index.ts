@@ -145,7 +145,7 @@ const builders = {
       .where({ producttransactionuuid });
   },
 
-  /** updates a single product field in the database */
+  /** updates a single product transaction field in the database */
   updateProdTransactionAttr(producttransactionuuid: string, attrname: string, attrvalue: any) {
     return prodTransactionAttrsTable()
       .update('attrvalue', attrvalue)

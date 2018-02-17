@@ -208,8 +208,11 @@ CREATE TABLE ProductPayments (
 -- ProductExports
 
 CREATE TABLE ProductExports (
+	productExportUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
+	recorderUuid REFERENCES People(personUuid) NOT NULL,
 	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
 	amountOfProduct REAL NOT NULL,
-	transportId VARCHAR(255),
-	datetime TIMESTAMP NOT NULL
+	transportId VARCHAR(255) NOT NULL,
+	datetime TIMESTAMP NOT NULL,
+	lastmodified TIMESTAMP NOT NULL
 );

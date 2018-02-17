@@ -143,7 +143,6 @@ router.get('/:category/:uuid', async (req, res) => {
  *                    All available attributes can be checked in the /peopleCategories API.
  *                    Multiple attributes maybe provided.
  *
- * @apiError (400) BadRequest Attribute not found for person
  * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  * @apiError (404) NotFound Person not found in category <category>
  *

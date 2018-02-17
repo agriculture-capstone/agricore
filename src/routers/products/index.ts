@@ -7,14 +7,14 @@ import authorized from '@/middleware/authorized';
 const router = createRouter();
 
 /**
-* @api {get} /products Get All Product Types
-* @apiName GetProductTypes
-* @apiGroup ProductTypes
-* @apiVersion  0.0.1
-* @apiDescription Returns all types of products and their associated attributes
-*
-* @apiSuccess (200) {String} Success Successfully retrieved all product types
-* @apiSuccessExample Success-Response:
+ * @api {get} /products Get All Product Types
+ * @apiName GetProductTypes
+ * @apiGroup ProductTypes
+ * @apiVersion  0.0.1
+ * @apiDescription Returns all types of products and their associated attributes
+ *
+ * @apiSuccess (200) {String} Success Successfully retrieved all product types
+ * @apiSuccessExample Success-Response:
 [
   {
     "name": milk,

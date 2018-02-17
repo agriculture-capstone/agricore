@@ -7,7 +7,7 @@ import logger from '@/utilities/modules/logger';
 export const unhandledErrorMsg = 'unhandled error';
 
 /**
- * Connector for the API and database to get all product transactions
+ * Connector for the API and database to get a single product transaction
  */
 export async function getProdTransactionFromDb(uuid: string): Promise<api.ProdTransaction> {
   logger.info('getting single transaction', uuid);
@@ -223,22 +223,17 @@ export async function createProdTransactionsInDb(apiReq: api.ProdTransactionReq)
 }
 
 /**
- * Connector for the API and database to create a new product transaction
- * Throws error on invalid request
+ * Connector for the API and database to update a product transaction
  * Throws error with message "unhandled error" for unhandled errors
  */
 export async function updateProdTransactionInDb(apiReq: api.ProdTransactionUpdateReq) {
   let productTypeId: number = -1;
-
   // validate request
   try {
     productTypeId = await db.getProductId(apiReq.productType);
   } catch (e) {
     throw new Error('Product type ' + apiReq.productType + ' not supported');
   }
-
-
-  logger.info('ProdTransactionUpdateReq', apiReq);
 
   try {
     if (apiReq.datetime) {
