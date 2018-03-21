@@ -1,6 +1,5 @@
 import dbConnection, { tableNames, execute } from '../connection';
 
-import * as R from 'ramda';
 
 const moneyTransactionsTable = () => dbConnection()(tableNames.MONEY_TRANSACTIONS);
 
@@ -8,12 +7,12 @@ const moneyTransactionsTable = () => dbConnection()(tableNames.MONEY_TRANSACTION
  * Represent a money transaction after retrieval from the database
  */
 export interface MoneyTransactionDb {
-  moneytransactionuuid: string,
-  datetime: string,
-  topersonuuid: string,
-  frompersonuuid: string,
-  amount: number,
-  currency: string,
+  moneytransactionuuid: string;
+  datetime: string;
+  topersonuuid: string;
+  frompersonuuid: string;
+  amount: number;
+  currency: string;
 
   fromfirstname: string;
   frommiddlename: string;
@@ -28,12 +27,12 @@ export interface MoneyTransactionDb {
  * Represent a money transaction used in an INSERT call on the database
  */
 export interface moneyTransactionsDbInsertReq {
-  moneytransactionuuid?: string,
-  datetime: string,
-  topersonuuid: string,
-  frompersonuuid: string,
-  amount: string,
-  currency: string,
+  moneytransactionuuid?: string;
+  datetime: string;
+  topersonuuid: string;
+  frompersonuuid: string;
+  amount: number;
+  currency: string;
 }
 
 const builders = {
@@ -73,6 +72,13 @@ const builders = {
       .update(field, value)
       .where({ moneytransactionuuid });
   },
+
+  /** Deletes a single money transaction row, use in case of error */
+  deleteMoneyTransaction(moneytransactionuuid: string) {
+    return moneyTransactionsTable()
+      .where({ moneytransactionuuid })
+      .delete();
+  },
 };
 
 /** Get all money transactions of a certain type */
@@ -93,4 +99,9 @@ export async function insertMoneyTransaction(
 /** Update a single column for a single money transaction */
 export async function updateMoneyTransactionField(uuid: string, field: string, value: string|number) {
   return await execute<any>(builders.updateMoneyTransactionField(uuid, field, value));
+}
+
+/** Delete a single money transaction row, use in case of error */
+export async function deleteMoneyTransaction(uuid: string) {
+  return await execute<any>(builders.deleteMoneyTransaction(uuid));
 }
