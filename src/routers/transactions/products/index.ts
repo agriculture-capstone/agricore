@@ -13,7 +13,9 @@ export interface ProdTransaction {
   productUnits: string;
   datetime: string;
   toPersonUuid: string;
+  to: string;
   fromPersonUuid: string;
+  from: string;
   amountOfProduct: number;
   costPerUnit: number;
   currency: string;
@@ -73,7 +75,9 @@ const router = createRouter();
  *                - productUnits
  *                - datetime
  *                - toPersonUuid
+ *                - to
  *                - fromPersonUuid
+ *                - from
  *                - amountOfProduct
  *                - costPerUnit
  *                - currency
@@ -96,7 +100,9 @@ const router = createRouter();
       "productUnits":"litres",
       "datetime":"2017-01-15T00:57:43.959Z",
       "toPersonUuid":"a293e3a5-a88d-473b-9d4a-74a2153992f6",
+      "to": "John Smith",
       "fromPersonUuid":"ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9",
+      "from": "Jane Doe",
       "amountOfProduct":995.341,
       "costPerUnit":"14.46",
       "currency":"UGX",
@@ -227,7 +233,9 @@ router.post('/:type', async (req, res) => {
       "productUnits":"litres",
       "datetime":"2017-01-15T00:57:43.959Z",
       "toPersonUuid":"a293e3a5-a88d-473b-9d4a-74a2153992f6",
+      "to": "John Smith",
       "fromPersonUuid":"ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9",
+      "from": "Jane Doe",
       "amountOfProduct":995.341,
       "costPerUnit":"14.46",
       "currency":"UGX",
