@@ -8,7 +8,7 @@ import {
 MoneyTransaction, 
 MoneyTransactionCreationReq, 
 MoneyTransactionUpdateReq, 
-} from '../money/'
+} from '../money/';
 const router = createRouter();
 
 /** Represents a loan in the API */
