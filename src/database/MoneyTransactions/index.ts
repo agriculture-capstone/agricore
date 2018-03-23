@@ -36,7 +36,27 @@ export interface moneyTransactionsDbInsertReq {
 }
 
 const builders = {
-  /** Get all money transactions of a certain type */
+  /** Get a single money transactions of a certain type */
+  getSingleMoneyTransaction(moneytransactionuuid: string) {
+    return moneyTransactionsTable()
+    .select(tableNames.MONEY_TRANSACTIONS + '.*',
+      'fromperson.firstname as fromfirstname',
+      'fromperson.middlename as frommiddlename',
+      'fromperson.lastname as fromlastname',
+      'toperson.firstname as tofirstname',
+      'toperson.middlename as tomiddlename',
+      'toperson.lastname as tolastname')
+    .join(tableNames.PEOPLE + ' as fromperson',
+      tableNames.MONEY_TRANSACTIONS + '.frompersonuuid',
+      'fromperson.personuuid')
+      .join(tableNames.PEOPLE + ' as toperson',
+      tableNames.MONEY_TRANSACTIONS + '.topersonuuid',
+      'toperson.personuuid')
+    .orderBy('fromlastname', 'asc')
+    .orderBy('datetime', 'asc')
+    .where({ moneytransactionuuid });
+  },
+    /** Get all money transactions of a certain type */
   getMoneyTransactions() {
     return moneyTransactionsTable()
     .select(tableNames.MONEY_TRANSACTIONS + '.*',
@@ -46,7 +66,6 @@ const builders = {
       'toperson.firstname as tofirstname',
       'toperson.middlename as tomiddlename',
       'toperson.lastname as tolastname',
-      tableNames.PRODUCT_TYPES + '.*',
   )
     .join(tableNames.PEOPLE + ' as fromperson',
       tableNames.MONEY_TRANSACTIONS + '.frompersonuuid',
@@ -80,6 +99,12 @@ const builders = {
       .delete();
   },
 };
+
+/** Get all money transactions of a certain type */
+export async function getMoneyTransaction(uuid: string): Promise<MoneyTransactionDb> {
+  const transactions = await execute<MoneyTransactionDb[]>(builders.getSingleMoneyTransaction(uuid));
+  return transactions[0];
+}
 
 /** Get all money transactions of a certain type */
 export async function getMoneyTransactions(): Promise<MoneyTransactionDb[]> {

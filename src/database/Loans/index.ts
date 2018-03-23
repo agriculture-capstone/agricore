@@ -112,8 +112,8 @@ export async function getLoan(uuid: string): Promise<LoanDb> {
 
 /** Get all loan transactions of a certain type */
 export async function getLoans(): Promise<LoanDb[]> {
-  const transactions = await execute<LoanDb[]>(builders.getLoans());
-  return transactions;
+  const loans = await execute<LoanDb[]>(builders.getLoans());
+  return loans;
 }
 
 /** creates a new loan transaction in the database, returns the new UUID */
