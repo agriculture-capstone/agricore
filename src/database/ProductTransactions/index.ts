@@ -59,8 +59,29 @@ export interface ProdTransactionAttrDb {
 const builders = {
   /** Get a product transaction */
   getSingleProdTransaction(producttransactionuuid: string) {
-    return prodTransactionTable().select('*')
-    .where({ producttransactionuuid });
+    return prodTransactionTable()
+    .select(tableNames.PRODUCT_TRANSACTIONS + '.*',
+      'fromperson.firstname as fromfirstname',
+      'fromperson.middlename as frommiddlename',
+      'fromperson.lastname as fromlastname',
+      'toperson.firstname as tofirstname',
+      'toperson.middlename as tomiddlename',
+      'toperson.lastname as tolastname',
+      tableNames.PRODUCT_TYPES + '.*',
+  )
+    .join(tableNames.PRODUCT_TYPES,
+      tableNames.PRODUCT_TYPES + '.producttypeid',
+      tableNames.PRODUCT_TRANSACTIONS + '.producttypeid')
+    .join(tableNames.PEOPLE + ' as fromperson',
+      tableNames.PRODUCT_TRANSACTIONS + '.frompersonuuid',
+      'fromperson.personuuid')
+      .join(tableNames.PEOPLE + ' as toperson',
+      tableNames.PRODUCT_TRANSACTIONS + '.topersonuuid',
+      'toperson.personuuid')
+      .where({ producttransactionuuid })
+    .orderBy('fromlastname', 'asc')
+    .orderBy('datetime', 'asc')
+    ;
   },
 
   /** Get all product transactions of a certain type */
