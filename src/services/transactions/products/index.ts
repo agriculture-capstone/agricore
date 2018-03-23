@@ -12,13 +12,19 @@ export const unhandledErrorMsg = 'unhandled error';
 export async function getProdTransactionFromDb(uuid: string): Promise<api.ProdTransaction> {
   logger.info('getting single transaction', uuid);
   const dbProdTransaction: db.ProdTransactionDb = await db.getProdTransaction(uuid);
+
+  const fromName = formatName(dbProdTransaction.fromfirstname, dbProdTransaction.frommiddlename, dbProdTransaction.fromlastname);
+  const toName = formatName(dbProdTransaction.tofirstname, dbProdTransaction.tomiddlename, dbProdTransaction.tolastname);
+
   const result: api.ProdTransaction = {
     uuid: dbProdTransaction.producttransactionuuid,
     productType: dbProdTransaction.productname,
     productUnits: dbProdTransaction.productunits,
     datetime: dbProdTransaction.datetime,
     toPersonUuid: dbProdTransaction.topersonuuid,
+    to: toName,
     fromPersonUuid: dbProdTransaction.frompersonuuid,
+    from: fromName,
     amountOfProduct: dbProdTransaction.amountofproduct,
     costPerUnit: dbProdTransaction.costperunit,
     currency: dbProdTransaction.currency,
@@ -43,13 +49,18 @@ export async function getProdTransactionsFromDb(productType: string): Promise<ap
   const results: api.ProdTransaction[] = [];
 
   dbProdTransactions.forEach(function (item: db.ProdTransactionDb) {
+    const fromName = formatName(item.fromfirstname, item.frommiddlename, item.fromlastname);
+    const toName = formatName(item.tofirstname, item.tomiddlename, item.tolastname);
+  
     const newTransaction: api.ProdTransaction = {
       uuid: item.producttransactionuuid,
       productType: item.productname,
       productUnits: item.productunits,
       datetime: item.datetime,
       toPersonUuid: item.topersonuuid,
+      to: toName,
       fromPersonUuid: item.frompersonuuid,
+      from: fromName,
       amountOfProduct: item.amountofproduct,
       costPerUnit: item.costperunit,
       currency: item.currency,
