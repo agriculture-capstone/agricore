@@ -124,6 +124,7 @@ export async function insertLoan(req: loanDbInsertReq): Promise<string> {
     frompersonuuid: req.frompersonuuid,
     amount: req.amount,
     currency: req.currency,
+    lastmodified: req.lastmodified,
   };
 
   const moneyTransactionUuid = await insertMoneyTransaction(moneyTransactionDbInsertReq);
@@ -147,6 +148,7 @@ export async function updateLoanField(uuid: string, field: string, value: string
     return await execute<any>(builders.updateLoanField(uuid, field, value));
   } else {
     const loan = await execute<any>(builders.getSingleLoan(uuid));
+    await updateMoneyTransactionField(loan[0].moneytransactionuuid, 'lastmodified', new Date().toISOString());
     return updateMoneyTransactionField(loan[0].moneytransactionuuid, field, value);
   }
 }

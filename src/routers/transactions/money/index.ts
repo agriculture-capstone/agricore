@@ -24,6 +24,7 @@ export interface MoneyTransaction {
   currency: string;
   toPersonName: string;
   fromPersonName: string;
+  lastModified: string;
 }
 
 /**

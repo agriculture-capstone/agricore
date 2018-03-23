@@ -20,6 +20,7 @@ export async function getLoanFromDb(uuid: string): Promise<api.Loan> {
     currency: dbLoan.currency,
     toPersonName: formatName(dbLoan.tofirstname, dbLoan.tomiddlename, dbLoan.tolastname),
     fromPersonName: formatName(dbLoan.fromfirstname, dbLoan.frommiddlename, dbLoan.fromlastname),
+    lastModified: dbLoan.lastmodified,
   };
 
   return loan;
@@ -42,6 +43,7 @@ export async function getLoansFromDb(): Promise<api.Loan[]> {
       currency: item.currency,
       toPersonName: formatName(item.tofirstname, item.tomiddlename, item.tolastname),
       fromPersonName: formatName(item.fromfirstname, item.frommiddlename, item.fromlastname),
+      lastModified: item.lastmodified,
     };
 
     return loan;
@@ -101,6 +103,7 @@ export async function createLoanInDb(apiReq: api.LoanCreationReq): Promise<strin
     frompersonuuid: apiReq.fromPersonUuid,
     amount: apiReq.amount,
     currency: apiReq.currency,
+    lastmodified: new Date().toISOString(),
   };
 
   // throw error for any invalid fields

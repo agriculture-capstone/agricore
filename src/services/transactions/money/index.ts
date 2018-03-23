@@ -8,17 +8,18 @@ export const unhandledErrorMsg = 'unhandled error';
  * Connector for the API and database to get a single moneyTransaction
  */
 export async function getMoneyTransactionFromDb(uuid: string): Promise<api.MoneyTransaction> {
-  const dbMoneyTransaction: db.MoneyTransactionDb = await db.getMoneyTransaction(uuid);
+  const item: db.MoneyTransactionDb = await db.getMoneyTransaction(uuid);
   const moneyTransaction: api.MoneyTransaction = {
-    uuid: dbMoneyTransaction.moneytransactionuuid,
+    uuid: item.moneytransactionuuid,
 
-    datetime: dbMoneyTransaction.datetime,
-    toPersonUuid: dbMoneyTransaction.topersonuuid,
-    fromPersonUuid: dbMoneyTransaction.frompersonuuid,
-    amount: dbMoneyTransaction.amount,
-    currency: dbMoneyTransaction.currency,
-    toPersonName: formatName(dbMoneyTransaction.tofirstname, dbMoneyTransaction.tomiddlename, dbMoneyTransaction.tolastname),
-    fromPersonName: formatName(dbMoneyTransaction.fromfirstname, dbMoneyTransaction.frommiddlename, dbMoneyTransaction.fromlastname),
+    datetime: item.datetime,
+    toPersonUuid: item.topersonuuid,
+    fromPersonUuid: item.frompersonuuid,
+    amount: item.amount,
+    currency: item.currency,
+    toPersonName: formatName(item.tofirstname, item.tomiddlename, item.tolastname),
+    fromPersonName: formatName(item.fromfirstname, item.frommiddlename, item.fromlastname),
+    lastModified: item.lastmodified,
   };
 
   return moneyTransaction;
@@ -40,6 +41,7 @@ export async function getMoneyTransactionsFromDb(): Promise<api.MoneyTransaction
       currency: item.currency,
       toPersonName: formatName(item.tofirstname, item.tomiddlename, item.tolastname),
       fromPersonName: formatName(item.fromfirstname, item.frommiddlename, item.fromlastname),
+      lastModified: item.lastmodified,
     };
 
     return moneyTransaction;
@@ -96,6 +98,7 @@ export async function createMoneyTransactionInDb(apiReq: api.MoneyTransactionCre
     frompersonuuid: apiReq.fromPersonUuid,
     amount: apiReq.amount,
     currency: apiReq.currency,
+    lastmodified: new Date().toISOString(),
   };
 
   // throw error for any invalid fields
@@ -141,5 +144,6 @@ export async function updateMoneyTransactionInDb(apiReq: api.MoneyTransactionUpd
     throw new Error(unhandledErrorMsg);
   }
 
+  await db.updateMoneyTransactionField(apiReq.uuid, 'lastmodified', new Date().toISOString());
   return;
 }

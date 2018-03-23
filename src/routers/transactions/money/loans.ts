@@ -4,46 +4,30 @@ import * as LoansService from '@/services/transactions/loans';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
 import { StatusCode } from '@/models/statusCodes';
-
+import { 
+MoneyTransaction, 
+MoneyTransactionCreationReq, 
+MoneyTransactionUpdateReq, 
+} from '../money/'
 const router = createRouter();
 
 /** Represents a loan in the API */
-export interface Loan {
-  uuid: string;
+export interface Loan extends MoneyTransaction {
   dueDate: string;
-  datetime: string;
-  toPersonUuid: string;
-  fromPersonUuid: string;
-  amount: number;
-  currency: string;
-  toPersonName: string;
-  fromPersonName: string;
 }
 
 /**
  * Represent a loan used in an INSERT call on the database
  */
-export interface LoanCreationReq {
-  uuid: string;
+export interface LoanCreationReq extends MoneyTransactionCreationReq {
   dueDate: string;
-  datetime: string;
-  toPersonUuid: string;
-  fromPersonUuid: string;
-  amount: number;
-  currency: string;
 }
 
 /**
  * Represent a loan used in an UPDATE call on the database
  */
-export interface LoanUpdateReq {
-  uuid: string;
+export interface LoanUpdateReq extends MoneyTransactionUpdateReq {
   dueDate?: string;
-  datetime?: string;
-  toPersonUuid?: string;
-  fromPersonUuid?: string;
-  amount?: number;
-  currency?: string;
 }
 
 /**

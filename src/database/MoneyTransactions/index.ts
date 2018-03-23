@@ -13,6 +13,7 @@ export interface MoneyTransactionDb {
   frompersonuuid: string;
   amount: number;
   currency: string;
+  lastmodified: string;
 
   fromfirstname: string;
   frommiddlename: string;
@@ -33,13 +34,14 @@ export interface moneyTransactionsDbInsertReq {
   frompersonuuid: string;
   amount: number;
   currency: string;
+  lastmodified: string;
 }
 
 const builders = {
   /** Get a single money transactions of a certain type */
   getSingleMoneyTransaction(moneytransactionuuid: string) {
     return moneyTransactionsTable()
-    .select(tableNames.MONEY_TRANSACTIONS + '.*',
+    .select('*',
       'fromperson.firstname as fromfirstname',
       'fromperson.middlename as frommiddlename',
       'fromperson.lastname as fromlastname',
