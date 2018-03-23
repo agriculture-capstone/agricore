@@ -4,11 +4,7 @@ import * as LoansService from '@/services/transactions/loans';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
 import { StatusCode } from '@/models/statusCodes';
-import { 
-MoneyTransaction, 
-MoneyTransactionCreationReq, 
-MoneyTransactionUpdateReq, 
-} from '../money/'
+import { MoneyTransaction, MoneyTransactionCreationReq, MoneyTransactionUpdateReq} from '../money/';
 const router = createRouter();
 
 /** Represents a loan in the API */
@@ -44,27 +40,27 @@ export interface LoanUpdateReq extends MoneyTransactionUpdateReq {
   [
     {
       "uuid": "9f11efb5-d5b4-4853-aa88-ee10c2940c9f",
-      "dueDate":      "2018-01-23 04:06:06.000Z",
-      "datetime":      "2018-01-23 04:05:06.000Z",
+      "dueDate": "2018-01-23 04:06:06.000Z",
+      "datetime": "2018-01-23 04:05:06.000Z",
       "toPersonUuid": "a293e3a5-a88d-473b-9d4a-74a2153992f6",
       "fromPersonUuid": "2232a3a5-a99d-473b-9d4a-74a2153993b2",
       "amount": 10.22
       "currency": "UGX"
       "toPersonName": "John Lucky Smith",
       "fromPersonName": "Sharon Hello World"
-      "lastModified":      "2018-01-23 04:05:06.000Z",
+      "lastModified": "2018-01-23 04:05:06.000Z",
     },
     {
       "uuid": "7359efb5-d5b4-4853-aa88-ee10c2940ab3",
-      "dueDate":      "2018-01-23 04:06:06.000Z",
-      "datetime":      "2018-01-23 04:05:06.000Z",
+      "dueDate": "2018-01-23 04:06:06.000Z",
+      "datetime": "2018-01-23 04:05:06.000Z",
       "toPersonUuid": "2648e3a5-a88d-473b-9d4a-74a2153970a4",
       "fromPersonUuid": "dc25a3a5-a99d-473b-9d4a-74a21539ff24",
       "amount": 10.22
       "currency": "UGX"
       "toPersonName": "Jerry Morton",
       "fromPersonName": "Joey Goold"
-      "lastModified":      "2018-01-23 04:05:06.000Z",
+      "lastModified": "2018-01-23 04:05:06.000Z",
     }
   ]
  */
@@ -144,8 +140,8 @@ router.post('/', async (req, res) => {
  * @apiSuccess (200) {String} Successfully updated loan entry
    {
     "uuid": "7359efb5-d5b4-4853-aa88-ee10c2940ab3",
-    "dueDate":      "2018-01-23 04:06:06.000Z",
-    "datetime":      "2018-01-23 04:05:06.000Z",
+    "dueDate": "2018-01-23 04:06:06.000Z",
+    "datetime": "2018-01-23 04:05:06.000Z",
     "toPersonUuid": "2648e3a5-a88d-473b-9d4a-74a2153970a4",
     "fromPersonUuid": "dc25a3a5-a99d-473b-9d4a-74a21539ff24",
     "amount": 10.22

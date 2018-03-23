@@ -12,7 +12,6 @@ export async function getLoanFromDb(uuid: string): Promise<api.Loan> {
   const loan: api.Loan = {
     uuid: dbLoan.loanuuid,
     dueDate: dbLoan.duedate,
-
     datetime: dbLoan.datetime,
     toPersonUuid: dbLoan.topersonuuid,
     fromPersonUuid: dbLoan.frompersonuuid,
