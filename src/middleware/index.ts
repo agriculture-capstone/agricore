@@ -8,8 +8,8 @@ import { createNetworkLogger } from '@/utilities/modules/logger';
  */
 export default function middleware() {
   this.use(createNetworkLogger());
-  // this.use(jwtMiddleware());
-  // this.use(unauthorizedMiddleware());
+  this.use(jwtMiddleware());
+  this.use(unauthorizedMiddleware());
   this.use(cors());
   this.use(compression());
 }

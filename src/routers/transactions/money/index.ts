@@ -72,6 +72,7 @@ export interface MoneyTransactionUpdateReq {
       "currency": "UGX"
       "toPersonName": "John Lucky Smith",
       "fromPersonName": "Sharon Hello World"
+      "lastModified":      "2018-01-23 04:05:06.000Z",
     },
     {
       "uuid": "7359efb5-d5b4-4853-aa88-ee10c2940ab3",
@@ -82,6 +83,7 @@ export interface MoneyTransactionUpdateReq {
       "currency": "UGX"
       "toPersonName": "Jerry Morton",
       "fromPersonName": "Joey Goold"
+      "lastModified":      "2018-01-23 04:05:06.000Z",
     }
   ]
  */
