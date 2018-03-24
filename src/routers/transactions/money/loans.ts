@@ -4,7 +4,7 @@ import * as LoansService from '@/services/transactions/loans';
 import authorized from '@/middleware/authorized';
 import { UserType } from '@/models/User/UserType';
 import { StatusCode } from '@/models/statusCodes';
-import { MoneyTransaction, MoneyTransactionCreationReq, MoneyTransactionUpdateReq} from '../money/';
+import { MoneyTransaction, MoneyTransactionCreationReq, MoneyTransactionUpdateReq } from '../money/';
 const router = createRouter();
 
 /** Represents a loan in the API */
