@@ -51,7 +51,7 @@ export interface ProdExportUpdateReq {
  *
  * @apiError (403) Forbidden Current user type does not have sufficient privileges.
  *
- * @apiSuccess (200) {String} Success Successfully retrieved all people from category <category>
+ * @apiSuccess (200) {String} Success Successfully retrieved all product exports
  * @apiSuccessExample /productexports Success-Response:
   [
     {

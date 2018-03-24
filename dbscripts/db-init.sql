@@ -123,6 +123,7 @@ CREATE TYPE Currency AS ENUM ('UGX');
 CREATE TABLE MoneyTransactions (
 	moneyTransactionUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
 	datetime TIMESTAMP NOT NULL,
+	lastModified TIMESTAMP NOT NULL,
 	toPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
 	fromPersonUuid UUID REFERENCES People(personUuid) NOT NULL,
 	amount NUMERIC(30, 2) NOT NULL,
@@ -209,7 +210,7 @@ CREATE TABLE ProductPayments (
 
 CREATE TABLE ProductExports (
 	productExportUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
-	recorderUuid REFERENCES People(personUuid) NOT NULL,
+	recorderUuid UUID REFERENCES People(personUuid) NOT NULL,
 	productTypeId SERIAL REFERENCES ProductTypes(productTypeId) NOT NULL,
 	amountOfProduct REAL NOT NULL,
 	transportId VARCHAR(255) NOT NULL,

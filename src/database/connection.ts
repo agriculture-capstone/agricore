@@ -44,6 +44,8 @@ export const tableNames = {
   PRODUCT_TYPE_TRANSACTION_ATTRIBUTES: 'producttypetransactionattributes',
   PEOPLE_CATEGORY_PERMISSIONS: 'peoplecategorypermissions',
   PRODUCT_EXPORTS: 'productexports',
+  MONEY_TRANSACTIONS: 'moneytransactions',
+  LOANS: 'loans',
 };
 
 

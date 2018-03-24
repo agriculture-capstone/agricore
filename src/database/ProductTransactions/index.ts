@@ -30,7 +30,6 @@ export interface ProdTransactionDb {
   tofirstname: string;
   tomiddlename: string;
   tolastname: string;
-  
 }
 
 /**
