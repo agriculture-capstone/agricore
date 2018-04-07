@@ -217,3 +217,10 @@ CREATE TABLE ProductExports (
 	datetime TIMESTAMP NOT NULL,
 	lastmodified TIMESTAMP NOT NULL
 );
+
+CREATE TABLE Memos (
+	memoUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
+	authorUuid UUID REFERENCES People(personUuid) NOT NULL,
+	message TEXT NOT NULL,
+	datePosted TIMESTAMP NOT NULL
+);
