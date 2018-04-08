@@ -3084,3 +3084,1005 @@ INSERT INTO Loans VALUES (
 	'648eb888-1056-4a19-92a2-1278b1d6c058',
 	'2018-04-02 19:30:30'
 );
+
+-- PAYMENTS
+
+INSERT INTO MoneyTransactions VALUES (
+	'21dc7644-4ffe-482c-9a28-9f90b5cf12d5',
+	'2018-02-12 13:37:22',
+	'2018-02-12 13:37:22',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	'134',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'48b80e9d-76b6-4dc6-9621-604e0bfca3ca',
+	'2018-02-02 06:09:44',
+	'2018-02-02 06:09:44',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	'217',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'1ff188c9-e6e0-4b31-a466-ee67fe2baba7',
+	'2018-02-01 14:46:58',
+	'2018-02-01 14:46:58',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	'156',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'd887fe49-0f6b-404c-90e4-8abc7320edb2',
+	'2018-02-12 14:46:12',
+	'2018-02-12 14:46:12',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	'142',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'63e6ec5d-2a33-49fc-8daa-6b009a637c03',
+	'2018-02-14 13:27:15',
+	'2018-02-14 13:27:15',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'443',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'd2c1eb22-6b96-4052-b126-f1fa7a28de62',
+	'2018-03-06 03:43:28',
+	'2018-03-06 03:43:28',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'132',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'c3f3accc-9e75-4c0f-b45d-accf0f763228',
+	'2018-03-20 20:39:41',
+	'2018-03-20 20:39:41',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'216',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'33de36e2-bace-47d7-b7d5-824ac8f681bc',
+	'2018-02-01 12:18:02',
+	'2018-02-01 12:18:02',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'396',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'664109c0-9e66-41b0-a091-566c404281a1',
+	'2018-02-01 08:59:29',
+	'2018-02-01 08:59:29',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	'397',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'628ac960-6359-4b47-b5e6-eae825241c4c',
+	'2018-02-20 11:16:11',
+	'2018-02-20 11:16:11',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	'324',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'8a2b6cca-5475-4c9c-b897-44a71fbf625d',
+	'2018-03-28 14:54:36',
+	'2018-03-28 14:54:36',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	'467',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'73aea816-df6e-4d73-897b-3fd08130dd30',
+	'2018-03-16 19:30:00',
+	'2018-03-16 19:30:00',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	'101',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'e5a6b0e3-1339-46a4-ad49-3d8ac8111334',
+	'2018-02-03 00:39:37',
+	'2018-02-03 00:39:37',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'236',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'0c784415-802f-4d33-b0a3-29b338a8de13',
+	'2018-04-01 03:24:20',
+	'2018-04-01 03:24:20',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'257',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'695ac0bb-30dc-4bc9-83de-b1dbc65b20c3',
+	'2018-03-04 20:43:40',
+	'2018-03-04 20:43:40',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'438',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'9c1dd0ed-e307-479a-bf45-2bfefa796c26',
+	'2018-03-26 04:40:26',
+	'2018-03-26 04:40:26',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'109',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'5bd61e39-3085-4748-8598-3eccae41dcf3',
+	'2018-02-01 23:09:36',
+	'2018-02-01 23:09:36',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	'237',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'ce53f0d7-b0f9-434e-a886-eefe70d68b57',
+	'2018-03-06 12:37:34',
+	'2018-03-06 12:37:34',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	'399',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'57710bbe-7449-478c-b463-3cdda9d15b54',
+	'2018-03-09 23:42:19',
+	'2018-03-09 23:42:19',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	'359',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'6291cf1c-79d8-4990-96df-5b0d4b3628a8',
+	'2018-03-01 11:18:02',
+	'2018-03-01 11:18:02',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	'273',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'2baa27f3-5718-414a-8394-70bca144f166',
+	'2018-02-14 06:12:52',
+	'2018-02-14 06:12:52',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'224',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'99cb7ec0-bf42-4de5-aabe-9aa363f24ae3',
+	'2018-02-11 07:42:13',
+	'2018-02-11 07:42:13',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'218',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'de3d77dc-60b9-4aa2-82d8-2dfec8cf37f7',
+	'2018-02-19 15:22:52',
+	'2018-02-19 15:22:52',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'453',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'0b0472a5-3adc-4898-b44d-7f11177e618f',
+	'2018-03-22 05:14:20',
+	'2018-03-22 05:14:20',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'431',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'ad064e80-c8fe-4468-a3ac-5e2487cf77f4',
+	'2018-03-27 06:28:45',
+	'2018-03-27 06:28:45',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	'455',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'ef211d30-2f41-442c-a211-e2b7f8c08299',
+	'2018-03-21 01:40:39',
+	'2018-03-21 01:40:39',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	'420',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'8440e46d-e216-4698-b24b-6d79cb7435a3',
+	'2018-03-06 16:21:50',
+	'2018-03-06 16:21:50',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	'282',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'8a90c82e-562c-4eea-9896-afd3cd263506',
+	'2018-02-18 09:39:28',
+	'2018-02-18 09:39:28',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	'333',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'dcc488b5-62fa-454d-992f-eb5c50b8d59b',
+	'2018-02-22 21:10:26',
+	'2018-02-22 21:10:26',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'353',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'8e579011-ce72-4452-94ff-e2f0b3f71165',
+	'2018-03-02 09:27:07',
+	'2018-03-02 09:27:07',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'274',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'23448d09-dae4-4f73-89ac-577ab7f5ae7e',
+	'2018-02-28 14:59:26',
+	'2018-02-28 14:59:26',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'180',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'9e075da7-cac3-4890-8870-8a25398d5b7e',
+	'2018-02-07 10:21:07',
+	'2018-02-07 10:21:07',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'313',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'dd7fa871-aee7-4d0c-98f8-952f2a010ffc',
+	'2018-03-27 19:01:18',
+	'2018-03-27 19:01:18',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	'309',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'd8227538-79ef-4a39-9d69-1b625de22db1',
+	'2018-03-23 03:55:49',
+	'2018-03-23 03:55:49',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	'361',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'4acd9a72-92d2-46ce-bd47-3dfe83421ace',
+	'2018-03-12 22:18:22',
+	'2018-03-12 22:18:22',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	'143',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'c08f5ab8-ae2f-4322-b835-9eb015d3cae0',
+	'2018-02-25 16:14:33',
+	'2018-02-25 16:14:33',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	'314',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'd95eb862-d077-4754-9f8e-84215a435171',
+	'2018-02-23 08:37:48',
+	'2018-02-23 08:37:48',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'429',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'5ecef99a-6835-4bf1-bb45-e0f1fb10a60a',
+	'2018-03-28 15:33:23',
+	'2018-03-28 15:33:23',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'278',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'970d7ff6-eca1-4565-8f40-3e6343605de3',
+	'2018-03-07 12:58:05',
+	'2018-03-07 12:58:05',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'247',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'431debe3-106b-4934-be12-253ca30f619b',
+	'2018-02-01 01:09:10',
+	'2018-02-01 01:09:10',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'391',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'acc3aac3-aabd-4cd0-9ae7-2aba251f55c4',
+	'2018-02-24 04:24:38',
+	'2018-02-24 04:24:38',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	'461',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'd9e287f1-c506-4bc5-89ce-6591982680b8',
+	'2018-02-22 12:29:25',
+	'2018-02-22 12:29:25',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	'184',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'0b501834-f2a7-4a4c-a866-ba69266a38b6',
+	'2018-02-03 11:32:45',
+	'2018-02-03 11:32:45',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	'313',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'45139be9-4c28-4a11-87a7-9279792b9e1f',
+	'2018-03-05 14:49:52',
+	'2018-03-05 14:49:52',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	'229',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'73a38c5f-d23d-45f1-8cfc-bc674914f043',
+	'2018-02-09 13:28:53',
+	'2018-02-09 13:28:53',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'282',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'db1f71a9-be98-4853-8e1a-b570f06617c6',
+	'2018-02-05 23:35:06',
+	'2018-02-05 23:35:06',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'315',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'5c4c8d96-aa7d-4451-a5ba-1a8055c0a82d',
+	'2018-02-13 16:04:04',
+	'2018-02-13 16:04:04',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'452',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'f3e35b2c-4508-4d72-aad9-5869e5a21da8',
+	'2018-02-01 11:52:26',
+	'2018-02-01 11:52:26',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'119',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'616128a0-2632-4850-b6c0-c5523722f535',
+	'2018-02-02 05:15:57',
+	'2018-02-02 05:15:57',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	'142',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'ad3af0a5-288f-429d-8fb0-2794794302fa',
+	'2018-03-26 20:05:12',
+	'2018-03-26 20:05:12',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	'338',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'031513b6-1b06-44f2-97dd-b27a002d3a2b',
+	'2018-03-22 03:17:14',
+	'2018-03-22 03:17:14',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	'243',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'986748d7-4db2-4da9-8f25-fbedc1ded45c',
+	'2018-02-27 01:06:35',
+	'2018-02-27 01:06:35',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	'275',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'34149f64-bd85-4259-b544-02f2907cb452',
+	'2018-02-18 00:49:06',
+	'2018-02-18 00:49:06',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'292',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'2419c73e-56e3-440a-95ad-8e2dd6faa78e',
+	'2018-02-18 03:59:42',
+	'2018-02-18 03:59:42',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'429',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'4beb7edf-f934-49e4-9022-ffec00b22836',
+	'2018-02-12 06:59:05',
+	'2018-02-12 06:59:05',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'432',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'1a8cd097-ffdd-4c3a-82e5-3dece6d28aac',
+	'2018-03-22 08:39:31',
+	'2018-03-22 08:39:31',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'418',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'1f2cc2ba-9e0c-4021-b565-a4913753fba3',
+	'2018-03-09 17:53:21',
+	'2018-03-09 17:53:21',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	'236',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'e581b545-86ac-475d-9969-fad9c9669dad',
+	'2018-02-05 05:17:22',
+	'2018-02-05 05:17:22',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	'436',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'07dc0677-1137-46b8-9d3a-9f242b5636f8',
+	'2018-03-23 05:34:25',
+	'2018-03-23 05:34:25',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	'166',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'59180438-94f9-485b-8b89-f5d192f637be',
+	'2018-02-09 09:49:58',
+	'2018-02-09 09:49:58',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	'420',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'cc18922b-f0a3-453d-895e-aba5e6b48701',
+	'2018-03-17 12:48:48',
+	'2018-03-17 12:48:48',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'454',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'aafec91b-5656-4dbe-9350-126aaccd8e50',
+	'2018-03-23 18:36:26',
+	'2018-03-23 18:36:26',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'331',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'3ef70ada-6b28-4405-9aac-a027e44f6e01',
+	'2018-02-02 11:28:22',
+	'2018-02-02 11:28:22',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'492',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'a625fe46-cf50-445e-8c04-683459c55538',
+	'2018-03-25 11:51:10',
+	'2018-03-25 11:51:10',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'452',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'b3eb376a-02a7-4da4-b1dd-7fe3eb7f9f9e',
+	'2018-03-21 17:15:35',
+	'2018-03-21 17:15:35',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'479',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'0d8ecd49-ceea-459b-8b35-f2fe33aab0bd',
+	'2018-02-24 04:03:07',
+	'2018-02-24 04:03:07',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'126',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'aeec153c-bf2d-498b-9d66-041e14b7fe61',
+	'2018-02-12 16:01:35',
+	'2018-02-12 16:01:35',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'400',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'156262f8-e58f-45f2-8e69-9f54a7af9614',
+	'2018-03-15 13:41:40',
+	'2018-03-15 13:41:40',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'447',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'fce93d39-018b-4742-a04f-c55bbea4439b',
+	'2018-02-28 02:45:32',
+	'2018-02-28 02:45:32',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'420',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'78ee8af5-b79e-495d-8f3e-7ae5439f6b0e',
+	'2018-02-22 13:40:04',
+	'2018-02-22 13:40:04',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'198',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'd082ca87-a3c6-42fa-a840-eb2d2d6f5855',
+	'2018-02-10 07:17:58',
+	'2018-02-10 07:17:58',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'246',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'0791ce82-6d6b-44b4-ab75-970975633605',
+	'2018-03-09 23:13:18',
+	'2018-03-09 23:13:18',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'429',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'055c06ee-eeaa-4bd5-b89b-fae16c349a6c',
+	'2018-03-12 17:29:24',
+	'2018-03-12 17:29:24',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'374',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'87d6408c-9b37-40da-84d2-ded31264acdd',
+	'2018-02-14 01:00:31',
+	'2018-02-14 01:00:31',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'476',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'f23e26ba-3487-4b5d-ae01-8e90be2828b9',
+	'2018-03-14 08:01:10',
+	'2018-03-14 08:01:10',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'233',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'396aeab6-c440-4a71-8895-198a03737b38',
+	'2018-03-21 10:23:52',
+	'2018-03-21 10:23:52',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'307',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'1ae9b9e7-bcb8-487e-9414-ad268b1d28de',
+	'2018-02-12 12:49:34',
+	'2018-02-12 12:49:34',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'483',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'31425eeb-a6f8-4831-9d78-9933fa3b6bca',
+	'2018-03-08 08:32:23',
+	'2018-03-08 08:32:23',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'475',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'6343e04c-0186-4215-819f-10cb25e3bdf7',
+	'2018-02-12 03:34:20',
+	'2018-02-12 03:34:20',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'342',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'03ed8c39-65ce-4f51-9b87-52947b5de599',
+	'2018-03-14 05:40:23',
+	'2018-03-14 05:40:23',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'380',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'45be9009-68bb-4fb8-aa90-c5a228004323',
+	'2018-03-08 13:28:37',
+	'2018-03-08 13:28:37',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'192',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'6157f9b4-f590-48f5-8464-0d5cb31d1f94',
+	'2018-03-02 17:52:45',
+	'2018-03-02 17:52:45',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'207',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'1b9a17ac-09e1-439e-aecb-16a72d51ab0d',
+	'2018-02-22 21:33:56',
+	'2018-02-22 21:33:56',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'406',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'eb4a909f-fc38-41a8-9ab2-388b2845b8fa',
+	'2018-03-25 11:17:24',
+	'2018-03-25 11:17:24',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'465',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'76e330b6-0815-45a3-9b11-b5a14b7fef9f',
+	'2018-03-21 21:45:38',
+	'2018-03-21 21:45:38',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'220',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'78e0de24-40e9-4f89-b6b4-a5f0812cffd8',
+	'2018-02-28 10:49:14',
+	'2018-02-28 10:49:14',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'481',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'056d4185-17a2-4ca3-813f-9cebe1dc36fa',
+	'2018-02-25 13:36:58',
+	'2018-02-25 13:36:58',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'281',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'2b5c9359-2d4f-43bc-8269-8dca0cf0fa0c',
+	'2018-03-27 04:53:58',
+	'2018-03-27 04:53:58',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'470',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'bf607a63-9658-4bfe-9d1c-f5c11cbaaba3',
+	'2018-02-23 23:42:42',
+	'2018-02-23 23:42:42',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	'368',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'5313939b-b476-4cf1-8d75-6d7dbf5ae515',
+	'2018-03-27 22:54:32',
+	'2018-03-27 22:54:32',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	'179',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'd2234981-1a31-498f-8b11-7c52dc2ee469',
+	'2018-03-09 08:05:38',
+	'2018-03-09 08:05:38',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	'452',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'a96850fa-7b2c-4de9-8ee4-f5ea64f3341e',
+	'2018-03-11 18:07:55',
+	'2018-03-11 18:07:55',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	'299',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'425825a2-1e6f-4cfb-b612-e9933bf6c28e',
+	'2018-02-23 16:09:04',
+	'2018-02-23 16:09:04',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	'348',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'ed38f252-dbc9-48cc-9a0d-d2f7bff646ef',
+	'2018-03-03 09:44:14',
+	'2018-03-03 09:44:14',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'381',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'b0a634c9-b4c7-4d18-ad16-6ab08ada9a77',
+	'2018-03-15 23:24:55',
+	'2018-03-15 23:24:55',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	'158',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'858c95f9-8a9e-4495-b6be-619a5fd9e6db',
+	'2018-03-15 10:58:52',
+	'2018-03-15 10:58:52',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'434',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'bac01c9a-c43a-4eb9-a3ed-2c708c5a8fa9',
+	'2018-02-18 12:39:05',
+	'2018-02-18 12:39:05',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	'466',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'f6a27173-1510-465f-9553-ababc2d0d1a7',
+	'2018-03-30 09:18:50',
+	'2018-03-30 09:18:50',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	'143',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'3ad8aef8-a00f-4b50-8a9d-1d6594544851',
+	'2018-02-09 22:32:31',
+	'2018-02-09 22:32:31',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	'383',
+	'UGX'
+);
+
+INSERT INTO MoneyTransactions VALUES (
+	'f925632d-12f6-4e3f-9452-b1696936fc8c',
+	'2018-03-22 08:01:26',
+	'2018-03-22 08:01:26',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	'424',
+	'UGX'
+);
