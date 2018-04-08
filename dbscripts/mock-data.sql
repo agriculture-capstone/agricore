@@ -256,328 +256,3404 @@ INSERT INTO People VALUES (
 		'This guy might drop tables');
 
 -- PRODUCT TRANSACTIONS --
-
 INSERT INTO ProductTransactions VALUES (
-	'0464e508-31fa-4c47-ab2d-56496c6518e4',
-	'2017-01-15 00:57:43.959Z',
-	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
-	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
-	0,
-	'995.3409',
-	'14.46',
-	'UGX',
-	'2017-09-29 20:00:04.596Z'
-);
-	INSERT INTO ProductTransactionAttributes VALUES (
-		'0464e508-31fa-4c47-ab2d-56496c6518e4',
-		0, -- milkQuality
-		'242.4'
-	);
-
-INSERT INTO ProductTransactions VALUES (
-	'174c5003-49c0-4a32-b5f8-1057ce3d8419',
-	'2017-04-27 22:49:08.783Z',
-	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'5949dff5-e099-434d-a5b9-0ec88f38ba48',
+	'2018-03-23 07:46:57Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
 	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
 	0,
-	'1346.0797',
-	'19.21',
+	502,
+	3.38,
 	'UGX',
-	'2017-10-29 19:26:12.731Z'
+	'2018-03-23 07:46:57Z'
 );
 	INSERT INTO ProductTransactionAttributes VALUES (
-		'174c5003-49c0-4a32-b5f8-1057ce3d8419',
+		'5949dff5-e099-434d-a5b9-0ec88f38ba48',
 		0, -- milkQuality
-		'492.6'
+		'191.5'
 	);
 
 INSERT INTO ProductTransactions VALUES (
-	'af7afeae-e0fb-42f7-9d12-f814fcb9371f',
-	'2017-01-24 09:35:47.485Z',
-	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
-	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	'1853bc6c-8f6b-4b74-add3-bf2aeae9d61f',
+	'2018-03-11 03:11:50Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
 	0,
-	'46.936',
-	'14.95',
+	880,
+	1.26,
 	'UGX',
-	'2017-11-02 13:57:50.886Z'
+	'2018-03-11 03:11:50Z'
 );
 	INSERT INTO ProductTransactionAttributes VALUES (
-		'af7afeae-e0fb-42f7-9d12-f814fcb9371f',
+		'1853bc6c-8f6b-4b74-add3-bf2aeae9d61f',
 		0, -- milkQuality
-		'346.2'
+		'111.6'
 	);
+
 INSERT INTO ProductTransactions VALUES (
-	'caf5068f-ee0e-43d8-8956-fcb3a3a58c8c',
-	'2017-03-18 04:03:56.465Z',
+	'bd6d1d65-e964-4400-9604-3930f2005c5d',
+	'2018-03-30 00:59:48Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	999,
+	4.20,
+	'UGX',
+	'2018-03-30 00:59:48Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'bd6d1d65-e964-4400-9604-3930f2005c5d',
+		0, -- milkQuality
+		'149.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'bcd1ada4-3754-4baa-a77e-176f6815477d',
+	'2018-03-26 06:30:29Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	964,
+	1.62,
+	'UGX',
+	'2018-03-26 06:30:29Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'bcd1ada4-3754-4baa-a77e-176f6815477d',
+		0, -- milkQuality
+		'119.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'd37cb9f6-aca5-4d59-83be-60395dd29d33',
+	'2018-03-02 05:46:46Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	556,
+	4.44,
+	'UGX',
+	'2018-03-02 05:46:46Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'd37cb9f6-aca5-4d59-83be-60395dd29d33',
+		0, -- milkQuality
+		'126.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e107cf71-bf2a-4452-94ce-6f5b8eee2cd6',
+	'2018-03-09 18:59:41Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	600,
+	1.50,
+	'UGX',
+	'2018-03-09 18:59:41Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e107cf71-bf2a-4452-94ce-6f5b8eee2cd6',
+		0, -- milkQuality
+		'182.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'12b4474a-fb42-4c05-81dc-545712f844e9',
+	'2018-02-18 08:41:09Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	798,
+	5.73,
+	'UGX',
+	'2018-02-18 08:41:09Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'12b4474a-fb42-4c05-81dc-545712f844e9',
+		0, -- milkQuality
+		'116.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'bb2289fc-c7fc-41f4-9c37-3e1e9f9b187b',
+	'2018-02-08 13:29:57Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	429,
+	2.60,
+	'UGX',
+	'2018-02-08 13:29:57Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'bb2289fc-c7fc-41f4-9c37-3e1e9f9b187b',
+		0, -- milkQuality
+		'142.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'03a41584-e308-4309-8c2c-f56b7efde6a8',
+	'2018-03-21 10:51:07Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	770,
+	5.18,
+	'UGX',
+	'2018-03-21 10:51:07Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'03a41584-e308-4309-8c2c-f56b7efde6a8',
+		0, -- milkQuality
+		'187.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'65d88d58-22f6-47a9-95c1-cd41be8b9ac0',
+	'2018-02-06 19:36:08Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	647,
+	2.84,
+	'UGX',
+	'2018-02-06 19:36:08Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'65d88d58-22f6-47a9-95c1-cd41be8b9ac0',
+		0, -- milkQuality
+		'191.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'f5f46ad0-35bc-4912-a364-cfdc88ea7b74',
+	'2018-02-26 17:39:53Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	325,
+	4.37,
+	'UGX',
+	'2018-02-26 17:39:53Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'f5f46ad0-35bc-4912-a364-cfdc88ea7b74',
+		0, -- milkQuality
+		'159.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'd2194fcd-eea9-4dd6-852f-77f73c655c4d',
+	'2018-03-31 09:25:19Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	610,
+	2.45,
+	'UGX',
+	'2018-03-31 09:25:19Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'd2194fcd-eea9-4dd6-852f-77f73c655c4d',
+		0, -- milkQuality
+		'149.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'f9a63e0c-8182-4809-830c-0cd6996b0a7b',
+	'2018-02-14 01:05:01Z',
 	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
 	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
 	0,
-	'141.4818',
-	'16.79',
+	865,
+	1.16,
 	'UGX',
-	'2017-12-23 15:00:23.903Z'
+	'2018-02-14 01:05:01Z'
 );
 	INSERT INTO ProductTransactionAttributes VALUES (
-		'caf5068f-ee0e-43d8-8956-fcb3a3a58c8c',
+		'f9a63e0c-8182-4809-830c-0cd6996b0a7b',
 		0, -- milkQuality
-		'112.6'
+		'162.0'
 	);
+
 INSERT INTO ProductTransactions VALUES (
-	'45faa895-928d-48de-a0b3-728e3d7a80ea',
-	'2017-05-02 07:26:17.428Z',
-	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
-	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
-	0,
-	'1925.2084',
-	'19.38',
-	'UGX',
-	'2017-08-02 21:24:47.363Z'
-);
-	INSERT INTO ProductTransactionAttributes VALUES (
-		'45faa895-928d-48de-a0b3-728e3d7a80ea',
-		0, -- milkQuality
-		'430.2'
-	);
-INSERT INTO ProductTransactions VALUES (
-	'0d72dd94-c037-46e5-bcbf-1106539fa8ac',
-	'2017-03-22 14:05:46.955Z',
-	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
-	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
-	0,
-	'1334.5164',
-	'14.33',
-	'UGX',
-	'2017-12-07 08:28:52.812Z'
-);
-	INSERT INTO ProductTransactionAttributes VALUES (
-		'0d72dd94-c037-46e5-bcbf-1106539fa8ac',
-		0, -- milkQuality
-		'154'
-	);
-INSERT INTO ProductTransactions VALUES (
-	'b68f3fc2-2ef2-4fef-8c89-24cbb1d2334c',
-	'2017-03-13 01:26:50.548Z',
+	'b50ced7a-787a-4c56-bce5-37979eb82c20',
+	'2018-03-05 13:20:49Z',
 	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
 	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
 	0,
-	'1009.9342',
-	'19.16',
+	693,
+	4.45,
 	'UGX',
-	'2017-08-31 03:50:59.608Z'
+	'2018-03-05 13:20:49Z'
 );
 	INSERT INTO ProductTransactionAttributes VALUES (
-		'b68f3fc2-2ef2-4fef-8c89-24cbb1d2334c',
+		'b50ced7a-787a-4c56-bce5-37979eb82c20',
 		0, -- milkQuality
-		'327.4'
+		'160.8'
 	);
+
 INSERT INTO ProductTransactions VALUES (
-	'64b1c40a-8e61-48c5-87a4-2beb575a22b9',
-	'2017-04-06 13:37:44.542Z',
+	'2291bee2-624b-4691-b20f-dd8baa51ca4a',
+	'2018-03-11 22:47:32Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	737,
+	4.16,
+	'UGX',
+	'2018-03-11 22:47:32Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'2291bee2-624b-4691-b20f-dd8baa51ca4a',
+		0, -- milkQuality
+		'115.4'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'3c70ec2e-dcae-4d22-a68e-1bb0181b8071',
+	'2018-02-19 03:06:50Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	381,
+	3.78,
+	'UGX',
+	'2018-02-19 03:06:50Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'3c70ec2e-dcae-4d22-a68e-1bb0181b8071',
+		0, -- milkQuality
+		'152.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'7f81d929-4c09-44cc-8118-fe83c811cd11',
+	'2018-02-24 23:32:38Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	886,
+	5.23,
+	'UGX',
+	'2018-02-24 23:32:38Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'7f81d929-4c09-44cc-8118-fe83c811cd11',
+		0, -- milkQuality
+		'111.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'10f837c4-962d-42b5-86a2-13304dd33825',
+	'2018-03-13 23:37:08Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	564,
+	2.77,
+	'UGX',
+	'2018-03-13 23:37:08Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'10f837c4-962d-42b5-86a2-13304dd33825',
+		0, -- milkQuality
+		'152.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'408755e6-ffb1-480b-933b-f19d6e1b7ab7',
+	'2018-02-24 00:01:37Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	396,
+	4.08,
+	'UGX',
+	'2018-02-24 00:01:37Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'408755e6-ffb1-480b-933b-f19d6e1b7ab7',
+		0, -- milkQuality
+		'162.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'd3c22983-8036-4ba9-913b-4636971b8b96',
+	'2018-02-18 05:03:05Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	718,
+	2.22,
+	'UGX',
+	'2018-02-18 05:03:05Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'd3c22983-8036-4ba9-913b-4636971b8b96',
+		0, -- milkQuality
+		'173.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'0e76c4bb-8565-4fce-821b-34204c18b042',
+	'2018-02-24 20:10:35Z',
 	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
 	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
 	0,
-	'1882.2158',
-	'11.87',
+	670,
+	4.06,
 	'UGX',
-	'2017-09-11 13:33:42.792Z'
+	'2018-02-24 20:10:35Z'
 );
 	INSERT INTO ProductTransactionAttributes VALUES (
-		'64b1c40a-8e61-48c5-87a4-2beb575a22b9',
+		'0e76c4bb-8565-4fce-821b-34204c18b042',
 		0, -- milkQuality
-		'148.1'
+		'156.1'
 	);
+
 INSERT INTO ProductTransactions VALUES (
-	'dd85aed6-719a-48e3-a6f9-40658172ed49',
-	'2017-04-14 09:58:45.380Z',
+	'0c032a63-5a91-4b92-8306-61b41b772d11',
+	'2018-03-28 16:34:39Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	734,
+	5.16,
+	'UGX',
+	'2018-03-28 16:34:39Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'0c032a63-5a91-4b92-8306-61b41b772d11',
+		0, -- milkQuality
+		'180.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'7d52ac62-c53c-4f0a-ba0d-30c72ca5af81',
+	'2018-03-03 02:31:29Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	456,
+	2.86,
+	'UGX',
+	'2018-03-03 02:31:29Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'7d52ac62-c53c-4f0a-ba0d-30c72ca5af81',
+		0, -- milkQuality
+		'172.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'ef4b97f6-8231-432f-b926-cc6ecf76bf0f',
+	'2018-03-06 08:31:03Z',
 	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
 	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
 	0,
-	'1739.7947',
-	'16.08',
+	420,
+	3.23,
 	'UGX',
-	'2017-12-14 05:51:15.705Z'
+	'2018-03-06 08:31:03Z'
 );
 	INSERT INTO ProductTransactionAttributes VALUES (
-		'dd85aed6-719a-48e3-a6f9-40658172ed49',
+		'ef4b97f6-8231-432f-b926-cc6ecf76bf0f',
 		0, -- milkQuality
-		'121.4'
+		'140.4'
 	);
+
 INSERT INTO ProductTransactions VALUES (
-	'8277c06f-d259-4313-ab3b-8d682a05c8c9',
-	'2017-01-15 09:11:35.404Z',
-	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'4f23c81b-b51f-4de5-ba4e-0707929c9c18',
+	'2018-02-17 16:57:44Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	314,
+	3.24,
+	'UGX',
+	'2018-02-17 16:57:44Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'4f23c81b-b51f-4de5-ba4e-0707929c9c18',
+		0, -- milkQuality
+		'142.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'd6b0d519-0bd0-43fa-9688-15cce35e3348',
+	'2018-03-10 12:27:00Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	945,
+	1.29,
+	'UGX',
+	'2018-03-10 12:27:00Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'd6b0d519-0bd0-43fa-9688-15cce35e3348',
+		0, -- milkQuality
+		'171.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e7d32152-1988-41a4-a6a9-e9f99f8c8108',
+	'2018-03-28 07:40:18Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	707,
+	1.80,
+	'UGX',
+	'2018-03-28 07:40:18Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e7d32152-1988-41a4-a6a9-e9f99f8c8108',
+		0, -- milkQuality
+		'174.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'a9184280-760d-4caf-9b82-09fd8f6e7711',
+	'2018-03-24 14:02:17Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	825,
+	2.03,
+	'UGX',
+	'2018-03-24 14:02:17Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'a9184280-760d-4caf-9b82-09fd8f6e7711',
+		0, -- milkQuality
+		'113.4'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'a0278f85-97e3-48a3-b938-b9f5e7d28d86',
+	'2018-02-03 15:06:06Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
 	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
 	0,
-	'1655.0872',
-	'15.33',
+	894,
+	4.25,
 	'UGX',
-	'2017-10-15 10:19:51.643Z'
+	'2018-02-03 15:06:06Z'
 );
 	INSERT INTO ProductTransactionAttributes VALUES (
-		'8277c06f-d259-4313-ab3b-8d682a05c8c9',
+		'a0278f85-97e3-48a3-b938-b9f5e7d28d86',
 		0, -- milkQuality
-		'247.2'
+		'189.7'
 	);
+
 INSERT INTO ProductTransactions VALUES (
-	'69543194-5aea-426b-9610-2f4e39c7be42',
-	'2017-04-06 12:48:54.165Z',
+	'5a507a6c-6247-4df6-9187-748e5766cf5b',
+	'2018-02-18 20:48:08Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	588,
+	1.79,
+	'UGX',
+	'2018-02-18 20:48:08Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'5a507a6c-6247-4df6-9187-748e5766cf5b',
+		0, -- milkQuality
+		'170.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'04289e9b-25e1-4c19-b5d4-0917f32b70d7',
+	'2018-02-06 12:03:29Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	868,
+	5.48,
+	'UGX',
+	'2018-02-06 12:03:29Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'04289e9b-25e1-4c19-b5d4-0917f32b70d7',
+		0, -- milkQuality
+		'119.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e86811fb-b3d4-46ee-a250-9d8b294e413d',
+	'2018-02-27 15:03:14Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	531,
+	5.77,
+	'UGX',
+	'2018-02-27 15:03:14Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e86811fb-b3d4-46ee-a250-9d8b294e413d',
+		0, -- milkQuality
+		'147.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'0da8e314-c70a-474d-9318-844503cba4dc',
+	'2018-04-01 12:48:30Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	971,
+	3.41,
+	'UGX',
+	'2018-04-01 12:48:30Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'0da8e314-c70a-474d-9318-844503cba4dc',
+		0, -- milkQuality
+		'101.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'd0623935-c5e9-4b69-b742-eeb7d2e57b3c',
+	'2018-03-07 05:16:00Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	865,
+	1.57,
+	'UGX',
+	'2018-03-07 05:16:00Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'd0623935-c5e9-4b69-b742-eeb7d2e57b3c',
+		0, -- milkQuality
+		'200.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'7746d690-c10c-4751-a5df-0549002df617',
+	'2018-03-22 02:22:29Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	807,
+	1.23,
+	'UGX',
+	'2018-03-22 02:22:29Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'7746d690-c10c-4751-a5df-0549002df617',
+		0, -- milkQuality
+		'106.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'0c593ac6-1c32-438c-beba-b552ed32cdc4',
+	'2018-02-25 17:50:15Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	312,
+	4.50,
+	'UGX',
+	'2018-02-25 17:50:15Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'0c593ac6-1c32-438c-beba-b552ed32cdc4',
+		0, -- milkQuality
+		'182.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e1202faf-1b8a-49aa-8319-da3c0da4c4d9',
+	'2018-02-03 06:51:20Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	598,
+	3.27,
+	'UGX',
+	'2018-02-03 06:51:20Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e1202faf-1b8a-49aa-8319-da3c0da4c4d9',
+		0, -- milkQuality
+		'114.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'043367fa-4894-444d-b043-454b9188fe83',
+	'2018-02-04 11:06:05Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	363,
+	2.59,
+	'UGX',
+	'2018-02-04 11:06:05Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'043367fa-4894-444d-b043-454b9188fe83',
+		0, -- milkQuality
+		'199.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'aed99e67-a397-4cef-b9c9-c08ac0c83ed0',
+	'2018-03-21 17:27:02Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	972,
+	1.21,
+	'UGX',
+	'2018-03-21 17:27:02Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'aed99e67-a397-4cef-b9c9-c08ac0c83ed0',
+		0, -- milkQuality
+		'198.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'5ce74be6-94bf-4685-8ce7-af9dbdab5aa9',
+	'2018-03-18 21:11:53Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	950,
+	2.90,
+	'UGX',
+	'2018-03-18 21:11:53Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'5ce74be6-94bf-4685-8ce7-af9dbdab5aa9',
+		0, -- milkQuality
+		'127.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'5c3b2b99-4309-46b0-a1a9-8483a0b12769',
+	'2018-03-23 12:29:51Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	400,
+	2.56,
+	'UGX',
+	'2018-03-23 12:29:51Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'5c3b2b99-4309-46b0-a1a9-8483a0b12769',
+		0, -- milkQuality
+		'191.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'f73c7b5e-0f12-4063-8fe1-624c156ee26a',
+	'2018-02-07 15:18:05Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	623,
+	5.16,
+	'UGX',
+	'2018-02-07 15:18:05Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'f73c7b5e-0f12-4063-8fe1-624c156ee26a',
+		0, -- milkQuality
+		'165.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'4de80e1c-3490-4b65-91d8-5290f5aabe95',
+	'2018-02-22 04:09:44Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	620,
+	1.10,
+	'UGX',
+	'2018-02-22 04:09:44Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'4de80e1c-3490-4b65-91d8-5290f5aabe95',
+		0, -- milkQuality
+		'158.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'aab99f9b-8ebc-4689-a795-bb5e71cdeccf',
+	'2018-03-22 02:50:28Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	468,
+	5.93,
+	'UGX',
+	'2018-03-22 02:50:28Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'aab99f9b-8ebc-4689-a795-bb5e71cdeccf',
+		0, -- milkQuality
+		'156.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'abec0f82-418d-45fd-b079-50d71ca2e616',
+	'2018-03-23 11:01:10Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	766,
+	4.12,
+	'UGX',
+	'2018-03-23 11:01:10Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'abec0f82-418d-45fd-b079-50d71ca2e616',
+		0, -- milkQuality
+		'182.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'17e1ebac-a684-4d4a-980e-c25381108c75',
+	'2018-03-09 18:03:19Z',
 	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
 	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
 	0,
-	'1640.7718',
-	'17.34',
+	625,
+	1.02,
 	'UGX',
-	'2017-10-27 22:35:09.735Z'
+	'2018-03-09 18:03:19Z'
 );
 	INSERT INTO ProductTransactionAttributes VALUES (
-		'69543194-5aea-426b-9610-2f4e39c7be42',
+		'17e1ebac-a684-4d4a-980e-c25381108c75',
 		0, -- milkQuality
-		'218.1'
+		'195.4'
 	);
+
 INSERT INTO ProductTransactions VALUES (
-	'3254d698-b2f8-4ca8-b377-1cf7f50eac30',
-	'2017-03-29 22:18:05.676Z',
-	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'c46d8e11-db4c-4311-b481-c58543c22e57',
+	'2018-02-08 14:16:16Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	853,
+	4.39,
+	'UGX',
+	'2018-02-08 14:16:16Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'c46d8e11-db4c-4311-b481-c58543c22e57',
+		0, -- milkQuality
+		'131.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'4ff287ef-7c0a-4afe-99c0-2387ddf6cb02',
+	'2018-03-12 07:05:22Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	794,
+	1.86,
+	'UGX',
+	'2018-03-12 07:05:22Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'4ff287ef-7c0a-4afe-99c0-2387ddf6cb02',
+		0, -- milkQuality
+		'138.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'9fd974e9-f79e-41dd-b56e-731d3751cf8d',
+	'2018-04-01 08:07:48Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
 	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
 	0,
-	'129.1978',
-	'13.77',
+	450,
+	1.86,
 	'UGX',
-	'2017-11-30 15:04:59.777Z'
+	'2018-04-01 08:07:48Z'
 );
 	INSERT INTO ProductTransactionAttributes VALUES (
-		'3254d698-b2f8-4ca8-b377-1cf7f50eac30',
+		'9fd974e9-f79e-41dd-b56e-731d3751cf8d',
 		0, -- milkQuality
-		'133.6'
+		'182.1'
 	);
+
 INSERT INTO ProductTransactions VALUES (
-	'303c853b-ebe9-4658-894e-c239b06612d3',
-	'2017-03-30 08:45:11.294Z',
-	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
-	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
-	0,
-	'452.3141',
-	'13.21',
-	'UGX',
-	'2017-08-09 11:41:14.452Z'
-);
-	INSERT INTO ProductTransactionAttributes VALUES (
-		'303c853b-ebe9-4658-894e-c239b06612d3',
-		0, -- milkQuality
-		'406.1'
-	);
-INSERT INTO ProductTransactions VALUES (
-	'4c4ee1d9-c24e-4ebf-a6dc-f7664eeb2013',
-	'2017-03-06 19:49:32.349Z',
-	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
-	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
-	0,
-	'1260.6681',
-	'19.13',
-	'UGX',
-	'2017-11-20 03:15:36.867Z'
-);
-	INSERT INTO ProductTransactionAttributes VALUES (
-		'4c4ee1d9-c24e-4ebf-a6dc-f7664eeb2013',
-		0, -- milkQuality
-		'457.8'
-	);
-INSERT INTO ProductTransactions VALUES (
-	'62652a80-4eff-4c70-966d-8eda744d1610',
-	'2017-04-22 22:33:14.033Z',
-	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'2bb0bf19-b1ac-45a7-84f7-edbfcaf7f52c',
+	'2018-02-23 03:05:26Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
 	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
 	0,
-	'603.2771',
-	'14.64',
+	864,
+	2.08,
 	'UGX',
-	'2017-12-10 08:06:57.118Z'
+	'2018-02-23 03:05:26Z'
 );
 	INSERT INTO ProductTransactionAttributes VALUES (
-		'62652a80-4eff-4c70-966d-8eda744d1610',
+		'2bb0bf19-b1ac-45a7-84f7-edbfcaf7f52c',
 		0, -- milkQuality
-		'303.5'
+		'155.0'
 	);
+
 INSERT INTO ProductTransactions VALUES (
-	'c2316352-4e39-4490-9f34-310ada16b3e0',
-	'2017-01-15 08:54:09.019Z',
-	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
-	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
-	0,
-	'272.2884',
-	'10.57',
-	'UGX',
-	'2017-08-18 20:42:14.644Z'
-);
-	INSERT INTO ProductTransactionAttributes VALUES (
-		'c2316352-4e39-4490-9f34-310ada16b3e0',
-		0, -- milkQuality
-		'371.2'
-	);
-INSERT INTO ProductTransactions VALUES (
-	'1ce7215e-89ba-4e2f-89b7-9f758628a914',
-	'2017-02-09 08:00:13.780Z',
-	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
-	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
-	0,
-	'544',
-	'14.33',
-	'UGX',
-	'2017-10-09 19:56:46.241Z'
-);
-	INSERT INTO ProductTransactionAttributes VALUES (
-		'1ce7215e-89ba-4e2f-89b7-9f758628a914',
-		0, -- milkQuality
-		'323.6'
-	);
-INSERT INTO ProductTransactions VALUES (
-	'9be2752c-ddbf-436b-b65c-6d8f3227a132',
-	'2017-01-10 07:19:26.734Z',
-	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
-	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
-	0,
-	'268.4141',
-	'19.35',
-	'UGX',
-	'2017-08-27 13:54:41.499Z'
-);
-	INSERT INTO ProductTransactionAttributes VALUES (
-		'9be2752c-ddbf-436b-b65c-6d8f3227a132',
-		0, -- milkQuality
-		'169.6'
-	);
-INSERT INTO ProductTransactions VALUES (
-	'46685f37-9007-4053-8b87-04ab78f0ddf4',
-	'2017-01-03 19:07:12.565Z',
-	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
-	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
-	0,
-	'1476.7332',
-	'12.24',
-	'UGX',
-	'2017-07-14 03:50:08.938Z'
-);
-	INSERT INTO ProductTransactionAttributes VALUES (
-		'46685f37-9007-4053-8b87-04ab78f0ddf4',
-		0, -- milkQuality
-		'109.6'
-	);
-INSERT INTO ProductTransactions VALUES (
-	'791e1a56-6269-4595-97a2-268151bee075',
-	'2017-01-02 20:30:54.906Z',
+	'a4023c22-d7e6-42ff-be6b-f1b17c4d3a0a',
+	'2018-02-19 14:34:42Z',
 	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
 	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
 	0,
-	'1786.0495',
-	'10.75',
+	896,
+	4.88,
 	'UGX',
-	'2017-07-13 06:20:25.933Z'
+	'2018-02-19 14:34:42Z'
 );
 	INSERT INTO ProductTransactionAttributes VALUES (
-		'791e1a56-6269-4595-97a2-268151bee075',
+		'a4023c22-d7e6-42ff-be6b-f1b17c4d3a0a',
 		0, -- milkQuality
-		'176.6'
+		'177.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'018b0cca-8d3e-4aa7-9ea4-29178615976c',
+	'2018-03-05 08:36:16Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	605,
+	3.21,
+	'UGX',
+	'2018-03-05 08:36:16Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'018b0cca-8d3e-4aa7-9ea4-29178615976c',
+		0, -- milkQuality
+		'121.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'dfe0f662-3fee-4638-a0ed-bbb62d862d37',
+	'2018-03-31 21:50:30Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	614,
+	5.17,
+	'UGX',
+	'2018-03-31 21:50:30Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'dfe0f662-3fee-4638-a0ed-bbb62d862d37',
+		0, -- milkQuality
+		'173.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'618f5931-a678-4471-a5a9-45b3ca2d2a05',
+	'2018-03-04 22:35:05Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	450,
+	3.21,
+	'UGX',
+	'2018-03-04 22:35:05Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'618f5931-a678-4471-a5a9-45b3ca2d2a05',
+		0, -- milkQuality
+		'165.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'a69612d0-0573-4b27-9ade-91812bbb52cd',
+	'2018-02-27 06:19:30Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	578,
+	5.74,
+	'UGX',
+	'2018-02-27 06:19:30Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'a69612d0-0573-4b27-9ade-91812bbb52cd',
+		0, -- milkQuality
+		'150.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e8b43123-c0e8-4382-8dfb-c8311f0f2123',
+	'2018-03-15 22:44:09Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	537,
+	4.67,
+	'UGX',
+	'2018-03-15 22:44:09Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e8b43123-c0e8-4382-8dfb-c8311f0f2123',
+		0, -- milkQuality
+		'165.4'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'75d6ed2a-faa4-481f-89c5-78fcfe6b448f',
+	'2018-02-25 14:48:35Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	966,
+	2.98,
+	'UGX',
+	'2018-02-25 14:48:35Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'75d6ed2a-faa4-481f-89c5-78fcfe6b448f',
+		0, -- milkQuality
+		'102.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'af317a23-9c41-4f44-bbee-b7d887d0f84b',
+	'2018-02-20 14:21:46Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	659,
+	5.31,
+	'UGX',
+	'2018-02-20 14:21:46Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'af317a23-9c41-4f44-bbee-b7d887d0f84b',
+		0, -- milkQuality
+		'134.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'7a023cbf-0284-4632-9e1e-75cbf8e983ac',
+	'2018-03-13 16:36:02Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	551,
+	1.42,
+	'UGX',
+	'2018-03-13 16:36:02Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'7a023cbf-0284-4632-9e1e-75cbf8e983ac',
+		0, -- milkQuality
+		'161.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'bad3b8c7-4043-4483-8580-d0699c556045',
+	'2018-02-12 04:40:40Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	908,
+	3.97,
+	'UGX',
+	'2018-02-12 04:40:40Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'bad3b8c7-4043-4483-8580-d0699c556045',
+		0, -- milkQuality
+		'165.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'b6aa3b2b-4780-4056-9c90-9492f58f19f7',
+	'2018-03-15 19:06:38Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	816,
+	1.41,
+	'UGX',
+	'2018-03-15 19:06:38Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'b6aa3b2b-4780-4056-9c90-9492f58f19f7',
+		0, -- milkQuality
+		'128.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'30007a25-662d-4428-b20b-4ca3e4aa7b93',
+	'2018-04-01 03:05:56Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	998,
+	3.36,
+	'UGX',
+	'2018-04-01 03:05:56Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'30007a25-662d-4428-b20b-4ca3e4aa7b93',
+		0, -- milkQuality
+		'191.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'df1a000b-3098-4ff6-95b7-794809f46cb5',
+	'2018-02-22 20:58:26Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	805,
+	4.59,
+	'UGX',
+	'2018-02-22 20:58:26Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'df1a000b-3098-4ff6-95b7-794809f46cb5',
+		0, -- milkQuality
+		'130.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'7ad428b4-5bf3-44b5-9f97-9e221b87c5a8',
+	'2018-02-18 10:36:03Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	389,
+	2.10,
+	'UGX',
+	'2018-02-18 10:36:03Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'7ad428b4-5bf3-44b5-9f97-9e221b87c5a8',
+		0, -- milkQuality
+		'152.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'c99784d4-188f-4f7a-9d77-2bc4e9c06c23',
+	'2018-03-08 04:14:16Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	361,
+	2.33,
+	'UGX',
+	'2018-03-08 04:14:16Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'c99784d4-188f-4f7a-9d77-2bc4e9c06c23',
+		0, -- milkQuality
+		'158.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'79287e31-8312-44c7-9740-50d9b8b58ef7',
+	'2018-03-21 08:39:38Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	532,
+	3.25,
+	'UGX',
+	'2018-03-21 08:39:38Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'79287e31-8312-44c7-9740-50d9b8b58ef7',
+		0, -- milkQuality
+		'176.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'2041afaf-3205-4a43-99e3-7ec4b199e9d3',
+	'2018-02-08 06:36:06Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	397,
+	3.35,
+	'UGX',
+	'2018-02-08 06:36:06Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'2041afaf-3205-4a43-99e3-7ec4b199e9d3',
+		0, -- milkQuality
+		'189.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'ad65a1e1-30f6-4869-a2e6-488d59796897',
+	'2018-02-20 14:25:16Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	359,
+	2.76,
+	'UGX',
+	'2018-02-20 14:25:16Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'ad65a1e1-30f6-4869-a2e6-488d59796897',
+		0, -- milkQuality
+		'182.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'57bf3ac4-b7b0-482a-afbb-d4e82d0ef9a9',
+	'2018-03-14 14:02:08Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	682,
+	1.00,
+	'UGX',
+	'2018-03-14 14:02:08Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'57bf3ac4-b7b0-482a-afbb-d4e82d0ef9a9',
+		0, -- milkQuality
+		'121.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'f2bfcfbe-0736-4e94-ad22-e80a02f3c2c5',
+	'2018-02-07 15:37:59Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	306,
+	5.51,
+	'UGX',
+	'2018-02-07 15:37:59Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'f2bfcfbe-0736-4e94-ad22-e80a02f3c2c5',
+		0, -- milkQuality
+		'180.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'1925e4af-57b8-40de-a1c9-ecb88a6a8262',
+	'2018-03-30 02:27:41Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	760,
+	4.63,
+	'UGX',
+	'2018-03-30 02:27:41Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'1925e4af-57b8-40de-a1c9-ecb88a6a8262',
+		0, -- milkQuality
+		'119.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'cf7aab5b-510c-4939-8c93-385b84e263da',
+	'2018-03-08 05:42:29Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	426,
+	4.49,
+	'UGX',
+	'2018-03-08 05:42:29Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'cf7aab5b-510c-4939-8c93-385b84e263da',
+		0, -- milkQuality
+		'190.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'61c2bc20-a6de-467a-a4ae-42f510953a34',
+	'2018-03-31 01:26:27Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	473,
+	3.29,
+	'UGX',
+	'2018-03-31 01:26:27Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'61c2bc20-a6de-467a-a4ae-42f510953a34',
+		0, -- milkQuality
+		'131.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'093d8a82-d7d4-4ff6-bfb7-c2c7652d2765',
+	'2018-03-07 15:57:19Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	619,
+	4.45,
+	'UGX',
+	'2018-03-07 15:57:19Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'093d8a82-d7d4-4ff6-bfb7-c2c7652d2765',
+		0, -- milkQuality
+		'122.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'bdf8ab96-46ae-4461-ac29-2cacfe5adaae',
+	'2018-03-22 15:45:27Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	751,
+	4.37,
+	'UGX',
+	'2018-03-22 15:45:27Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'bdf8ab96-46ae-4461-ac29-2cacfe5adaae',
+		0, -- milkQuality
+		'124.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'd329f079-d428-447e-af7c-6081118681fc',
+	'2018-02-14 11:43:45Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	511,
+	2.83,
+	'UGX',
+	'2018-02-14 11:43:45Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'd329f079-d428-447e-af7c-6081118681fc',
+		0, -- milkQuality
+		'187.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'35d92b66-9ad7-4d18-bf78-46ccba6c4e52',
+	'2018-02-17 03:46:01Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	387,
+	4.74,
+	'UGX',
+	'2018-02-17 03:46:01Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'35d92b66-9ad7-4d18-bf78-46ccba6c4e52',
+		0, -- milkQuality
+		'186.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'0f1d5d25-7d79-44d2-a98e-e4e233e88366',
+	'2018-04-01 13:18:39Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	576,
+	3.28,
+	'UGX',
+	'2018-04-01 13:18:39Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'0f1d5d25-7d79-44d2-a98e-e4e233e88366',
+		0, -- milkQuality
+		'149.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'940a3f45-f62f-4c07-b2c6-b690a4a4ca75',
+	'2018-02-02 00:17:28Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	688,
+	1.65,
+	'UGX',
+	'2018-02-02 00:17:28Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'940a3f45-f62f-4c07-b2c6-b690a4a4ca75',
+		0, -- milkQuality
+		'185.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'f3f3fef4-bdad-457a-9254-57de44b6dc81',
+	'2018-02-24 09:48:37Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	388,
+	1.12,
+	'UGX',
+	'2018-02-24 09:48:37Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'f3f3fef4-bdad-457a-9254-57de44b6dc81',
+		0, -- milkQuality
+		'190.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'8e3922fe-3ecc-49b6-89eb-36d644265d2d',
+	'2018-02-14 23:58:15Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	898,
+	1.90,
+	'UGX',
+	'2018-02-14 23:58:15Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'8e3922fe-3ecc-49b6-89eb-36d644265d2d',
+		0, -- milkQuality
+		'195.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'8bc10e69-2145-4a89-b5dd-2faf40e8e81d',
+	'2018-02-19 19:37:59Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	409,
+	3.59,
+	'UGX',
+	'2018-02-19 19:37:59Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'8bc10e69-2145-4a89-b5dd-2faf40e8e81d',
+		0, -- milkQuality
+		'144.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'77688239-e857-4931-9e3f-bc54ca1da3f3',
+	'2018-03-24 06:00:00Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	329,
+	3.44,
+	'UGX',
+	'2018-03-24 06:00:00Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'77688239-e857-4931-9e3f-bc54ca1da3f3',
+		0, -- milkQuality
+		'168.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'6a982f0e-fb46-4c6d-a6c6-6d88d7436ce4',
+	'2018-02-22 10:25:12Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	410,
+	2.09,
+	'UGX',
+	'2018-02-22 10:25:12Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'6a982f0e-fb46-4c6d-a6c6-6d88d7436ce4',
+		0, -- milkQuality
+		'167.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'3514468e-ece7-4fd3-be74-5bb0c99d89a6',
+	'2018-02-18 04:38:13Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	713,
+	5.21,
+	'UGX',
+	'2018-02-18 04:38:13Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'3514468e-ece7-4fd3-be74-5bb0c99d89a6',
+		0, -- milkQuality
+		'133.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'5a9c5356-ec93-4550-b2d4-c1ffeb2b308f',
+	'2018-03-27 10:34:16Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	972,
+	3.48,
+	'UGX',
+	'2018-03-27 10:34:16Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'5a9c5356-ec93-4550-b2d4-c1ffeb2b308f',
+		0, -- milkQuality
+		'193.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'd75f45cf-c681-4112-b308-e31bf89e5cb9',
+	'2018-02-06 05:20:54Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	570,
+	4.58,
+	'UGX',
+	'2018-02-06 05:20:54Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'd75f45cf-c681-4112-b308-e31bf89e5cb9',
+		0, -- milkQuality
+		'154.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'353784d9-eb36-4628-b01e-c795dd7f9a3d',
+	'2018-02-26 11:03:54Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	643,
+	1.50,
+	'UGX',
+	'2018-02-26 11:03:54Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'353784d9-eb36-4628-b01e-c795dd7f9a3d',
+		0, -- milkQuality
+		'125.4'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e31b241e-2154-4618-90c9-ab4d38a7946e',
+	'2018-03-22 15:27:53Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	881,
+	5.94,
+	'UGX',
+	'2018-03-22 15:27:53Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e31b241e-2154-4618-90c9-ab4d38a7946e',
+		0, -- milkQuality
+		'186.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'fc7c826f-9821-40e8-a395-8b3caf2e7bd0',
+	'2018-04-01 08:41:30Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	684,
+	3.75,
+	'UGX',
+	'2018-04-01 08:41:30Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'fc7c826f-9821-40e8-a395-8b3caf2e7bd0',
+		0, -- milkQuality
+		'117.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'0e15ae95-96f0-46be-98ca-1eb5377b26da',
+	'2018-03-08 10:17:18Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	654,
+	1.71,
+	'UGX',
+	'2018-03-08 10:17:18Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'0e15ae95-96f0-46be-98ca-1eb5377b26da',
+		0, -- milkQuality
+		'139.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'4e8876de-54e5-4eab-ac80-f7351b88c1ae',
+	'2018-04-01 13:14:30Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	849,
+	2.59,
+	'UGX',
+	'2018-04-01 13:14:30Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'4e8876de-54e5-4eab-ac80-f7351b88c1ae',
+		0, -- milkQuality
+		'159.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'c7fca7c9-500f-4450-a73c-5f203ec67eba',
+	'2018-02-18 14:33:52Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	868,
+	5.40,
+	'UGX',
+	'2018-02-18 14:33:52Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'c7fca7c9-500f-4450-a73c-5f203ec67eba',
+		0, -- milkQuality
+		'178.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'f3b66862-af2f-4fdd-bf53-123386019a05',
+	'2018-02-17 19:08:03Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	805,
+	1.15,
+	'UGX',
+	'2018-02-17 19:08:03Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'f3b66862-af2f-4fdd-bf53-123386019a05',
+		0, -- milkQuality
+		'190.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'32776955-3ab9-4bc0-8c22-7ab02e61ac81',
+	'2018-02-24 16:57:16Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	692,
+	1.29,
+	'UGX',
+	'2018-02-24 16:57:16Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'32776955-3ab9-4bc0-8c22-7ab02e61ac81',
+		0, -- milkQuality
+		'149.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'58835d5c-5556-4bdf-8aa9-781d82432078',
+	'2018-03-06 10:59:07Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	579,
+	4.43,
+	'UGX',
+	'2018-03-06 10:59:07Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'58835d5c-5556-4bdf-8aa9-781d82432078',
+		0, -- milkQuality
+		'195.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e448ab07-0d6b-426d-929a-bb4551686d5a',
+	'2018-02-20 02:37:05Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	429,
+	3.60,
+	'UGX',
+	'2018-02-20 02:37:05Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e448ab07-0d6b-426d-929a-bb4551686d5a',
+		0, -- milkQuality
+		'199.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'd1cbb71f-b377-4c70-b870-0930b7524a92',
+	'2018-03-07 13:42:40Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	791,
+	3.53,
+	'UGX',
+	'2018-03-07 13:42:40Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'd1cbb71f-b377-4c70-b870-0930b7524a92',
+		0, -- milkQuality
+		'152.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'40996b35-e838-421b-8334-3553c20810ba',
+	'2018-02-05 18:46:55Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	357,
+	4.86,
+	'UGX',
+	'2018-02-05 18:46:55Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'40996b35-e838-421b-8334-3553c20810ba',
+		0, -- milkQuality
+		'182.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'aff5fd67-8504-485e-bddf-5dfcad780877',
+	'2018-03-07 06:33:41Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	315,
+	4.60,
+	'UGX',
+	'2018-03-07 06:33:41Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'aff5fd67-8504-485e-bddf-5dfcad780877',
+		0, -- milkQuality
+		'129.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'98e0f75f-ab4d-4990-a05a-1ed644ebdc20',
+	'2018-03-21 14:00:11Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	690,
+	3.23,
+	'UGX',
+	'2018-03-21 14:00:11Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'98e0f75f-ab4d-4990-a05a-1ed644ebdc20',
+		0, -- milkQuality
+		'128.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'122575b2-f45c-4d95-a435-12ceff610a1f',
+	'2018-03-01 23:25:25Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	544,
+	1.22,
+	'UGX',
+	'2018-03-01 23:25:25Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'122575b2-f45c-4d95-a435-12ceff610a1f',
+		0, -- milkQuality
+		'110.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'dd20b29f-254a-4f05-94f4-4be82096667c',
+	'2018-03-19 16:01:49Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	769,
+	3.34,
+	'UGX',
+	'2018-03-19 16:01:49Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'dd20b29f-254a-4f05-94f4-4be82096667c',
+		0, -- milkQuality
+		'170.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'8bd4a5d7-8f3c-4b8a-a3eb-6cdd687fcefd',
+	'2018-02-01 06:30:55Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	366,
+	2.88,
+	'UGX',
+	'2018-02-01 06:30:55Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'8bd4a5d7-8f3c-4b8a-a3eb-6cdd687fcefd',
+		0, -- milkQuality
+		'173.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'0a79111b-0488-4d99-8b1b-3ec659569744',
+	'2018-03-19 07:16:22Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	948,
+	3.13,
+	'UGX',
+	'2018-03-19 07:16:22Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'0a79111b-0488-4d99-8b1b-3ec659569744',
+		0, -- milkQuality
+		'186.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'5d93cc77-e892-4006-a13f-ef4bc22e11b0',
+	'2018-02-04 20:46:00Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	915,
+	4.39,
+	'UGX',
+	'2018-02-04 20:46:00Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'5d93cc77-e892-4006-a13f-ef4bc22e11b0',
+		0, -- milkQuality
+		'129.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'52e263e8-d604-4a4f-9f69-6988104d9e8f',
+	'2018-03-15 07:29:52Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	787,
+	4.59,
+	'UGX',
+	'2018-03-15 07:29:52Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'52e263e8-d604-4a4f-9f69-6988104d9e8f',
+		0, -- milkQuality
+		'154.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'4dab33ad-8602-4711-8a5d-9ccf67130156',
+	'2018-03-14 01:19:55Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	356,
+	5.49,
+	'UGX',
+	'2018-03-14 01:19:55Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'4dab33ad-8602-4711-8a5d-9ccf67130156',
+		0, -- milkQuality
+		'170.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'fb64f84f-b6e0-4861-b423-8e8b8a466031',
+	'2018-02-21 16:16:20Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	885,
+	4.45,
+	'UGX',
+	'2018-02-21 16:16:20Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'fb64f84f-b6e0-4861-b423-8e8b8a466031',
+		0, -- milkQuality
+		'167.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'c9add661-b34d-4355-9f99-b27bd30760a0',
+	'2018-03-08 18:07:35Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	828,
+	5.64,
+	'UGX',
+	'2018-03-08 18:07:35Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'c9add661-b34d-4355-9f99-b27bd30760a0',
+		0, -- milkQuality
+		'195.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'916c19ca-d739-4ce6-8797-f4f777def7cc',
+	'2018-03-02 04:52:44Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	885,
+	5.18,
+	'UGX',
+	'2018-03-02 04:52:44Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'916c19ca-d739-4ce6-8797-f4f777def7cc',
+		0, -- milkQuality
+		'199.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'78a1198e-f66d-4c58-ab72-9bb48c237242',
+	'2018-02-05 09:11:32Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	331,
+	2.53,
+	'UGX',
+	'2018-02-05 09:11:32Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'78a1198e-f66d-4c58-ab72-9bb48c237242',
+		0, -- milkQuality
+		'182.4'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'8a092951-ce3f-4f19-ac43-fba3acaf7a0d',
+	'2018-03-19 01:27:55Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	528,
+	3.44,
+	'UGX',
+	'2018-03-19 01:27:55Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'8a092951-ce3f-4f19-ac43-fba3acaf7a0d',
+		0, -- milkQuality
+		'187.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'1c4b1252-fb51-4405-bef8-a0acb81f3d4e',
+	'2018-02-06 21:49:51Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	603,
+	2.01,
+	'UGX',
+	'2018-02-06 21:49:51Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'1c4b1252-fb51-4405-bef8-a0acb81f3d4e',
+		0, -- milkQuality
+		'146.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'568eaab7-ea3c-4a3f-8d93-c0bfd8a3f901',
+	'2018-02-13 01:35:52Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	749,
+	1.61,
+	'UGX',
+	'2018-02-13 01:35:52Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'568eaab7-ea3c-4a3f-8d93-c0bfd8a3f901',
+		0, -- milkQuality
+		'114.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'08ba5525-8c6a-494b-b79f-cff4d3804567',
+	'2018-02-15 00:37:03Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	888,
+	3.97,
+	'UGX',
+	'2018-02-15 00:37:03Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'08ba5525-8c6a-494b-b79f-cff4d3804567',
+		0, -- milkQuality
+		'111.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'37f14761-3f28-4a1c-a5b1-f1bfe76eb3e6',
+	'2018-03-15 07:09:52Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	371,
+	1.95,
+	'UGX',
+	'2018-03-15 07:09:52Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'37f14761-3f28-4a1c-a5b1-f1bfe76eb3e6',
+		0, -- milkQuality
+		'141.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'f1cdb27b-03a9-4bfd-bd1f-239090df1839',
+	'2018-02-04 03:27:08Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	611,
+	1.61,
+	'UGX',
+	'2018-02-04 03:27:08Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'f1cdb27b-03a9-4bfd-bd1f-239090df1839',
+		0, -- milkQuality
+		'104.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'64fdc118-c1d1-4cf6-abbb-62f455e9ad88',
+	'2018-03-22 23:53:17Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	879,
+	5.33,
+	'UGX',
+	'2018-03-22 23:53:17Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'64fdc118-c1d1-4cf6-abbb-62f455e9ad88',
+		0, -- milkQuality
+		'184.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'52edfe27-6909-4c31-94ba-fc902879a3bc',
+	'2018-03-05 07:28:40Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	572,
+	2.40,
+	'UGX',
+	'2018-03-05 07:28:40Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'52edfe27-6909-4c31-94ba-fc902879a3bc',
+		0, -- milkQuality
+		'144.4'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'17894cb0-0bdc-47ef-9ff1-53883b855b84',
+	'2018-03-28 19:46:52Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	353,
+	5.34,
+	'UGX',
+	'2018-03-28 19:46:52Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'17894cb0-0bdc-47ef-9ff1-53883b855b84',
+		0, -- milkQuality
+		'190.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'c44d6465-5865-434f-b8b6-3aba08102def',
+	'2018-03-25 19:12:47Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	707,
+	5.10,
+	'UGX',
+	'2018-03-25 19:12:47Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'c44d6465-5865-434f-b8b6-3aba08102def',
+		0, -- milkQuality
+		'143.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'27c10223-df13-446a-88b0-4edd586c2987',
+	'2018-02-13 12:36:54Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	587,
+	5.08,
+	'UGX',
+	'2018-02-13 12:36:54Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'27c10223-df13-446a-88b0-4edd586c2987',
+		0, -- milkQuality
+		'129.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'2b5c2afc-ad03-4584-932c-095c5f4e6648',
+	'2018-03-28 05:51:18Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	699,
+	1.46,
+	'UGX',
+	'2018-03-28 05:51:18Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'2b5c2afc-ad03-4584-932c-095c5f4e6648',
+		0, -- milkQuality
+		'182.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'7251f2b0-08be-4f08-a80b-d91e8f6f7c15',
+	'2018-03-07 04:31:45Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	575,
+	5.65,
+	'UGX',
+	'2018-03-07 04:31:45Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'7251f2b0-08be-4f08-a80b-d91e8f6f7c15',
+		0, -- milkQuality
+		'126.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'94cd9c72-d51f-4ac7-9a21-a426b4c9e7b5',
+	'2018-02-16 06:38:07Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	795,
+	3.09,
+	'UGX',
+	'2018-02-16 06:38:07Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'94cd9c72-d51f-4ac7-9a21-a426b4c9e7b5',
+		0, -- milkQuality
+		'192.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'631abf18-832b-4fbd-9b69-e5126840992d',
+	'2018-02-14 14:55:11Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	352,
+	5.07,
+	'UGX',
+	'2018-02-14 14:55:11Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'631abf18-832b-4fbd-9b69-e5126840992d',
+		0, -- milkQuality
+		'123.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'617c8c4f-f833-4b00-b470-58f05c738d96',
+	'2018-03-12 15:41:39Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	403,
+	1.69,
+	'UGX',
+	'2018-03-12 15:41:39Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'617c8c4f-f833-4b00-b470-58f05c738d96',
+		0, -- milkQuality
+		'137.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'6932b47f-767a-421c-8b12-d744c6a313fc',
+	'2018-03-10 15:59:15Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	412,
+	1.47,
+	'UGX',
+	'2018-03-10 15:59:15Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'6932b47f-767a-421c-8b12-d744c6a313fc',
+		0, -- milkQuality
+		'118.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'8cccabb2-e8c3-48e7-bfc3-e0f455823973',
+	'2018-03-08 18:06:10Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	934,
+	3.35,
+	'UGX',
+	'2018-03-08 18:06:10Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'8cccabb2-e8c3-48e7-bfc3-e0f455823973',
+		0, -- milkQuality
+		'126.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'4c791e27-820f-4680-a5af-5c7191838d7f',
+	'2018-02-15 07:03:33Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	918,
+	3.08,
+	'UGX',
+	'2018-02-15 07:03:33Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'4c791e27-820f-4680-a5af-5c7191838d7f',
+		0, -- milkQuality
+		'194.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'98c1b666-58e6-4e80-be8f-f4f2677a822d',
+	'2018-03-23 13:04:57Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	491,
+	3.01,
+	'UGX',
+	'2018-03-23 13:04:57Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'98c1b666-58e6-4e80-be8f-f4f2677a822d',
+		0, -- milkQuality
+		'104.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'c2830c77-1bd9-4783-a6b7-217df78191c3',
+	'2018-03-07 08:29:35Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	680,
+	1.42,
+	'UGX',
+	'2018-03-07 08:29:35Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'c2830c77-1bd9-4783-a6b7-217df78191c3',
+		0, -- milkQuality
+		'152.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'b9957993-51d8-4800-9d2b-4dd238fb03ee',
+	'2018-03-12 12:56:53Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	301,
+	1.58,
+	'UGX',
+	'2018-03-12 12:56:53Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'b9957993-51d8-4800-9d2b-4dd238fb03ee',
+		0, -- milkQuality
+		'139.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'38c42b7a-2b4d-4a78-8c76-8fa32042691a',
+	'2018-03-23 04:33:31Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	958,
+	1.44,
+	'UGX',
+	'2018-03-23 04:33:31Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'38c42b7a-2b4d-4a78-8c76-8fa32042691a',
+		0, -- milkQuality
+		'145.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'0873d0ef-cf7f-4f3c-b544-3737dee060b5',
+	'2018-03-20 20:43:12Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	904,
+	4.26,
+	'UGX',
+	'2018-03-20 20:43:12Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'0873d0ef-cf7f-4f3c-b544-3737dee060b5',
+		0, -- milkQuality
+		'107.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'1011ca5a-9180-450d-a142-25bc3b03004b',
+	'2018-02-22 01:12:27Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	309,
+	5.23,
+	'UGX',
+	'2018-02-22 01:12:27Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'1011ca5a-9180-450d-a142-25bc3b03004b',
+		0, -- milkQuality
+		'143.4'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'de93aa97-1f26-45a0-b75a-9203da81391b',
+	'2018-02-01 07:07:13Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	817,
+	1.82,
+	'UGX',
+	'2018-02-01 07:07:13Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'de93aa97-1f26-45a0-b75a-9203da81391b',
+		0, -- milkQuality
+		'193.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'af3025b0-65ad-4276-991e-74fcdf314795',
+	'2018-03-19 18:47:50Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	648,
+	4.86,
+	'UGX',
+	'2018-03-19 18:47:50Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'af3025b0-65ad-4276-991e-74fcdf314795',
+		0, -- milkQuality
+		'115.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'd993dba9-e0ab-43c0-8c26-6eb823d47581',
+	'2018-03-04 07:06:19Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	982,
+	3.69,
+	'UGX',
+	'2018-03-04 07:06:19Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'd993dba9-e0ab-43c0-8c26-6eb823d47581',
+		0, -- milkQuality
+		'154.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e8dffa2f-7706-415d-9bd8-04cd07b1188e',
+	'2018-03-24 06:49:27Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	614,
+	4.69,
+	'UGX',
+	'2018-03-24 06:49:27Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e8dffa2f-7706-415d-9bd8-04cd07b1188e',
+		0, -- milkQuality
+		'150.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'cb720120-6896-4901-bb4d-17b6fa4e2102',
+	'2018-02-24 07:11:32Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	682,
+	1.70,
+	'UGX',
+	'2018-02-24 07:11:32Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'cb720120-6896-4901-bb4d-17b6fa4e2102',
+		0, -- milkQuality
+		'121.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'89c358ce-bd95-4bfd-95ae-79ca18f59ab6',
+	'2018-02-11 05:00:24Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	451,
+	3.38,
+	'UGX',
+	'2018-02-11 05:00:24Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'89c358ce-bd95-4bfd-95ae-79ca18f59ab6',
+		0, -- milkQuality
+		'105.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'ad4a4d5b-8db6-4d0c-9c3d-f1af5e87cad7',
+	'2018-02-01 07:19:12Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	974,
+	4.18,
+	'UGX',
+	'2018-02-01 07:19:12Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'ad4a4d5b-8db6-4d0c-9c3d-f1af5e87cad7',
+		0, -- milkQuality
+		'147.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'1e5a1c23-52d5-44f6-971e-36779b719565',
+	'2018-03-23 10:31:03Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	300,
+	4.14,
+	'UGX',
+	'2018-03-23 10:31:03Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'1e5a1c23-52d5-44f6-971e-36779b719565',
+		0, -- milkQuality
+		'110.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'f2b7b0ac-d776-41c4-94d7-dc12721552bb',
+	'2018-03-12 04:22:04Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	491,
+	5.97,
+	'UGX',
+	'2018-03-12 04:22:04Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'f2b7b0ac-d776-41c4-94d7-dc12721552bb',
+		0, -- milkQuality
+		'115.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'08f7277f-fcae-4d36-bfbe-423b91a8875f',
+	'2018-02-13 08:06:07Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	429,
+	5.81,
+	'UGX',
+	'2018-02-13 08:06:07Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'08f7277f-fcae-4d36-bfbe-423b91a8875f',
+		0, -- milkQuality
+		'108.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e143d779-47e8-4704-99bc-d3e6c1732f85',
+	'2018-02-07 18:23:09Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	686,
+	1.67,
+	'UGX',
+	'2018-02-07 18:23:09Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e143d779-47e8-4704-99bc-d3e6c1732f85',
+		0, -- milkQuality
+		'133.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'ff7ca544-82c2-4c8d-954e-1e48004bf50a',
+	'2018-02-11 18:57:45Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	578,
+	1.91,
+	'UGX',
+	'2018-02-11 18:57:45Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'ff7ca544-82c2-4c8d-954e-1e48004bf50a',
+		0, -- milkQuality
+		'141.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'c7c33b3e-da76-4dc3-a685-3f82a9d16623',
+	'2018-03-21 03:26:11Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	755,
+	2.32,
+	'UGX',
+	'2018-03-21 03:26:11Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'c7c33b3e-da76-4dc3-a685-3f82a9d16623',
+		0, -- milkQuality
+		'173.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'78e2e383-f18d-481f-b8e6-108d97dec060',
+	'2018-03-06 20:29:59Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	780,
+	5.11,
+	'UGX',
+	'2018-03-06 20:29:59Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'78e2e383-f18d-481f-b8e6-108d97dec060',
+		0, -- milkQuality
+		'128.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'444d68e6-235f-41d2-80f2-c2bfac6b806b',
+	'2018-03-29 21:21:39Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	642,
+	4.83,
+	'UGX',
+	'2018-03-29 21:21:39Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'444d68e6-235f-41d2-80f2-c2bfac6b806b',
+		0, -- milkQuality
+		'181.4'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'322994e5-74a6-4c39-af1f-169371cf1818',
+	'2018-02-03 16:44:49Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	414,
+	4.77,
+	'UGX',
+	'2018-02-03 16:44:49Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'322994e5-74a6-4c39-af1f-169371cf1818',
+		0, -- milkQuality
+		'149.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'94a7c8ff-9824-46d6-a2d2-dfc475b45033',
+	'2018-03-30 00:05:02Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	306,
+	1.69,
+	'UGX',
+	'2018-03-30 00:05:02Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'94a7c8ff-9824-46d6-a2d2-dfc475b45033',
+		0, -- milkQuality
+		'165.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'3419389c-051a-4667-bd5b-6b96a3c0e6ad',
+	'2018-02-06 02:29:52Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	841,
+	1.98,
+	'UGX',
+	'2018-02-06 02:29:52Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'3419389c-051a-4667-bd5b-6b96a3c0e6ad',
+		0, -- milkQuality
+		'122.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e1df1d95-3aa4-41a0-8467-3e2576365c94',
+	'2018-03-17 00:12:40Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	872,
+	3.33,
+	'UGX',
+	'2018-03-17 00:12:40Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e1df1d95-3aa4-41a0-8467-3e2576365c94',
+		0, -- milkQuality
+		'107.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'05124dec-37e7-4c86-a83c-fc2b31e88a5a',
+	'2018-02-22 11:43:37Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	365,
+	4.66,
+	'UGX',
+	'2018-02-22 11:43:37Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'05124dec-37e7-4c86-a83c-fc2b31e88a5a',
+		0, -- milkQuality
+		'178.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'b6dd9337-8bf1-45cf-99bf-2b0a87feb856',
+	'2018-02-03 00:51:07Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	730,
+	5.72,
+	'UGX',
+	'2018-02-03 00:51:07Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'b6dd9337-8bf1-45cf-99bf-2b0a87feb856',
+		0, -- milkQuality
+		'197.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'69bdfdcb-6f54-438a-914c-9ccc45beb007',
+	'2018-02-15 21:22:29Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	486,
+	2.61,
+	'UGX',
+	'2018-02-15 21:22:29Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'69bdfdcb-6f54-438a-914c-9ccc45beb007',
+		0, -- milkQuality
+		'167.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'363b3c5c-a43b-49be-8a10-9a9e210595c7',
+	'2018-02-11 22:51:12Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	417,
+	3.69,
+	'UGX',
+	'2018-02-11 22:51:12Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'363b3c5c-a43b-49be-8a10-9a9e210595c7',
+		0, -- milkQuality
+		'100.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'fef8103d-aa41-4f16-8c4f-12f145833594',
+	'2018-02-27 10:13:01Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	612,
+	2.35,
+	'UGX',
+	'2018-02-27 10:13:01Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'fef8103d-aa41-4f16-8c4f-12f145833594',
+		0, -- milkQuality
+		'162.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'71fb7d63-12eb-48dd-bb8a-e81c2e3f6da9',
+	'2018-02-15 11:52:02Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	609,
+	3.27,
+	'UGX',
+	'2018-02-15 11:52:02Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'71fb7d63-12eb-48dd-bb8a-e81c2e3f6da9',
+		0, -- milkQuality
+		'193.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'1a7ad3ab-32bb-4f49-a3b8-d8476ad03334',
+	'2018-02-03 12:37:57Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	872,
+	4.55,
+	'UGX',
+	'2018-02-03 12:37:57Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'1a7ad3ab-32bb-4f49-a3b8-d8476ad03334',
+		0, -- milkQuality
+		'140.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'0ca72cad-ca5a-4145-b456-0e1e32f69fea',
+	'2018-03-06 00:40:47Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	597,
+	5.17,
+	'UGX',
+	'2018-03-06 00:40:47Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'0ca72cad-ca5a-4145-b456-0e1e32f69fea',
+		0, -- milkQuality
+		'198.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'b8d39193-236c-446a-bbac-0cf4a75294da',
+	'2018-03-23 19:28:40Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	495,
+	2.03,
+	'UGX',
+	'2018-03-23 19:28:40Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'b8d39193-236c-446a-bbac-0cf4a75294da',
+		0, -- milkQuality
+		'106.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e17ea095-410c-4e77-b210-5c815ed43554',
+	'2018-03-13 17:35:00Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	511,
+	3.64,
+	'UGX',
+	'2018-03-13 17:35:00Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e17ea095-410c-4e77-b210-5c815ed43554',
+		0, -- milkQuality
+		'139.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e7839955-3470-4fef-aee0-bdaaafe97404',
+	'2018-02-20 04:50:42Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	355,
+	5.19,
+	'UGX',
+	'2018-02-20 04:50:42Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e7839955-3470-4fef-aee0-bdaaafe97404',
+		0, -- milkQuality
+		'190.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'f1626d9f-60b5-408b-ac79-0217bfda6a4b',
+	'2018-02-16 03:46:05Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	351,
+	1.50,
+	'UGX',
+	'2018-02-16 03:46:05Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'f1626d9f-60b5-408b-ac79-0217bfda6a4b',
+		0, -- milkQuality
+		'197.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'44f36ab7-1289-43c0-8a13-d6437f438c1c',
+	'2018-03-21 03:22:14Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	698,
+	4.77,
+	'UGX',
+	'2018-03-21 03:22:14Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'44f36ab7-1289-43c0-8a13-d6437f438c1c',
+		0, -- milkQuality
+		'128.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'30518381-2578-4cac-8870-b13671510b03',
+	'2018-03-21 16:36:51Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	995,
+	1.62,
+	'UGX',
+	'2018-03-21 16:36:51Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'30518381-2578-4cac-8870-b13671510b03',
+		0, -- milkQuality
+		'186.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'a01f9f4b-499a-4e8e-81ba-ce9a5aa9f0ad',
+	'2018-03-23 08:11:52Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	773,
+	4.54,
+	'UGX',
+	'2018-03-23 08:11:52Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'a01f9f4b-499a-4e8e-81ba-ce9a5aa9f0ad',
+		0, -- milkQuality
+		'106.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'd3f8b8f0-16ff-4365-a424-8a7e2133e854',
+	'2018-03-10 13:23:26Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	489,
+	4.50,
+	'UGX',
+	'2018-03-10 13:23:26Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'd3f8b8f0-16ff-4365-a424-8a7e2133e854',
+		0, -- milkQuality
+		'101.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'8e1707a1-e17a-4397-9572-86b5615725ec',
+	'2018-02-28 01:14:22Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	570,
+	3.04,
+	'UGX',
+	'2018-02-28 01:14:22Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'8e1707a1-e17a-4397-9572-86b5615725ec',
+		0, -- milkQuality
+		'157.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'01c5b96d-b9f2-4698-a254-365a4296ec1b',
+	'2018-03-01 03:34:43Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	537,
+	5.33,
+	'UGX',
+	'2018-03-01 03:34:43Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'01c5b96d-b9f2-4698-a254-365a4296ec1b',
+		0, -- milkQuality
+		'128.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'd53ad9aa-2187-41b9-94cd-8b9a5a523b27',
+	'2018-03-22 07:53:04Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	382,
+	4.90,
+	'UGX',
+	'2018-03-22 07:53:04Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'd53ad9aa-2187-41b9-94cd-8b9a5a523b27',
+		0, -- milkQuality
+		'166.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'2565a336-5b6b-470c-96d2-248728dae763',
+	'2018-02-26 16:01:54Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	569,
+	2.57,
+	'UGX',
+	'2018-02-26 16:01:54Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'2565a336-5b6b-470c-96d2-248728dae763',
+		0, -- milkQuality
+		'145.4'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'b88397f9-3f58-4ff1-a86d-11f8ff53c4ea',
+	'2018-03-20 10:55:26Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'90278984-afdb-428d-a0b8-2b96d860e287',
+	0,
+	676,
+	2.36,
+	'UGX',
+	'2018-03-20 10:55:26Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'b88397f9-3f58-4ff1-a86d-11f8ff53c4ea',
+		0, -- milkQuality
+		'185.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'df4e3e0f-4efe-4672-8dd9-38b1d1df26c6',
+	'2018-03-05 00:23:34Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	419,
+	1.99,
+	'UGX',
+	'2018-03-05 00:23:34Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'df4e3e0f-4efe-4672-8dd9-38b1d1df26c6',
+		0, -- milkQuality
+		'161.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'172ce5e5-b93d-41c8-b3cf-4171801e9ca2',
+	'2018-03-31 05:38:06Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	799,
+	2.80,
+	'UGX',
+	'2018-03-31 05:38:06Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'172ce5e5-b93d-41c8-b3cf-4171801e9ca2',
+		0, -- milkQuality
+		'122.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'a8e865c5-e50c-4bd3-8a2c-46f137d68293',
+	'2018-03-28 01:21:12Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	418,
+	4.64,
+	'UGX',
+	'2018-03-28 01:21:12Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'a8e865c5-e50c-4bd3-8a2c-46f137d68293',
+		0, -- milkQuality
+		'172.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'f60a3e30-4a85-4187-a1c1-109436e018ca',
+	'2018-02-19 09:51:22Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'ca225efc-fc3c-4dcb-b2e0-ae466c9b20c9',
+	0,
+	457,
+	2.69,
+	'UGX',
+	'2018-02-19 09:51:22Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'f60a3e30-4a85-4187-a1c1-109436e018ca',
+		0, -- milkQuality
+		'159.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'4dd74ecc-2a4a-4ef6-b899-02cfb76de735',
+	'2018-02-01 01:56:17Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	788,
+	2.81,
+	'UGX',
+	'2018-02-01 01:56:17Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'4dd74ecc-2a4a-4ef6-b899-02cfb76de735',
+		0, -- milkQuality
+		'160.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'c6d19d28-9081-4594-9787-16253b0b7ca4',
+	'2018-02-25 02:41:43Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	593,
+	2.72,
+	'UGX',
+	'2018-02-25 02:41:43Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'c6d19d28-9081-4594-9787-16253b0b7ca4',
+		0, -- milkQuality
+		'167.7'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'9fde7b37-9129-48e2-ab87-7352d4298ccf',
+	'2018-02-19 11:58:31Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	328,
+	3.26,
+	'UGX',
+	'2018-02-19 11:58:31Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'9fde7b37-9129-48e2-ab87-7352d4298ccf',
+		0, -- milkQuality
+		'178.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'62084e00-cae3-48d3-ad63-ff176ee90ef9',
+	'2018-03-16 15:53:06Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'78519d1b-43e6-4cdd-a091-2f52614cfd95',
+	0,
+	652,
+	3.30,
+	'UGX',
+	'2018-03-16 15:53:06Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'62084e00-cae3-48d3-ad63-ff176ee90ef9',
+		0, -- milkQuality
+		'172.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e62f4002-4ed1-4804-afc9-7aad8111270e',
+	'2018-03-31 15:56:09Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	509,
+	4.62,
+	'UGX',
+	'2018-03-31 15:56:09Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e62f4002-4ed1-4804-afc9-7aad8111270e',
+		0, -- milkQuality
+		'177.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'c748394e-f63d-4271-8c25-ae5a196b1ccb',
+	'2018-02-17 08:43:14Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	674,
+	5.51,
+	'UGX',
+	'2018-02-17 08:43:14Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'c748394e-f63d-4271-8c25-ae5a196b1ccb',
+		0, -- milkQuality
+		'106.4'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'7a5c3f6b-ad36-4b8c-bf22-e1b3e48278bd',
+	'2018-03-12 02:28:14Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	589,
+	5.91,
+	'UGX',
+	'2018-03-12 02:28:14Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'7a5c3f6b-ad36-4b8c-bf22-e1b3e48278bd',
+		0, -- milkQuality
+		'113.1'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'4712fe36-4176-4078-9932-9fb01e70d154',
+	'2018-02-09 00:57:46Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'538f94d9-cf7a-4ac5-87ee-b139d59531f3',
+	0,
+	560,
+	4.26,
+	'UGX',
+	'2018-02-09 00:57:46Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'4712fe36-4176-4078-9932-9fb01e70d154',
+		0, -- milkQuality
+		'125.6'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'b32e3ee0-646d-4f60-ab85-5af525019cab',
+	'2018-03-08 01:55:47Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	889,
+	5.47,
+	'UGX',
+	'2018-03-08 01:55:47Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'b32e3ee0-646d-4f60-ab85-5af525019cab',
+		0, -- milkQuality
+		'168.3'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'5041f250-837e-4fbb-9f11-40699fe2b6af',
+	'2018-02-21 19:14:43Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	317,
+	3.02,
+	'UGX',
+	'2018-02-21 19:14:43Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'5041f250-837e-4fbb-9f11-40699fe2b6af',
+		0, -- milkQuality
+		'181.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'9ec731d3-3f80-405d-b0cb-5ba724e48aa3',
+	'2018-03-14 09:38:19Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	722,
+	3.98,
+	'UGX',
+	'2018-03-14 09:38:19Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'9ec731d3-3f80-405d-b0cb-5ba724e48aa3',
+		0, -- milkQuality
+		'117.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'df8cce49-de33-401b-90bd-f0be1adf5f27',
+	'2018-02-03 10:04:06Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	930,
+	5.89,
+	'UGX',
+	'2018-02-03 10:04:06Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'df8cce49-de33-401b-90bd-f0be1adf5f27',
+		0, -- milkQuality
+		'189.0'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'7b7c5bfe-5089-405d-9884-03cccb2301a1',
+	'2018-03-20 21:48:58Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	653,
+	3.21,
+	'UGX',
+	'2018-03-20 21:48:58Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'7b7c5bfe-5089-405d-9884-03cccb2301a1',
+		0, -- milkQuality
+		'131.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'da5ce00b-762e-432b-81cb-4f3b50eb63ac',
+	'2018-02-18 02:21:56Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	808,
+	1.23,
+	'UGX',
+	'2018-02-18 02:21:56Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'da5ce00b-762e-432b-81cb-4f3b50eb63ac',
+		0, -- milkQuality
+		'163.5'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'69ec4f73-efad-45bb-a061-ce1f376b2019',
+	'2018-02-05 04:23:56Z',
+	'a293e3a5-a88d-473b-9d4a-74a2153992f6',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	934,
+	5.83,
+	'UGX',
+	'2018-02-05 04:23:56Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'69ec4f73-efad-45bb-a061-ce1f376b2019',
+		0, -- milkQuality
+		'185.9'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'738842e7-6cc1-43ad-aed9-fc231b3219f2',
+	'2018-03-11 07:02:35Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'e02182d5-b50f-4e5c-bb71-3f7a60b84ba3',
+	0,
+	654,
+	2.54,
+	'UGX',
+	'2018-03-11 07:02:35Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'738842e7-6cc1-43ad-aed9-fc231b3219f2',
+		0, -- milkQuality
+		'110.4'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'c1b277f4-d186-4912-9457-cc4b86fd35b4',
+	'2018-02-23 09:00:18Z',
+	'7f5c0fce-c388-4df1-8a8e-1a77291affe4',
+	'f1af1bb8-e5f1-41a3-842c-f6f24bdeb08c',
+	0,
+	883,
+	5.98,
+	'UGX',
+	'2018-02-23 09:00:18Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'c1b277f4-d186-4912-9457-cc4b86fd35b4',
+		0, -- milkQuality
+		'121.2'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'e912e7f5-f48e-4a8c-ada5-e110b08fa7cf',
+	'2018-02-03 07:10:14Z',
+	'a2b121fd-1a1f-4425-97db-876af3c5bd2f',
+	'82df81c5-e9d6-4389-b52c-0461f4f9c48e',
+	0,
+	943,
+	4.98,
+	'UGX',
+	'2018-02-03 07:10:14Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'e912e7f5-f48e-4a8c-ada5-e110b08fa7cf',
+		0, -- milkQuality
+		'194.8'
+	);
+
+INSERT INTO ProductTransactions VALUES (
+	'9ed5d490-0751-4583-ac33-53e573fe7f3f',
+	'2018-03-15 18:49:06Z',
+	'2fc0977d-c49b-47e8-9a03-090c5c65792d',
+	'2aef91dd-7e10-4d35-be0b-8f16b2789459',
+	0,
+	679,
+	3.75,
+	'UGX',
+	'2018-03-15 18:49:06Z'
+);
+	INSERT INTO ProductTransactionAttributes VALUES (
+		'9ed5d490-0751-4583-ac33-53e573fe7f3f',
+		0, -- milkQuality
+		'137.7'
 	);
 
 -- PRODUCT EXPORTS --
