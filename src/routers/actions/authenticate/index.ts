@@ -15,7 +15,7 @@ const router = createRouter();
  * @apiParam {String} username Username of account to login
  * @apiParam {String} password Password of account to login
  *
- * @apiSuccess (200) {String} token The JWT token used for authentication
+ * @apiSuccess (200) {json} token for JWT, uuid of authenticated user, and type of user 
  *
  * @apiParamExample  {json} Request-Example:
    {
@@ -25,7 +25,9 @@ const router = createRouter();
  *
  * @apiSuccessExample {type} Success-Response:
    {
-       token : eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJmM2YxYTNiZjk3OGU0MNDVkY2Y2YSJ9.TLkEYpBlKrDxNO73edz-bXJ6XH1rqx8LimtkY
+       "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+       "uuid":"98f0f127-6c7f-4641-b464-447e417318d8",
+       "type":"admins"
    }
  */
 router.post('/', (req, res) => {
