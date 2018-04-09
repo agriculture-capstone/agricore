@@ -5,6 +5,7 @@ import people from '@/routers/people';
 import products from '@/routers/products';
 import transactions from '@/routers/transactions/';
 import productExports from '@/routers/productExports';
+import memos from '@/routers/memos';
 
 const router = Router();
 
@@ -13,5 +14,6 @@ router.use('/people', people);
 router.use('/products', products);
 router.use('/transactions', transactions);
 router.use('/productExports', productExports);
+router.use('/memos', memos);
 
 export default router;
