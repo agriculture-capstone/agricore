@@ -18,12 +18,14 @@ const router = createRouter();
     {
       "memoUuid": "1e167b81-d816-497b-8c0c-36f4d6b2fd33",
       "authorUuid": "425825a2-1e6f-4cfb-b612-e9933bf6c28e"
+      "authorName": "Billy Bob"
       "message": "A truly inspiring memo",
       "datePosted": "2018-01-23 04:05:06.123Z"
     },
     {
       "memoUuid": "4b3f23a3-04c4-468f-bdf5-f189a34d9f69",
       "authorUuid": "425825a2-1e6f-4cfb-b612-e9933bf6c28e",
+      "authorName": "Andy Angst",
       "message": "This is an even more amazing memo!"
       "datePosted": "2018-01-23 04:05:06.123Z"
     }
