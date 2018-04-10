@@ -46,6 +46,7 @@ export const tableNames = {
   PRODUCT_EXPORTS: 'productexports',
   MONEY_TRANSACTIONS: 'moneytransactions',
   LOANS: 'loans',
+  PRODUCT_PAYMENTS: 'productpayments',
 };
 
 
