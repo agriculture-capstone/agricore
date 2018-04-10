@@ -3,7 +3,7 @@ import dbConnection, { tableNames, execute } from '../connection';
 const memosTable = () => dbConnection()(tableNames.MEMOS);
 
 /**
- * Represent a product export after retrieval from the database
+ * Represent a memo after retrieval from the database
  */
 export interface MemoDb {
   memouuid: string;
@@ -17,7 +17,7 @@ export interface MemoDb {
 }
 
 /**
- * Represent a product export used in an INSERT call on the database
+ * Represent a memo used in an INSERT call on the database
  */
 export interface MemoDbInsertReq {
   memouuid: string;
@@ -37,10 +37,10 @@ const builders = {
      )
       .join(tableNames.PEOPLE + ' as people',
       tableNames.MEMOS + '.authoruuid',
-      'people.personuuid')
+      'people.personuuid');
   },
 
-  /** Inserts a new product export row in the database */
+  /** Inserts a new memo row in the database */
   insertMemo(memos: MemoDbInsertReq) {
     return memosTable()
     .returning('memouuid')

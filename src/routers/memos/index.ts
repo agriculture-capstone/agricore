@@ -1,6 +1,6 @@
 import createRouter from '@/utilities/functions/createRouter';
 import { StatusCode } from '@/models/statusCodes';
-import * as MemosService from '@/services/Memos';
+import * as MemosService from '@/services/memos';
 
 import { UserType } from '@/models/User/UserType';
 import authorized from '@/middleware/authorized';
@@ -57,7 +57,7 @@ export interface MemoCreationReq {
 router.get('/', async (req, res) => {
   const result = await MemosService.getMemosFromDb();
   res.status(StatusCode.OK).send(result);
-}, authorized(UserType.ADMIN));
+}, authorized(UserType.ADMIN, UserType.MONITOR));
 
 /**
  * @api {post} /memos Create New Memo Entry

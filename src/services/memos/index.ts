@@ -5,7 +5,7 @@ import * as db from '@/database/Memos';
 export const unhandledErrorMsg = 'unhandled error';
 
 /**
- * Connector for the API and database to get all product exports
+ * Connector for the API and database to get all memos
  */
 export async function getMemosFromDb(): Promise<api.Memo[]> {
   const dbMemos: db.MemoDb[] = await db.getMemos();
@@ -14,11 +14,10 @@ export async function getMemosFromDb(): Promise<api.Memo[]> {
 
 
   dbMemos.forEach(function (item: db.MemoDb) {
-  const authorName = formatName(item.authorfirstname, item.authormiddlename, item.authorlastname);
     const newExport: api.Memo = {
       memoUuid: item.memouuid,
       authorUuid: item.authoruuid,
-      authorName: authorName,
+      authorName: formatName(item.authorfirstname, item.authormiddlename, item.authorlastname),
       message: item.message,
       datePosted: item.dateposted,
     };
@@ -41,12 +40,11 @@ function formatName(firstName: string, middleName: string, lastName: string) {
 }
 
 /**
- * Connector for the API and database to create a new product export
+ * Connector for the API and database to create a new memo
  * Throws error on invalid request
  * Throws error with message "unhandled error" for unhandled errors
  */
 export async function createMemoInDb(apiReq: api.MemoCreationReq): Promise<string> {
-  let productTypeId: number = -1;
   const invalidFields: string[] = [];
 
   if (!apiReq.memoUuid) {
