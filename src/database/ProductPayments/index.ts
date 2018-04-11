@@ -87,7 +87,7 @@ const builders = {
     .orderBy('datetime', 'asc');
   },
 
-  /** inserts a MoneyuctTransaction row in the database */
+  /** inserts a Product Payment row in the database */
   insertProductPayment(productPayment: productPaymentMinimal) {
     return productPaymentsTable()
     .returning('productpaymentuuid')

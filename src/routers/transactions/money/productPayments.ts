@@ -71,7 +71,7 @@ router.get('/', async (req, res) => {
 }, authorized(UserType.ADMIN, UserType.TRADER, UserType.MONITOR));
 
 /**
- * @api {post} /laons
+ * @api {post} /transactions/money/productPayments
  * @apiName CreateProductPayment
  * @apiGroup ProductPayments
  * @apiVersion 0.0.1
