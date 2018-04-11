@@ -255,6 +255,15 @@ INSERT INTO People VALUES (
 		4, -- notes
 		'This guy might drop tables');
 
+-- MEMOS --
+
+INSERT INTO Memos VALUES(
+	'fe02ddfb-4764-4dad-b8c6-bfe9180eb532',
+	'98f0f127-6c7f-4641-b464-447e417318d8',
+	'Welcome to the AgriBoard!',
+	'2018-01-01 00:00:00.000Z'
+);
+
 -- PRODUCT TRANSACTIONS --
 INSERT INTO ProductTransactions VALUES (
 	'5949dff5-e099-434d-a5b9-0ec88f38ba48',
