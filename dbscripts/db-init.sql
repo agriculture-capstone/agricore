@@ -97,8 +97,8 @@ CREATE TABLE People (
 	lastModified TIMESTAMP NOT NULL
 );
 
-	INSERT INTO People (personUuid, peopleCategoryId, lastModified)
-		VALUES ('98f0f127-6c7f-4641-b464-447e417318d8', 2, '1970-01-01 00:00:00.000Z');
+	INSERT INTO People (personUuid, peopleCategoryId, firstName, lastModified)
+		VALUES ('98f0f127-6c7f-4641-b464-447e417318d8', 2, 'Admin', '1970-01-01 00:00:00.000Z');
 
 -- PeopleAttributes
 	-- the values of the attributes that a specific person has
@@ -114,7 +114,7 @@ CREATE TABLE PeopleAttributes (
 	INSERT INTO PeopleAttributes
 		VALUES ('98f0f127-6c7f-4641-b464-447e417318d8', 0, 'admin');
 	INSERT INTO PeopleAttributes
-		VALUES ('98f0f127-6c7f-4641-b464-447e417318d8', 1, '$2a$11$M3ua2jCZtRNvLKn3zD7CIeDM4EsKqbB7o5ntt.oI6q2AEMXDociP.');
+		VALUES ('98f0f127-6c7f-4641-b464-447e417318d8', 1, '$2a$11$39z1fCO7NUdaNhfkXJxNYu2vahrpkIrw0uGpTCo9BW9ObLXscYvny');
 
 CREATE TYPE Currency AS ENUM ('UGX');
 

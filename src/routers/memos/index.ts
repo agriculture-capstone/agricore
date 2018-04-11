@@ -1,7 +1,30 @@
 import createRouter from '@/utilities/functions/createRouter';
 import { StatusCode } from '@/models/statusCodes';
+import * as MemosService from '@/services/memos';
+
+import { UserType } from '@/models/User/UserType';
+import authorized from '@/middleware/authorized';
 
 const router = createRouter();
+
+/** Represents a Memo in the API */
+export interface Memo {
+  memoUuid: string;
+  authorUuid: string;
+  authorName: string;
+  message: string;
+  datePosted: string;
+}
+
+/**
+ * Represents a memo creation request in the API
+ */
+export interface MemoCreationReq {
+  memoUuid: string;
+  authorUuid: string;
+  message: string;
+  datePosted: string;
+}
 
 /**
  * @api {get} /memos Get All Memos
@@ -32,8 +55,9 @@ const router = createRouter();
   ]
  */
 router.get('/', async (req, res) => {
-  res.status(StatusCode.OK).send('Not implemented');
-});
+  const result = await MemosService.getMemosFromDb();
+  res.status(StatusCode.OK).send(result);
+}, authorized(UserType.ADMIN, UserType.MONITOR));
 
 /**
  * @api {post} /memos Create New Memo Entry
@@ -42,7 +66,7 @@ router.get('/', async (req, res) => {
  * @apiVersion  0.0.1
  * @apiDescription Creates a memo. Only admins can create memos.
  *
- * @apiParam [String] memoUuid Optionally provide the UUID that the memo should have.
+ * @apiParam [String] memoUuid Provide the UUID that the memo should have.
  * @apiParam {String} authorUuid The UUID of the poster, the author of the memo.
  * @apiParam {String} message The message that the memo contains.
  * @apiParam {String} datePosted The date that the memo was created.
@@ -54,8 +78,24 @@ router.get('/', async (req, res) => {
  * @apiSuccessExample /memos Success-Response:
  * { memoUuid: "1e167b81-d816-497b-8c0c-36f4d6b2fd33" }
  */
-router.post('/:category', async (req, res) => {
-  res.status(StatusCode.OK).send('Not implemented');
-});
+router.post('/', async (req, res) => {
+  const createReq: MemoCreationReq = {
+    memoUuid: req.body.memoUuid,
+    authorUuid: req.body.authorUuid,
+    message: req.body.message,
+    datePosted: req.body.datePosted,
+  };
+
+  try {
+    const uuid = await MemosService.createMemoInDb(createReq);
+    res.status(StatusCode.CREATED).send({ uuid });
+  } catch (e) {
+    if (e.message === MemosService.unhandledErrorMsg) {
+      res.status(StatusCode.INTERNAL_SERVER_ERROR).send();
+    } else {
+      res.status(StatusCode.BAD_REQUEST).send('BadRequest ' + e.message);
+    }
+  }
+}, authorized(UserType.ADMIN));
 
 export default router;
