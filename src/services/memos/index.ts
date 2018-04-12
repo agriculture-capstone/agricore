@@ -15,7 +15,7 @@ export async function getMemosFromDb(): Promise<api.Memo[]> {
 
   dbMemos.forEach(function (item: db.MemoDb) {
     const newExport: api.Memo = {
-      memoUuid: item.memouuid,
+      uuid: item.memouuid,
       authorUuid: item.authoruuid,
       authorName: formatName(item.authorfirstname, item.authormiddlename, item.authorlastname),
       message: item.message,
@@ -47,8 +47,8 @@ function formatName(firstName: string, middleName: string, lastName: string) {
 export async function createMemoInDb(apiReq: api.MemoCreationReq): Promise<string> {
   const invalidFields: string[] = [];
 
-  if (!apiReq.memoUuid) {
-    invalidFields.push('memoUuid');
+  if (!apiReq.uuid) {
+    invalidFields.push('uuid');
   }
   if (!apiReq.authorUuid) {
     invalidFields.push('authorUuid');
@@ -71,7 +71,7 @@ export async function createMemoInDb(apiReq: api.MemoCreationReq): Promise<strin
 
   // create database request
   const dbInsertReq: db.MemoDbInsertReq = {
-    memouuid: apiReq.memoUuid,
+    memouuid: apiReq.uuid,
     authoruuid: apiReq.authorUuid,
     message: apiReq.message,
     dateposted: apiReq.datePosted,
