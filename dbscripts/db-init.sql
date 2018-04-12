@@ -202,6 +202,7 @@ CREATE TABLE LoanPayments (
 -- ProductPayments
 
 CREATE TABLE ProductPayments (
+	productPaymentUuid UUID PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
 	productTransactionUuid UUID REFERENCES ProductTransactions(productTransactionUuid) NOT NULL,
 	moneyTransactionUuid UUID REFERENCES MoneyTransactions(moneyTransactionUuid) NOT NULL
 );

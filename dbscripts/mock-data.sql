@@ -6170,7 +6170,7 @@ INSERT INTO MoneyTransactions VALUES (
 		'2018-04-02 19:30:30Z'
 	);
 
--- PAYMENTS
+-- PRODUCT PAYMENTS
 
 INSERT INTO MoneyTransactions VALUES (
 	'21dc7644-4ffe-482c-9a28-9f90b5cf12d5',
@@ -6181,6 +6181,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'134',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'e72098b9-e0c8-481b-b494-5f1bd9230e89',
+		'32776955-3ab9-4bc0-8c22-7ab02e61ac81',
+		'21dc7644-4ffe-482c-9a28-9f90b5cf12d5'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'48b80e9d-76b6-4dc6-9621-604e0bfca3ca',
@@ -6191,6 +6196,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'217',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'519586bb-a2b2-49d3-9008-5aa6c7f36872',
+		'58835d5c-5556-4bdf-8aa9-781d82432078',
+		'48b80e9d-76b6-4dc6-9621-604e0bfca3ca'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'1ff188c9-e6e0-4b31-a466-ee67fe2baba7',
@@ -6201,6 +6211,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'156',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'bc7f8837-f172-476b-be51-ead8ea50afce',
+		'e448ab07-0d6b-426d-929a-bb4551686d5a',
+		'1ff188c9-e6e0-4b31-a466-ee67fe2baba7'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'd887fe49-0f6b-404c-90e4-8abc7320edb2',
@@ -6211,6 +6226,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'142',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'5bb26756-40a9-47b4-8661-3564c124e9ed',
+		'd1cbb71f-b377-4c70-b870-0930b7524a92',
+		'd887fe49-0f6b-404c-90e4-8abc7320edb2'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'63e6ec5d-2a33-49fc-8daa-6b009a637c03',
@@ -6221,6 +6241,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'443',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'9f1dc912-5cf2-4f9c-8a4d-6e1b7858d3aa',
+		'40996b35-e838-421b-8334-3553c20810ba',
+		'63e6ec5d-2a33-49fc-8daa-6b009a637c03'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'd2c1eb22-6b96-4052-b126-f1fa7a28de62',
@@ -6231,6 +6256,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'132',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'f1f9ebef-3de6-4d86-bb97-17a2ba387365',
+		'aff5fd67-8504-485e-bddf-5dfcad780877',
+		'd2c1eb22-6b96-4052-b126-f1fa7a28de62'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'c3f3accc-9e75-4c0f-b45d-accf0f763228',
@@ -6241,6 +6271,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'216',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'657b26d2-d815-4fe4-a3f3-252cba9749d9',
+		'98e0f75f-ab4d-4990-a05a-1ed644ebdc20',
+		'c3f3accc-9e75-4c0f-b45d-accf0f763228'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'33de36e2-bace-47d7-b7d5-824ac8f681bc',
@@ -6251,6 +6286,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'396',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'8dd03943-399a-43a3-b3f6-0375fcfd3e40',
+		'122575b2-f45c-4d95-a435-12ceff610a1f',
+		'33de36e2-bace-47d7-b7d5-824ac8f681bc'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'664109c0-9e66-41b0-a091-566c404281a1',
@@ -6261,6 +6301,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'397',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'4cc15af1-73a0-4ba7-8141-c9057cf14826',
+		'dd20b29f-254a-4f05-94f4-4be82096667c',
+		'664109c0-9e66-41b0-a091-566c404281a1'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'628ac960-6359-4b47-b5e6-eae825241c4c',
@@ -6271,6 +6316,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'324',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'fca197b7-e8f0-4083-b159-2e97709d10c8',
+		'8bd4a5d7-8f3c-4b8a-a3eb-6cdd687fcefd',
+		'628ac960-6359-4b47-b5e6-eae825241c4c'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'8a2b6cca-5475-4c9c-b897-44a71fbf625d',
@@ -6281,6 +6331,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'467',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'f30c9e4b-fa6c-463f-932f-d59d6c9a58b9',
+		'0a79111b-0488-4d99-8b1b-3ec659569744',
+		'8a2b6cca-5475-4c9c-b897-44a71fbf625d'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'73aea816-df6e-4d73-897b-3fd08130dd30',
@@ -6291,6 +6346,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'101',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'33fc96f4-fb37-4c63-81a6-4afbfc749368',
+		'5d93cc77-e892-4006-a13f-ef4bc22e11b0',
+		'73aea816-df6e-4d73-897b-3fd08130dd30'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'e5a6b0e3-1339-46a4-ad49-3d8ac8111334',
@@ -6301,6 +6361,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'236',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'0ce22be3-182c-450a-8f1c-1152568cf577',
+		'52e263e8-d604-4a4f-9f69-6988104d9e8f',
+		'e5a6b0e3-1339-46a4-ad49-3d8ac8111334'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'0c784415-802f-4d33-b0a3-29b338a8de13',
@@ -6311,6 +6376,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'257',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'e18c1537-5d17-46bd-a6d7-d2bb35002a1c',
+		'4dab33ad-8602-4711-8a5d-9ccf67130156',
+		'0c784415-802f-4d33-b0a3-29b338a8de13'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'695ac0bb-30dc-4bc9-83de-b1dbc65b20c3',
@@ -6321,6 +6391,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'438',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'9c5aef59-40cd-449b-840b-a250db391456',
+		'fb64f84f-b6e0-4861-b423-8e8b8a466031',
+		'695ac0bb-30dc-4bc9-83de-b1dbc65b20c3'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'9c1dd0ed-e307-479a-bf45-2bfefa796c26',
@@ -6331,6 +6406,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'109',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'bdd6924f-61a1-482d-aa69-eeba55c74752',
+		'c9add661-b34d-4355-9f99-b27bd30760a0',
+		'9c1dd0ed-e307-479a-bf45-2bfefa796c26'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'5bd61e39-3085-4748-8598-3eccae41dcf3',
@@ -6341,6 +6421,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'237',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'e554f8e0-47e8-4860-b0b2-f3ab0f461684',
+		'916c19ca-d739-4ce6-8797-f4f777def7cc',
+		'5bd61e39-3085-4748-8598-3eccae41dcf3'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'ce53f0d7-b0f9-434e-a886-eefe70d68b57',
@@ -6351,6 +6436,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'399',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'346f344f-2233-494e-828f-7162ddc4a8b0',
+		'78a1198e-f66d-4c58-ab72-9bb48c237242',
+		'ce53f0d7-b0f9-434e-a886-eefe70d68b57'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'57710bbe-7449-478c-b463-3cdda9d15b54',
@@ -6361,6 +6451,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'359',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'9e0535db-02b9-4aed-a013-269259d722c5',
+		'8a092951-ce3f-4f19-ac43-fba3acaf7a0d',
+		'57710bbe-7449-478c-b463-3cdda9d15b54'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'6291cf1c-79d8-4990-96df-5b0d4b3628a8',
@@ -6371,6 +6466,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'273',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'147d11e6-bec4-44b9-a6e1-dd75290af73a',
+		'1c4b1252-fb51-4405-bef8-a0acb81f3d4e',
+		'6291cf1c-79d8-4990-96df-5b0d4b3628a8'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'2baa27f3-5718-414a-8394-70bca144f166',
@@ -6381,6 +6481,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'224',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'1b2b57dd-05d3-4a00-b1bd-775c9f0d7ea1',
+		'568eaab7-ea3c-4a3f-8d93-c0bfd8a3f901',
+		'2baa27f3-5718-414a-8394-70bca144f166'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'99cb7ec0-bf42-4de5-aabe-9aa363f24ae3',
@@ -6391,6 +6496,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'218',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'd6bd9617-802a-4c65-9f18-2cdd817b2678',
+		'08ba5525-8c6a-494b-b79f-cff4d3804567',
+		'99cb7ec0-bf42-4de5-aabe-9aa363f24ae3'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'de3d77dc-60b9-4aa2-82d8-2dfec8cf37f7',
@@ -6401,6 +6511,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'453',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'783e5ab6-ea9c-4ccb-a8a0-57bf826a70aa',
+		'37f14761-3f28-4a1c-a5b1-f1bfe76eb3e6',
+		'de3d77dc-60b9-4aa2-82d8-2dfec8cf37f7'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'0b0472a5-3adc-4898-b44d-7f11177e618f',
@@ -6411,6 +6526,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'431',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'c877e7ec-0de7-42f8-bb14-d6265d48bb4c',
+		'f1cdb27b-03a9-4bfd-bd1f-239090df1839',
+		'0b0472a5-3adc-4898-b44d-7f11177e618f'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'ad064e80-c8fe-4468-a3ac-5e2487cf77f4',
@@ -6421,6 +6541,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'455',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'8666ff01-2eda-41a4-a61e-e25920fa9e15',
+		'64fdc118-c1d1-4cf6-abbb-62f455e9ad88',
+		'ad064e80-c8fe-4468-a3ac-5e2487cf77f4'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'ef211d30-2f41-442c-a211-e2b7f8c08299',
@@ -6431,6 +6556,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'420',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'fb6913ce-2722-412d-94d6-7f6336d00391',
+		'52edfe27-6909-4c31-94ba-fc902879a3bc',
+		'ef211d30-2f41-442c-a211-e2b7f8c08299'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'8440e46d-e216-4698-b24b-6d79cb7435a3',
@@ -6441,6 +6571,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'282',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'4683537c-38b1-4e18-97f9-3ad51f2c106e',
+		'17894cb0-0bdc-47ef-9ff1-53883b855b84',
+		'8440e46d-e216-4698-b24b-6d79cb7435a3'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'8a90c82e-562c-4eea-9896-afd3cd263506',
@@ -6451,6 +6586,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'333',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'49003b86-f9ee-4240-9e5f-5d2fdd7122d3',
+		'c44d6465-5865-434f-b8b6-3aba08102def',
+		'8a90c82e-562c-4eea-9896-afd3cd263506'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'dcc488b5-62fa-454d-992f-eb5c50b8d59b',
@@ -6461,6 +6601,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'353',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'12df3da8-de5c-4970-8fe9-8ab2bbccbad7',
+		'27c10223-df13-446a-88b0-4edd586c2987',
+		'dcc488b5-62fa-454d-992f-eb5c50b8d59b'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'8e579011-ce72-4452-94ff-e2f0b3f71165',
@@ -6471,6 +6616,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'274',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'8c4b5d27-c35c-45e3-a506-40775f99d40f',
+		'2b5c2afc-ad03-4584-932c-095c5f4e6648',
+		'8e579011-ce72-4452-94ff-e2f0b3f71165'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'23448d09-dae4-4f73-89ac-577ab7f5ae7e',
@@ -6481,6 +6631,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'180',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'7162e910-7497-4f6c-be5e-5ec35748be09',
+		'7251f2b0-08be-4f08-a80b-d91e8f6f7c15',
+		'23448d09-dae4-4f73-89ac-577ab7f5ae7e'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'9e075da7-cac3-4890-8870-8a25398d5b7e',
@@ -6491,6 +6646,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'313',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'dfdd2e73-3a4a-489b-9f71-c06141fa6f9c',
+		'94cd9c72-d51f-4ac7-9a21-a426b4c9e7b5',
+		'9e075da7-cac3-4890-8870-8a25398d5b7e'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'dd7fa871-aee7-4d0c-98f8-952f2a010ffc',
@@ -6501,6 +6661,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'309',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'6ef47bf6-65cb-4243-9913-f6b512ffd491',
+		'631abf18-832b-4fbd-9b69-e5126840992d',
+		'dd7fa871-aee7-4d0c-98f8-952f2a010ffc'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'd8227538-79ef-4a39-9d69-1b625de22db1',
@@ -6511,6 +6676,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'361',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'4b281dbe-4e1a-4907-a054-2b7b68e95565',
+		'617c8c4f-f833-4b00-b470-58f05c738d96',
+		'd8227538-79ef-4a39-9d69-1b625de22db1'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'4acd9a72-92d2-46ce-bd47-3dfe83421ace',
@@ -6521,6 +6691,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'143',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'1894ad65-7248-496b-8329-a888ab9930dd',
+		'6932b47f-767a-421c-8b12-d744c6a313fc',
+		'4acd9a72-92d2-46ce-bd47-3dfe83421ace'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'c08f5ab8-ae2f-4322-b835-9eb015d3cae0',
@@ -6531,6 +6706,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'314',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'b924a9f2-9fe5-4bbc-8325-14fcf0d6b61e',
+		'8cccabb2-e8c3-48e7-bfc3-e0f455823973',
+		'c08f5ab8-ae2f-4322-b835-9eb015d3cae0'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'd95eb862-d077-4754-9f8e-84215a435171',
@@ -6541,6 +6721,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'429',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'0978512d-5549-4452-9796-5ef50185b17e',
+		'4c791e27-820f-4680-a5af-5c7191838d7f',
+		'd95eb862-d077-4754-9f8e-84215a435171'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'5ecef99a-6835-4bf1-bb45-e0f1fb10a60a',
@@ -6551,6 +6736,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'278',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'2233be94-6845-4a7c-aad6-382b12975341',
+		'98c1b666-58e6-4e80-be8f-f4f2677a822d',
+		'5ecef99a-6835-4bf1-bb45-e0f1fb10a60a'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'970d7ff6-eca1-4565-8f40-3e6343605de3',
@@ -6561,6 +6751,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'247',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'b4d0fc29-05d6-4628-85f7-c088742dbcc2',
+		'c2830c77-1bd9-4783-a6b7-217df78191c3',
+		'970d7ff6-eca1-4565-8f40-3e6343605de3'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'431debe3-106b-4934-be12-253ca30f619b',
@@ -6571,6 +6766,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'391',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'8b141742-2d1d-467d-ad90-83cea106b889',
+		'b9957993-51d8-4800-9d2b-4dd238fb03ee',
+		'431debe3-106b-4934-be12-253ca30f619b'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'acc3aac3-aabd-4cd0-9ae7-2aba251f55c4',
@@ -6581,6 +6781,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'461',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'76eaa44f-2c3f-4a73-ad27-aa496610c8cf',
+		'38c42b7a-2b4d-4a78-8c76-8fa32042691a',
+		'acc3aac3-aabd-4cd0-9ae7-2aba251f55c4'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'd9e287f1-c506-4bc5-89ce-6591982680b8',
@@ -6591,6 +6796,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'184',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'59d68301-5868-4d5b-8a08-aefd3555ed07',
+		'0873d0ef-cf7f-4f3c-b544-3737dee060b5',
+		'd9e287f1-c506-4bc5-89ce-6591982680b8'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'0b501834-f2a7-4a4c-a866-ba69266a38b6',
@@ -6601,6 +6811,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'313',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'91ffe8d4-d0ba-4842-af8d-b5cfe6fb6b67',
+		'1011ca5a-9180-450d-a142-25bc3b03004b',
+		'0b501834-f2a7-4a4c-a866-ba69266a38b6'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'45139be9-4c28-4a11-87a7-9279792b9e1f',
@@ -6611,6 +6826,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'229',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'60db534c-90e0-4972-b195-4a368998ce73',
+		'de93aa97-1f26-45a0-b75a-9203da81391b',
+		'45139be9-4c28-4a11-87a7-9279792b9e1f'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'73a38c5f-d23d-45f1-8cfc-bc674914f043',
@@ -6621,6 +6841,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'282',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'85e4a5e3-d677-48d6-a165-6c1d3efa4097',
+		'af3025b0-65ad-4276-991e-74fcdf314795',
+		'73a38c5f-d23d-45f1-8cfc-bc674914f043'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'db1f71a9-be98-4853-8e1a-b570f06617c6',
@@ -6631,6 +6856,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'315',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'8f1e5f1f-d4a6-4ee8-b6fe-5459abb85d17',
+		'd993dba9-e0ab-43c0-8c26-6eb823d47581',
+		'db1f71a9-be98-4853-8e1a-b570f06617c6'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'5c4c8d96-aa7d-4451-a5ba-1a8055c0a82d',
@@ -6641,6 +6871,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'452',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'89654843-f73e-4822-9add-8c80271d0502',
+		'e8dffa2f-7706-415d-9bd8-04cd07b1188e',
+		'5c4c8d96-aa7d-4451-a5ba-1a8055c0a82d'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'f3e35b2c-4508-4d72-aad9-5869e5a21da8',
@@ -6651,6 +6886,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'119',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'9122dc0d-5390-471b-9a0c-5c64e78aa099',
+		'cb720120-6896-4901-bb4d-17b6fa4e2102',
+		'f3e35b2c-4508-4d72-aad9-5869e5a21da8'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'616128a0-2632-4850-b6c0-c5523722f535',
@@ -6661,6 +6901,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'142',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'4fb78644-e2d4-4dfb-b651-47dc5861fed4',
+		'89c358ce-bd95-4bfd-95ae-79ca18f59ab6',
+		'616128a0-2632-4850-b6c0-c5523722f535'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'ad3af0a5-288f-429d-8fb0-2794794302fa',
@@ -6671,6 +6916,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'338',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'a583bbb4-6f5d-4126-a4da-5cea92aba33d',
+		'ad4a4d5b-8db6-4d0c-9c3d-f1af5e87cad7',
+		'ad3af0a5-288f-429d-8fb0-2794794302fa'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'031513b6-1b06-44f2-97dd-b27a002d3a2b',
@@ -6681,6 +6931,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'243',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'5775f71f-cd87-4942-aaf7-69758ff3b369',
+		'1e5a1c23-52d5-44f6-971e-36779b719565',
+		'031513b6-1b06-44f2-97dd-b27a002d3a2b'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'986748d7-4db2-4da9-8f25-fbedc1ded45c',
@@ -6691,6 +6946,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'275',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'c46b14c4-038a-4814-bc3a-639f44cc2358',
+		'f2b7b0ac-d776-41c4-94d7-dc12721552bb',
+		'986748d7-4db2-4da9-8f25-fbedc1ded45c'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'34149f64-bd85-4259-b544-02f2907cb452',
@@ -6701,6 +6961,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'292',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'3f6f6971-42c8-4b3b-881e-bd6a90333e3f',
+		'08f7277f-fcae-4d36-bfbe-423b91a8875f',
+		'34149f64-bd85-4259-b544-02f2907cb452'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'2419c73e-56e3-440a-95ad-8e2dd6faa78e',
@@ -6711,6 +6976,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'429',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'39044ad5-af54-4882-a0e2-872340730078',
+		'e143d779-47e8-4704-99bc-d3e6c1732f85',
+		'2419c73e-56e3-440a-95ad-8e2dd6faa78e'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'4beb7edf-f934-49e4-9022-ffec00b22836',
@@ -6721,6 +6991,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'432',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'51245a88-572f-49be-b52a-6a6ea4fad041',
+		'ff7ca544-82c2-4c8d-954e-1e48004bf50a',
+		'4beb7edf-f934-49e4-9022-ffec00b22836'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'1a8cd097-ffdd-4c3a-82e5-3dece6d28aac',
@@ -6731,6 +7006,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'418',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'd831b716-e4d8-47ff-88bf-aec1d9bbf5da',
+		'c7c33b3e-da76-4dc3-a685-3f82a9d16623',
+		'1a8cd097-ffdd-4c3a-82e5-3dece6d28aac'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'1f2cc2ba-9e0c-4021-b565-a4913753fba3',
@@ -6741,6 +7021,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'236',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'6f07cbe9-0d15-40cc-b3c6-3b9c085516a6',
+		'78e2e383-f18d-481f-b8e6-108d97dec060',
+		'1f2cc2ba-9e0c-4021-b565-a4913753fba3'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'e581b545-86ac-475d-9969-fad9c9669dad',
@@ -6751,6 +7036,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'436',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'07024015-627a-4c3a-a55b-e41f6d300d21',
+		'444d68e6-235f-41d2-80f2-c2bfac6b806b',
+		'e581b545-86ac-475d-9969-fad9c9669dad'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'07dc0677-1137-46b8-9d3a-9f242b5636f8',
@@ -6761,6 +7051,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'166',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'4becbd2c-3d84-4c65-a078-538d41d080d5',
+		'322994e5-74a6-4c39-af1f-169371cf1818',
+		'07dc0677-1137-46b8-9d3a-9f242b5636f8'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'59180438-94f9-485b-8b89-f5d192f637be',
@@ -6771,6 +7066,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'420',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'f7b74025-8185-4aec-9be6-89b735af4e71',
+		'94a7c8ff-9824-46d6-a2d2-dfc475b45033',
+		'59180438-94f9-485b-8b89-f5d192f637be'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'cc18922b-f0a3-453d-895e-aba5e6b48701',
@@ -6781,6 +7081,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'454',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'95c8ad6c-ef7a-44a8-b50c-1440a4c2c089',
+		'3419389c-051a-4667-bd5b-6b96a3c0e6ad',
+		'cc18922b-f0a3-453d-895e-aba5e6b48701'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'aafec91b-5656-4dbe-9350-126aaccd8e50',
@@ -6791,6 +7096,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'331',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'2b5473e8-829b-45af-8a60-7e78256f9811',
+		'e1df1d95-3aa4-41a0-8467-3e2576365c94',
+		'aafec91b-5656-4dbe-9350-126aaccd8e50'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'3ef70ada-6b28-4405-9aac-a027e44f6e01',
@@ -6801,6 +7111,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'492',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'a0ebce3e-5db1-4b14-b731-021041a5a9a6',
+		'05124dec-37e7-4c86-a83c-fc2b31e88a5a',
+		'3ef70ada-6b28-4405-9aac-a027e44f6e01'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'a625fe46-cf50-445e-8c04-683459c55538',
@@ -6811,6 +7126,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'452',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'5930f31f-92aa-412a-a6ab-77fab2779f99',
+		'b6dd9337-8bf1-45cf-99bf-2b0a87feb856',
+		'a625fe46-cf50-445e-8c04-683459c55538'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'b3eb376a-02a7-4da4-b1dd-7fe3eb7f9f9e',
@@ -6821,6 +7141,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'479',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'1c36cedb-a156-4027-918f-819a5392dc11',
+		'69bdfdcb-6f54-438a-914c-9ccc45beb007',
+		'b3eb376a-02a7-4da4-b1dd-7fe3eb7f9f9e'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'0d8ecd49-ceea-459b-8b35-f2fe33aab0bd',
@@ -6831,6 +7156,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'126',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'0735c75b-f6bb-4d73-97b1-f21446da9351',
+		'363b3c5c-a43b-49be-8a10-9a9e210595c7',
+		'0d8ecd49-ceea-459b-8b35-f2fe33aab0bd'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'aeec153c-bf2d-498b-9d66-041e14b7fe61',
@@ -6841,6 +7171,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'400',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'e48c2fa3-9418-48f8-afd8-562c3c0a4877',
+		'fef8103d-aa41-4f16-8c4f-12f145833594',
+		'aeec153c-bf2d-498b-9d66-041e14b7fe61'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'156262f8-e58f-45f2-8e69-9f54a7af9614',
@@ -6851,6 +7186,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'447',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'f509b089-51de-4e41-9892-23a4ca76edd2',
+		'71fb7d63-12eb-48dd-bb8a-e81c2e3f6da9',
+		'156262f8-e58f-45f2-8e69-9f54a7af9614'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'fce93d39-018b-4742-a04f-c55bbea4439b',
@@ -6861,6 +7201,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'420',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'17cf7a4b-be79-4c90-b051-95c43800db38',
+		'1a7ad3ab-32bb-4f49-a3b8-d8476ad03334',
+		'fce93d39-018b-4742-a04f-c55bbea4439b'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'78ee8af5-b79e-495d-8f3e-7ae5439f6b0e',
@@ -6871,6 +7216,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'198',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'fdf5da78-a4a9-4110-835e-602784bd7920',
+		'0ca72cad-ca5a-4145-b456-0e1e32f69fea',
+		'78ee8af5-b79e-495d-8f3e-7ae5439f6b0e'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'd082ca87-a3c6-42fa-a840-eb2d2d6f5855',
@@ -6881,6 +7231,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'246',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'e70f18e5-0bf8-4b9f-aad4-3058b58fc179',
+		'b8d39193-236c-446a-bbac-0cf4a75294da',
+		'd082ca87-a3c6-42fa-a840-eb2d2d6f5855'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'0791ce82-6d6b-44b4-ab75-970975633605',
@@ -6891,6 +7246,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'429',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'a9b70469-aa40-4d5a-9216-a53ecaaee818',
+		'e17ea095-410c-4e77-b210-5c815ed43554',
+		'0791ce82-6d6b-44b4-ab75-970975633605'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'055c06ee-eeaa-4bd5-b89b-fae16c349a6c',
@@ -6901,6 +7261,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'374',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'd211677f-61e0-47d4-af69-a82957a0608b',
+		'e7839955-3470-4fef-aee0-bdaaafe97404',
+		'055c06ee-eeaa-4bd5-b89b-fae16c349a6c'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'87d6408c-9b37-40da-84d2-ded31264acdd',
@@ -6911,6 +7276,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'476',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'65545933-2ed0-4d6c-89db-8aeff9b92634',
+		'f1626d9f-60b5-408b-ac79-0217bfda6a4b',
+		'87d6408c-9b37-40da-84d2-ded31264acdd'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'f23e26ba-3487-4b5d-ae01-8e90be2828b9',
@@ -6921,6 +7291,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'233',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'd4056ac7-6b91-4284-a398-737ca91c4918',
+		'44f36ab7-1289-43c0-8a13-d6437f438c1c',
+		'f23e26ba-3487-4b5d-ae01-8e90be2828b9'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'396aeab6-c440-4a71-8895-198a03737b38',
@@ -6931,6 +7306,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'307',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'd9fd4284-f70c-4cb5-be77-d490e2ca93a6',
+		'30518381-2578-4cac-8870-b13671510b03',
+		'396aeab6-c440-4a71-8895-198a03737b38'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'1ae9b9e7-bcb8-487e-9414-ad268b1d28de',
@@ -6941,6 +7321,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'483',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'cd2b8ae4-e371-40ac-b3e8-e505ee4fc9ec',
+		'a01f9f4b-499a-4e8e-81ba-ce9a5aa9f0ad',
+		'1ae9b9e7-bcb8-487e-9414-ad268b1d28de'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'31425eeb-a6f8-4831-9d78-9933fa3b6bca',
@@ -6951,6 +7336,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'475',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'5b76db04-2e64-4af2-a334-ed25b91db9f9',
+		'd3f8b8f0-16ff-4365-a424-8a7e2133e854',
+		'31425eeb-a6f8-4831-9d78-9933fa3b6bca'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'6343e04c-0186-4215-819f-10cb25e3bdf7',
@@ -6961,6 +7351,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'342',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'75a2bb8d-8ef0-444e-87a0-fe5d51071249',
+		'8e1707a1-e17a-4397-9572-86b5615725ec',
+		'6343e04c-0186-4215-819f-10cb25e3bdf7'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'03ed8c39-65ce-4f51-9b87-52947b5de599',
@@ -6971,6 +7366,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'380',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'85c39436-051e-48ab-8c7c-f8ebed20cf56',
+		'01c5b96d-b9f2-4698-a254-365a4296ec1b',
+		'03ed8c39-65ce-4f51-9b87-52947b5de599'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'45be9009-68bb-4fb8-aa90-c5a228004323',
@@ -6981,6 +7381,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'192',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'20ac4c28-e70a-4b26-a0ab-d3ce7d42165f',
+		'd53ad9aa-2187-41b9-94cd-8b9a5a523b27',
+		'45be9009-68bb-4fb8-aa90-c5a228004323'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'6157f9b4-f590-48f5-8464-0d5cb31d1f94',
@@ -6991,6 +7396,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'207',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'b03ceae2-d4ce-401d-8f52-7ab63db06c40',
+		'2565a336-5b6b-470c-96d2-248728dae763',
+		'6157f9b4-f590-48f5-8464-0d5cb31d1f94'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'1b9a17ac-09e1-439e-aecb-16a72d51ab0d',
@@ -7001,6 +7411,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'406',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'13c9bc12-d4db-40e2-a08b-c25c6b1b3815',
+		'b88397f9-3f58-4ff1-a86d-11f8ff53c4ea',
+		'1b9a17ac-09e1-439e-aecb-16a72d51ab0d'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'eb4a909f-fc38-41a8-9ab2-388b2845b8fa',
@@ -7011,6 +7426,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'465',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'd164670a-d278-4b34-875b-c06499474eb8',
+		'df4e3e0f-4efe-4672-8dd9-38b1d1df26c6',
+		'eb4a909f-fc38-41a8-9ab2-388b2845b8fa'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'76e330b6-0815-45a3-9b11-b5a14b7fef9f',
@@ -7021,6 +7441,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'220',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'629280ac-383a-43a2-b3c0-3a9c105c98e7',
+		'172ce5e5-b93d-41c8-b3cf-4171801e9ca2',
+		'76e330b6-0815-45a3-9b11-b5a14b7fef9f'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'78e0de24-40e9-4f89-b6b4-a5f0812cffd8',
@@ -7031,6 +7456,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'481',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'0f6bddd6-ae95-4550-8c8c-4aacda9a4684',
+		'a8e865c5-e50c-4bd3-8a2c-46f137d68293',
+		'78e0de24-40e9-4f89-b6b4-a5f0812cffd8'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'056d4185-17a2-4ca3-813f-9cebe1dc36fa',
@@ -7041,6 +7471,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'281',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'955bf1fe-aa14-4b15-8216-a04f1191716f',
+		'f60a3e30-4a85-4187-a1c1-109436e018ca',
+		'056d4185-17a2-4ca3-813f-9cebe1dc36fa'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'2b5c9359-2d4f-43bc-8269-8dca0cf0fa0c',
@@ -7051,6 +7486,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'470',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'7baba9a8-4787-4ae7-a847-bec05c551341',
+		'4dd74ecc-2a4a-4ef6-b899-02cfb76de735',
+		'2b5c9359-2d4f-43bc-8269-8dca0cf0fa0c'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'bf607a63-9658-4bfe-9d1c-f5c11cbaaba3',
@@ -7061,6 +7501,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'368',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'609a6b3e-b715-4926-a0dc-4b34f31090da',
+		'c6d19d28-9081-4594-9787-16253b0b7ca4',
+		'bf607a63-9658-4bfe-9d1c-f5c11cbaaba3'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'5313939b-b476-4cf1-8d75-6d7dbf5ae515',
@@ -7071,6 +7516,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'179',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'486d8f69-4e37-440c-8093-6b78d2f7d1b5',
+		'9fde7b37-9129-48e2-ab87-7352d4298ccf',
+		'5313939b-b476-4cf1-8d75-6d7dbf5ae515'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'd2234981-1a31-498f-8b11-7c52dc2ee469',
@@ -7081,6 +7531,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'452',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'33f7ca07-89d3-4fa4-8872-258355364c45',
+		'62084e00-cae3-48d3-ad63-ff176ee90ef9',
+		'd2234981-1a31-498f-8b11-7c52dc2ee469'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'a96850fa-7b2c-4de9-8ee4-f5ea64f3341e',
@@ -7091,6 +7546,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'299',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'896c7175-8f6e-4971-a60d-3413eed7bb42',
+		'e62f4002-4ed1-4804-afc9-7aad8111270e',
+		'a96850fa-7b2c-4de9-8ee4-f5ea64f3341e'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'425825a2-1e6f-4cfb-b612-e9933bf6c28e',
@@ -7101,6 +7561,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'348',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'4fbb4702-cfa7-4df3-80cb-cd5569dcf514',
+		'c748394e-f63d-4271-8c25-ae5a196b1ccb',
+		'425825a2-1e6f-4cfb-b612-e9933bf6c28e'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'ed38f252-dbc9-48cc-9a0d-d2f7bff646ef',
@@ -7111,6 +7576,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'381',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'3a089178-52cf-4126-ba89-038a61480b39',
+		'7a5c3f6b-ad36-4b8c-bf22-e1b3e48278bd',
+		'ed38f252-dbc9-48cc-9a0d-d2f7bff646ef'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'b0a634c9-b4c7-4d18-ad16-6ab08ada9a77',
@@ -7121,6 +7591,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'158',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'8b59920c-1e4c-4c56-acc0-cae9e5d9439c',
+		'4712fe36-4176-4078-9932-9fb01e70d154',
+		'b0a634c9-b4c7-4d18-ad16-6ab08ada9a77'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'858c95f9-8a9e-4495-b6be-619a5fd9e6db',
@@ -7131,6 +7606,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'434',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'38b0ef55-9963-4b20-9c5f-fbe80c73f3f9',
+		'b32e3ee0-646d-4f60-ab85-5af525019cab',
+		'858c95f9-8a9e-4495-b6be-619a5fd9e6db'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'bac01c9a-c43a-4eb9-a3ed-2c708c5a8fa9',
@@ -7141,6 +7621,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'466',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'45baa7a7-2220-4154-ba1e-2b2a57c3d221',
+		'5041f250-837e-4fbb-9f11-40699fe2b6af',
+		'bac01c9a-c43a-4eb9-a3ed-2c708c5a8fa9'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'f6a27173-1510-465f-9553-ababc2d0d1a7',
@@ -7151,6 +7636,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'143',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'8acab625-291e-489f-ac7c-5ab1e916f4ea',
+		'9ec731d3-3f80-405d-b0cb-5ba724e48aa3',
+		'f6a27173-1510-465f-9553-ababc2d0d1a7'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'3ad8aef8-a00f-4b50-8a9d-1d6594544851',
@@ -7161,6 +7651,11 @@ INSERT INTO MoneyTransactions VALUES (
 	'383',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'03fb298d-6f8b-4021-a4e3-f6cea4760b91',
+		'df8cce49-de33-401b-90bd-f0be1adf5f27',
+		'3ad8aef8-a00f-4b50-8a9d-1d6594544851'
+	);
 
 INSERT INTO MoneyTransactions VALUES (
 	'f925632d-12f6-4e3f-9452-b1696936fc8c',
@@ -7171,3 +7666,8 @@ INSERT INTO MoneyTransactions VALUES (
 	'424',
 	'UGX'
 );
+	INSERT INTO ProductPayments VALUES(
+		'822287f7-a5a6-46e8-a1d2-04ad947fcacd',
+		'7b7c5bfe-5089-405d-9884-03cccb2301a1',
+		'f925632d-12f6-4e3f-9452-b1696936fc8c'
+	);

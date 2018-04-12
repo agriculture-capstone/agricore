@@ -6,6 +6,7 @@ import products from '@/routers/products';
 import transactions from '@/routers/transactions/';
 import productExports from '@/routers/productExports';
 import memos from '@/routers/memos';
+import productPayments from '@/routers/transactions/money/productPayments';
 
 const router = Router();
 
@@ -15,5 +16,6 @@ router.use('/products', products);
 router.use('/transactions', transactions);
 router.use('/productExports', productExports);
 router.use('/memos', memos);
+router.use('/productPayments', productPayments);
 
 export default router;
